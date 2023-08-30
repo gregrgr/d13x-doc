@@ -1,0 +1,548 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="zh-CN" >
+<head>
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>2.2. 界面设计 &mdash; AIC文档中心 v1.0 文档</title>
+  
+
+  
+  <link rel="stylesheet" href="../../_static/css/theme_overrides.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+
+  
+  
+    <link rel="shortcut icon" href="../../_static/aic_logo.png"/>
+  
+
+  
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+        <script src="../../_static/jquery.js"></script>
+        <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/doctools.js"></script>
+        <script src="../../_static/translations.js"></script>
+    
+    <script type="text/javascript" src="../../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="索引" href="../../genindex.html" />
+    <link rel="search" title="搜索" href="../../search.html" />
+    <link rel="next" title="关于我们" href="../../aboutus/index.html" />
+    <link rel="prev" title="2.1. 模块介绍" href="1_introduction.html" />
+    <script>
+        $(function () {
+/**
+            var $body = $(".rst-content");
+            $body.attr("oncontextmenu", "return false"); 
+            $body.attr("ondragstart", "return false");
+            $body.attr("onselectstart", "return false");
+            $body.attr("onbeforecopy", "return false");
+
+            if (document.selection) {
+                $body.attr("onselect", "document.selection.empty()");
+                $body.attr("oncopy", "document.selection.empty()");
+                $body.attr("onmouseup", "document.selection.empty()");
+            } else {
+                $body.attr("onselect", "document.getSelection().removeAllRanges()");
+                $body.attr("oncopy", "document.getSelection().removeAllRanges()");
+                $body.attr("onmouseup", "document.getSelection().removeAllRanges()");
+            }
+
+            $(".wy-menu-vertical .toctree-l4.current .current.toctree-l5 > ul").wrap("<div></div>");
+
+            $(document).keydown(function (e) {
+                var $div = $(".wy-menu-vertical .toctree-l4.current .current.toctree-l5 > div");
+                var scrollLeft = $div.scrollLeft();
+                var step = 50;
+                var code = e.keyCode;
+                switch (code) {
+                    case 37:
+                        $div.scrollLeft(scrollLeft - step);
+                        break;
+                    case 39:
+                        $div.scrollLeft(scrollLeft + step);
+                        break;
+                    case 65:
+                    case 67:
+                    case 83:
+                    case 86:
+                        var ctrlKey = navigator.platform.match("Mac") ? e.metaKey : e.ctrlKey;
+                        if (ctrlKey) {
+                            e.preventDefault();
+                            window.event.returnValue = false;
+                        }
+                        break;
+                    case 123:
+                        e.preventDefault();
+                        window.event.returnValue = false;
+                        break;
+                }
+	    });  **/
+
+            watermark({
+                watermark_id: ".wy-nav-content",
+                watermark_txt: "ArtInChip",
+                watermark_font: "微软雅黑",
+                watermark_fontsize: "100px",
+                watermark_width: 600,
+                watermark_height: 300,
+                watermark_alpha: 0.1,
+                watermark_rows: 0,
+                watermark_y: 100,
+                watermark_x_space: 0,
+                watermark_y_space: 100
+            });
+
+        });
+
+        function watermark(settings) {
+            var defaultSettings = {
+                watermark_id: "body",
+                watermark_txt: "text",
+                watermark_x: 20,
+                watermark_y: 20,
+                watermark_rows: 20,
+                watermark_cols: 20,
+                watermark_x_space: 100,
+                watermark_y_space: 50,
+                watermark_color: '#aaa',
+                watermark_alpha: 0.4,
+                watermark_fontsize: '15px',
+                watermark_font: 'Times New Roman',
+                watermark_width: 210,
+                watermark_height: 80,
+                watermark_angle: 20
+            };
+
+            for (key in settings) {
+                defaultSettings[key] = settings[key];
+            }
+
+            var oTemp = document.createDocumentFragment();
+
+            var $container = $(defaultSettings.watermark_id);
+
+            var page_width = $container.width();
+            var col_width = defaultSettings.watermark_width + defaultSettings.watermark_x_space;
+            defaultSettings.watermark_cols = page_width / col_width;
+
+            var page_height = $container.height();
+            var row_height = defaultSettings.watermark_height + defaultSettings.watermark_y_space;
+            defaultSettings.watermark_rows = page_height / row_height;
+
+            var x, y;
+            for (var i = 0; i < defaultSettings.watermark_rows; i++) {
+                y = defaultSettings.watermark_y + (defaultSettings.watermark_y_space + defaultSettings.watermark_height) * i;
+                for (var j = 0; j < defaultSettings.watermark_cols; j++) {
+                    x = defaultSettings.watermark_x + (defaultSettings.watermark_width + defaultSettings.watermark_x_space) * j;
+                    var mask_div = document.createElement('div');
+                    mask_div.id = 'mask_div' + i + j;
+                    mask_div.className = 'mask_div';
+                    mask_div.appendChild(document.createTextNode(defaultSettings.watermark_txt));
+
+                    mask_div.style.webkitTransform = "rotate(-" + defaultSettings.watermark_angle + "deg)";
+                    mask_div.style.MozTransform = "rotate(-" + defaultSettings.watermark_angle + "deg)";
+                    mask_div.style.msTransform = "rotate(-" + defaultSettings.watermark_angle + "deg)";
+                    mask_div.style.OTransform = "rotate(-" + defaultSettings.watermark_angle + "deg)";
+                    mask_div.style.transform = "rotate(-" + defaultSettings.watermark_angle + "deg)";
+                    mask_div.style.visibility = "";
+                    mask_div.style.position = "absolute";
+                    mask_div.style.left = x + 'px';
+                    mask_div.style.top = y + 'px';
+                    mask_div.style.overflow = "hidden";
+                    mask_div.style.zIndex = "9999";
+
+                    mask_div.style.pointerEvents = 'none';
+                    mask_div.style.opacity = defaultSettings.watermark_alpha;
+                    mask_div.style.fontSize = defaultSettings.watermark_fontsize;
+                    mask_div.style.fontFamily = defaultSettings.watermark_font;
+                    mask_div.style.color = defaultSettings.watermark_color;
+                    mask_div.style.textAlign = "center";
+                    mask_div.style.width = defaultSettings.watermark_width + 'px';
+                    mask_div.style.height = defaultSettings.watermark_height + 'px';
+                    mask_div.style.display = "block";
+                    oTemp.appendChild(mask_div);
+                };
+            };
+            $container.append(oTemp);
+        }
+    </script>
+
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../index.html" class="icon icon-home"> AIC文档中心
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="../../product/index.html">产品简介</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../quick-start/index.html">快速入门</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../ic/index.html">芯片手册</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../lite/index.html">RTOS SDK</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../baremetal/index.html">Baremetal</a></li>
+</ul>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="../index.html">工具指南</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../aiburn/index.html">1. AiBurn 使用指南</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="index.html">2. AiBurnPro 使用指南</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="1_introduction.html">2.1. 功能描述</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">2.2. 使用指南</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id2">2.2.1. 主界面</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id3">2.2.2. 镜像烧写</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id4">2.2.3. 烧写历史</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id5">2.2.4. 使用说明</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id6">2.2.5. 系统配置</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id7">2.2.6. 关于我们</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../aboutus/index.html">关于我们</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">AIC文档中心</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+          <li><a href="../index.html">工具指南</a> &raquo;</li>
+        
+          <li><a href="index.html"><span class="section-number">2. </span>AiBurnPro 使用指南</a> &raquo;</li>
+        
+      <li><span class="section-number">2.2. </span>界面设计</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="id1">
+<h1><span class="section-number">2.2. </span>界面设计<a class="headerlink" href="#id1" title="永久链接至标题">¶</a></h1>
+<div class="section" id="id2">
+<h2><span class="section-number">2.2.1. </span>主界面<a class="headerlink" href="#id2" title="永久链接至标题">¶</a></h2>
+<div class="figure align-center">
+<img alt="../../_images/burn_tab.png" src="../../_images/burn_tab.png" />
+</div>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<ol class="arabic simple">
+<li><p>主界面分为两部分，左边为菜单栏：<code class="docutils literal notranslate"><span class="pre">镜像烧写</span></code>、<code class="docutils literal notranslate"><span class="pre">烧写历史</span></code>、<code class="docutils literal notranslate"><span class="pre">使用说明</span></code>、<code class="docutils literal notranslate"><span class="pre">系统设置</span></code>、<code class="docutils literal notranslate"><span class="pre">关于我们</span></code>，右边为选中菜单的内容页</p></li>
+<li><p>点击菜单栏可以切换内容页，默认选中 <code class="docutils literal notranslate"><span class="pre">镜像烧写</span></code> 菜单</p></li>
+</ol>
+</div>
+<div class="section" id="id3">
+<h2><span class="section-number">2.2.2. </span>镜像烧写<a class="headerlink" href="#id3" title="永久链接至标题">¶</a></h2>
+<ol class="arabic simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">镜像烧写</span></code> 界面最上面是 <code class="docutils literal notranslate"><span class="pre">选择镜像</span></code> 按钮和显示选中镜像文件路径的文本框</p></li>
+</ol>
+<div class="figure align-center">
+<img alt="../../_images/select_img2.png" src="../../_images/select_img2.png" />
+</div>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<ol class="arabic simple" start="2">
+<li><p>点击 <code class="docutils literal notranslate"><span class="pre">选择镜像</span></code> 按钮并选择符合我司定义的镜像文件，软件会解析镜像文件并在下面显示镜像信息</p></li>
+</ol>
+<div class="figure align-center">
+<img alt="../../_images/img_info.png" src="../../_images/img_info.png" />
+</div>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<ol class="arabic simple" start="3">
+<li><p>镜像信息下方为烧写设备列表，默认显示2列8个设备，可在 <code class="docutils literal notranslate"><span class="pre">系统配置</span></code> 设置列数和设备数</p></li>
+</ol>
+<div class="figure align-center">
+<img alt="../../_images/dev_list.png" src="../../_images/dev_list.png" />
+</div>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<ol class="arabic simple" start="4">
+<li><p>最下方为统计信息，包括 <code class="docutils literal notranslate"><span class="pre">总次数</span></code>、<code class="docutils literal notranslate"><span class="pre">成功次数</span></code> 和 <code class="docutils literal notranslate"><span class="pre">失败次数</span></code></p></li>
+</ol>
+<div class="figure align-center">
+<img alt="../../_images/statistic_info.png" src="../../_images/statistic_info.png" />
+</div>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<ol class="arabic simple" start="5">
+<li><p>设备状态</p></li>
+</ol>
+<ul class="simple">
+<li><p>默认状态为 <code class="docutils literal notranslate"><span class="pre">未连接</span></code></p></li>
+</ul>
+<div class="figure align-default">
+<img alt="../../_images/status_idle.png" src="../../_images/status_idle.png" />
+</div>
+<ul class="simple">
+<li><p>设备通过USB连接到电脑并使设备进入烧写状态，状态变为 <code class="docutils literal notranslate"><span class="pre">已连接</span></code></p></li>
+</ul>
+<div class="figure align-default">
+<img alt="../../_images/status_linked.png" src="../../_images/status_linked.png" />
+</div>
+<ul class="simple">
+<li><p>烧写自动开始，状态变为 <code class="docutils literal notranslate"><span class="pre">烧写中</span></code></p></li>
+</ul>
+<div class="figure align-default">
+<img alt="../../_images/status_buring.png" src="../../_images/status_buring.png" />
+</div>
+<ul class="simple">
+<li><p>烧写完成，状态变为 <code class="docutils literal notranslate"><span class="pre">烧写成功</span></code></p></li>
+</ul>
+<div class="figure align-default">
+<img alt="../../_images/status_success.png" src="../../_images/status_success.png" />
+</div>
+<ul class="simple">
+<li><p>烧写发生异常，状态变为 <code class="docutils literal notranslate"><span class="pre">烧写失败</span></code></p></li>
+</ul>
+<div class="figure align-default">
+<img alt="../../_images/status_fail.png" src="../../_images/status_fail.png" />
+</div>
+<ol class="arabic simple" start="6">
+<li><p>一拖多烧写</p></li>
+</ol>
+<div class="figure align-center">
+<img alt="../../_images/devs_burn.png" src="../../_images/devs_burn.png" />
+</div>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+</div>
+<div class="section" id="id4">
+<h2><span class="section-number">2.2.3. </span>烧写历史<a class="headerlink" href="#id4" title="永久链接至标题">¶</a></h2>
+<ol class="arabic simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">烧写历史</span></code> 界面以表格的形式按天列出烧写历史</p></li>
+</ol>
+<div class="figure align-center">
+<img alt="../../_images/history_tab.png" src="../../_images/history_tab.png" />
+</div>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<ol class="arabic simple" start="2">
+<li><p>点击下方 <code class="docutils literal notranslate"><span class="pre">前一天</span></code> 或 <code class="docutils literal notranslate"><span class="pre">前一天</span></code> 按钮查看前一天或后一天的烧写历史</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">前一天</span></code> 和 <code class="docutils literal notranslate"><span class="pre">前一天</span></code> 按钮中间显示当前查看的烧写历史的日期，点击日期文本可在日历上选择需要查看烧写历史的日期</p></li>
+</ol>
+<div class="figure align-center">
+<img alt="../../_images/history_calendar.png" src="../../_images/history_calendar.png" />
+</div>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<ol class="arabic simple" start="4">
+<li><p>点击表格的 <code class="docutils literal notranslate"><span class="pre">日志</span></code> 按钮查看对应记录的烧写日志</p></li>
+</ol>
+<div class="figure align-center">
+<img alt="../../_images/burn_log.png" src="../../_images/burn_log.png" />
+</div>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+</div>
+<div class="section" id="id5">
+<h2><span class="section-number">2.2.4. </span>使用说明<a class="headerlink" href="#id5" title="永久链接至标题">¶</a></h2>
+<p>本软件的简要使用指引</p>
+<div class="figure align-center">
+<img alt="../../_images/manual_tab.png" src="../../_images/manual_tab.png" />
+</div>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+</div>
+<div class="section" id="id6">
+<h2><span class="section-number">2.2.5. </span>系统配置<a class="headerlink" href="#id6" title="永久链接至标题">¶</a></h2>
+<div class="figure align-center">
+<img alt="../../_images/setting_tab.png" src="../../_images/setting_tab.png" />
+</div>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<ol class="arabic simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">最大设备数</span></code> ：<code class="docutils literal notranslate"><span class="pre">镜像烧写</span></code> 界面设备列表显示的设备数，支持8和6</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">设备列数</span></code> ：<code class="docutils literal notranslate"><span class="pre">镜像烧写</span></code> 界面设备列表显示的列数，支持1、2和3</p></li>
+</ol>
+<div class="figure align-center" id="id8">
+<img alt="../../_images/dev_16_3_setting.png" src="../../_images/dev_16_3_setting.png" />
+<p class="caption"><span class="caption-number">图 2.7 </span><span class="caption-text">设置列数和设备数</span><a class="headerlink" href="#id8" title="永久链接至图片">¶</a></p>
+</div>
+<div class="figure align-center" id="id9">
+<img alt="../../_images/dev_16_3.png" src="../../_images/dev_16_3.png" />
+<p class="caption"><span class="caption-number">图 2.8 </span><span class="caption-text">设置效果</span><a class="headerlink" href="#id9" title="永久链接至图片">¶</a></p>
+</div>
+<ol class="arabic simple" start="3">
+<li><p><code class="docutils literal notranslate"><span class="pre">全屏设置</span></code> ：切换软件的全屏/窗口显示</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">统计重置</span></code> ：把 <code class="docutils literal notranslate"><span class="pre">镜像烧写</span></code> 界面的统计数据清零</p></li>
+</ol>
+</div>
+<div class="section" id="id7">
+<h2><span class="section-number">2.2.6. </span>关于我们<a class="headerlink" href="#id7" title="永久链接至标题">¶</a></h2>
+<p>软件版本信息以及我司联系方式</p>
+<div class="figure align-center">
+<img alt="../../_images/about_tab.png" src="../../_images/about_tab.png" />
+</div>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+        <a href="../../aboutus/index.html" class="btn btn-neutral float-right" title="关于我们" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="1_introduction.html" class="btn btn-neutral float-left" title="2.1. 模块介绍" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; 版权所有 2023 广州匠芯创科技有限公司.
+
+    </p>
+  </div> 
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

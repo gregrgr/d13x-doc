@@ -1,0 +1,2396 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="zh-CN" >
+<head>
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>10.3.7. JPEG寄存器描述 &mdash; AIC文档中心 v1.0 文档</title>
+  
+
+  
+  <link rel="stylesheet" href="../../../_static/css/theme_overrides.css" type="text/css" />
+  <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+
+  
+  
+    <link rel="shortcut icon" href="../../../_static/aic_logo.png"/>
+  
+
+  
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../../" src="../../../_static/documentation_options.js"></script>
+        <script src="../../../_static/jquery.js"></script>
+        <script src="../../../_static/underscore.js"></script>
+        <script src="../../../_static/doctools.js"></script>
+        <script src="../../../_static/translations.js"></script>
+    
+    <script type="text/javascript" src="../../../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="索引" href="../../../genindex.html" />
+    <link rel="search" title="搜索" href="../../../search.html" />
+    <link rel="next" title="10.3.8. 图像信息寄存器描述" href="pic_register.html" />
+    <link rel="prev" title="10.3.6. PNG寄存器描述" href="png_register.html" />
+    <script>
+        $(function () {
+/**
+            var $body = $(".rst-content");
+            $body.attr("oncontextmenu", "return false"); 
+            $body.attr("ondragstart", "return false");
+            $body.attr("onselectstart", "return false");
+            $body.attr("onbeforecopy", "return false");
+
+            if (document.selection) {
+                $body.attr("onselect", "document.selection.empty()");
+                $body.attr("oncopy", "document.selection.empty()");
+                $body.attr("onmouseup", "document.selection.empty()");
+            } else {
+                $body.attr("onselect", "document.getSelection().removeAllRanges()");
+                $body.attr("oncopy", "document.getSelection().removeAllRanges()");
+                $body.attr("onmouseup", "document.getSelection().removeAllRanges()");
+            }
+
+            $(".wy-menu-vertical .toctree-l4.current .current.toctree-l5 > ul").wrap("<div></div>");
+
+            $(document).keydown(function (e) {
+                var $div = $(".wy-menu-vertical .toctree-l4.current .current.toctree-l5 > div");
+                var scrollLeft = $div.scrollLeft();
+                var step = 50;
+                var code = e.keyCode;
+                switch (code) {
+                    case 37:
+                        $div.scrollLeft(scrollLeft - step);
+                        break;
+                    case 39:
+                        $div.scrollLeft(scrollLeft + step);
+                        break;
+                    case 65:
+                    case 67:
+                    case 83:
+                    case 86:
+                        var ctrlKey = navigator.platform.match("Mac") ? e.metaKey : e.ctrlKey;
+                        if (ctrlKey) {
+                            e.preventDefault();
+                            window.event.returnValue = false;
+                        }
+                        break;
+                    case 123:
+                        e.preventDefault();
+                        window.event.returnValue = false;
+                        break;
+                }
+	    });  **/
+
+            watermark({
+                watermark_id: ".wy-nav-content",
+                watermark_txt: "ArtInChip",
+                watermark_font: "微软雅黑",
+                watermark_fontsize: "100px",
+                watermark_width: 600,
+                watermark_height: 300,
+                watermark_alpha: 0.1,
+                watermark_rows: 0,
+                watermark_y: 100,
+                watermark_x_space: 0,
+                watermark_y_space: 100
+            });
+
+        });
+
+        function watermark(settings) {
+            var defaultSettings = {
+                watermark_id: "body",
+                watermark_txt: "text",
+                watermark_x: 20,
+                watermark_y: 20,
+                watermark_rows: 20,
+                watermark_cols: 20,
+                watermark_x_space: 100,
+                watermark_y_space: 50,
+                watermark_color: '#aaa',
+                watermark_alpha: 0.4,
+                watermark_fontsize: '15px',
+                watermark_font: 'Times New Roman',
+                watermark_width: 210,
+                watermark_height: 80,
+                watermark_angle: 20
+            };
+
+            for (key in settings) {
+                defaultSettings[key] = settings[key];
+            }
+
+            var oTemp = document.createDocumentFragment();
+
+            var $container = $(defaultSettings.watermark_id);
+
+            var page_width = $container.width();
+            var col_width = defaultSettings.watermark_width + defaultSettings.watermark_x_space;
+            defaultSettings.watermark_cols = page_width / col_width;
+
+            var page_height = $container.height();
+            var row_height = defaultSettings.watermark_height + defaultSettings.watermark_y_space;
+            defaultSettings.watermark_rows = page_height / row_height;
+
+            var x, y;
+            for (var i = 0; i < defaultSettings.watermark_rows; i++) {
+                y = defaultSettings.watermark_y + (defaultSettings.watermark_y_space + defaultSettings.watermark_height) * i;
+                for (var j = 0; j < defaultSettings.watermark_cols; j++) {
+                    x = defaultSettings.watermark_x + (defaultSettings.watermark_width + defaultSettings.watermark_x_space) * j;
+                    var mask_div = document.createElement('div');
+                    mask_div.id = 'mask_div' + i + j;
+                    mask_div.className = 'mask_div';
+                    mask_div.appendChild(document.createTextNode(defaultSettings.watermark_txt));
+
+                    mask_div.style.webkitTransform = "rotate(-" + defaultSettings.watermark_angle + "deg)";
+                    mask_div.style.MozTransform = "rotate(-" + defaultSettings.watermark_angle + "deg)";
+                    mask_div.style.msTransform = "rotate(-" + defaultSettings.watermark_angle + "deg)";
+                    mask_div.style.OTransform = "rotate(-" + defaultSettings.watermark_angle + "deg)";
+                    mask_div.style.transform = "rotate(-" + defaultSettings.watermark_angle + "deg)";
+                    mask_div.style.visibility = "";
+                    mask_div.style.position = "absolute";
+                    mask_div.style.left = x + 'px';
+                    mask_div.style.top = y + 'px';
+                    mask_div.style.overflow = "hidden";
+                    mask_div.style.zIndex = "9999";
+
+                    mask_div.style.pointerEvents = 'none';
+                    mask_div.style.opacity = defaultSettings.watermark_alpha;
+                    mask_div.style.fontSize = defaultSettings.watermark_fontsize;
+                    mask_div.style.fontFamily = defaultSettings.watermark_font;
+                    mask_div.style.color = defaultSettings.watermark_color;
+                    mask_div.style.textAlign = "center";
+                    mask_div.style.width = defaultSettings.watermark_width + 'px';
+                    mask_div.style.height = defaultSettings.watermark_height + 'px';
+                    mask_div.style.display = "block";
+                    oTemp.appendChild(mask_div);
+                };
+            };
+            $container.append(oTemp);
+        }
+    </script>
+
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../../index.html" class="icon icon-home"> AIC文档中心
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../product/index.html">产品简介</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../quick-start/index.html">快速入门</a></li>
+</ul>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="../../index.html">芯片手册</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../../about/index.html">1. 文档说明</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../introduction/index.html">2. 产品描述</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../memory_maps/index.html">3. 地址映射</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../pinmux/index.html">4. 引脚复用</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../cpu_bus/index.html">5. 处理器和总线</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../security/index.html">6. 安全</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../brom/index.html">7. 启动</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../clocks_power/index.html">8. 时钟和电源</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../memory/index.html">9. 存储</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="../index.html">10. 多媒体</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="../de/index.html">10.1. Display Engine (DE)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../ge/index.html">10.2. Graphics Engine (GE)</a></li>
+<li class="toctree-l3 current"><a class="reference internal" href="index.html">10.3. Video Engine (VE)</a><ul class="current">
+<li class="toctree-l4"><a class="reference internal" href="overview.html">10.3.1. 概述</a></li>
+<li class="toctree-l4"><a class="reference internal" href="jpeg.html">10.3.2. JPEG模块功能说明</a></li>
+<li class="toctree-l4"><a class="reference internal" href="png.html">10.3.3. PNG 模块功能说明</a></li>
+<li class="toctree-l4"><a class="reference internal" href="register.html">10.3.4. 寄存器地址空间映射</a></li>
+<li class="toctree-l4"><a class="reference internal" href="ve_top_register.html">10.3.5. VE_TOP寄存器</a></li>
+<li class="toctree-l4"><a class="reference internal" href="png_register.html">10.3.6. PNG寄存器描述</a></li>
+<li class="toctree-l4 current"><a class="current reference internal" href="#">10.3.7. JPEG寄存器描述</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="#x200-jpeg-start">10.3.7.1. 0x200 JPEG_START</a></li>
+<li class="toctree-l5"><a class="reference internal" href="#x204-jpeg-status">10.3.7.2. 0x204 JPEG_STATUS</a></li>
+<li class="toctree-l5"><a class="reference internal" href="#x208-jpeg-irq-en">10.3.7.3. 0x208 JPEG_IRQ_EN</a></li>
+<li class="toctree-l5"><a class="reference internal" href="#x210-jpeg-start-pos">10.3.7.4. 0x210 JPEG_START_POS</a></li>
+<li class="toctree-l5"><a class="reference internal" href="#x214-jpeg-size">10.3.7.5. 0x214 JPEG_SIZE</a></li>
+<li class="toctree-l5"><a class="reference internal" href="#x218-jpeg-ctrl">10.3.7.6. 0x218 JPEG_CTRL</a></li>
+<li class="toctree-l5"><a class="reference internal" href="#x21c-jpeg-mcu-info">10.3.7.7. 0x21C JPEG_MCU_INFO</a></li>
+<li class="toctree-l5"><a class="reference internal" href="#x220-jpeg-handle-num">10.3.7.8. 0x220 JPEG_HANDLE_NUM</a></li>
+<li class="toctree-l5"><a class="reference internal" href="#x224-jpeg-qmat-info">10.3.7.9. 0x224 JPEG_QMAT_INFO</a></li>
+<li class="toctree-l5"><a class="reference internal" href="#x228-jpeg-qmat-addr">10.3.7.10. 0x228 JPEG_QMAT_ADDR</a></li>
+<li class="toctree-l5"><a class="reference internal" href="#x22c-jpeg-qmat-data">10.3.7.11. 0x22C JPEG_QMAT_DATA</a></li>
+<li class="toctree-l5"><a class="reference internal" href="#x230-jpeg-huff-info">10.3.7.12. 0x230 JPEG_HUFF_INFO</a></li>
+<li class="toctree-l5"><a class="reference internal" href="#x234-jpeg-huff-addr">10.3.7.13. 0x234 JPEG_HUFF_ADDR</a></li>
+<li class="toctree-l5"><a class="reference internal" href="#x238-jpeg-huff-data">10.3.7.14. 0x238 JPEG_HUFF_DATA</a></li>
+<li class="toctree-l5"><a class="reference internal" href="#x23c-jpeg-clip-en">10.3.7.15. 0x23C JPEG_CLIP_EN</a></li>
+<li class="toctree-l5"><a class="reference internal" href="#x240-jpeg-clip-base">10.3.7.16. 0x240 JPEG_CLIP_BASE</a></li>
+<li class="toctree-l5"><a class="reference internal" href="#x244-jpeg-clip-size">10.3.7.17. 0x244 JPEG_CLIP_SIZE</a></li>
+<li class="toctree-l5"><a class="reference internal" href="#x248-jpeg-clip-out-base">10.3.7.18. 0x248 JPEG_CLIP_OUT_BASE</a></li>
+<li class="toctree-l5"><a class="reference internal" href="#x24c-jpeg-rotmir">10.3.7.19. 0x24C JPEG_ROTMIR</a></li>
+<li class="toctree-l5"><a class="reference internal" href="#x250-jpeg-scale">10.3.7.20. 0x250 JPEG_SCALE</a></li>
+<li class="toctree-l5"><a class="reference internal" href="#x254-jpeg-rgb-en">10.3.7.21. 0x254 JPEG_RGB_EN</a></li>
+<li class="toctree-l5"><a class="reference internal" href="#x25c-jpeg-rst-intval">10.3.7.22. 0x25C JPEG_RST_INTVAL</a></li>
+<li class="toctree-l5"><a class="reference internal" href="#x264-jpeg-frm-idx">10.3.7.23. 0x264 JPEG_FRM_IDX</a></li>
+<li class="toctree-l5"><a class="reference internal" href="#x268-jpeg-uv-int">10.3.7.24. 0x268 JPEG_UV_INT</a></li>
+<li class="toctree-l5"><a class="reference internal" href="#x26c-jpeg-cycles">10.3.7.25. 0x26C JPEG_CYCLES</a></li>
+<li class="toctree-l5"><a class="reference internal" href="#x28c-jpeg-dither-param">10.3.7.26. 0x28C JPEG_DITHER_PARAM</a></li>
+<li class="toctree-l5"><a class="reference internal" href="#x300-jpeg-sub-ctrl">10.3.7.27. 0x300 JPEG_SUB_CTRL</a></li>
+<li class="toctree-l5"><a class="reference internal" href="#x304-jpeg-mem-ia">10.3.7.28. 0x304 JPEG_MEM_IA</a></li>
+<li class="toctree-l5"><a class="reference internal" href="#x308-jpeg-mem-ha">10.3.7.29. 0x308 JPEG_MEM_HA</a></li>
+<li class="toctree-l5"><a class="reference internal" href="#x31c-jpeg-rbit-offset">10.3.7.30. 0x31C JPEG_RBIT_OFFSET</a></li>
+<li class="toctree-l5"><a class="reference internal" href="#x324-jpeg-mem-sa">10.3.7.31. 0x324 JPEG_MEM_SA</a></li>
+<li class="toctree-l5"><a class="reference internal" href="#x328-jpeg-mem-ea">10.3.7.32. 0x328 JPEG_MEM_EA</a></li>
+<li class="toctree-l5"><a class="reference internal" href="#x384-jpeg-stream-num">10.3.7.33. 0x384 JPEG_STREAM_NUM</a></li>
+<li class="toctree-l5"><a class="reference internal" href="#x38c-jpeg-data-count">10.3.7.34. 0x38C JPEG_DATA_COUNT</a></li>
+<li class="toctree-l5"><a class="reference internal" href="#x390-jpeg-busy">10.3.7.35. 0x390 JPEG_BUSY</a></li>
+<li class="toctree-l5"><a class="reference internal" href="#x398-jpeg-stream-end-addr">10.3.7.36. 0x398 JPEG_STREAM_END_ADDR</a></li>
+<li class="toctree-l5"><a class="reference internal" href="#x394-jpeg-req">10.3.7.37. 0x394 JPEG_REQ</a></li>
+<li class="toctree-l5"><a class="reference internal" href="#x39c-jpeg-stream-start-addr">10.3.7.38. 0x39C JPEG_STREAM_START_ADDR</a></li>
+<li class="toctree-l5"><a class="reference internal" href="#x3a4-jpeg-wr-addr">10.3.7.39. 0x3A4 JPEG_WR_ADDR</a></li>
+<li class="toctree-l5"><a class="reference internal" href="#x3b0-jpeg-cur-pos">10.3.7.40. 0x3B0 JPEG_CUR_POS</a></li>
+</ul>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="pic_register.html">10.3.8. 图像信息寄存器描述</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../lcd/index.html">10.4. LCD</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../lvds/index.html">10.5. LVDS</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../dsi/index.html">10.6. MIPI DSI</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../dvp/index.html">10.7. Digital Video Port (DVP)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../audio/index.html">10.8. AUDIO</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../i2s/index.html">10.9. Integrated Interchip Sound (I2S)</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../timers/index.html">11. 计时器</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../interface/index.html">12. 接口</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../analog/index.html">13. 模拟</a></li>
+</ul>
+</li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../lite/index.html">RTOS SDK</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../baremetal/index.html">Baremetal</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../tools/index.html">工具指南</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../aboutus/index.html">关于我们</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../index.html">AIC文档中心</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+          <li><a href="../../index.html">芯片手册</a> &raquo;</li>
+        
+          <li><a href="../index.html"><span class="section-number">10. </span>多媒体</a> &raquo;</li>
+        
+          <li><a href="index.html"><span class="section-number">10.3. </span>VE</a> &raquo;</li>
+        
+      <li><span class="section-number">10.3.7. </span>JPEG寄存器描述</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="jpeg">
+<h1><span class="section-number">10.3.7. </span>JPEG寄存器描述<a class="headerlink" href="#jpeg" title="永久链接至标题">¶</a></h1>
+<div class="section" id="x200-jpeg-start">
+<h2><span class="section-number">10.3.7.1. </span>0x200 JPEG_START<a class="headerlink" href="#x200-jpeg-start" title="永久链接至标题">¶</a></h2>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 8%" />
+<col style="width: 8%" />
+<col style="width: 13%" />
+<col style="width: 70%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head" colspan="3"><p>默认值：0x00000000</p></th>
+<th class="head"><p>JPEG启动解码 (JPEG Start)</p></th>
+</tr>
+<tr class="row-even"><th class="head"><p>位域</p></th>
+<th class="head"><p>类型</p></th>
+<th class="head"><p>默认值</p></th>
+<th class="head"><p>描述</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-odd"><td><p>31:1</p></td>
+<td><p><em>-</em></p></td>
+<td><p><em>-</em></p></td>
+<td><div class="line-block">
+<div class="line"><em>-</em></div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td><p>0</p></td>
+<td><p>R/W</p></td>
+<td><p>0x0</p></td>
+<td><div class="line-block">
+<div class="line">1：启动jpeg解码</div>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="x204-jpeg-status">
+<h2><span class="section-number">10.3.7.2. </span>0x204 JPEG_STATUS<a class="headerlink" href="#x204-jpeg-status" title="永久链接至标题">¶</a></h2>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 8%" />
+<col style="width: 8%" />
+<col style="width: 13%" />
+<col style="width: 70%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head" colspan="3"><p>默认值：0x00000000</p></th>
+<th class="head"><p>JPEG 解码状态 (JPEG Status)</p></th>
+</tr>
+<tr class="row-even"><th class="head"><p>位域</p></th>
+<th class="head"><p>类型</p></th>
+<th class="head"><p>默认值</p></th>
+<th class="head"><p>描述</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-odd"><td><p>31:4</p></td>
+<td><p><em>-</em></p></td>
+<td><p><em>-</em></p></td>
+<td><div class="line-block">
+<div class="line"><em>-</em></div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td><p>3</p></td>
+<td><p>R</p></td>
+<td><p>0x0</p></td>
+<td><div class="line-block">
+<div class="line">OVERFLOW</div>
+<div class="line">解码输出数据超出输出buffer的结束地址，VE停止解码并向主控</div>
+<div class="line">发送中断信号，该位置1</div>
+</div>
+</td>
+</tr>
+<tr class="row-odd"><td><p>2</p></td>
+<td><p>R</p></td>
+<td><p>0x0</p></td>
+<td><div class="line-block">
+<div class="line">BIT_REQ</div>
+<div class="line">读完最后一笔数据后解码还未结束，则认为数据不够，VE停止解</div>
+<div class="line">码并向主控发送中断信号，该位置1</div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td><p>1</p></td>
+<td><p>R</p></td>
+<td><p>0x0</p></td>
+<td><div class="line-block">
+<div class="line">JPEG_ERROR</div>
+<div class="line">当执行当前任务过程中发现码流错误，则停止当前任务并向主控</div>
+<div class="line">发送中断信号后，该位置1</div>
+</div>
+</td>
+</tr>
+<tr class="row-odd"><td><p>0</p></td>
+<td><p>R</p></td>
+<td><p>0x0</p></td>
+<td><div class="line-block">
+<div class="line">JPEG_FINISH</div>
+<div class="line">解码结束时向主控发送中断信号后，该位置1</div>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="x208-jpeg-irq-en">
+<h2><span class="section-number">10.3.7.3. </span>0x208 JPEG_IRQ_EN<a class="headerlink" href="#x208-jpeg-irq-en" title="永久链接至标题">¶</a></h2>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 8%" />
+<col style="width: 8%" />
+<col style="width: 13%" />
+<col style="width: 70%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head" colspan="3"><p>默认值：0x00000007</p></th>
+<th class="head"><p>JPEG 中断使能 (JPEG Interrupt Enable)</p></th>
+</tr>
+<tr class="row-even"><th class="head"><p>位域</p></th>
+<th class="head"><p>类型</p></th>
+<th class="head"><p>默认值</p></th>
+<th class="head"><p>描述</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-odd"><td><p>31:3</p></td>
+<td><p><em>-</em></p></td>
+<td><p><em>-</em></p></td>
+<td><div class="line-block">
+<div class="line"><em>-</em></div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td><p>2</p></td>
+<td><p>W1C</p></td>
+<td><p>0x1</p></td>
+<td><div class="line-block">
+<div class="line">BIT_REQ_IRQ_EN</div>
+<div class="line">解码数据不够中断使能（写1清中断）</div>
+</div>
+</td>
+</tr>
+<tr class="row-odd"><td><p>1</p></td>
+<td><p>W1C</p></td>
+<td><p>0x1</p></td>
+<td><div class="line-block">
+<div class="line">ERROR_IRQ_EN</div>
+<div class="line">解码错误中断使能（写1清中断）</div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td><p>0</p></td>
+<td><p>W1C</p></td>
+<td><p>0x1</p></td>
+<td><div class="line-block">
+<div class="line">FINISH_IRQ_EN</div>
+<div class="line">解码正常结束中断使能（写1清中断）</div>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="x210-jpeg-start-pos">
+<h2><span class="section-number">10.3.7.4. </span>0x210 JPEG_START_POS<a class="headerlink" href="#x210-jpeg-start-pos" title="永久链接至标题">¶</a></h2>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 8%" />
+<col style="width: 8%" />
+<col style="width: 13%" />
+<col style="width: 70%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head" colspan="3"><p>默认值：0x00000000</p></th>
+<th class="head"><p>JPEG解码起始位置 (JPEG Start Position)</p></th>
+</tr>
+<tr class="row-even"><th class="head"><p>位域</p></th>
+<th class="head"><p>类型</p></th>
+<th class="head"><p>默认值</p></th>
+<th class="head"><p>描述</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-odd"><td><p>31:28</p></td>
+<td><p><em>-</em></p></td>
+<td><p><em>-</em></p></td>
+<td><div class="line-block">
+<div class="line"><em>-</em></div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td><p>27:16</p></td>
+<td><p>R/W</p></td>
+<td><p>0x0</p></td>
+<td><div class="line-block">
+<div class="line">STRAT_POS_Y</div>
+<div class="line">解码开始Y坐标</div>
+</div>
+</td>
+</tr>
+<tr class="row-odd"><td><p>15:12</p></td>
+<td><p><em>-</em></p></td>
+<td><p><em>-</em></p></td>
+<td><div class="line-block">
+<div class="line"><em>-</em></div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td><p>11:0</p></td>
+<td><p>R/W</p></td>
+<td><p>0x0</p></td>
+<td><div class="line-block">
+<div class="line">STRAT_POS_X</div>
+<div class="line">解码开始X坐标</div>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="x214-jpeg-size">
+<h2><span class="section-number">10.3.7.5. </span>0x214 JPEG_SIZE<a class="headerlink" href="#x214-jpeg-size" title="永久链接至标题">¶</a></h2>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 8%" />
+<col style="width: 8%" />
+<col style="width: 13%" />
+<col style="width: 70%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head" colspan="3"><p>默认值：0x00000000</p></th>
+<th class="head"><p>JPEG 图像大小 (JPEG Size)</p></th>
+</tr>
+<tr class="row-even"><th class="head"><p>位域</p></th>
+<th class="head"><p>类型</p></th>
+<th class="head"><p>默认值</p></th>
+<th class="head"><p>描述</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-odd"><td><p>31:16</p></td>
+<td><p>R/W</p></td>
+<td><p>0x0</p></td>
+<td><div class="line-block">
+<div class="line">JPEG_HSIZE</div>
+<div class="line">图像宽度，需要按MCU对齐</div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td><p>15:0</p></td>
+<td><p>R/W</p></td>
+<td><p>0x0</p></td>
+<td><div class="line-block">
+<div class="line">JPEG_VSIZE</div>
+<div class="line">图像高度，需要按MCU对齐</div>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="x218-jpeg-ctrl">
+<h2><span class="section-number">10.3.7.6. </span>0x218 JPEG_CTRL<a class="headerlink" href="#x218-jpeg-ctrl" title="永久链接至标题">¶</a></h2>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 8%" />
+<col style="width: 8%" />
+<col style="width: 13%" />
+<col style="width: 70%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head" colspan="3"><p>默认值：0x00000000</p></th>
+<th class="head"><p>JPEG 模式控制 (JPEG Control)</p></th>
+</tr>
+<tr class="row-even"><th class="head"><p>位域</p></th>
+<th class="head"><p>类型</p></th>
+<th class="head"><p>默认值</p></th>
+<th class="head"><p>描述</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-odd"><td><p>31:15</p></td>
+<td><p><em>-</em></p></td>
+<td><p><em>-</em></p></td>
+<td><div class="line-block">
+<div class="line"><em>-</em></div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td><p>14:12</p></td>
+<td><p>R/W</p></td>
+<td><p>0x0</p></td>
+<td><div class="line-block">
+<div class="line">AC_HUFFMAN_IDX</div>
+<div class="line">ac系数huffman表索引值</div>
+</div>
+</td>
+</tr>
+<tr class="row-odd"><td><p>11</p></td>
+<td><p><em>-</em></p></td>
+<td><p><em>-</em></p></td>
+<td><div class="line-block">
+<div class="line"><em>-</em></div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td><p>10:8</p></td>
+<td><p>R/W</p></td>
+<td><p>0x0</p></td>
+<td><div class="line-block">
+<div class="line">DC_HUFFMAN_IDX</div>
+<div class="line">dc系数huffman表索引值</div>
+</div>
+</td>
+</tr>
+<tr class="row-odd"><td><p>7:6</p></td>
+<td><p><em>-</em></p></td>
+<td><p><em>-</em></p></td>
+<td><div class="line-block">
+<div class="line"><em>-</em></div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td><p>5</p></td>
+<td><p>R/W</p></td>
+<td><p>0x0</p></td>
+<td><div class="line-block">
+<div class="line">USR_HUFF_EN</div>
+<div class="line">1：使用DHT中定义的huffman表</div>
+<div class="line">0：使用默认huffman表（VE内部生成，不需要写huffman表数据）</div>
+</div>
+</td>
+</tr>
+<tr class="row-odd"><td><p>4</p></td>
+<td><p>R/W</p></td>
+<td><p>0x0</p></td>
+<td><div class="line-block">
+<div class="line">DIR</div>
+<div class="line">1：编码模式使用</div>
+<div class="line">0：解码模式使用</div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td><p>3</p></td>
+<td><p>R/W</p></td>
+<td><p>0x0</p></td>
+<td><div class="line-block">
+<div class="line">ENCODE</div>
+<div class="line">1：编码模式</div>
+<div class="line">0：解码模式</div>
+</div>
+</td>
+</tr>
+<tr class="row-odd"><td><p>2:0</p></td>
+<td><p><em>-</em></p></td>
+<td><p><em>-</em></p></td>
+<td><div class="line-block">
+<div class="line"><em>-</em></div>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="x21c-jpeg-mcu-info">
+<h2><span class="section-number">10.3.7.7. </span>0x21C JPEG_MCU_INFO<a class="headerlink" href="#x21c-jpeg-mcu-info" title="永久链接至标题">¶</a></h2>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 8%" />
+<col style="width: 8%" />
+<col style="width: 13%" />
+<col style="width: 70%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head" colspan="3"><p>默认值：0x00000000</p></th>
+<th class="head"><p>JPEG MCU信息 (JPEG MCU Info)</p></th>
+</tr>
+<tr class="row-even"><th class="head"><p>位域</p></th>
+<th class="head"><p>类型</p></th>
+<th class="head"><p>默认值</p></th>
+<th class="head"><p>描述</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-odd"><td><p>31:20</p></td>
+<td><p><em>-</em></p></td>
+<td><p><em>-</em></p></td>
+<td><div class="line-block">
+<div class="line"><em>-</em></div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td><p>19:16</p></td>
+<td><p>R/W</p></td>
+<td><p>0x0</p></td>
+<td><div class="line-block">
+<div class="line">BLK_NUM</div>
+<div class="line">一个MCU中8x8blk的数量</div>
+</div>
+</td>
+</tr>
+<tr class="row-odd"><td><p>15</p></td>
+<td><p><em>-</em></p></td>
+<td><p><em>-</em></p></td>
+<td><div class="line-block">
+<div class="line"><em>-</em></div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td><p>14:12</p></td>
+<td><p>R/W</p></td>
+<td><p>0x0</p></td>
+<td><div class="line-block">
+<div class="line">COMP_NUM</div>
+<div class="line">通道数量</div>
+</div>
+</td>
+</tr>
+<tr class="row-odd"><td><p>11:10</p></td>
+<td><p>R/W</p></td>
+<td><p>0x0</p></td>
+<td><div class="line-block">
+<div class="line">Y_H_COUNT</div>
+<div class="line">一个MCU中Y分量水平方向上8x8块个数，对应SOF中解析的</div>
+<div class="line">h_count信息</div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td><p>9:8</p></td>
+<td><p>R/W</p></td>
+<td><p>0x0</p></td>
+<td><div class="line-block">
+<div class="line">Y_V_COUNT</div>
+<div class="line">一个MCU中Y分量垂直方向上8x8块个数，对应SOF中解析的</div>
+<div class="line">v_count信息</div>
+</div>
+</td>
+</tr>
+<tr class="row-odd"><td><p>7:6</p></td>
+<td><p>R/W</p></td>
+<td><p>0x0</p></td>
+<td><div class="line-block">
+<div class="line">CB_H_COUNT</div>
+<div class="line">一个MCU中Cb分量水平方向上8x8块个数，对应SOF中解析的</div>
+<div class="line">h_count信息</div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td><p>5:4</p></td>
+<td><p>R/W</p></td>
+<td><p>0x0</p></td>
+<td><div class="line-block">
+<div class="line">CB_V_COUNT</div>
+<div class="line">一个MCU中Cb分量垂直方向上8x8块个数，对应SOF中解析的</div>
+<div class="line">v_count信息</div>
+</div>
+</td>
+</tr>
+<tr class="row-odd"><td><p>3:2</p></td>
+<td><p>R/W</p></td>
+<td><p>0x0</p></td>
+<td><div class="line-block">
+<div class="line">CR_H_COUNT</div>
+<div class="line">一个MCU中Cr分量水平方向上8x8块个数，对应SOF中解析的</div>
+<div class="line">h_count信息</div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td><p>1:0</p></td>
+<td><p>R/W</p></td>
+<td><p>0x0</p></td>
+<td><div class="line-block">
+<div class="line">CR_V_COUNT</div>
+<div class="line">一个MCU中Cr分量垂直方向上8x8块个数，对应SOF中解析的</div>
+<div class="line">v_count信息</div>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="x220-jpeg-handle-num">
+<h2><span class="section-number">10.3.7.8. </span>0x220 JPEG_HANDLE_NUM<a class="headerlink" href="#x220-jpeg-handle-num" title="永久链接至标题">¶</a></h2>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 8%" />
+<col style="width: 8%" />
+<col style="width: 13%" />
+<col style="width: 71%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head" colspan="3"><p>默认值：0x00000000</p></th>
+<th class="head"><p>JPEG 解码同时处理MCU个数 (JPEG Handle Number)</p></th>
+</tr>
+<tr class="row-even"><th class="head"><p>位域</p></th>
+<th class="head"><p>类型</p></th>
+<th class="head"><p>默认值</p></th>
+<th class="head"><p>描述</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-odd"><td><p>31:2</p></td>
+<td><p><em>-</em></p></td>
+<td><p><em>-</em></p></td>
+<td><div class="line-block">
+<div class="line"><em>-</em></div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td><p>1:0</p></td>
+<td><p>R/W</p></td>
+<td><p>0x0</p></td>
+<td><div class="line-block">
+<div class="line">HANDLE_NUM_MINUS1</div>
+<div class="line">同时处理的MCU个数减1, (12/ total_du_num_in_mcu)-1,最大值为4</div>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="x224-jpeg-qmat-info">
+<h2><span class="section-number">10.3.7.9. </span>0x224 JPEG_QMAT_INFO<a class="headerlink" href="#x224-jpeg-qmat-info" title="永久链接至标题">¶</a></h2>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 8%" />
+<col style="width: 8%" />
+<col style="width: 13%" />
+<col style="width: 70%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head" colspan="3"><p>默认值：0x00000000</p></th>
+<th class="head"><p>JPEG 量化表信息 (JPEG Quant Table Info)</p></th>
+</tr>
+<tr class="row-even"><th class="head"><p>位域</p></th>
+<th class="head"><p>类型</p></th>
+<th class="head"><p>默认值</p></th>
+<th class="head"><p>描述</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-odd"><td><p>31:8</p></td>
+<td><p><em>-</em></p></td>
+<td><p><em>-</em></p></td>
+<td><div class="line-block">
+<div class="line"><em>-</em></div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td><p>7:6</p></td>
+<td><p>R/W</p></td>
+<td><p>0x0</p></td>
+<td><div class="line-block">
+<div class="line">QMAT_IDX</div>
+<div class="line">0:Y分量量化表</div>
+<div class="line">1:Cb分量量化表</div>
+<div class="line">2:Cr分量量化表</div>
+</div>
+</td>
+</tr>
+<tr class="row-odd"><td><p>5:2</p></td>
+<td><p><em>-</em></p></td>
+<td><p><em>-</em></p></td>
+<td><div class="line-block">
+<div class="line"><em>-</em></div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td><p>1</p></td>
+<td><p>R/W</p></td>
+<td><p>0x0</p></td>
+<td><div class="line-block">
+<div class="line">QMAT_AUTO</div>
+<div class="line">1:使能地址自动加1模式</div>
+</div>
+</td>
+</tr>
+<tr class="row-odd"><td><p>0</p></td>
+<td><p>R/W</p></td>
+<td><p>0x0</p></td>
+<td><div class="line-block">
+<div class="line">QMAT_EN</div>
+<div class="line">1:使能该huffman表</div>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="x228-jpeg-qmat-addr">
+<h2><span class="section-number">10.3.7.10. </span>0x228 JPEG_QMAT_ADDR<a class="headerlink" href="#x228-jpeg-qmat-addr" title="永久链接至标题">¶</a></h2>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 8%" />
+<col style="width: 8%" />
+<col style="width: 13%" />
+<col style="width: 70%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head" colspan="3"><p>默认值：0x00000000</p></th>
+<th class="head"><p>JPEG 量化表地址 (JPEG Quant Table Address)</p></th>
+</tr>
+<tr class="row-even"><th class="head"><p>位域</p></th>
+<th class="head"><p>类型</p></th>
+<th class="head"><p>默认值</p></th>
+<th class="head"><p>描述</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-odd"><td><p>31:8</p></td>
+<td><p><em>-</em></p></td>
+<td><p><em>-</em></p></td>
+<td><div class="line-block">
+<div class="line"><em>-</em></div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td><p>7:6</p></td>
+<td><p>R/W</p></td>
+<td><p>0x0</p></td>
+<td><div class="line-block">
+<div class="line">QMAT_IDX</div>
+<div class="line">0:Y分量量化表</div>
+<div class="line">1:Cb分量量化表</div>
+<div class="line">2:Cr分量量化表</div>
+</div>
+</td>
+</tr>
+<tr class="row-odd"><td><p>5:0</p></td>
+<td><p>R/W</p></td>
+<td><p>0x0</p></td>
+<td><div class="line-block">
+<div class="line">QMAT_ADDR</div>
+<div class="line">量化表地址，取值范围0-63</div>
+<div class="line">量化表地址按照zigzag扫描后的顺序，也就是DQT解析的顺序.</div>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="x22c-jpeg-qmat-data">
+<h2><span class="section-number">10.3.7.11. </span>0x22C JPEG_QMAT_DATA<a class="headerlink" href="#x22c-jpeg-qmat-data" title="永久链接至标题">¶</a></h2>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 8%" />
+<col style="width: 8%" />
+<col style="width: 13%" />
+<col style="width: 70%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head" colspan="3"><p>默认值：0x00000000</p></th>
+<th class="head"><p>JPEG 量化表数据 (JPEG Quant Table Data)</p></th>
+</tr>
+<tr class="row-even"><th class="head"><p>位域</p></th>
+<th class="head"><p>类型</p></th>
+<th class="head"><p>默认值</p></th>
+<th class="head"><p>描述</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-odd"><td><p>31:0</p></td>
+<td><p>R/W</p></td>
+<td><p>0x0</p></td>
+<td><div class="line-block">
+<div class="line">QMAT_DATA</div>
+<div class="line">量化参数</div>
+<div class="line">注意：如果是编码，该值为 (1&lt;&lt;19)/q_data</div>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="x230-jpeg-huff-info">
+<h2><span class="section-number">10.3.7.12. </span>0x230 JPEG_HUFF_INFO<a class="headerlink" href="#x230-jpeg-huff-info" title="永久链接至标题">¶</a></h2>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 8%" />
+<col style="width: 8%" />
+<col style="width: 13%" />
+<col style="width: 70%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head" colspan="3"><p>默认值：0x00000000</p></th>
+<th class="head"><p>JPEG Huffman表信息配置 (JPEG Huffman Table Info)</p></th>
+</tr>
+<tr class="row-even"><th class="head"><p>位域</p></th>
+<th class="head"><p>类型</p></th>
+<th class="head"><p>默认值</p></th>
+<th class="head"><p>描述</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-odd"><td><p>31:12</p></td>
+<td><p><em>-</em></p></td>
+<td><p><em>-</em></p></td>
+<td><div class="line-block">
+<div class="line"><em>-</em></div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td><p>11:10</p></td>
+<td><p>R/W</p></td>
+<td><p>0x0</p></td>
+<td><div class="line-block">
+<div class="line">HUFF_IDX</div>
+<div class="line">Huffman表索引值</div>
+<div class="line">0:huffman表每个分量每种码字长度的最小码字</div>
+<div class="line">1:huffman表每个分量每种码字长度的最大码字</div>
+<div class="line">2:huffman表每个分量每种码字长度对应数值在buffer的起始地址</div>
+<div class="line">3:huffman值</div>
+</div>
+</td>
+</tr>
+<tr class="row-odd"><td><p>9:2</p></td>
+<td><p><em>-</em></p></td>
+<td><p><em>-</em></p></td>
+<td><div class="line-block">
+<div class="line"><em>-</em></div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td><p>1</p></td>
+<td><p>R/W</p></td>
+<td><p>0x0</p></td>
+<td><div class="line-block">
+<div class="line">HUFF_AUTO</div>
+<div class="line">1:使能地址自动加1模式</div>
+<div class="line">0:不是能地址自动加1模式，每次通过0x2088寄存器写huffman表</div>
+<div class="line">数据前都需要通过0x2084寄存器配置地址</div>
+</div>
+</td>
+</tr>
+<tr class="row-odd"><td><p>0</p></td>
+<td><p>R/W</p></td>
+<td><p>0x0</p></td>
+<td><div class="line-block">
+<div class="line">HUFF_EN</div>
+<div class="line">1:使能该huffman表</div>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="x234-jpeg-huff-addr">
+<h2><span class="section-number">10.3.7.13. </span>0x234 JPEG_HUFF_ADDR<a class="headerlink" href="#x234-jpeg-huff-addr" title="永久链接至标题">¶</a></h2>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 8%" />
+<col style="width: 8%" />
+<col style="width: 13%" />
+<col style="width: 70%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head" colspan="3"><p>默认值：0x00000000</p></th>
+<th class="head"><p>JPEG Huffman表地址 (JPEG Huffman Table Address)</p></th>
+</tr>
+<tr class="row-even"><th class="head"><p>位域</p></th>
+<th class="head"><p>类型</p></th>
+<th class="head"><p>默认值</p></th>
+<th class="head"><p>描述</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-odd"><td><p>31:8</p></td>
+<td><p><em>-</em></p></td>
+<td><p><em>-</em></p></td>
+<td><div class="line-block">
+<div class="line"><em>-</em></div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td><p>11:10</p></td>
+<td><p>R/W</p></td>
+<td><p>0x0</p></td>
+<td><div class="line-block">
+<div class="line">HUFF_IDX</div>
+<div class="line">Huffman表索引值</div>
+<div class="line">0:huffman表每个分量每种码字长度的最小码字</div>
+<div class="line">1:huffman表每个分量每种码字长度的最大码字</div>
+<div class="line">2:huffman表每个分量每种码字长度对应数值在buffer的起始地址</div>
+<div class="line">3:huffman值</div>
+</div>
+</td>
+</tr>
+<tr class="row-odd"><td><p>9:0</p></td>
+<td><p>R/W</p></td>
+<td><p>0x0</p></td>
+<td><div class="line-block">
+<div class="line">HUFF_ADDR</div>
+<div class="line">如果huff_idx为0/1/2，起始地址分别为</div>
+<div class="line">DC_LUMA: 0</div>
+<div class="line">DC_CHROMA:16;</div>
+<div class="line">AC_LUMA:32;</div>
+<div class="line">AC_CHROMA:48</div>
+<div class="line">huff_idx为3时</div>
+<div class="line">DC_LUMA:0;</div>
+<div class="line">DC_CHROMA:12</div>
+<div class="line">AC_LUMA: 24</div>
+<div class="line">AC_CHROMA:186;</div>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="x238-jpeg-huff-data">
+<h2><span class="section-number">10.3.7.14. </span>0x238 JPEG_HUFF_DATA<a class="headerlink" href="#x238-jpeg-huff-data" title="永久链接至标题">¶</a></h2>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 8%" />
+<col style="width: 8%" />
+<col style="width: 13%" />
+<col style="width: 70%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head" colspan="3"><p>默认值：0x00000000</p></th>
+<th class="head"><p>JPEG Huffman表数据 (JPEG Huffman Table Data)</p></th>
+</tr>
+<tr class="row-even"><th class="head"><p>位域</p></th>
+<th class="head"><p>类型</p></th>
+<th class="head"><p>默认值</p></th>
+<th class="head"><p>描述</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-odd"><td><p>31:0</p></td>
+<td><p>R/W</p></td>
+<td><p>0x0</p></td>
+<td><div class="line-block">
+<div class="line">HUFF_DATA</div>
+<div class="line">huffman表数据</div>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="x23c-jpeg-clip-en">
+<h2><span class="section-number">10.3.7.15. </span>0x23C JPEG_CLIP_EN<a class="headerlink" href="#x23c-jpeg-clip-en" title="永久链接至标题">¶</a></h2>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 8%" />
+<col style="width: 8%" />
+<col style="width: 13%" />
+<col style="width: 70%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head" colspan="3"><p>默认值：0x00000000</p></th>
+<th class="head"><p>JPEG Clip输出使能配置 (JPEG Clip Enable)</p></th>
+</tr>
+<tr class="row-even"><th class="head"><p>位域</p></th>
+<th class="head"><p>类型</p></th>
+<th class="head"><p>默认值</p></th>
+<th class="head"><p>描述</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-odd"><td><p>31:2</p></td>
+<td><p><em>-</em></p></td>
+<td><p><em>-</em></p></td>
+<td><div class="line-block">
+<div class="line"><em>-</em></div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td><p>1</p></td>
+<td><p>R/W</p></td>
+<td><p>0x0</p></td>
+<td><div class="line-block">
+<div class="line">DEC_CLIP_EN</div>
+<div class="line">解码输出数据clip使能</div>
+</div>
+</td>
+</tr>
+<tr class="row-odd"><td><p>0</p></td>
+<td><p>R/W</p></td>
+<td><p>0x0</p></td>
+<td><div class="line-block">
+<div class="line">ENC_CLIP_EN</div>
+<div class="line">编码输入数据clip使能</div>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="x240-jpeg-clip-base">
+<h2><span class="section-number">10.3.7.16. </span>0x240 JPEG_CLIP_BASE<a class="headerlink" href="#x240-jpeg-clip-base" title="永久链接至标题">¶</a></h2>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 8%" />
+<col style="width: 8%" />
+<col style="width: 13%" />
+<col style="width: 70%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head" colspan="3"><p>默认值：0x00000000</p></th>
+<th class="head"><p>JPEG Clip 输出起始位置 (JPEG Clip Base Address)</p></th>
+</tr>
+<tr class="row-even"><th class="head"><p>位域</p></th>
+<th class="head"><p>类型</p></th>
+<th class="head"><p>默认值</p></th>
+<th class="head"><p>描述</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-odd"><td><p>31:16</p></td>
+<td><p>R/W</p></td>
+<td><p>0x0</p></td>
+<td><div class="line-block">
+<div class="line">CLIP_XBASE</div>
+<div class="line">clip 窗口的起始 X 坐标，以像素为单位</div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td><p>15:0</p></td>
+<td><p>R/W</p></td>
+<td><p>0x0</p></td>
+<td><div class="line-block">
+<div class="line">CLIP_YBASE</div>
+<div class="line">clip 窗口的起始 Y 坐标，以像素为单位</div>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="x244-jpeg-clip-size">
+<h2><span class="section-number">10.3.7.17. </span>0x244 JPEG_CLIP_SIZE<a class="headerlink" href="#x244-jpeg-clip-size" title="永久链接至标题">¶</a></h2>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 8%" />
+<col style="width: 8%" />
+<col style="width: 13%" />
+<col style="width: 70%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head" colspan="3"><p>默认值：0x00000000</p></th>
+<th class="head"><p>JPEG Clip 输出矩形框大小 (JPEG Clip SIZE)</p></th>
+</tr>
+<tr class="row-even"><th class="head"><p>位域</p></th>
+<th class="head"><p>类型</p></th>
+<th class="head"><p>默认值</p></th>
+<th class="head"><p>描述</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-odd"><td><p>31:16</p></td>
+<td><p>R/W</p></td>
+<td><p>0x0</p></td>
+<td><div class="line-block">
+<div class="line">CLIP_XSIZE</div>
+<div class="line">clip 矩形框的宽度，以像素为单位</div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td><p>15:0</p></td>
+<td><p>R/W</p></td>
+<td><p>0x0</p></td>
+<td><div class="line-block">
+<div class="line">CLIP_YSIZE</div>
+<div class="line">clip 矩形框的高度，以像素为单位</div>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="x248-jpeg-clip-out-base">
+<h2><span class="section-number">10.3.7.18. </span>0x248 JPEG_CLIP_OUT_BASE<a class="headerlink" href="#x248-jpeg-clip-out-base" title="永久链接至标题">¶</a></h2>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 8%" />
+<col style="width: 8%" />
+<col style="width: 12%" />
+<col style="width: 72%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head" colspan="3"><p>默认值：0x00000000</p></th>
+<th class="head"><p>JPEG Clip 输出在缓存中的起始位置 (JPEG Clip OUTPUT BASE ADDRESS)</p></th>
+</tr>
+<tr class="row-even"><th class="head"><p>位域</p></th>
+<th class="head"><p>类型</p></th>
+<th class="head"><p>默认值</p></th>
+<th class="head"><p>描述</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-odd"><td><p>31:16</p></td>
+<td><p>R/W</p></td>
+<td><p>0x0</p></td>
+<td><div class="line-block">
+<div class="line">CLIP_OUT_XBASE</div>
+<div class="line">clip 起始位置在输出缓存中的 X 坐标，以字节为单位</div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td><p>15:0</p></td>
+<td><p>R/W</p></td>
+<td><p>0x0</p></td>
+<td><div class="line-block">
+<div class="line">CLIP_OUT_YBASE</div>
+<div class="line">clip 起始位置在输出缓存中的 Y 坐标，以字节为单位</div>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="x24c-jpeg-rotmir">
+<h2><span class="section-number">10.3.7.19. </span>0x24C JPEG_ROTMIR<a class="headerlink" href="#x24c-jpeg-rotmir" title="永久链接至标题">¶</a></h2>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 8%" />
+<col style="width: 8%" />
+<col style="width: 13%" />
+<col style="width: 70%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head" colspan="3"><p>默认值：0x00000000</p></th>
+<th class="head"><p>JPEG 旋转镜像配置 (JPEG Rotate/Mirror Config)</p></th>
+</tr>
+<tr class="row-even"><th class="head"><p>位域</p></th>
+<th class="head"><p>类型</p></th>
+<th class="head"><p>默认值</p></th>
+<th class="head"><p>描述</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-odd"><td><p>31:5</p></td>
+<td><p><em>-</em></p></td>
+<td><p><em>-</em></p></td>
+<td><div class="line-block">
+<div class="line"><em>-</em></div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td><p>4</p></td>
+<td><p>R/W</p></td>
+<td><p>0x0</p></td>
+<td><div class="line-block">
+<div class="line">ROTMIR_EN</div>
+<div class="line">0：不使能旋转镜像</div>
+<div class="line">1：使能旋转镜像</div>
+</div>
+</td>
+</tr>
+<tr class="row-odd"><td><p>3</p></td>
+<td><p>R/W</p></td>
+<td><p>0x0</p></td>
+<td><div class="line-block">
+<div class="line">Horizontal MIRROR</div>
+<div class="line">0-不使能水平镜像</div>
+<div class="line">1-使能水平镜像</div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td><p>2</p></td>
+<td><p>R/W</p></td>
+<td><p>0x0</p></td>
+<td><div class="line-block">
+<div class="line">Vertical MIRROR</div>
+<div class="line">0-不使能垂直镜像</div>
+<div class="line">1-使能垂直镜像</div>
+</div>
+</td>
+</tr>
+<tr class="row-odd"><td><p>1:0</p></td>
+<td><p>R/W</p></td>
+<td><p>0x0</p></td>
+<td><div class="line-block">
+<div class="line">ROTATE</div>
+<div class="line">0-不旋转</div>
+<div class="line">1-逆时针旋转90度</div>
+<div class="line">2-逆时针旋转180度</div>
+<div class="line">3-逆时针旋转270度</div>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="x250-jpeg-scale">
+<h2><span class="section-number">10.3.7.20. </span>0x250 JPEG_SCALE<a class="headerlink" href="#x250-jpeg-scale" title="永久链接至标题">¶</a></h2>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 8%" />
+<col style="width: 8%" />
+<col style="width: 13%" />
+<col style="width: 70%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head" colspan="3"><p>默认值：0x00000000</p></th>
+<th class="head"><p>JPEG 缩放配置 (JPEG Scaledown Config)</p></th>
+</tr>
+<tr class="row-even"><th class="head"><p>位域</p></th>
+<th class="head"><p>类型</p></th>
+<th class="head"><p>默认值</p></th>
+<th class="head"><p>描述</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-odd"><td><p>31:6</p></td>
+<td><p><em>-</em></p></td>
+<td><p><em>-</em></p></td>
+<td><div class="line-block">
+<div class="line"><em>-</em></div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td><p>5</p></td>
+<td><p>R/W</p></td>
+<td><p>0x0</p></td>
+<td><div class="line-block">
+<div class="line">SCALE_EN</div>
+<div class="line">0：不使能缩放功能</div>
+<div class="line">1：使能缩放功能</div>
+</div>
+</td>
+</tr>
+<tr class="row-odd"><td><p>3:2</p></td>
+<td><p>R/W</p></td>
+<td><p>0x0</p></td>
+<td><div class="line-block">
+<div class="line">H_SCALE</div>
+<div class="line">水平方向scale系数</div>
+<div class="line">0：不缩放</div>
+<div class="line">1：1/2缩放</div>
+<div class="line">2：1/4缩放</div>
+<div class="line">3：1/8缩放</div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td><p>1:0</p></td>
+<td><p>R/W</p></td>
+<td><p>0x0</p></td>
+<td><div class="line-block">
+<div class="line">V_SCALE</div>
+<div class="line">垂直方向scale系数</div>
+<div class="line">0：不缩放</div>
+<div class="line">1：1/2缩放</div>
+<div class="line">2：1/4缩放</div>
+<div class="line">3：1/8缩放</div>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="x254-jpeg-rgb-en">
+<h2><span class="section-number">10.3.7.21. </span>0x254 JPEG_RGB_EN<a class="headerlink" href="#x254-jpeg-rgb-en" title="永久链接至标题">¶</a></h2>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 8%" />
+<col style="width: 8%" />
+<col style="width: 13%" />
+<col style="width: 70%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head" colspan="3"><p>默认值：0x00000000</p></th>
+<th class="head"><p>JPEG RGB颜色格式输出 (JPEG RGB FORMAT)</p></th>
+</tr>
+<tr class="row-even"><th class="head"><p>位域</p></th>
+<th class="head"><p>类型</p></th>
+<th class="head"><p>默认值</p></th>
+<th class="head"><p>描述</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-odd"><td><p>31:16</p></td>
+<td><p><em>-</em></p></td>
+<td><p><em>-</em></p></td>
+<td><div class="line-block">
+<div class="line"><em>-</em></div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td><p>15:8</p></td>
+<td><p>R/W</p></td>
+<td><p>0x0</p></td>
+<td><div class="line-block">
+<div class="line">ALPHA_VAL</div>
+<div class="line">RGBA 颜色格式的 alpha 值</div>
+</div>
+</td>
+</tr>
+<tr class="row-odd"><td><p>7:4</p></td>
+<td><p><em>-</em></p></td>
+<td><p><em>-</em></p></td>
+<td><div class="line-block">
+<div class="line"><em>-</em></div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td><p>3:1</p></td>
+<td><p>R/W</p></td>
+<td><p>0x0</p></td>
+<td><div class="line-block">
+<div class="line">RGB_FORMAT</div>
+<div class="line">0：ARGB8888</div>
+<div class="line">1：ABGR8888</div>
+<div class="line">2：RGBA8888</div>
+<div class="line">3：BGRA8888</div>
+<div class="line">4：RGB888</div>
+<div class="line">5：BGR888</div>
+<div class="line">6：RGB565</div>
+<div class="line">7：BGR565</div>
+</div>
+</td>
+</tr>
+<tr class="row-odd"><td><p>0</p></td>
+<td><p>R/W</p></td>
+<td><p>0x0</p></td>
+<td><div class="line-block">
+<div class="line">RGB_OUT_ENABLE</div>
+<div class="line">1：RGB颜色格式输出使能</div>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="x25c-jpeg-rst-intval">
+<h2><span class="section-number">10.3.7.22. </span>0x25C JPEG_RST_INTVAL<a class="headerlink" href="#x25c-jpeg-rst-intval" title="永久链接至标题">¶</a></h2>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 8%" />
+<col style="width: 8%" />
+<col style="width: 13%" />
+<col style="width: 70%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head" colspan="3"><p>默认值：0x00000000</p></th>
+<th class="head"><p>JPEG DC系数重置间隔 (JPEG Restart Intval)</p></th>
+</tr>
+<tr class="row-even"><th class="head"><p>位域</p></th>
+<th class="head"><p>类型</p></th>
+<th class="head"><p>默认值</p></th>
+<th class="head"><p>描述</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-odd"><td><p>31:0</p></td>
+<td><p>R/W</p></td>
+<td><p>0x0</p></td>
+<td><div class="line-block">
+<div class="line">RST_INTVAL</div>
+<div class="line">间隔RST_INTVAL个MCU重置DC预测值</div>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="x264-jpeg-frm-idx">
+<h2><span class="section-number">10.3.7.23. </span>0x264 JPEG_FRM_IDX<a class="headerlink" href="#x264-jpeg-frm-idx" title="永久链接至标题">¶</a></h2>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 8%" />
+<col style="width: 8%" />
+<col style="width: 13%" />
+<col style="width: 70%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head" colspan="3"><p>默认值：0x00000000</p></th>
+<th class="head"><p>JPEG 解码输出帧索引 (JPEG Frame Index)</p></th>
+</tr>
+<tr class="row-even"><th class="head"><p>位域</p></th>
+<th class="head"><p>类型</p></th>
+<th class="head"><p>默认值</p></th>
+<th class="head"><p>描述</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-odd"><td><p>31：8</p></td>
+<td><p><em>-</em></p></td>
+<td><p><em>-</em></p></td>
+<td><div class="line-block">
+<div class="line"><em>-</em></div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td><p>7:0</p></td>
+<td><p>R/W</p></td>
+<td><p>0x0</p></td>
+<td><div class="line-block">
+<div class="line">FRAME_IDX</div>
+<div class="line">JPEG解码输出对应的PICTURE INFO索引值</div>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="x268-jpeg-uv-int">
+<h2><span class="section-number">10.3.7.24. </span>0x268 JPEG_UV_INT<a class="headerlink" href="#x268-jpeg-uv-int" title="永久链接至标题">¶</a></h2>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 8%" />
+<col style="width: 8%" />
+<col style="width: 13%" />
+<col style="width: 70%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head" colspan="3"><p>默认值：0x00000000</p></th>
+<th class="head"><p>JPEG 解码输出UV分量交错配置 (JPEG UV Interleave)</p></th>
+</tr>
+<tr class="row-even"><th class="head"><p>位域</p></th>
+<th class="head"><p>类型</p></th>
+<th class="head"><p>默认值</p></th>
+<th class="head"><p>描述</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-odd"><td><p>31:1</p></td>
+<td><p><em>-</em></p></td>
+<td><p><em>-</em></p></td>
+<td><div class="line-block">
+<div class="line"><em>-</em></div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td><p>0</p></td>
+<td><p>R/W</p></td>
+<td><p>0x0</p></td>
+<td><div class="line-block">
+<div class="line">UV_INTERLEAVE</div>
+<div class="line">0: UV 分量不交错存放</div>
+<div class="line">1: UV 分量交错存放</div>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+<div class="admonition note">
+<p class="admonition-title">注解</p>
+<p>该版本 DE 只支持 UV 交错存放，如果解码和显示共用 buffer，这个寄存器必须配置为1</p>
+</div>
+</div>
+<div class="section" id="x26c-jpeg-cycles">
+<h2><span class="section-number">10.3.7.25. </span>0x26C JPEG_CYCLES<a class="headerlink" href="#x26c-jpeg-cycles" title="永久链接至标题">¶</a></h2>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 8%" />
+<col style="width: 8%" />
+<col style="width: 13%" />
+<col style="width: 70%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head" colspan="3"><p>默认值：0x00000000</p></th>
+<th class="head"><p>JPEG 解码时钟数 (JPEG Cycles)</p></th>
+</tr>
+<tr class="row-even"><th class="head"><p>位域</p></th>
+<th class="head"><p>类型</p></th>
+<th class="head"><p>默认值</p></th>
+<th class="head"><p>描述</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-odd"><td><p>31:0</p></td>
+<td><p>R/W</p></td>
+<td><p>0x0</p></td>
+<td><div class="line-block">
+<div class="line">CYCLES</div>
+<div class="line">Jpeg解码用的时钟数</div>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="x28c-jpeg-dither-param">
+<h2><span class="section-number">10.3.7.26. </span>0x28C JPEG_DITHER_PARAM<a class="headerlink" href="#x28c-jpeg-dither-param" title="永久链接至标题">¶</a></h2>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 8%" />
+<col style="width: 8%" />
+<col style="width: 13%" />
+<col style="width: 70%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head" colspan="3"><p>默认值：0x000000AE</p></th>
+<th class="head"><p>JPEG dither 参数配置 (JPEG Dither Parameter Configuration)</p></th>
+</tr>
+<tr class="row-even"><th class="head"><p>位域</p></th>
+<th class="head"><p>类型</p></th>
+<th class="head"><p>默认值</p></th>
+<th class="head"><p>描述</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-odd"><td><p>31:9</p></td>
+<td><p><em>-</em></p></td>
+<td><p><em>-</em></p></td>
+<td><div class="line-block">
+<div class="line"><em>-</em></div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td><p>8:6</p></td>
+<td><p>R/W</p></td>
+<td><p>0x2</p></td>
+<td><div class="line-block">
+<div class="line">LEFTUP_WEIGHT_MINUS1</div>
+<div class="line">左上相邻像素对当前像素的误差扩散权重减1</div>
+</div>
+</td>
+</tr>
+<tr class="row-odd"><td><p>5:3</p></td>
+<td><p>R/W</p></td>
+<td><p>0x5</p></td>
+<td><div class="line-block">
+<div class="line">UP_WEIGHT_MINUS1</div>
+<div class="line">上相邻像素对当前像素的误差扩散权重减1</div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td><p>2:0</p></td>
+<td><p>R/W</p></td>
+<td><p>0x6</p></td>
+<td><div class="line-block">
+<div class="line">LEFT_WEIGHT_MINUS1</div>
+<div class="line">左相邻像素对当前像素的误差扩散权重减1</div>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="x300-jpeg-sub-ctrl">
+<h2><span class="section-number">10.3.7.27. </span>0x300 JPEG_SUB_CTRL<a class="headerlink" href="#x300-jpeg-sub-ctrl" title="永久链接至标题">¶</a></h2>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 8%" />
+<col style="width: 8%" />
+<col style="width: 13%" />
+<col style="width: 70%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head" colspan="3"><p>默认值：0x00000000</p></th>
+<th class="head"><p>JPEG 内部子模块控制 (JPEG SubModual Control)</p></th>
+</tr>
+<tr class="row-even"><th class="head"><p>位域</p></th>
+<th class="head"><p>类型</p></th>
+<th class="head"><p>默认值</p></th>
+<th class="head"><p>描述</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-odd"><td><p>31:2</p></td>
+<td><p><em>-</em></p></td>
+<td><p><em>-</em></p></td>
+<td><div class="line-block">
+<div class="line"><em>-</em></div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td><p>1</p></td>
+<td><p>R/W</p></td>
+<td><p>0x0</p></td>
+<td><div class="line-block">
+<div class="line">INIT1</div>
+<div class="line">1:初始化内部子模块1</div>
+</div>
+</td>
+</tr>
+<tr class="row-odd"><td><p>0</p></td>
+<td><p>R/W</p></td>
+<td><p>0x0</p></td>
+<td><div class="line-block">
+<div class="line">INIT2</div>
+<div class="line">1:初始化内部子模块2</div>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+<p>注意：在启动JPEG解码前（配置JPEG Start寄存器之前），需要先初始化内部子模块1、2，
+但两个模块不能同时初始化，必须分两个时刻配置，先配置 INIT1 再配置 INIT2 。</p>
+</div>
+<div class="section" id="x304-jpeg-mem-ia">
+<h2><span class="section-number">10.3.7.28. </span>0x304 JPEG_MEM_IA<a class="headerlink" href="#x304-jpeg-mem-ia" title="永久链接至标题">¶</a></h2>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 8%" />
+<col style="width: 8%" />
+<col style="width: 13%" />
+<col style="width: 70%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head" colspan="3"><p>默认值：0x00000000</p></th>
+<th class="head"><p>JPEG 内部子模块缓存中断地址 (JPEG MEM Intr Address)</p></th>
+</tr>
+<tr class="row-even"><th class="head"><p>位域</p></th>
+<th class="head"><p>类型</p></th>
+<th class="head"><p>默认值</p></th>
+<th class="head"><p>描述</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-odd"><td><p>31:8</p></td>
+<td><p><em>-</em></p></td>
+<td><p><em>-</em></p></td>
+<td><div class="line-block">
+<div class="line"><em>-</em></div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td><p>7:0</p></td>
+<td><p>R/W</p></td>
+<td><p>0x0</p></td>
+<td><div class="line-block">
+<div class="line">INTR_ADDR</div>
+<div class="line">解码配置为0；编码配置为0x40</div>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="x308-jpeg-mem-ha">
+<h2><span class="section-number">10.3.7.29. </span>0x308 JPEG_MEM_HA<a class="headerlink" href="#x308-jpeg-mem-ha" title="永久链接至标题">¶</a></h2>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 8%" />
+<col style="width: 8%" />
+<col style="width: 13%" />
+<col style="width: 70%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head" colspan="3"><p>默认值：0x00000000</p></th>
+<th class="head"><p>JPEG 内部子模块缓存暂停地址 (JPEG MEM Halt Address)</p></th>
+</tr>
+<tr class="row-even"><th class="head"><p>位域</p></th>
+<th class="head"><p>类型</p></th>
+<th class="head"><p>默认值</p></th>
+<th class="head"><p>描述</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-odd"><td><p>31:8</p></td>
+<td><p><em>-</em></p></td>
+<td><p><em>-</em></p></td>
+<td><div class="line-block">
+<div class="line"><em>-</em></div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td><p>7:0</p></td>
+<td><p>R/W</p></td>
+<td><p>0x0</p></td>
+<td><div class="line-block">
+<div class="line">HALT_ADDR</div>
+<div class="line">解码配置为0；编码配置为0x40</div>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="x31c-jpeg-rbit-offset">
+<h2><span class="section-number">10.3.7.30. </span>0x31C JPEG_RBIT_OFFSET<a class="headerlink" href="#x31c-jpeg-rbit-offset" title="永久链接至标题">¶</a></h2>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 8%" />
+<col style="width: 8%" />
+<col style="width: 13%" />
+<col style="width: 70%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head" colspan="3"><p>默认值：0x00000000</p></th>
+<th class="head"><p>JPEG 读数据偏移 (JPEG Read Bit Offset)</p></th>
+</tr>
+<tr class="row-even"><th class="head"><p>位域</p></th>
+<th class="head"><p>类型</p></th>
+<th class="head"><p>默认值</p></th>
+<th class="head"><p>描述</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-odd"><td><p>31:0</p></td>
+<td><p>R/W</p></td>
+<td><p>0x0</p></td>
+<td><div class="line-block">
+<div class="line">解码数据起始比特偏移</div>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="x324-jpeg-mem-sa">
+<h2><span class="section-number">10.3.7.31. </span>0x324 JPEG_MEM_SA<a class="headerlink" href="#x324-jpeg-mem-sa" title="永久链接至标题">¶</a></h2>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 8%" />
+<col style="width: 8%" />
+<col style="width: 13%" />
+<col style="width: 70%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head" colspan="3"><p>默认值：0x00000000</p></th>
+<th class="head"><p>JPEG 内部子模块缓存起始地址 (JPEG MEM Start Address)</p></th>
+</tr>
+<tr class="row-even"><th class="head"><p>位域</p></th>
+<th class="head"><p>类型</p></th>
+<th class="head"><p>默认值</p></th>
+<th class="head"><p>描述</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-odd"><td><p>31:8</p></td>
+<td><p><em>-</em></p></td>
+<td><p><em>-</em></p></td>
+<td><div class="line-block">
+<div class="line"><em>-</em></div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td><p>7:0</p></td>
+<td><p>R/W</p></td>
+<td><p>0x0</p></td>
+<td><div class="line-block">
+<div class="line">Start_ADDR</div>
+<div class="line">配置为0</div>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="x328-jpeg-mem-ea">
+<h2><span class="section-number">10.3.7.32. </span>0x328 JPEG_MEM_EA<a class="headerlink" href="#x328-jpeg-mem-ea" title="永久链接至标题">¶</a></h2>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 8%" />
+<col style="width: 8%" />
+<col style="width: 13%" />
+<col style="width: 70%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head" colspan="3"><p>默认值：0x00000000</p></th>
+<th class="head"><p>JPEG 内部子模块缓存结束地址 (JPEG MEM End Address)</p></th>
+</tr>
+<tr class="row-even"><th class="head"><p>位域</p></th>
+<th class="head"><p>类型</p></th>
+<th class="head"><p>默认值</p></th>
+<th class="head"><p>描述</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-odd"><td><p>31:8</p></td>
+<td><p><em>-</em></p></td>
+<td><p><em>-</em></p></td>
+<td><div class="line-block">
+<div class="line"><em>-</em></div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td><p>7:0</p></td>
+<td><p>R/W</p></td>
+<td><p>0x0</p></td>
+<td><div class="line-block">
+<div class="line">END_ADDR</div>
+<div class="line">配置为0x7f</div>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="x384-jpeg-stream-num">
+<h2><span class="section-number">10.3.7.33. </span>0x384 JPEG_STREAM_NUM<a class="headerlink" href="#x384-jpeg-stream-num" title="永久链接至标题">¶</a></h2>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 8%" />
+<col style="width: 8%" />
+<col style="width: 13%" />
+<col style="width: 70%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head" colspan="3"><p>默认值：0x00000000</p></th>
+<th class="head"><p>JPEG stream 个数 (JPEG Stream Number)</p></th>
+</tr>
+<tr class="row-even"><th class="head"><p>位域</p></th>
+<th class="head"><p>类型</p></th>
+<th class="head"><p>默认值</p></th>
+<th class="head"><p>描述</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-odd"><td><p>31:0</p></td>
+<td><p>R/W</p></td>
+<td><p>0x0</p></td>
+<td><div class="line-block">
+<div class="line">STREAM_NUM</div>
+<div class="line">数据流个数</div>
+<div class="line">注意：以 256 byte 为单位。</div>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="x38c-jpeg-data-count">
+<h2><span class="section-number">10.3.7.34. </span>0x38C JPEG_DATA_COUNT<a class="headerlink" href="#x38c-jpeg-data-count" title="永久链接至标题">¶</a></h2>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 8%" />
+<col style="width: 8%" />
+<col style="width: 13%" />
+<col style="width: 70%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head" colspan="3"><p>默认值：0x00000000</p></th>
+<th class="head"><p>JPEG 一次读写数据大小 (JPEG Stream Data Count)</p></th>
+</tr>
+<tr class="row-even"><th class="head"><p>位域</p></th>
+<th class="head"><p>类型</p></th>
+<th class="head"><p>默认值</p></th>
+<th class="head"><p>描述</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-odd"><td><p>31:0</p></td>
+<td><p>R/W</p></td>
+<td><p>0x0</p></td>
+<td><div class="line-block">
+<div class="line">DATA_CNT</div>
+<div class="line">固定配置为64，64个32bit数据，表示一次读写256字节数据</div>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="x390-jpeg-busy">
+<h2><span class="section-number">10.3.7.35. </span>0x390 JPEG_BUSY<a class="headerlink" href="#x390-jpeg-busy" title="永久链接至标题">¶</a></h2>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 8%" />
+<col style="width: 8%" />
+<col style="width: 13%" />
+<col style="width: 70%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head" colspan="3"><p>默认值：0x00000000</p></th>
+<th class="head"><p>JPEG 读数据状态 (JPEG Busy Status)</p></th>
+</tr>
+<tr class="row-even"><th class="head"><p>位域</p></th>
+<th class="head"><p>类型</p></th>
+<th class="head"><p>默认值</p></th>
+<th class="head"><p>描述</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-odd"><td><p>31:1</p></td>
+<td><p><em>-</em></p></td>
+<td><p><em>-</em></p></td>
+<td><div class="line-block">
+<div class="line"><em>-</em></div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td><p>0</p></td>
+<td><p>R</p></td>
+<td><p>0x0</p></td>
+<td><div class="line-block">
+<div class="line">BUSY</div>
+<div class="line">是否处于读数据状态</div>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="x398-jpeg-stream-end-addr">
+<h2><span class="section-number">10.3.7.36. </span>0x398 JPEG_STREAM_END_ADDR<a class="headerlink" href="#x398-jpeg-stream-end-addr" title="永久链接至标题">¶</a></h2>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 8%" />
+<col style="width: 8%" />
+<col style="width: 13%" />
+<col style="width: 70%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head" colspan="3"><p>默认值：0x00000000</p></th>
+<th class="head"><p>JPEG 码流结束地址 (JPEG Stream End Address)</p></th>
+</tr>
+<tr class="row-even"><th class="head"><p>位域</p></th>
+<th class="head"><p>类型</p></th>
+<th class="head"><p>默认值</p></th>
+<th class="head"><p>描述</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-odd"><td><p>31:0</p></td>
+<td><p>R/W</p></td>
+<td><p>0x0</p></td>
+<td><div class="line-block">
+<div class="line">END_ADDR</div>
+<div class="line">码流结束地址，256字节对齐</div>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="x394-jpeg-req">
+<h2><span class="section-number">10.3.7.37. </span>0x394 JPEG_REQ<a class="headerlink" href="#x394-jpeg-req" title="永久链接至标题">¶</a></h2>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 8%" />
+<col style="width: 8%" />
+<col style="width: 13%" />
+<col style="width: 70%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head" colspan="3"><p>默认值：0x00000000</p></th>
+<th class="head"><p>JPEG 请求数据 (JPEG Request Data)</p></th>
+</tr>
+<tr class="row-even"><th class="head"><p>位域</p></th>
+<th class="head"><p>类型</p></th>
+<th class="head"><p>默认值</p></th>
+<th class="head"><p>描述</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-odd"><td><p>31:1</p></td>
+<td><p><em>-</em></p></td>
+<td><p><em>-</em></p></td>
+<td><div class="line-block">
+<div class="line"><em>-</em></div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td><p>0</p></td>
+<td><p>R/W</p></td>
+<td><p>0x0</p></td>
+<td><div class="line-block">
+<div class="line">REQ_DATA</div>
+<div class="line">1:请求一次数据</div>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="x39c-jpeg-stream-start-addr">
+<h2><span class="section-number">10.3.7.38. </span>0x39C JPEG_STREAM_START_ADDR<a class="headerlink" href="#x39c-jpeg-stream-start-addr" title="永久链接至标题">¶</a></h2>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 8%" />
+<col style="width: 8%" />
+<col style="width: 13%" />
+<col style="width: 70%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head" colspan="3"><p>默认值：0x00000000</p></th>
+<th class="head"><p>JPEG 码流起始地址 (JPEG Stream Start Address)</p></th>
+</tr>
+<tr class="row-even"><th class="head"><p>位域</p></th>
+<th class="head"><p>类型</p></th>
+<th class="head"><p>默认值</p></th>
+<th class="head"><p>描述</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-odd"><td><p>31:0</p></td>
+<td><p>R/W</p></td>
+<td><p>0x0</p></td>
+<td><div class="line-block">
+<div class="line">Start_ADDR</div>
+<div class="line">码流起始地址，8 字节对齐</div>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="x3a4-jpeg-wr-addr">
+<h2><span class="section-number">10.3.7.39. </span>0x3A4 JPEG_WR_ADDR<a class="headerlink" href="#x3a4-jpeg-wr-addr" title="永久链接至标题">¶</a></h2>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 8%" />
+<col style="width: 8%" />
+<col style="width: 13%" />
+<col style="width: 70%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head" colspan="3"><p>默认值：0x00000000</p></th>
+<th class="head"><p>JPEG 码流写地址 (JPEG Stream Write Address)</p></th>
+</tr>
+<tr class="row-even"><th class="head"><p>位域</p></th>
+<th class="head"><p>类型</p></th>
+<th class="head"><p>默认值</p></th>
+<th class="head"><p>描述</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-odd"><td><p>31:0</p></td>
+<td><p>R/W</p></td>
+<td><p>0x0</p></td>
+<td><div class="line-block">
+<div class="line">WRITE_ADDR</div>
+<div class="line">码流写地址，用于编码，编码结束后，通过该地址得到最终编码</div>
+<div class="line">数据的长度len=（JPEG_WR_ADDR-JPEG_STREAM_START_ADDR）</div>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="x3b0-jpeg-cur-pos">
+<h2><span class="section-number">10.3.7.40. </span>0x3B0 JPEG_CUR_POS<a class="headerlink" href="#x3b0-jpeg-cur-pos" title="永久链接至标题">¶</a></h2>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 7%" />
+<col style="width: 7%" />
+<col style="width: 12%" />
+<col style="width: 74%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head" colspan="3"><p>默认值：0x00000000</p></th>
+<th class="head"><p>JPEG 当前读数据位置 (JPEG Current Postion)</p></th>
+</tr>
+<tr class="row-even"><th class="head"><p>位域</p></th>
+<th class="head"><p>类型</p></th>
+<th class="head"><p>默认值</p></th>
+<th class="head"><p>描述</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-odd"><td><p>31:0</p></td>
+<td><p>R/W</p></td>
+<td><p>0x0</p></td>
+<td><div class="line-block">
+<div class="line">CUR_POS</div>
+<div class="line">当前读码流数据位置</div>
+<div class="line">注意：JPEG读数据以256 byte为单位，这里的位置也是以 256 byte 为单位。</div>
+<div class="line">比如，要读的数据从100 byte开始，则CUR_POS为0.</div>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+        <a href="pic_register.html" class="btn btn-neutral float-right" title="10.3.8. 图像信息寄存器描述" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="png_register.html" class="btn btn-neutral float-left" title="10.3.6. PNG寄存器描述" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; 版权所有 2023 广州匠芯创科技有限公司.
+
+    </p>
+  </div> 
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

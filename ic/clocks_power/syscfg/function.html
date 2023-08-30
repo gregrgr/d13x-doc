@@ -1,0 +1,516 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="zh-CN" >
+<head>
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>8.2.2. 功能描述 &mdash; AIC文档中心 v1.0 文档</title>
+  
+
+  
+  <link rel="stylesheet" href="../../../_static/css/theme_overrides.css" type="text/css" />
+  <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+
+  
+  
+    <link rel="shortcut icon" href="../../../_static/aic_logo.png"/>
+  
+
+  
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../../" src="../../../_static/documentation_options.js"></script>
+        <script src="../../../_static/jquery.js"></script>
+        <script src="../../../_static/underscore.js"></script>
+        <script src="../../../_static/doctools.js"></script>
+        <script src="../../../_static/translations.js"></script>
+    
+    <script type="text/javascript" src="../../../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="索引" href="../../../genindex.html" />
+    <link rel="search" title="搜索" href="../../../search.html" />
+    <link rel="next" title="8.2.3. 寄存器描述" href="register.html" />
+    <link rel="prev" title="8.2.1. 概述" href="overview.html" />
+    <script>
+        $(function () {
+/**
+            var $body = $(".rst-content");
+            $body.attr("oncontextmenu", "return false"); 
+            $body.attr("ondragstart", "return false");
+            $body.attr("onselectstart", "return false");
+            $body.attr("onbeforecopy", "return false");
+
+            if (document.selection) {
+                $body.attr("onselect", "document.selection.empty()");
+                $body.attr("oncopy", "document.selection.empty()");
+                $body.attr("onmouseup", "document.selection.empty()");
+            } else {
+                $body.attr("onselect", "document.getSelection().removeAllRanges()");
+                $body.attr("oncopy", "document.getSelection().removeAllRanges()");
+                $body.attr("onmouseup", "document.getSelection().removeAllRanges()");
+            }
+
+            $(".wy-menu-vertical .toctree-l4.current .current.toctree-l5 > ul").wrap("<div></div>");
+
+            $(document).keydown(function (e) {
+                var $div = $(".wy-menu-vertical .toctree-l4.current .current.toctree-l5 > div");
+                var scrollLeft = $div.scrollLeft();
+                var step = 50;
+                var code = e.keyCode;
+                switch (code) {
+                    case 37:
+                        $div.scrollLeft(scrollLeft - step);
+                        break;
+                    case 39:
+                        $div.scrollLeft(scrollLeft + step);
+                        break;
+                    case 65:
+                    case 67:
+                    case 83:
+                    case 86:
+                        var ctrlKey = navigator.platform.match("Mac") ? e.metaKey : e.ctrlKey;
+                        if (ctrlKey) {
+                            e.preventDefault();
+                            window.event.returnValue = false;
+                        }
+                        break;
+                    case 123:
+                        e.preventDefault();
+                        window.event.returnValue = false;
+                        break;
+                }
+	    });  **/
+
+            watermark({
+                watermark_id: ".wy-nav-content",
+                watermark_txt: "ArtInChip",
+                watermark_font: "微软雅黑",
+                watermark_fontsize: "100px",
+                watermark_width: 600,
+                watermark_height: 300,
+                watermark_alpha: 0.1,
+                watermark_rows: 0,
+                watermark_y: 100,
+                watermark_x_space: 0,
+                watermark_y_space: 100
+            });
+
+        });
+
+        function watermark(settings) {
+            var defaultSettings = {
+                watermark_id: "body",
+                watermark_txt: "text",
+                watermark_x: 20,
+                watermark_y: 20,
+                watermark_rows: 20,
+                watermark_cols: 20,
+                watermark_x_space: 100,
+                watermark_y_space: 50,
+                watermark_color: '#aaa',
+                watermark_alpha: 0.4,
+                watermark_fontsize: '15px',
+                watermark_font: 'Times New Roman',
+                watermark_width: 210,
+                watermark_height: 80,
+                watermark_angle: 20
+            };
+
+            for (key in settings) {
+                defaultSettings[key] = settings[key];
+            }
+
+            var oTemp = document.createDocumentFragment();
+
+            var $container = $(defaultSettings.watermark_id);
+
+            var page_width = $container.width();
+            var col_width = defaultSettings.watermark_width + defaultSettings.watermark_x_space;
+            defaultSettings.watermark_cols = page_width / col_width;
+
+            var page_height = $container.height();
+            var row_height = defaultSettings.watermark_height + defaultSettings.watermark_y_space;
+            defaultSettings.watermark_rows = page_height / row_height;
+
+            var x, y;
+            for (var i = 0; i < defaultSettings.watermark_rows; i++) {
+                y = defaultSettings.watermark_y + (defaultSettings.watermark_y_space + defaultSettings.watermark_height) * i;
+                for (var j = 0; j < defaultSettings.watermark_cols; j++) {
+                    x = defaultSettings.watermark_x + (defaultSettings.watermark_width + defaultSettings.watermark_x_space) * j;
+                    var mask_div = document.createElement('div');
+                    mask_div.id = 'mask_div' + i + j;
+                    mask_div.className = 'mask_div';
+                    mask_div.appendChild(document.createTextNode(defaultSettings.watermark_txt));
+
+                    mask_div.style.webkitTransform = "rotate(-" + defaultSettings.watermark_angle + "deg)";
+                    mask_div.style.MozTransform = "rotate(-" + defaultSettings.watermark_angle + "deg)";
+                    mask_div.style.msTransform = "rotate(-" + defaultSettings.watermark_angle + "deg)";
+                    mask_div.style.OTransform = "rotate(-" + defaultSettings.watermark_angle + "deg)";
+                    mask_div.style.transform = "rotate(-" + defaultSettings.watermark_angle + "deg)";
+                    mask_div.style.visibility = "";
+                    mask_div.style.position = "absolute";
+                    mask_div.style.left = x + 'px';
+                    mask_div.style.top = y + 'px';
+                    mask_div.style.overflow = "hidden";
+                    mask_div.style.zIndex = "9999";
+
+                    mask_div.style.pointerEvents = 'none';
+                    mask_div.style.opacity = defaultSettings.watermark_alpha;
+                    mask_div.style.fontSize = defaultSettings.watermark_fontsize;
+                    mask_div.style.fontFamily = defaultSettings.watermark_font;
+                    mask_div.style.color = defaultSettings.watermark_color;
+                    mask_div.style.textAlign = "center";
+                    mask_div.style.width = defaultSettings.watermark_width + 'px';
+                    mask_div.style.height = defaultSettings.watermark_height + 'px';
+                    mask_div.style.display = "block";
+                    oTemp.appendChild(mask_div);
+                };
+            };
+            $container.append(oTemp);
+        }
+    </script>
+
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../../index.html" class="icon icon-home"> AIC文档中心
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../product/index.html">产品简介</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../quick-start/index.html">快速入门</a></li>
+</ul>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="../../index.html">芯片手册</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../../about/index.html">1. 文档说明</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../introduction/index.html">2. 产品描述</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../memory_maps/index.html">3. 地址映射</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../pinmux/index.html">4. 引脚复用</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../cpu_bus/index.html">5. 处理器和总线</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../security/index.html">6. 安全</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../brom/index.html">7. 启动</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="../index.html">8. 时钟和电源</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="../cmu/index.html">8.1. Clock Manage Unit (CMU)</a></li>
+<li class="toctree-l3 current"><a class="reference internal" href="index.html">8.2. System Configuration (SYSCFG)</a><ul class="current">
+<li class="toctree-l4"><a class="reference internal" href="overview.html">8.2.1. 概述</a></li>
+<li class="toctree-l4 current"><a class="current reference internal" href="#">8.2.2. 功能描述</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="#ldo1x">8.2.2.1. LDO1x 默认状态</a></li>
+<li class="toctree-l5"><a class="reference internal" href="#cali-res">8.2.2.2. CALI RES</a></li>
+<li class="toctree-l5"><a class="reference internal" href="#psen">8.2.2.3. PSEN</a></li>
+<li class="toctree-l5"><a class="reference internal" href="#flash-cfg">8.2.2.4. FLASH_CFG</a></li>
+</ul>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="register.html">8.2.3. 寄存器描述</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../wri/index.html">8.3. Warm Reset Information (WRI)</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../memory/index.html">9. 存储</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../media/index.html">10. 多媒体</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../timers/index.html">11. 计时器</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../interface/index.html">12. 接口</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../analog/index.html">13. 模拟</a></li>
+</ul>
+</li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../lite/index.html">RTOS SDK</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../baremetal/index.html">Baremetal</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../tools/index.html">工具指南</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../aboutus/index.html">关于我们</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../index.html">AIC文档中心</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+          <li><a href="../../index.html">芯片手册</a> &raquo;</li>
+        
+          <li><a href="../index.html"><span class="section-number">8. </span>时钟和电源</a> &raquo;</li>
+        
+          <li><a href="index.html"><span class="section-number">8.2. </span>SYSCFG</a> &raquo;</li>
+        
+      <li><span class="section-number">8.2.2. </span>功能描述</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="id1">
+<h1><span class="section-number">8.2.2. </span>功能描述<a class="headerlink" href="#id1" title="永久链接至标题">¶</a></h1>
+<div class="section" id="ldo1x">
+<h2><span class="section-number">8.2.2.1. </span>LDO1x 默认状态<a class="headerlink" href="#ldo1x" title="永久链接至标题">¶</a></h2>
+<p>LDO1x 可调范围为 0.90V~1.90V，不同封装芯片表现有两个用途：</p>
+<ul class="simple">
+<li><p>SoC CORE供电，默认为打开</p></li>
+<li><p>SoC 外设供电，默认为关闭</p></li>
+</ul>
+<p>为了区分 LDO1x 默认状态，通过模拟PAD LDO1x_EN悬空或者打线到地做区分，由模拟电路在3.3V电源域实现。</p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 36%" />
+<col style="width: 64%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>用途</p></th>
+<th class="head"><p>PAD_LDO1x_EN</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>CORE供电（默认打开）</p></td>
+<td><p>悬空（内部已上拉）</p></td>
+</tr>
+<tr class="row-odd"><td><p>外设供电（默认关闭）</p></td>
+<td><p>打线到地</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="cali-res">
+<h2><span class="section-number">8.2.2.2. </span>CALI RES<a class="headerlink" href="#cali-res" title="永久链接至标题">¶</a></h2>
+<p>校准电阻结构如 <a class="reference internal" href="#ref-syscfg-function-res-cali-d13x"><span class="std std-numref">图 8.4</span></a> ，由 Rb和Rc两部分并联实现</p>
+<ul class="simple">
+<li><p>Rb 基准电阻：提供固定阻值</p></li>
+<li><p>Rc 校准电阻：提供可配置的电阻值，通过改变CAL_VAL改变电阻值，Rc计算公式如下表所示。</p></li>
+</ul>
+<div class="figure align-center" id="id2">
+<span id="ref-syscfg-function-res-cali-d13x"></span><img alt="../../../_images/syscfg_function_res_cali.png" src="../../../_images/syscfg_function_res_cali.png" />
+<p class="caption"><span class="caption-number">图 8.4 </span><span class="caption-text">校准电阻</span><a class="headerlink" href="#id2" title="永久链接至图片">¶</a></p>
+</div>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 8%" />
+<col style="width: 13%" />
+<col style="width: 8%" />
+<col style="width: 13%" />
+<col style="width: 17%" />
+<col style="width: 13%" />
+<col style="width: 17%" />
+<col style="width: 13%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p><em>-</em></p></th>
+<th class="head"><p><em>-</em></p></th>
+<th class="head"><p>CAL_VAL</p></th>
+<th class="head"><p>Rb阻值Ω</p></th>
+<th class="head" colspan="2"><p>Rc阻值Ω</p></th>
+<th class="head" colspan="2"><p>Rb//Rc阻值Ω</p></th>
+</tr>
+<tr class="row-even"><th class="head"><p>模块</p></th>
+<th class="head"><p>需求阻值Ω</p></th>
+<th class="head"><p>默认值</p></th>
+<th class="head"><p>理论</p></th>
+<th class="head"><p>计算公式</p></th>
+<th class="head"><p>理论默认值</p></th>
+<th class="head"><p>计算公式</p></th>
+<th class="head"><p>理论默认值</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-odd"><td><p>USB</p></td>
+<td><p>200</p></td>
+<td><p>96</p></td>
+<td><p>320.36</p></td>
+<td><p>51257.7/CAL_VAL</p></td>
+<td><p>534</p></td>
+<td><p>Rb*Rc/(Rb+Rc)</p></td>
+<td><p>200</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="psen">
+<h2><span class="section-number">8.2.2.3. </span>PSEN<a class="headerlink" href="#psen" title="永久链接至标题">¶</a></h2>
+<p>PSEN (Process Sensor，工艺传感器)，用于监测制造工艺下数字电路的频率范围，典型应用如下：</p>
+<ul class="simple">
+<li><p>CP测试阶段，根据PSEN进行分BIN操作，典型如分CPU 1GHz和800MHz两种DIE；</p></li>
+<li><p>方案应用阶段，根据PSEN来进行调频调压，达到降低功耗的目的</p></li>
+</ul>
+<p>PSEN工作流程如下，参考 <a class="reference internal" href="#ref-syscfg-function-psen-d13x"><span class="std std-numref">图 8.5</span></a>：</p>
+<ol class="arabic simple">
+<li><p>软件配置好测试参数(RO_SEL, CNT_TIME),打开测试(PSEN_EN=1)</p></li>
+<li><p>PSEN_EN=1触发数字电路打开RO_EN，模拟电路RO开始振荡工作起来，并进行16分频得到低频时钟，用于数字电路计数</p></li>
+<li><p>数字电路打开RO_EN后延迟打开CNT_EN，CNT开始计数，CNT_TIME时间后,自动关闭CNT_EN,并延时关闭RO_EN，将PSEN_EN清零表示测试完成</p></li>
+<li><p>软件检测到PSEN_EN清零后，读取CNT_VAL值为当前PSEN的速度；</p></li>
+<li><p>软件重复①~④测试更多的RO#.</p></li>
+</ol>
+<div class="figure align-center" id="id3">
+<span id="ref-syscfg-function-psen-d13x"></span><img alt="../../../_images/syscfg_function_psen.png" src="../../../_images/syscfg_function_psen.png" />
+<p class="caption"><span class="caption-number">图 8.5 </span><span class="caption-text">PSEN工作流程</span><a class="headerlink" href="#id3" title="永久链接至图片">¶</a></p>
+</div>
+</div>
+<div class="section" id="flash-cfg">
+<h2><span class="section-number">8.2.2.4. </span>FLASH_CFG<a class="headerlink" href="#flash-cfg" title="永久链接至标题">¶</a></h2>
+<p>芯片内部合封了FLASH，对合封的FLASH进行烧写和读写访问，通过FLASH_CFG子模块实现。</p>
+<p>FLASH_CFG如 <a class="reference internal" href="#ref-syscfg-function-flash-d13x"><span class="std std-numref">图 8.6</span></a> ，包含了SRCSEL和PINMAP两个模块。</p>
+<p>SRCSEL用于选择控制来源，有以下三种控制源：</p>
+<ul class="simple">
+<li><p>SPI0</p></li>
+<li><p>SPI1</p></li>
+<li><p>PINMUX：主要用于进行FLASH裸片烧录</p></li>
+</ul>
+<p>PINMAP用于对引脚进行映射，兼容各种FLASH DIE的出PIN，分为两组，每组3个引脚：</p>
+<ul class="simple">
+<li><p>PINMAP_012: WP   MISO CS   -&gt; PIN0 PIN1 PIN2</p></li>
+<li><p>PINMAP_345: HOLD SCLK MOSI -&gt; PIN3 PIN4 PIN5</p></li>
+</ul>
+<div class="figure align-center" id="id4">
+<span id="ref-syscfg-function-flash-d13x"></span><img alt="../../../_images/syscfg_function_flash.png" src="../../../_images/syscfg_function_flash.png" />
+<p class="caption"><span class="caption-number">图 8.6 </span><span class="caption-text">FLASH_CFG 框图</span><a class="headerlink" href="#id4" title="永久链接至图片">¶</a></p>
+</div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+        <a href="register.html" class="btn btn-neutral float-right" title="8.2.3. 寄存器描述" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="overview.html" class="btn btn-neutral float-left" title="8.2.1. 概述" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; 版权所有 2023 广州匠芯创科技有限公司.
+
+    </p>
+  </div> 
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

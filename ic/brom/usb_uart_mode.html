@@ -1,0 +1,781 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="zh-CN" >
+<head>
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>7.12.2. 在线升级模式 &mdash; AIC文档中心 v1.0 文档</title>
+  
+
+  
+  <link rel="stylesheet" href="../../_static/css/theme_overrides.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+
+  
+  
+    <link rel="shortcut icon" href="../../_static/aic_logo.png"/>
+  
+
+  
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+        <script src="../../_static/jquery.js"></script>
+        <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/doctools.js"></script>
+        <script src="../../_static/translations.js"></script>
+    
+    <script type="text/javascript" src="../../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="索引" href="../../genindex.html" />
+    <link rel="search" title="搜索" href="../../search.html" />
+    <link rel="next" title="8. 时钟和电源" href="../clocks_power/index.html" />
+    <link rel="prev" title="7.12.1. SiP Flash 烧录" href="spi_pin_map.html" />
+    <script>
+        $(function () {
+/**
+            var $body = $(".rst-content");
+            $body.attr("oncontextmenu", "return false"); 
+            $body.attr("ondragstart", "return false");
+            $body.attr("onselectstart", "return false");
+            $body.attr("onbeforecopy", "return false");
+
+            if (document.selection) {
+                $body.attr("onselect", "document.selection.empty()");
+                $body.attr("oncopy", "document.selection.empty()");
+                $body.attr("onmouseup", "document.selection.empty()");
+            } else {
+                $body.attr("onselect", "document.getSelection().removeAllRanges()");
+                $body.attr("oncopy", "document.getSelection().removeAllRanges()");
+                $body.attr("onmouseup", "document.getSelection().removeAllRanges()");
+            }
+
+            $(".wy-menu-vertical .toctree-l4.current .current.toctree-l5 > ul").wrap("<div></div>");
+
+            $(document).keydown(function (e) {
+                var $div = $(".wy-menu-vertical .toctree-l4.current .current.toctree-l5 > div");
+                var scrollLeft = $div.scrollLeft();
+                var step = 50;
+                var code = e.keyCode;
+                switch (code) {
+                    case 37:
+                        $div.scrollLeft(scrollLeft - step);
+                        break;
+                    case 39:
+                        $div.scrollLeft(scrollLeft + step);
+                        break;
+                    case 65:
+                    case 67:
+                    case 83:
+                    case 86:
+                        var ctrlKey = navigator.platform.match("Mac") ? e.metaKey : e.ctrlKey;
+                        if (ctrlKey) {
+                            e.preventDefault();
+                            window.event.returnValue = false;
+                        }
+                        break;
+                    case 123:
+                        e.preventDefault();
+                        window.event.returnValue = false;
+                        break;
+                }
+	    });  **/
+
+            watermark({
+                watermark_id: ".wy-nav-content",
+                watermark_txt: "ArtInChip",
+                watermark_font: "微软雅黑",
+                watermark_fontsize: "100px",
+                watermark_width: 600,
+                watermark_height: 300,
+                watermark_alpha: 0.1,
+                watermark_rows: 0,
+                watermark_y: 100,
+                watermark_x_space: 0,
+                watermark_y_space: 100
+            });
+
+        });
+
+        function watermark(settings) {
+            var defaultSettings = {
+                watermark_id: "body",
+                watermark_txt: "text",
+                watermark_x: 20,
+                watermark_y: 20,
+                watermark_rows: 20,
+                watermark_cols: 20,
+                watermark_x_space: 100,
+                watermark_y_space: 50,
+                watermark_color: '#aaa',
+                watermark_alpha: 0.4,
+                watermark_fontsize: '15px',
+                watermark_font: 'Times New Roman',
+                watermark_width: 210,
+                watermark_height: 80,
+                watermark_angle: 20
+            };
+
+            for (key in settings) {
+                defaultSettings[key] = settings[key];
+            }
+
+            var oTemp = document.createDocumentFragment();
+
+            var $container = $(defaultSettings.watermark_id);
+
+            var page_width = $container.width();
+            var col_width = defaultSettings.watermark_width + defaultSettings.watermark_x_space;
+            defaultSettings.watermark_cols = page_width / col_width;
+
+            var page_height = $container.height();
+            var row_height = defaultSettings.watermark_height + defaultSettings.watermark_y_space;
+            defaultSettings.watermark_rows = page_height / row_height;
+
+            var x, y;
+            for (var i = 0; i < defaultSettings.watermark_rows; i++) {
+                y = defaultSettings.watermark_y + (defaultSettings.watermark_y_space + defaultSettings.watermark_height) * i;
+                for (var j = 0; j < defaultSettings.watermark_cols; j++) {
+                    x = defaultSettings.watermark_x + (defaultSettings.watermark_width + defaultSettings.watermark_x_space) * j;
+                    var mask_div = document.createElement('div');
+                    mask_div.id = 'mask_div' + i + j;
+                    mask_div.className = 'mask_div';
+                    mask_div.appendChild(document.createTextNode(defaultSettings.watermark_txt));
+
+                    mask_div.style.webkitTransform = "rotate(-" + defaultSettings.watermark_angle + "deg)";
+                    mask_div.style.MozTransform = "rotate(-" + defaultSettings.watermark_angle + "deg)";
+                    mask_div.style.msTransform = "rotate(-" + defaultSettings.watermark_angle + "deg)";
+                    mask_div.style.OTransform = "rotate(-" + defaultSettings.watermark_angle + "deg)";
+                    mask_div.style.transform = "rotate(-" + defaultSettings.watermark_angle + "deg)";
+                    mask_div.style.visibility = "";
+                    mask_div.style.position = "absolute";
+                    mask_div.style.left = x + 'px';
+                    mask_div.style.top = y + 'px';
+                    mask_div.style.overflow = "hidden";
+                    mask_div.style.zIndex = "9999";
+
+                    mask_div.style.pointerEvents = 'none';
+                    mask_div.style.opacity = defaultSettings.watermark_alpha;
+                    mask_div.style.fontSize = defaultSettings.watermark_fontsize;
+                    mask_div.style.fontFamily = defaultSettings.watermark_font;
+                    mask_div.style.color = defaultSettings.watermark_color;
+                    mask_div.style.textAlign = "center";
+                    mask_div.style.width = defaultSettings.watermark_width + 'px';
+                    mask_div.style.height = defaultSettings.watermark_height + 'px';
+                    mask_div.style.display = "block";
+                    oTemp.appendChild(mask_div);
+                };
+            };
+            $container.append(oTemp);
+        }
+    </script>
+
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../index.html" class="icon icon-home"> AIC文档中心
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="../../product/index.html">产品简介</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../quick-start/index.html">快速入门</a></li>
+</ul>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="../index.html">芯片手册</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../about/index.html">1. 文档说明</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../introduction/index.html">2. 产品描述</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../memory_maps/index.html">3. 地址映射</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../pinmux/index.html">4. 引脚复用</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../cpu_bus/index.html">5. 处理器和总线</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../security/index.html">6. 安全</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="index.html">7. 启动</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="overview.html">7.1. 模块概述</a></li>
+<li class="toctree-l3"><a class="reference internal" href="boot_flow.html">7.2. 整体流程</a></li>
+<li class="toctree-l3"><a class="reference internal" href="boot_cfg.html">7.3. 启动配置</a></li>
+<li class="toctree-l3"><a class="reference internal" href="boot_image_format.html">7.4. 镜像格式</a></li>
+<li class="toctree-l3"><a class="reference internal" href="clock_cfg.html">7.5. 时钟配置</a></li>
+<li class="toctree-l3"><a class="reference internal" href="mmc_boot.html">7.6. SD/eMMC 启动</a></li>
+<li class="toctree-l3"><a class="reference internal" href="sd_udisk_fatfs_boot.html">7.7. FatFs(SD/UDISK) 启动</a></li>
+<li class="toctree-l3"><a class="reference internal" href="spi_nand_boot.html">7.8. SPI NAND 启动</a></li>
+<li class="toctree-l3"><a class="reference internal" href="spi_nor_boot.html">7.9. SPI NOR 启动</a></li>
+<li class="toctree-l3"><a class="reference internal" href="secure_boot.html">7.10. 安全启动</a></li>
+<li class="toctree-l3"><a class="reference internal" href="jtag_unlock.html">7.11. JTAG 解锁</a></li>
+<li class="toctree-l3 current"><a class="reference internal" href="upgmode.html">7.12. 烧录和升级</a><ul class="current">
+<li class="toctree-l4"><a class="reference internal" href="spi_pin_map.html">7.12.1. SiP Flash 烧录</a></li>
+<li class="toctree-l4 current"><a class="current reference internal" href="#">7.12.2. 在线升级模式</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="#id2">7.12.2.1. 协议简述</a></li>
+<li class="toctree-l5"><a class="reference internal" href="#usb">7.12.2.2. USB 传输</a><ul>
+<li class="toctree-l6"><a class="reference internal" href="#id3">7.12.2.2.1. 自定义设备</a></li>
+</ul>
+</li>
+<li class="toctree-l5"><a class="reference internal" href="#uart">7.12.2.3. UART 传输</a><ul>
+<li class="toctree-l6"><a class="reference internal" href="#id4">7.12.2.3.1. 传输波特率</a></li>
+<li class="toctree-l6"><a class="reference internal" href="#id5">7.12.2.3.2. 建立连接</a></li>
+<li class="toctree-l6"><a class="reference internal" href="#id6">7.12.2.3.3. 掉线检测</a></li>
+<li class="toctree-l6"><a class="reference internal" href="#id7">7.12.2.3.4. 数据传输</a></li>
+</ul>
+</li>
+<li class="toctree-l5"><a class="reference internal" href="#id8">7.12.2.4. 应用命令</a></li>
+<li class="toctree-l5"><a class="reference internal" href="#id9">7.12.2.5. 升级流程</a></li>
+<li class="toctree-l5"><a class="reference internal" href="#id10">7.12.2.6. 调试功能</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../clocks_power/index.html">8. 时钟和电源</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../memory/index.html">9. 存储</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../media/index.html">10. 多媒体</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../timers/index.html">11. 计时器</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../interface/index.html">12. 接口</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../analog/index.html">13. 模拟</a></li>
+</ul>
+</li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../lite/index.html">RTOS SDK</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../baremetal/index.html">Baremetal</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../tools/index.html">工具指南</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../aboutus/index.html">关于我们</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">AIC文档中心</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+          <li><a href="../index.html">芯片手册</a> &raquo;</li>
+        
+          <li><a href="index.html"><span class="section-number">7. </span>启动</a> &raquo;</li>
+        
+          <li><a href="upgmode.html"><span class="section-number">7.12. </span>烧录和升级</a> &raquo;</li>
+        
+      <li><span class="section-number">7.12.2. </span>在线升级模式</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="id1">
+<h1><span class="section-number">7.12.2. </span>在线升级模式<a class="headerlink" href="#id1" title="永久链接至标题">¶</a></h1>
+<p>本芯片在 BROM 阶段支持 USB 升级模式和 UART 升级模式。进入升级模式有两种方式：</p>
+<blockquote>
+<div><ol class="arabic simple">
+<li><p>按住 UPGRADE-BOOT 按键，然后芯片上电，BROM 进入升级模式</p></li>
+<li><p>BROM 尝试完所有的启动介质，都没有启动成功，则进入升级模式</p></li>
+</ol>
+</div></blockquote>
+<p>由于 BROM 支持两种传输方式：USB 和 UART，因此进入在线升级模式之后，BROM 会轮询检测，
+分别尝试建立 USB 连接或者 UART 连接。一旦其中一种连接方式建立成功，则进入对应的升级模式，
+不再改变。</p>
+<div class="figure align-center">
+<img alt="../../_images/upg_mode_select.png" src="../../_images/upg_mode_select.png" />
+</div>
+<div class="section" id="id2">
+<h2><span class="section-number">7.12.2.1. </span>协议简述<a class="headerlink" href="#id2" title="永久链接至标题">¶</a></h2>
+<p>升级通信协议以 USB 升级为基础，扩展支持 UART。通信协议分为三层结构：</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>应用层</p></li>
+<li><p>传输层</p></li>
+<li><p>物理层</p></li>
+</ul>
+</div></blockquote>
+<p>其中应用层为物理传输无关的命令通信，传输层将具体的命令和数据进行封装，物理层处理具体物理连接相关的通信操作。</p>
+<div class="figure align-center" id="id11">
+<img alt="../../_images/usb_protocol_arch_send.png" src="../../_images/usb_protocol_arch_send.png" />
+<p class="caption"><span class="caption-number">图 7.17 </span><span class="caption-text">发送数据</span><a class="headerlink" href="#id11" title="永久链接至图片">¶</a></p>
+</div>
+<div class="figure align-center" id="id12">
+<img alt="../../_images/usb_protocol_arch_recv.png" src="../../_images/usb_protocol_arch_recv.png" />
+<p class="caption"><span class="caption-number">图 7.18 </span><span class="caption-text">接收数据</span><a class="headerlink" href="#id12" title="永久链接至图片">¶</a></p>
+</div>
+</div>
+<div class="section" id="usb">
+<h2><span class="section-number">7.12.2.2. </span>USB 传输<a class="headerlink" href="#usb" title="永久链接至标题">¶</a></h2>
+<p>USB 升级功能通过实现基于 USB Bulk 传输的自定义设备来完成的，设备端与主机端通过自定义的 USB 升级协议进行通信。</p>
+<p>完整的固件升级流程分为两个阶段，第一个阶段为 BROM 阶段，此阶段主要目的是完成系统运行环境的初始化，
+包括初始化 DDR，下载并运行下一级升级程序；第二阶段为 U-Boot 阶段，此阶段实现固件下载和烧录等功能。
+这里讨论 BROM 阶段的功能和实现。</p>
+<div class="section" id="id3">
+<h3><span class="section-number">7.12.2.2.1. </span>自定义设备<a class="headerlink" href="#id3" title="永久链接至标题">¶</a></h3>
+<p>端点（End Point）是设备与主机之间进行数据传输的逻辑接口。自定义的 USB Bulk 传输设备包含下面几个端点：</p>
+<blockquote>
+<div><ol class="arabic simple">
+<li><p>EP0</p></li>
+<li><p>EP Bulk-in</p></li>
+<li><p>EP Bulk-out</p></li>
+</ol>
+</div></blockquote>
+<p>EP0 是一个控制端点，数据传输为双向传输，用于对设备进行枚举和基本的控制。在设备完成配置之前，
+只有 EP0 端点可用，主机通过 EP0 来发送命令，获取设备的信息，并通过它来配置设备。
+EP0 端点没有专门的描述符，只需要在设备描述符中定义它的最大包长度。</p>
+<p>EP Bulk-in端点，用来从设备端传输数据和状态给主机端，对设备端而言，是一个数据发送端点。该端点采用 Bulk 传输模式。</p>
+<p>EP Bulk-out端点，用来从主机端传输命令和数据给设备端，对设备端而言，是一个数据接收端点。该端点使用 Bulk 传输模式。</p>
+<p>初始化过程中，设备需要提供下列描述符。</p>
+<blockquote>
+<div><ul>
+<li><p>设备描述符（Device Descriptor）</p>
+<div class="figure align-center">
+<img alt="../../_images/usb_device_desc.png" src="../../_images/usb_device_desc.png" />
+</div>
+<p>其中 idVendor 和 idProduct 是必须的。Vendor ID 需要向 USB-IF 购买，Product ID 由厂商自定义。</p>
+<p>AIC 购买的 Vendor ID 为 0x33C3，USB 升级所用的 Product ID 为 0x6677（”fw” 的ASCII 码值，表示用于 firmware upgrade）。</p>
+</li>
+<li><p>配置描述符（Configuration Descriptor）</p>
+<div class="figure align-center">
+<img alt="../../_images/usb_config_desc.png" src="../../_images/usb_config_desc.png" />
+</div>
+<p>bNumInterfaces 设置为1，仅支持一个 Bulk-Only 接口。bmAttributes 设置为0x80。</p>
+</li>
+<li><p>接口描述符（Interface Descriptor）</p>
+<div class="figure align-center">
+<img alt="../../_images/usb_interface_desc.png" src="../../_images/usb_interface_desc.png" />
+</div>
+<p>bNumEndpoints 设置为0，包含Bulk-in, Bulk-out 两个端点。
+bInterfaceClass，bInterfaceSubClass 和 bInterfaceProtocol 设置为 0xff ，表示自定义类型。</p>
+</li>
+<li><p>Bulk-in 端点描述符（Bulk-in Endpoint Descriptor）</p>
+<div class="figure align-center">
+<img alt="../../_images/usb_bulk_in_endpoint.png" src="../../_images/usb_bulk_in_endpoint.png" />
+</div>
+</li>
+<li><p>Bulk-out 端点描述符（Bulk-out Endpoint Descriptor）</p>
+<div class="figure align-center">
+<img alt="../../_images/usb_bulk_out_endpoint.png" src="../../_images/usb_bulk_out_endpoint.png" />
+</div>
+</li>
+</ul>
+</div></blockquote>
+<p>具体的细节可以参考《Universal Serial Bus Mass Storage Class Bulk-Only Transfer》。</p>
+</div>
+</div>
+<div class="section" id="uart">
+<h2><span class="section-number">7.12.2.3. </span>UART 传输<a class="headerlink" href="#uart" title="永久链接至标题">¶</a></h2>
+<p>几个关键字符：</p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 9%" />
+<col style="width: 9%" />
+<col style="width: 82%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>名称</p></th>
+<th class="head"><p>数值</p></th>
+<th class="head"><p>说明</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>SOH</p></td>
+<td><p>0x01</p></td>
+<td><p>Start of Heading</p></td>
+</tr>
+<tr class="row-odd"><td><p>STX</p></td>
+<td><p>0x02</p></td>
+<td><p>Start of Text</p></td>
+</tr>
+<tr class="row-even"><td><p>ACK</p></td>
+<td><p>0x06</p></td>
+<td><p>Acknowledge</p></td>
+</tr>
+<tr class="row-odd"><td><p>DC1</p></td>
+<td><p>0x11</p></td>
+<td><p>Device Control，定义为切换到主机发送状态</p></td>
+</tr>
+<tr class="row-even"><td><p>DC2</p></td>
+<td><p>0x12</p></td>
+<td><p>Device Control，定义为切换到主机接收状态</p></td>
+</tr>
+<tr class="row-odd"><td><p>NAK</p></td>
+<td><p>0x15</p></td>
+<td><p>Negative Acknowledge</p></td>
+</tr>
+<tr class="row-even"><td><p>CAN</p></td>
+<td><p>0x18</p></td>
+<td><p>Cancel</p></td>
+</tr>
+<tr class="row-odd"><td><p>A</p></td>
+<td><p>0x41</p></td>
+<td><p>ASCII 字符 ‘A’，从机程序发出的连接信号</p></td>
+</tr>
+<tr class="row-even"><td><p>C</p></td>
+<td><p>0x43</p></td>
+<td><p>ASCII 字符 ‘C’，主机程序发出的连接信号</p></td>
+</tr>
+</tbody>
+</table>
+<div class="section" id="id4">
+<h3><span class="section-number">7.12.2.3.1. </span>传输波特率<a class="headerlink" href="#id4" title="永久链接至标题">¶</a></h3>
+<p>BROM 阶段使用的串口参数：</p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 28%" />
+<col style="width: 18%" />
+<col style="width: 18%" />
+<col style="width: 18%" />
+<col style="width: 20%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>波特率</p></th>
+<th class="head"><p>数据位</p></th>
+<th class="head"><p>校验位</p></th>
+<th class="head"><p>停止位</p></th>
+<th class="head"><p>流控制</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>115200</p></td>
+<td><p>8</p></td>
+<td><p>N</p></td>
+<td><p>1</p></td>
+<td><p>N</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="id5">
+<h3><span class="section-number">7.12.2.3.2. </span>建立连接<a class="headerlink" href="#id5" title="永久链接至标题">¶</a></h3>
+<p>在连接检测阶段，由从机程序主动发出就绪信号，主机程序检测并回应的方式建立连接。</p>
+<div class="figure align-center" id="id13">
+<img alt="../../_images/uart_phy_connect.png" src="../../_images/uart_phy_connect.png" />
+<p class="caption"><span class="caption-number">图 7.19 </span><span class="caption-text">建立连接示例</span><a class="headerlink" href="#id13" title="永久链接至图片">¶</a></p>
+</div>
+<p>从机程序运行起来首先发送字符 A，表示就绪，并等待主机程序回应 ACK。如果等待超时，
+则重复发送字符 A，进入等待。该过程循环执行，直到收到主机程序的 ACK 回复。
+主机程序就绪时接收到字符 A，则应发送 ACK 建立连接。</p>
+<p>从机程序的连接处理流程：</p>
+<div class="figure align-center" id="id14">
+<img alt="../../_images/uart_phy_connect_device.png" src="../../_images/uart_phy_connect_device.png" />
+<p class="caption"><span class="caption-number">图 7.20 </span><span class="caption-text">从机端建立连接的流程</span><a class="headerlink" href="#id14" title="永久链接至图片">¶</a></p>
+</div>
+<p>主机程序的连接处理流程：</p>
+<div class="figure align-center" id="id15">
+<img alt="../../_images/uart_phy_connect_host.png" src="../../_images/uart_phy_connect_host.png" />
+<p class="caption"><span class="caption-number">图 7.21 </span><span class="caption-text">主机端建立连接的流程</span><a class="headerlink" href="#id15" title="永久链接至图片">¶</a></p>
+</div>
+</div>
+<div class="section" id="id6">
+<h3><span class="section-number">7.12.2.3.3. </span>掉线检测<a class="headerlink" href="#id6" title="永久链接至标题">¶</a></h3>
+<p>在没有传输任务的情况下，主机程序应该每隔 0.5秒发送一次 C 进行确认连接状态，
+如果收到 ACK，表明连接有效，超时则表明连接已经断开。</p>
+<p>从机程序通过命令通信的间隔时间进行掉线检测，即最后一次接收到有效的命令的时间到当前时间之间，
+如果间隔超过 3 秒，则认为掉线，重新进入建立连接的状态，主动向外发出字符 A。</p>
+<div class="figure align-center" id="id16">
+<img alt="../../_images/uart_phy_disconnect_detection.png" src="../../_images/uart_phy_disconnect_detection.png" />
+<p class="caption"><span class="caption-number">图 7.22 </span><span class="caption-text">掉线检测/连接维护</span><a class="headerlink" href="#id16" title="永久链接至图片">¶</a></p>
+</div>
+</div>
+<div class="section" id="id7">
+<h3><span class="section-number">7.12.2.3.4. </span>数据传输<a class="headerlink" href="#id7" title="永久链接至标题">¶</a></h3>
+<p>主机程序与从机程序完成连接阶段即进入数据传输阶段。</p>
+<p>本协议的数据传输过程的一个特点是，数据传输是一个主机驱动的过程，从机总是被动响应。
+即主机程序控制整个数据传输过程，从机程序是一个被动响应命令的程序。这也是为了保持与
+USB 升级协议的行为一致。
+这个特点与 YMODEM 协议相反。YMODEM 协议是一个从机驱动的协议，从机程序驱动数据的传输。</p>
+<p><strong>关键点：</strong></p>
+<blockquote>
+<div><ol class="arabic simple">
+<li><p>无论是主机程序还是从机程序，只有处于数据传输阶段才可以传输数据</p></li>
+<li><p>数据传输阶段，主机程序和从机程序都要区分两个状态：数据发送状态和数据接收状态</p></li>
+<li><p>从机程序不会主动传输数据，传输数据的动作，总是被动触发</p></li>
+</ol>
+</div></blockquote>
+<p><strong>状态切换</strong></p>
+<p>为了描述方便，在数据传输阶段的状态统一分为两个状态进行描述：</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>主机发送状态</p></li>
+<li><p>主机接收状态</p></li>
+</ul>
+</div></blockquote>
+<p>默认情况下，系统处于主机发送状态（从机程序的角度为数据接收状态）。
+在该状态下主机程序仅向外发送数据帧，并且等待 ACK；从机程序等待读取数据帧，
+读取校验正确之后，发送 ACK。</p>
+<p>状态切换由主机程序执行。当主机程序需要接收数据时，通过发送 DC2(RECV) 给从机程序，
+从机程序回复 ACK 之后，通信状态切换为主机接收状态，此时从机程序可以发送数据帧，
+主机程序等待接收数据帧，并且在校验正确后发送 ACK。</p>
+<p>当主机程序接收数据完毕，需要发送 DC1(SEND) 给从机程序，将状态切换到主机发送状态。</p>
+<p><strong>传输流程</strong></p>
+<p>一个典型的数据传输流程如下图。</p>
+<div class="figure align-center" id="id17">
+<img alt="../../_images/uart_phy_data_transfer.png" src="../../_images/uart_phy_data_transfer.png" />
+<p class="caption"><span class="caption-number">图 7.23 </span><span class="caption-text">数据传输示例</span><a class="headerlink" href="#id17" title="永久链接至图片">¶</a></p>
+</div>
+</div>
+</div>
+<div class="section" id="id8">
+<h2><span class="section-number">7.12.2.4. </span>应用命令<a class="headerlink" href="#id8" title="永久链接至标题">¶</a></h2>
+<p>BROM 阶段的 USB 和 UART 升级模式所支持的命令列表如下。</p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 23%" />
+<col style="width: 9%" />
+<col style="width: 68%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>命令</p></th>
+<th class="head"><p>值</p></th>
+<th class="head"><p>功能</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>GET_HWINFO</p></td>
+<td><p>0x00</p></td>
+<td><p>获取硬件相关信息</p></td>
+</tr>
+<tr class="row-odd"><td><p>GET_TRACEINFO</p></td>
+<td><p>0x01</p></td>
+<td><p>获取 BROM 的一些调试跟踪信息，AIC内部命令</p></td>
+</tr>
+<tr class="row-even"><td><p>WRITE</p></td>
+<td><p>0x02</p></td>
+<td><p>写数据到 CPU 可访问的地址空间</p></td>
+</tr>
+<tr class="row-odd"><td><p>READ</p></td>
+<td><p>0x03</p></td>
+<td><p>从 CPU 可访问的地址空间读取数据</p></td>
+</tr>
+<tr class="row-even"><td><p>EXEC</p></td>
+<td><p>0x04</p></td>
+<td><p>指定位置开始运行程序</p></td>
+</tr>
+<tr class="row-odd"><td><p>JTAG_UNLOCK</p></td>
+<td><p>0x06</p></td>
+<td><p>解锁 JTAG</p></td>
+</tr>
+<tr class="row-even"><td><p>BOOT_CONTINUE</p></td>
+<td><p>0x07</p></td>
+<td><p>跳出升级模式的循环，重新从存储设备启动</p></td>
+</tr>
+<tr class="row-odd"><td><p>SET_FWC_META</p></td>
+<td><p>0x10</p></td>
+<td><p>发送固件组件(Firmware Component)的描述信息</p></td>
+</tr>
+<tr class="row-even"><td><p>GET_BLOCK_SIZE</p></td>
+<td><p>0x11</p></td>
+<td><p>获取传输的数据块大小，发送的有效数据须以该块大小为单位</p></td>
+</tr>
+<tr class="row-odd"><td><p>SEND_FWC_DATA</p></td>
+<td><p>0x12</p></td>
+<td><p>发送固件组件数据</p></td>
+</tr>
+<tr class="row-even"><td><p>GET_FWC_CRC</p></td>
+<td><p>0x13</p></td>
+<td><p>获取设备端对所接收数据计算的CRC值，以确认传输是否出错</p></td>
+</tr>
+<tr class="row-odd"><td><p>GET_FWC_BURN_RESULT</p></td>
+<td><p>0x14</p></td>
+<td><p>获取组件烧录后，设备端的校验结果</p></td>
+</tr>
+<tr class="row-even"><td><p>GET_FWC_RUN_RESULT</p></td>
+<td><p>0x15</p></td>
+<td><p>获取组件在运行之后的返回结果</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="id9">
+<h2><span class="section-number">7.12.2.5. </span>升级流程<a class="headerlink" href="#id9" title="永久链接至标题">¶</a></h2>
+<p>在进行固件升级的流程中，BROM 阶段需要完成几个任务：</p>
+<blockquote>
+<div><ol class="arabic simple">
+<li><p>下载 Bootloader 到指定位置</p></li>
+<li><p>运行 Bootloader 进入 Bootloader 的升级模式</p></li>
+</ol>
+</div></blockquote>
+<p>对于升级而言，上述每一个部分都是升级固件的组件。制作升级固件时，每一个组件都有一个对应的组件描述信息。
+利用这些信息，通过流程的抽象，上述的任务可被一个统一的流程进行处理。</p>
+<p>具体的组件处理流程：</p>
+<blockquote>
+<div><ol class="arabic">
+<li><p>SET_FWC_META</p>
+<p>工具将对应的组件描述信息发送给设备端。设备端的升级程序依据描述信息，准备接收数据。</p>
+</li>
+<li><p>GET_BLOCK_SIZE</p>
+<p>工具获取本次组件传输的数据块大小。发送组件数据的时候，以这个块大小为单位进行发送。</p>
+</li>
+<li><p>SEND_FWC_DATA</p>
+<p>工具发送组件的数据给设备端。设备端在接收数据的同时，对接收到的数据进行 CRC 校验。
+接收完成之后，依据前面接收的组件描述信息，对数据进行具体的操作。在 BROM 阶段，
+如果组件是一个可执行程序，则在接收完成之后，运行组件。</p>
+</li>
+<li><p>GET_FWC_CRC</p>
+<p>工具获取设备端所计算的 CRC 校验值，用来判断组件的传输是否正确。</p>
+</li>
+<li><p>GET_FWC_BURN_RESULT</p>
+<p>工具获取设备端对组件数据的烧录是否正确。这是统一流程的一个步骤，BROM 不支持烧录组件，因此直接回复成功。</p>
+</li>
+<li><p>GET_FWC_RUN_RESULT</p>
+<p>工具获取组件运行的返回值。对于可执行组件，则将组件运行返回值传给工具端；
+对于不可置信组件，则统一返回0.</p>
+</li>
+</ol>
+</div></blockquote>
+<p>进行固件升级的时候，主机从固件包中顺序读取上述组件，按照流程逐个组件发送给设备端，即可完成 BROM 阶段的几个任务。</p>
+</div>
+<div class="section" id="id10">
+<h2><span class="section-number">7.12.2.6. </span>调试功能<a class="headerlink" href="#id10" title="永久链接至标题">¶</a></h2>
+<p>BROM 阶段的升级协议提供了几个用于调试的命令。</p>
+<blockquote>
+<div><ol class="arabic simple">
+<li><p>WRITE</p></li>
+<li><p>READ</p></li>
+<li><p>EXEC</p></li>
+</ol>
+</div></blockquote>
+<p>这几个命令可以用于芯片验证等调试场景，可以完成诸如读写内存，读写寄存器，以及下载一段程序并执行等操作。</p>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+        <a href="../clocks_power/index.html" class="btn btn-neutral float-right" title="8. 时钟和电源" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="spi_pin_map.html" class="btn btn-neutral float-left" title="7.12.1. SiP Flash 烧录" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; 版权所有 2023 广州匠芯创科技有限公司.
+
+    </p>
+  </div> 
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

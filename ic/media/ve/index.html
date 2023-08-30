@@ -1,0 +1,508 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="zh-CN" >
+<head>
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>10.3. VE &mdash; AIC文档中心 v1.0 文档</title>
+  
+
+  
+  <link rel="stylesheet" href="../../../_static/css/theme_overrides.css" type="text/css" />
+  <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+
+  
+  
+    <link rel="shortcut icon" href="../../../_static/aic_logo.png"/>
+  
+
+  
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../../" src="../../../_static/documentation_options.js"></script>
+        <script src="../../../_static/jquery.js"></script>
+        <script src="../../../_static/underscore.js"></script>
+        <script src="../../../_static/doctools.js"></script>
+        <script src="../../../_static/translations.js"></script>
+    
+    <script type="text/javascript" src="../../../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="索引" href="../../../genindex.html" />
+    <link rel="search" title="搜索" href="../../../search.html" />
+    <link rel="next" title="10.3.1. 概述" href="overview.html" />
+    <link rel="prev" title="10.2.3. 寄存器描述" href="../ge/register.html" />
+    <script>
+        $(function () {
+/**
+            var $body = $(".rst-content");
+            $body.attr("oncontextmenu", "return false"); 
+            $body.attr("ondragstart", "return false");
+            $body.attr("onselectstart", "return false");
+            $body.attr("onbeforecopy", "return false");
+
+            if (document.selection) {
+                $body.attr("onselect", "document.selection.empty()");
+                $body.attr("oncopy", "document.selection.empty()");
+                $body.attr("onmouseup", "document.selection.empty()");
+            } else {
+                $body.attr("onselect", "document.getSelection().removeAllRanges()");
+                $body.attr("oncopy", "document.getSelection().removeAllRanges()");
+                $body.attr("onmouseup", "document.getSelection().removeAllRanges()");
+            }
+
+            $(".wy-menu-vertical .toctree-l4.current .current.toctree-l5 > ul").wrap("<div></div>");
+
+            $(document).keydown(function (e) {
+                var $div = $(".wy-menu-vertical .toctree-l4.current .current.toctree-l5 > div");
+                var scrollLeft = $div.scrollLeft();
+                var step = 50;
+                var code = e.keyCode;
+                switch (code) {
+                    case 37:
+                        $div.scrollLeft(scrollLeft - step);
+                        break;
+                    case 39:
+                        $div.scrollLeft(scrollLeft + step);
+                        break;
+                    case 65:
+                    case 67:
+                    case 83:
+                    case 86:
+                        var ctrlKey = navigator.platform.match("Mac") ? e.metaKey : e.ctrlKey;
+                        if (ctrlKey) {
+                            e.preventDefault();
+                            window.event.returnValue = false;
+                        }
+                        break;
+                    case 123:
+                        e.preventDefault();
+                        window.event.returnValue = false;
+                        break;
+                }
+	    });  **/
+
+            watermark({
+                watermark_id: ".wy-nav-content",
+                watermark_txt: "ArtInChip",
+                watermark_font: "微软雅黑",
+                watermark_fontsize: "100px",
+                watermark_width: 600,
+                watermark_height: 300,
+                watermark_alpha: 0.1,
+                watermark_rows: 0,
+                watermark_y: 100,
+                watermark_x_space: 0,
+                watermark_y_space: 100
+            });
+
+        });
+
+        function watermark(settings) {
+            var defaultSettings = {
+                watermark_id: "body",
+                watermark_txt: "text",
+                watermark_x: 20,
+                watermark_y: 20,
+                watermark_rows: 20,
+                watermark_cols: 20,
+                watermark_x_space: 100,
+                watermark_y_space: 50,
+                watermark_color: '#aaa',
+                watermark_alpha: 0.4,
+                watermark_fontsize: '15px',
+                watermark_font: 'Times New Roman',
+                watermark_width: 210,
+                watermark_height: 80,
+                watermark_angle: 20
+            };
+
+            for (key in settings) {
+                defaultSettings[key] = settings[key];
+            }
+
+            var oTemp = document.createDocumentFragment();
+
+            var $container = $(defaultSettings.watermark_id);
+
+            var page_width = $container.width();
+            var col_width = defaultSettings.watermark_width + defaultSettings.watermark_x_space;
+            defaultSettings.watermark_cols = page_width / col_width;
+
+            var page_height = $container.height();
+            var row_height = defaultSettings.watermark_height + defaultSettings.watermark_y_space;
+            defaultSettings.watermark_rows = page_height / row_height;
+
+            var x, y;
+            for (var i = 0; i < defaultSettings.watermark_rows; i++) {
+                y = defaultSettings.watermark_y + (defaultSettings.watermark_y_space + defaultSettings.watermark_height) * i;
+                for (var j = 0; j < defaultSettings.watermark_cols; j++) {
+                    x = defaultSettings.watermark_x + (defaultSettings.watermark_width + defaultSettings.watermark_x_space) * j;
+                    var mask_div = document.createElement('div');
+                    mask_div.id = 'mask_div' + i + j;
+                    mask_div.className = 'mask_div';
+                    mask_div.appendChild(document.createTextNode(defaultSettings.watermark_txt));
+
+                    mask_div.style.webkitTransform = "rotate(-" + defaultSettings.watermark_angle + "deg)";
+                    mask_div.style.MozTransform = "rotate(-" + defaultSettings.watermark_angle + "deg)";
+                    mask_div.style.msTransform = "rotate(-" + defaultSettings.watermark_angle + "deg)";
+                    mask_div.style.OTransform = "rotate(-" + defaultSettings.watermark_angle + "deg)";
+                    mask_div.style.transform = "rotate(-" + defaultSettings.watermark_angle + "deg)";
+                    mask_div.style.visibility = "";
+                    mask_div.style.position = "absolute";
+                    mask_div.style.left = x + 'px';
+                    mask_div.style.top = y + 'px';
+                    mask_div.style.overflow = "hidden";
+                    mask_div.style.zIndex = "9999";
+
+                    mask_div.style.pointerEvents = 'none';
+                    mask_div.style.opacity = defaultSettings.watermark_alpha;
+                    mask_div.style.fontSize = defaultSettings.watermark_fontsize;
+                    mask_div.style.fontFamily = defaultSettings.watermark_font;
+                    mask_div.style.color = defaultSettings.watermark_color;
+                    mask_div.style.textAlign = "center";
+                    mask_div.style.width = defaultSettings.watermark_width + 'px';
+                    mask_div.style.height = defaultSettings.watermark_height + 'px';
+                    mask_div.style.display = "block";
+                    oTemp.appendChild(mask_div);
+                };
+            };
+            $container.append(oTemp);
+        }
+    </script>
+
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../../index.html" class="icon icon-home"> AIC文档中心
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../product/index.html">产品简介</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../quick-start/index.html">快速入门</a></li>
+</ul>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="../../index.html">芯片手册</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../../about/index.html">1. 文档说明</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../introduction/index.html">2. 产品描述</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../memory_maps/index.html">3. 地址映射</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../pinmux/index.html">4. 引脚复用</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../cpu_bus/index.html">5. 处理器和总线</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../security/index.html">6. 安全</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../brom/index.html">7. 启动</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../clocks_power/index.html">8. 时钟和电源</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../memory/index.html">9. 存储</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="../index.html">10. 多媒体</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="../de/index.html">10.1. Display Engine (DE)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../ge/index.html">10.2. Graphics Engine (GE)</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">10.3. Video Engine (VE)</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="overview.html">10.3.1. 概述</a></li>
+<li class="toctree-l4"><a class="reference internal" href="jpeg.html">10.3.2. JPEG模块功能说明</a></li>
+<li class="toctree-l4"><a class="reference internal" href="png.html">10.3.3. PNG 模块功能说明</a></li>
+<li class="toctree-l4"><a class="reference internal" href="register.html">10.3.4. 寄存器地址空间映射</a></li>
+<li class="toctree-l4"><a class="reference internal" href="ve_top_register.html">10.3.5. VE_TOP寄存器</a></li>
+<li class="toctree-l4"><a class="reference internal" href="png_register.html">10.3.6. PNG寄存器描述</a></li>
+<li class="toctree-l4"><a class="reference internal" href="jpeg_register.html">10.3.7. JPEG寄存器描述</a></li>
+<li class="toctree-l4"><a class="reference internal" href="pic_register.html">10.3.8. 图像信息寄存器描述</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../lcd/index.html">10.4. LCD</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../lvds/index.html">10.5. LVDS</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../dsi/index.html">10.6. MIPI DSI</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../dvp/index.html">10.7. Digital Video Port (DVP)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../audio/index.html">10.8. AUDIO</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../i2s/index.html">10.9. Integrated Interchip Sound (I2S)</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../timers/index.html">11. 计时器</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../interface/index.html">12. 接口</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../analog/index.html">13. 模拟</a></li>
+</ul>
+</li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../lite/index.html">RTOS SDK</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../baremetal/index.html">Baremetal</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../tools/index.html">工具指南</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../aboutus/index.html">关于我们</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../index.html">AIC文档中心</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+          <li><a href="../../index.html">芯片手册</a> &raquo;</li>
+        
+          <li><a href="../index.html"><span class="section-number">10. </span>多媒体</a> &raquo;</li>
+        
+      <li><span class="section-number">10.3. </span>VE</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="ve">
+<h1><span class="section-number">10.3. </span>VE<a class="headerlink" href="#ve" title="永久链接至标题">¶</a></h1>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="overview.html">10.3.1. 概述</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="overview.html#id2">10.3.1.1. 特性说明</a></li>
+<li class="toctree-l2"><a class="reference internal" href="overview.html#id3">10.3.1.2. 性能</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="jpeg.html">10.3.2. JPEG模块功能说明</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="jpeg.html#id1">10.3.2.1. 原理框图</a></li>
+<li class="toctree-l2"><a class="reference internal" href="jpeg.html#id2">10.3.2.2. 解码流程</a></li>
+<li class="toctree-l2"><a class="reference internal" href="jpeg.html#id3">10.3.2.3. 前/后处理</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="png.html">10.3.3. PNG 模块功能说明</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="png.html#id1">10.3.3.1. 原理框图</a></li>
+<li class="toctree-l2"><a class="reference internal" href="png.html#id2">10.3.3.2. PNG 解码</a></li>
+<li class="toctree-l2"><a class="reference internal" href="png.html#zlib">10.3.3.3. zlib解码</a></li>
+<li class="toctree-l2"><a class="reference internal" href="png.html#gzip">10.3.3.4. gzip解码</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="register.html">10.3.4. 寄存器地址空间映射</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ve_top_register.html">10.3.5. VE_TOP寄存器</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="ve_top_register.html#x0000-ve-clk">10.3.5.1. 0x0000 VE_CLK</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ve_top_register.html#x0004-ve-rst">10.3.5.2. 0x0004 VE_RST</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ve_top_register.html#x0008-ve-init">10.3.5.3. 0x0008 VE_INIT</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ve_top_register.html#x000c-ve-irq">10.3.5.4. 0x000C VE_IRQ</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ve_top_register.html#x0014-jpeg-en">10.3.5.5. 0x0014 JPEG_EN</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ve_top_register.html#x0018-png-en">10.3.5.6. 0x0018 PNG_EN</a></li>
+<li class="toctree-l2"><a class="reference internal" href="ve_top_register.html#x00fc-ve-version">10.3.5.7. 0x00FC VE_VERSION</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="png_register.html">10.3.6. PNG寄存器描述</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="png_register.html#x0100-inflate-int">10.3.6.1. 0x0100 INFLATE_INT</a></li>
+<li class="toctree-l2"><a class="reference internal" href="png_register.html#x0104-inflate-status">10.3.6.2. 0x0104 INFLATE_STATUS</a></li>
+<li class="toctree-l2"><a class="reference internal" href="png_register.html#x0108-inflate-start">10.3.6.3. 0x0108 INFLATE_START</a></li>
+<li class="toctree-l2"><a class="reference internal" href="png_register.html#x010c-png-error-state">10.3.6.4. 0x010C PNG_ERROR_STATE</a></li>
+<li class="toctree-l2"><a class="reference internal" href="png_register.html#x0110-inflate-ctrl">10.3.6.5. 0x0110 INFLATE_CTRL</a></li>
+<li class="toctree-l2"><a class="reference internal" href="png_register.html#x0114-png-size">10.3.6.6. 0x0114 PNG_SIZE</a></li>
+<li class="toctree-l2"><a class="reference internal" href="png_register.html#x0118-png-output-stride">10.3.6.7. 0x0118 PNG_OUTPUT_STRIDE</a></li>
+<li class="toctree-l2"><a class="reference internal" href="png_register.html#x011c-png-output-format">10.3.6.8. 0x011C PNG_OUTPUT_FORMAT</a></li>
+<li class="toctree-l2"><a class="reference internal" href="png_register.html#x0120-input-bs-start-addr">10.3.6.9. 0x0120 INPUT_BS_START_ADDR</a></li>
+<li class="toctree-l2"><a class="reference internal" href="png_register.html#x0124-input-bs-end-addr">10.3.6.10. 0x0124 INPUT_BS_END_ADDR</a></li>
+<li class="toctree-l2"><a class="reference internal" href="png_register.html#x0128-input-bs-offset">10.3.6.11. 0x0128 INPUT_BS_OFFSET</a></li>
+<li class="toctree-l2"><a class="reference internal" href="png_register.html#x012c-input-bs-length">10.3.6.12. 0x012C INPUT_BS_LENGTH</a></li>
+<li class="toctree-l2"><a class="reference internal" href="png_register.html#x0130-output-buf-addr">10.3.6.13. 0x0130 OUTPUT_BUF_ADDR</a></li>
+<li class="toctree-l2"><a class="reference internal" href="png_register.html#x0134-output-buf-end-addr">10.3.6.14. 0x0134 OUTPUT_BUF_END_ADDR</a></li>
+<li class="toctree-l2"><a class="reference internal" href="png_register.html#x0138-output-count">10.3.6.15. 0x0138 OUTPUT_COUNT</a></li>
+<li class="toctree-l2"><a class="reference internal" href="png_register.html#x013c-inflate-check">10.3.6.16. 0x013C INFLATE_CHECK</a></li>
+<li class="toctree-l2"><a class="reference internal" href="png_register.html#x0140-inflate-window-buf-addr">10.3.6.17. 0x0140 INFLATE_WINDOW_BUF_ADDR</a></li>
+<li class="toctree-l2"><a class="reference internal" href="png_register.html#x0144-png-pal-buf-addr">10.3.6.18. 0x0144 PNG_PAL_BUF_ADDR</a></li>
+<li class="toctree-l2"><a class="reference internal" href="png_register.html#x0148-data-valid">10.3.6.19. 0x0148 DATA_VALID</a></li>
+<li class="toctree-l2"><a class="reference internal" href="png_register.html#x014c-png-palette-addr">10.3.6.20. 0x014C PNG_PALETTE_ADDR</a></li>
+<li class="toctree-l2"><a class="reference internal" href="png_register.html#x0160-png-crop-base">10.3.6.21. 0x0160 PNG_CROP_BASE</a></li>
+<li class="toctree-l2"><a class="reference internal" href="png_register.html#x0164-png-crop-size">10.3.6.22. 0x0164 PNG_CROP_SIZE</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="jpeg_register.html">10.3.7. JPEG寄存器描述</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="jpeg_register.html#x200-jpeg-start">10.3.7.1. 0x200 JPEG_START</a></li>
+<li class="toctree-l2"><a class="reference internal" href="jpeg_register.html#x204-jpeg-status">10.3.7.2. 0x204 JPEG_STATUS</a></li>
+<li class="toctree-l2"><a class="reference internal" href="jpeg_register.html#x208-jpeg-irq-en">10.3.7.3. 0x208 JPEG_IRQ_EN</a></li>
+<li class="toctree-l2"><a class="reference internal" href="jpeg_register.html#x210-jpeg-start-pos">10.3.7.4. 0x210 JPEG_START_POS</a></li>
+<li class="toctree-l2"><a class="reference internal" href="jpeg_register.html#x214-jpeg-size">10.3.7.5. 0x214 JPEG_SIZE</a></li>
+<li class="toctree-l2"><a class="reference internal" href="jpeg_register.html#x218-jpeg-ctrl">10.3.7.6. 0x218 JPEG_CTRL</a></li>
+<li class="toctree-l2"><a class="reference internal" href="jpeg_register.html#x21c-jpeg-mcu-info">10.3.7.7. 0x21C JPEG_MCU_INFO</a></li>
+<li class="toctree-l2"><a class="reference internal" href="jpeg_register.html#x220-jpeg-handle-num">10.3.7.8. 0x220 JPEG_HANDLE_NUM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="jpeg_register.html#x224-jpeg-qmat-info">10.3.7.9. 0x224 JPEG_QMAT_INFO</a></li>
+<li class="toctree-l2"><a class="reference internal" href="jpeg_register.html#x228-jpeg-qmat-addr">10.3.7.10. 0x228 JPEG_QMAT_ADDR</a></li>
+<li class="toctree-l2"><a class="reference internal" href="jpeg_register.html#x22c-jpeg-qmat-data">10.3.7.11. 0x22C JPEG_QMAT_DATA</a></li>
+<li class="toctree-l2"><a class="reference internal" href="jpeg_register.html#x230-jpeg-huff-info">10.3.7.12. 0x230 JPEG_HUFF_INFO</a></li>
+<li class="toctree-l2"><a class="reference internal" href="jpeg_register.html#x234-jpeg-huff-addr">10.3.7.13. 0x234 JPEG_HUFF_ADDR</a></li>
+<li class="toctree-l2"><a class="reference internal" href="jpeg_register.html#x238-jpeg-huff-data">10.3.7.14. 0x238 JPEG_HUFF_DATA</a></li>
+<li class="toctree-l2"><a class="reference internal" href="jpeg_register.html#x23c-jpeg-clip-en">10.3.7.15. 0x23C JPEG_CLIP_EN</a></li>
+<li class="toctree-l2"><a class="reference internal" href="jpeg_register.html#x240-jpeg-clip-base">10.3.7.16. 0x240 JPEG_CLIP_BASE</a></li>
+<li class="toctree-l2"><a class="reference internal" href="jpeg_register.html#x244-jpeg-clip-size">10.3.7.17. 0x244 JPEG_CLIP_SIZE</a></li>
+<li class="toctree-l2"><a class="reference internal" href="jpeg_register.html#x248-jpeg-clip-out-base">10.3.7.18. 0x248 JPEG_CLIP_OUT_BASE</a></li>
+<li class="toctree-l2"><a class="reference internal" href="jpeg_register.html#x24c-jpeg-rotmir">10.3.7.19. 0x24C JPEG_ROTMIR</a></li>
+<li class="toctree-l2"><a class="reference internal" href="jpeg_register.html#x250-jpeg-scale">10.3.7.20. 0x250 JPEG_SCALE</a></li>
+<li class="toctree-l2"><a class="reference internal" href="jpeg_register.html#x254-jpeg-rgb-en">10.3.7.21. 0x254 JPEG_RGB_EN</a></li>
+<li class="toctree-l2"><a class="reference internal" href="jpeg_register.html#x25c-jpeg-rst-intval">10.3.7.22. 0x25C JPEG_RST_INTVAL</a></li>
+<li class="toctree-l2"><a class="reference internal" href="jpeg_register.html#x264-jpeg-frm-idx">10.3.7.23. 0x264 JPEG_FRM_IDX</a></li>
+<li class="toctree-l2"><a class="reference internal" href="jpeg_register.html#x268-jpeg-uv-int">10.3.7.24. 0x268 JPEG_UV_INT</a></li>
+<li class="toctree-l2"><a class="reference internal" href="jpeg_register.html#x26c-jpeg-cycles">10.3.7.25. 0x26C JPEG_CYCLES</a></li>
+<li class="toctree-l2"><a class="reference internal" href="jpeg_register.html#x28c-jpeg-dither-param">10.3.7.26. 0x28C JPEG_DITHER_PARAM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="jpeg_register.html#x300-jpeg-sub-ctrl">10.3.7.27. 0x300 JPEG_SUB_CTRL</a></li>
+<li class="toctree-l2"><a class="reference internal" href="jpeg_register.html#x304-jpeg-mem-ia">10.3.7.28. 0x304 JPEG_MEM_IA</a></li>
+<li class="toctree-l2"><a class="reference internal" href="jpeg_register.html#x308-jpeg-mem-ha">10.3.7.29. 0x308 JPEG_MEM_HA</a></li>
+<li class="toctree-l2"><a class="reference internal" href="jpeg_register.html#x31c-jpeg-rbit-offset">10.3.7.30. 0x31C JPEG_RBIT_OFFSET</a></li>
+<li class="toctree-l2"><a class="reference internal" href="jpeg_register.html#x324-jpeg-mem-sa">10.3.7.31. 0x324 JPEG_MEM_SA</a></li>
+<li class="toctree-l2"><a class="reference internal" href="jpeg_register.html#x328-jpeg-mem-ea">10.3.7.32. 0x328 JPEG_MEM_EA</a></li>
+<li class="toctree-l2"><a class="reference internal" href="jpeg_register.html#x384-jpeg-stream-num">10.3.7.33. 0x384 JPEG_STREAM_NUM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="jpeg_register.html#x38c-jpeg-data-count">10.3.7.34. 0x38C JPEG_DATA_COUNT</a></li>
+<li class="toctree-l2"><a class="reference internal" href="jpeg_register.html#x390-jpeg-busy">10.3.7.35. 0x390 JPEG_BUSY</a></li>
+<li class="toctree-l2"><a class="reference internal" href="jpeg_register.html#x398-jpeg-stream-end-addr">10.3.7.36. 0x398 JPEG_STREAM_END_ADDR</a></li>
+<li class="toctree-l2"><a class="reference internal" href="jpeg_register.html#x394-jpeg-req">10.3.7.37. 0x394 JPEG_REQ</a></li>
+<li class="toctree-l2"><a class="reference internal" href="jpeg_register.html#x39c-jpeg-stream-start-addr">10.3.7.38. 0x39C JPEG_STREAM_START_ADDR</a></li>
+<li class="toctree-l2"><a class="reference internal" href="jpeg_register.html#x3a4-jpeg-wr-addr">10.3.7.39. 0x3A4 JPEG_WR_ADDR</a></li>
+<li class="toctree-l2"><a class="reference internal" href="jpeg_register.html#x3b0-jpeg-cur-pos">10.3.7.40. 0x3B0 JPEG_CUR_POS</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="pic_register.html">10.3.8. 图像信息寄存器描述</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="pic_register.html#x600-picture-format">10.3.8.1. 0x600 PICTURE_FORMAT</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pic_register.html#x604-picture-size">10.3.8.2. 0x604 PICTURE_SIZE</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pic_register.html#x608-picture-luma-addr">10.3.8.3. 0x608 PICTURE_LUMA_ADDR</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pic_register.html#x60c-picture-cb-addr">10.3.8.4. 0x60C  PICTURE_CB_ADDR</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pic_register.html#x610-picture-cr-addr">10.3.8.5. 0x610 PICTURE_CR_ADDR</a></li>
+<li class="toctree-l2"><a class="reference internal" href="pic_register.html#x7fc-write-end-reg">10.3.8.6. 0x7FC WRITE_END_REG</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+        <a href="overview.html" class="btn btn-neutral float-right" title="10.3.1. 概述" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="../ge/register.html" class="btn btn-neutral float-left" title="10.2.3. 寄存器描述" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; 版权所有 2023 广州匠芯创科技有限公司.
+
+    </p>
+  </div> 
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>
