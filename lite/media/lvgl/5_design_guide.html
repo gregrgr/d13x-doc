@@ -7,7 +7,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   
-  <title>6.7.5. 设计指南 &mdash; AIC文档中心 v1.0 文档</title>
+  <title>6.8.5. 设计指南 &mdash; AIC文档中心 v1.0 文档</title>
   
 
   
@@ -41,8 +41,8 @@
     
     <link rel="index" title="索引" href="../../../genindex.html" />
     <link rel="search" title="搜索" href="../../../search.html" />
-    <link rel="next" title="6.7.6. 常见问题" href="6_faq.html" />
-    <link rel="prev" title="6.7.4. 测试指南" href="4_test_guide.html" />
+    <link rel="next" title="6.8.6. 常见问题" href="6_faq.html" />
+    <link rel="prev" title="6.8.4. 测试指南" href="4_test_guide.html" />
     <script>
         $(function () {
 /**
@@ -233,7 +233,13 @@
 <li class="toctree-l1"><a class="reference internal" href="../../../quick-start/index.html">快速入门</a></li>
 </ul>
 <ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../datasheet/index.html">数据手册</a></li>
+</ul>
+<ul>
 <li class="toctree-l1"><a class="reference internal" href="../../../ic/index.html">芯片手册</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../hw/index.html">硬件指南</a></li>
 </ul>
 <ul class="current">
 <li class="toctree-l1 current"><a class="reference internal" href="../../index.html">RTOS SDK</a><ul class="current">
@@ -247,42 +253,43 @@
 <li class="toctree-l3"><a class="reference internal" href="../display/index.html">6.2. Display 使用指南</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../dvp/index.html">6.3. DVP 使用指南</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../ge/index.html">6.4. GE 使用指南</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../ve/index.html">6.5. VE 使用指南</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../mpp/index.html">6.6. MPP 使用指南</a></li>
-<li class="toctree-l3 current"><a class="reference internal" href="index.html">6.7. LVGL 使用指南</a><ul class="current">
-<li class="toctree-l4"><a class="reference internal" href="1_introduction.html">6.7.1. LVGL介绍</a></li>
-<li class="toctree-l4"><a class="reference internal" href="2_configure.html">6.7.2. 参数配置</a></li>
-<li class="toctree-l4"><a class="reference internal" href="3_debug_guide.html">6.7.3. 调试指南</a></li>
-<li class="toctree-l4"><a class="reference internal" href="4_test_guide.html">6.7.4. 测试指南</a></li>
-<li class="toctree-l4 current"><a class="current reference internal" href="#">6.7.5. 设计指南</a><ul>
-<li class="toctree-l5"><a class="reference internal" href="#id2">6.7.5.1. 代码目录</a></li>
-<li class="toctree-l5"><a class="reference internal" href="#lvgl">6.7.5.2. LVGL整体流程</a></li>
-<li class="toctree-l5"><a class="reference internal" href="#id3">6.7.5.3. LVGL层次结构</a></li>
-<li class="toctree-l5"><a class="reference internal" href="#id4">6.7.5.4. 父子结构</a><ul>
-<li class="toctree-l6"><a class="reference internal" href="#id5">6.7.5.4.1. 父子对象一起移动</a></li>
-<li class="toctree-l6"><a class="reference internal" href="#id6">6.7.5.4.2. 子对象超出父对象部分不可见</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../i2s/index.html">6.5. I2S 使用指南</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../ve/index.html">6.6. VE 使用指南</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../mpp/index.html">6.7. MPP 使用指南</a></li>
+<li class="toctree-l3 current"><a class="reference internal" href="index.html">6.8. LVGL 使用指南</a><ul class="current">
+<li class="toctree-l4"><a class="reference internal" href="1_introduction.html">6.8.1. LVGL介绍</a></li>
+<li class="toctree-l4"><a class="reference internal" href="2_configure.html">6.8.2. 参数配置</a></li>
+<li class="toctree-l4"><a class="reference internal" href="3_debug_guide.html">6.8.3. 调试指南</a></li>
+<li class="toctree-l4"><a class="reference internal" href="4_test_guide.html">6.8.4. 测试指南</a></li>
+<li class="toctree-l4 current"><a class="current reference internal" href="#">6.8.5. 设计指南</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="#id2">6.8.5.1. 代码目录</a></li>
+<li class="toctree-l5"><a class="reference internal" href="#lvgl">6.8.5.2. LVGL整体流程</a></li>
+<li class="toctree-l5"><a class="reference internal" href="#id3">6.8.5.3. LVGL层次结构</a></li>
+<li class="toctree-l5"><a class="reference internal" href="#id4">6.8.5.4. 父子结构</a><ul>
+<li class="toctree-l6"><a class="reference internal" href="#id5">6.8.5.4.1. 父子对象一起移动</a></li>
+<li class="toctree-l6"><a class="reference internal" href="#id6">6.8.5.4.2. 子对象超出父对象部分不可见</a></li>
 </ul>
 </li>
-<li class="toctree-l5"><a class="reference internal" href="#id7">6.7.5.5. 显示对接</a><ul>
-<li class="toctree-l6"><a class="reference internal" href="#buffer">6.7.5.5.1. 绘制buffer初始化</a></li>
-<li class="toctree-l6"><a class="reference internal" href="#flush-cb">6.7.5.5.2. flush_cb对接</a></li>
-<li class="toctree-l6"><a class="reference internal" href="#d">6.7.5.5.3. 2D硬件加速对接</a></li>
-<li class="toctree-l6"><a class="reference internal" href="#id8">6.7.5.5.4. 显示驱动注册</a></li>
+<li class="toctree-l5"><a class="reference internal" href="#id7">6.8.5.5. 显示对接</a><ul>
+<li class="toctree-l6"><a class="reference internal" href="#buffer">6.8.5.5.1. 绘制buffer初始化</a></li>
+<li class="toctree-l6"><a class="reference internal" href="#flush-cb">6.8.5.5.2. flush_cb对接</a></li>
+<li class="toctree-l6"><a class="reference internal" href="#d">6.8.5.5.3. 2D硬件加速对接</a></li>
+<li class="toctree-l6"><a class="reference internal" href="#id8">6.8.5.5.4. 显示驱动注册</a></li>
 </ul>
 </li>
-<li class="toctree-l5"><a class="reference internal" href="#id9">6.7.5.6. 硬件解码对接</a><ul>
-<li class="toctree-l6"><a class="reference internal" href="#lv-img-decoder-t">6.7.5.6.1. lv_img_decoder_t注册</a></li>
-<li class="toctree-l6"><a class="reference internal" href="#cache">6.7.5.6.2. 图片cache机制</a></li>
+<li class="toctree-l5"><a class="reference internal" href="#id9">6.8.5.6. 硬件解码对接</a><ul>
+<li class="toctree-l6"><a class="reference internal" href="#lv-img-decoder-t">6.8.5.6.1. lv_img_decoder_t注册</a></li>
+<li class="toctree-l6"><a class="reference internal" href="#cache">6.8.5.6.2. 图片cache机制</a></li>
 </ul>
 </li>
-<li class="toctree-l5"><a class="reference internal" href="#lvgl-demo">6.7.5.7. LVGL demo</a><ul>
-<li class="toctree-l6"><a class="reference internal" href="#base-demo">6.7.5.7.1. base demo</a></li>
-<li class="toctree-l6"><a class="reference internal" href="#meter-demo">6.7.5.7.2. meter demo</a></li>
+<li class="toctree-l5"><a class="reference internal" href="#lvgl-demo">6.8.5.7. LVGL demo</a><ul>
+<li class="toctree-l6"><a class="reference internal" href="#base-demo">6.8.5.7.1. base demo</a></li>
+<li class="toctree-l6"><a class="reference internal" href="#meter-demo">6.8.5.7.2. meter demo</a></li>
 </ul>
 </li>
 </ul>
 </li>
-<li class="toctree-l4"><a class="reference internal" href="6_faq.html">6.7.6. 常见问题</a></li>
+<li class="toctree-l4"><a class="reference internal" href="6_faq.html">6.8.6. 常见问题</a></li>
 </ul>
 </li>
 </ul>
@@ -353,9 +360,9 @@
         
           <li><a href="../index.html"><span class="section-number">6. </span>多媒体</a> &raquo;</li>
         
-          <li><a href="index.html"><span class="section-number">6.7. </span>LVGL 使用指南</a> &raquo;</li>
+          <li><a href="index.html"><span class="section-number">6.8. </span>LVGL 使用指南</a> &raquo;</li>
         
-      <li><span class="section-number">6.7.5. </span>设计指南</li>
+      <li><span class="section-number">6.8.5. </span>设计指南</li>
     
     
       <li class="wy-breadcrumbs-aside">
@@ -373,9 +380,9 @@
            <div itemprop="articleBody">
             
   <div class="section" id="id1">
-<h1><span class="section-number">6.7.5. </span>设计指南<a class="headerlink" href="#id1" title="永久链接至标题">¶</a></h1>
+<h1><span class="section-number">6.8.5. </span>设计指南<a class="headerlink" href="#id1" title="永久链接至标题">¶</a></h1>
 <div class="section" id="id2">
-<h2><span class="section-number">6.7.5.1. </span>代码目录<a class="headerlink" href="#id2" title="永久链接至标题">¶</a></h2>
+<h2><span class="section-number">6.8.5.1. </span>代码目录<a class="headerlink" href="#id2" title="永久链接至标题">¶</a></h2>
 <ol class="arabic simple">
 <li><p>LVGL库目录： /luban-lite/packages/third-party/lvgl/lvgl-8.3.2</p></li>
 <li><p>LVGL官方music demo：/luban-lite/packages/third-party/lvgl/lv_demo_music-0.3.1</p></li>
@@ -383,7 +390,7 @@
 </ol>
 </div>
 <div class="section" id="lvgl">
-<h2><span class="section-number">6.7.5.2. </span>LVGL整体流程<a class="headerlink" href="#lvgl" title="永久链接至标题">¶</a></h2>
+<h2><span class="section-number">6.8.5.2. </span>LVGL整体流程<a class="headerlink" href="#lvgl" title="永久链接至标题">¶</a></h2>
 <div class="figure align-center" id="id10">
 <img alt="../../../_images/key_process.png" src="../../../_images/key_process.png" />
 <p class="caption"><span class="caption-number">图 6.38 </span><span class="caption-text">整体流程</span><a class="headerlink" href="#id10" title="永久链接至图片">¶</a></p>
@@ -468,7 +475,7 @@ LVGL才能正常的运转起来，两个关键的函数：</p>
 </ul>
 </div>
 <div class="section" id="id3">
-<h2><span class="section-number">6.7.5.3. </span>LVGL层次结构<a class="headerlink" href="#id3" title="永久链接至标题">¶</a></h2>
+<h2><span class="section-number">6.8.5.3. </span>LVGL层次结构<a class="headerlink" href="#id3" title="永久链接至标题">¶</a></h2>
 <div class="figure align-center" id="id11">
 <img alt="../../../_images/struct.png" src="../../../_images/struct.png" />
 <p class="caption"><span class="caption-number">图 6.39 </span><span class="caption-text">层次结构</span><a class="headerlink" href="#id11" title="永久链接至图片">¶</a></p>
@@ -488,7 +495,7 @@ LVGL才能正常的运转起来，两个关键的函数：</p>
 </div>
 </div>
 <div class="section" id="id4">
-<h2><span class="section-number">6.7.5.4. </span>父子结构<a class="headerlink" href="#id4" title="永久链接至标题">¶</a></h2>
+<h2><span class="section-number">6.8.5.4. </span>父子结构<a class="headerlink" href="#id4" title="永久链接至标题">¶</a></h2>
 <p>LVGL是面向对象的基于父子结构的设计，每一个对象都包含一个父对象（screen对象除外），
 但是一个父对象可以包含任意数量的子对象。</p>
 <div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="cm">/*</span>
@@ -499,14 +506,14 @@ LVGL才能正常的运转起来，两个关键的函数：</p>
 </pre></div>
 </div>
 <div class="section" id="id5">
-<h3><span class="section-number">6.7.5.4.1. </span>父子对象一起移动<a class="headerlink" href="#id5" title="永久链接至标题">¶</a></h3>
+<h3><span class="section-number">6.8.5.4.1. </span>父子对象一起移动<a class="headerlink" href="#id5" title="永久链接至标题">¶</a></h3>
 <div class="figure align-center" id="id13">
 <img alt="../../../_images/move.png" src="../../../_images/move.png" />
 <p class="caption"><span class="caption-number">图 6.41 </span><span class="caption-text">父子对象移动</span><a class="headerlink" href="#id13" title="永久链接至图片">¶</a></p>
 </div>
 </div>
 <div class="section" id="id6">
-<h3><span class="section-number">6.7.5.4.2. </span>子对象超出父对象部分不可见<a class="headerlink" href="#id6" title="永久链接至标题">¶</a></h3>
+<h3><span class="section-number">6.8.5.4.2. </span>子对象超出父对象部分不可见<a class="headerlink" href="#id6" title="永久链接至标题">¶</a></h3>
 <div class="figure align-center" id="id14">
 <img alt="../../../_images/outside.png" src="../../../_images/outside.png" />
 <p class="caption"><span class="caption-number">图 6.42 </span><span class="caption-text">子对象可见区域</span><a class="headerlink" href="#id14" title="永久链接至图片">¶</a></p>
@@ -514,7 +521,7 @@ LVGL才能正常的运转起来，两个关键的函数：</p>
 </div>
 </div>
 <div class="section" id="id7">
-<h2><span class="section-number">6.7.5.5. </span>显示对接<a class="headerlink" href="#id7" title="永久链接至标题">¶</a></h2>
+<h2><span class="section-number">6.8.5.5. </span>显示对接<a class="headerlink" href="#id7" title="永久链接至标题">¶</a></h2>
 <p>主要包括三部分：</p>
 <ol class="arabic simple">
 <li><p>绘制buffer初始化</p></li>
@@ -522,7 +529,7 @@ LVGL才能正常的运转起来，两个关键的函数：</p>
 <li><p>2D硬件加速对接</p></li>
 </ol>
 <div class="section" id="buffer">
-<h3><span class="section-number">6.7.5.5.1. </span>绘制buffer初始化<a class="headerlink" href="#buffer" title="永久链接至标题">¶</a></h3>
+<h3><span class="section-number">6.8.5.5.1. </span>绘制buffer初始化<a class="headerlink" href="#buffer" title="永久链接至标题">¶</a></h3>
 <p>绘制buffer初始化函数如下:</p>
 <div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">void</span> <span class="n">lv_disp_draw_buf_init</span><span class="p">(</span><span class="n">lv_disp_draw_buf_t</span> <span class="o">*</span> <span class="n">draw_buf</span><span class="p">,</span> <span class="kt">void</span> <span class="o">*</span> <span class="n">buf1</span><span class="p">,</span> <span class="kt">void</span> <span class="o">*</span> <span class="n">buf2</span><span class="p">,</span> <span class="kt">uint32_t</span> <span class="n">size_in_px_cnt</span><span class="p">)</span>
 </pre></div>
@@ -538,7 +545,7 @@ LVGL才能正常的运转起来，两个关键的函数：</p>
 </div>
 </div>
 <div class="section" id="flush-cb">
-<h3><span class="section-number">6.7.5.5.2. </span>flush_cb对接<a class="headerlink" href="#flush-cb" title="永久链接至标题">¶</a></h3>
+<h3><span class="section-number">6.8.5.5.2. </span>flush_cb对接<a class="headerlink" href="#flush-cb" title="永久链接至标题">¶</a></h3>
 <p>flush_cb回调函数的处理流程，我们以双缓冲为例进行说明，绘制模式有full_refresh和direct_mode两种：</p>
 <ol class="arabic simple">
 <li><p>全刷新模式，每一帧都刷新整个显示屏</p></li>
@@ -602,7 +609,7 @@ LVGL才能正常的运转起来，两个关键的函数：</p>
 </div>
 </div>
 <div class="section" id="d">
-<h3><span class="section-number">6.7.5.5.3. </span>2D硬件加速对接<a class="headerlink" href="#d" title="永久链接至标题">¶</a></h3>
+<h3><span class="section-number">6.8.5.5.3. </span>2D硬件加速对接<a class="headerlink" href="#d" title="永久链接至标题">¶</a></h3>
 <p>2D加速主要对接 lv_draw_ctx_t中的绘制函数</p>
 <table class="docutils align-default" style="width: 100%">
 <colgroup>
@@ -683,7 +690,7 @@ LVGL才能正常的运转起来，两个关键的函数：</p>
 覆盖原来的软件实现。</p>
 </div>
 <div class="section" id="id8">
-<h3><span class="section-number">6.7.5.5.4. </span>显示驱动注册<a class="headerlink" href="#id8" title="永久链接至标题">¶</a></h3>
+<h3><span class="section-number">6.8.5.5.4. </span>显示驱动注册<a class="headerlink" href="#id8" title="永久链接至标题">¶</a></h3>
 <p>所有的显示相关功能都包含在lv_disp_drv_t结构体中：</p>
 <ol class="arabic simple">
 <li><p>通过lv_disp_drv_init来初始化lv_disp_drv_t结构体</p></li>
@@ -756,9 +763,9 @@ LVGL才能正常的运转起来，两个关键的函数：</p>
 </div>
 </div>
 <div class="section" id="id9">
-<h2><span class="section-number">6.7.5.6. </span>硬件解码对接<a class="headerlink" href="#id9" title="永久链接至标题">¶</a></h2>
+<h2><span class="section-number">6.8.5.6. </span>硬件解码对接<a class="headerlink" href="#id9" title="永久链接至标题">¶</a></h2>
 <div class="section" id="lv-img-decoder-t">
-<h3><span class="section-number">6.7.5.6.1. </span>lv_img_decoder_t注册<a class="headerlink" href="#lv-img-decoder-t" title="永久链接至标题">¶</a></h3>
+<h3><span class="section-number">6.8.5.6.1. </span>lv_img_decoder_t注册<a class="headerlink" href="#lv-img-decoder-t" title="永久链接至标题">¶</a></h3>
 <p>我们通过lv_img_decoder_t来注册硬件解码器接口，主要实现了三个接口：</p>
 <table class="docutils align-default" style="width: 100%">
 <colgroup>
@@ -819,7 +826,7 @@ LVGL才能正常的运转起来，两个关键的函数：</p>
 </ul>
 </div>
 <div class="section" id="cache">
-<h3><span class="section-number">6.7.5.6.2. </span>图片cache机制<a class="headerlink" href="#cache" title="永久链接至标题">¶</a></h3>
+<h3><span class="section-number">6.8.5.6.2. </span>图片cache机制<a class="headerlink" href="#cache" title="永久链接至标题">¶</a></h3>
 <ol class="arabic simple">
 <li><p>采用lv_img_decoder_t提供的接口注册的解码器可以采用LVGL内部的图片缓冲机制，
 在lv_conf.h 中宏定义LV_IMG_CACHE_DEF_SIZE为1的时候，表示打开图片缓冲机制，
@@ -833,10 +840,10 @@ LVGL才能正常的运转起来，两个关键的函数：</p>
 </div>
 </div>
 <div class="section" id="lvgl-demo">
-<h2><span class="section-number">6.7.5.7. </span>LVGL demo<a class="headerlink" href="#lvgl-demo" title="永久链接至标题">¶</a></h2>
+<h2><span class="section-number">6.8.5.7. </span>LVGL demo<a class="headerlink" href="#lvgl-demo" title="永久链接至标题">¶</a></h2>
 <p>目前支持三个demo，base demo、meter demo以及music demo。</p>
 <div class="section" id="base-demo">
-<h3><span class="section-number">6.7.5.7.1. </span>base demo<a class="headerlink" href="#base-demo" title="永久链接至标题">¶</a></h3>
+<h3><span class="section-number">6.8.5.7.1. </span>base demo<a class="headerlink" href="#base-demo" title="永久链接至标题">¶</a></h3>
 <p>对png、jpg硬件解码，以及build-in的图片使用方式进行演示，UI界面如下：</p>
 <div class="figure align-center" id="id21">
 <img alt="../../../_images/base_demo.png" src="../../../_images/base_demo.png" />
@@ -919,7 +926,7 @@ LVGL才能正常的运转起来，两个关键的函数：</p>
 </div>
 </div>
 <div class="section" id="meter-demo">
-<h3><span class="section-number">6.7.5.7.2. </span>meter demo<a class="headerlink" href="#meter-demo" title="永久链接至标题">¶</a></h3>
+<h3><span class="section-number">6.8.5.7.2. </span>meter demo<a class="headerlink" href="#meter-demo" title="永久链接至标题">¶</a></h3>
 <p>此demo演示了硬件旋转，以及仪表盘的设计参考</p>
 <div class="figure align-center" id="id22">
 <img alt="../../../_images/meter_demo.png" src="../../../_images/meter_demo.png" />
@@ -1036,8 +1043,8 @@ LVGL才能正常的运转起来，两个关键的函数：</p>
           </div>
           <footer>
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
-        <a href="6_faq.html" class="btn btn-neutral float-right" title="6.7.6. 常见问题" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
-        <a href="4_test_guide.html" class="btn btn-neutral float-left" title="6.7.4. 测试指南" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="6_faq.html" class="btn btn-neutral float-right" title="6.8.6. 常见问题" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="4_test_guide.html" class="btn btn-neutral float-left" title="6.8.4. 测试指南" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
     </div>
 
   <hr/>

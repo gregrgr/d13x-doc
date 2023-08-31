@@ -232,6 +232,9 @@
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../../../quick-start/index.html">快速入门</a></li>
 </ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../datasheet/index.html">数据手册</a></li>
+</ul>
 <ul class="current">
 <li class="toctree-l1 current"><a class="reference internal" href="../../index.html">芯片手册</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="../../about/index.html">1. 文档说明</a></li>
@@ -279,6 +282,9 @@
 <li class="toctree-l2"><a class="reference internal" href="../../analog/index.html">13. 模拟</a></li>
 </ul>
 </li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../hw/index.html">硬件指南</a></li>
 </ul>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="../../../lite/index.html">RTOS SDK</a></li>
@@ -466,7 +472,7 @@
 <p>与video 模式相比,command模式传输视频像素数据没有太多的时序限制，只需dpivsync_edpiwms来限制连续的像素流数据，如下 <a class="reference internal" href="#ref-dsi-cmd1"><span class="std std-ref">command模式</span></a> 。</p>
 <p>假设数据包长度配置（EDPI CMD大小寄存器中的EDPI_CMD_SIZE）为6个像素数据，每个像素占24位，dpivsync_edpiwms拉高后，当接收到6个像素数据时，WMS（write memory start，0x2C）命令写入command FIFO,在此之后每6个像素数据都产生一个WMC（write memory continue,0x3C）命令，直到dpivsync_edpiwms拉低。若最后dpivsync_edpiwms拉低时像素数据不足6个，则以剩余数据长度发送。</p>
 <div class="figure align-center" id="id14">
-<span id="ref-dsi-cmd1"></span><img alt="../../../_images/dsi_cmd.png" src="../../../_images/dsi_cmd.png" />
+<span id="ref-dsi-cmd1"></span><img alt="../../../_images/dsi_cmd1.png" src="../../../_images/dsi_cmd1.png" />
 <p class="caption"><span class="caption-number">图 10.48 </span><span class="caption-text">command模式</span><a class="headerlink" href="#id14" title="永久链接至图片">¶</a></p>
 </div>
 </div>
@@ -508,7 +514,7 @@
 <p><strong>Burst Mode：</strong></p>
 <p>此模式中，像素数据包可以使用时间压缩在较短的时间内完成传输，这可以降低DSI的总体功耗，并且为链路上任何方向的其他数据传输提供更大的时间块，如下 <a class="reference internal" href="#ref-dsi-burst1"><span class="std std-ref">burst模式</span></a> 。</p>
 <div class="figure align-center" id="id17">
-<span id="ref-dsi-burst1"></span><img alt="../../../_images/dsi_burst.png" src="../../../_images/dsi_burst.png" />
+<span id="ref-dsi-burst1"></span><img alt="../../../_images/dsi_burst1.png" src="../../../_images/dsi_burst1.png" />
 <p class="caption"><span class="caption-number">图 10.51 </span><span class="caption-text">burst模式</span><a class="headerlink" href="#id17" title="永久链接至图片">¶</a></p>
 </div>
 </div>

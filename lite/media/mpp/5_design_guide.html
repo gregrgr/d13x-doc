@@ -7,7 +7,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   
-  <title>6.6.5. 设计说明 &mdash; AIC文档中心 v1.0 文档</title>
+  <title>6.7.5. 设计说明 &mdash; AIC文档中心 v1.0 文档</title>
   
 
   
@@ -41,8 +41,8 @@
     
     <link rel="index" title="索引" href="../../../genindex.html" />
     <link rel="search" title="搜索" href="../../../search.html" />
-    <link rel="next" title="6.6.6. 常见问题" href="6_faq.html" />
-    <link rel="prev" title="6.6.4. 测试指南" href="4_test_guide.html" />
+    <link rel="next" title="6.7.6. 常见问题" href="6_faq.html" />
+    <link rel="prev" title="6.7.4. 测试指南" href="4_test_guide.html" />
     <script>
         $(function () {
 /**
@@ -233,7 +233,13 @@
 <li class="toctree-l1"><a class="reference internal" href="../../../quick-start/index.html">快速入门</a></li>
 </ul>
 <ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../datasheet/index.html">数据手册</a></li>
+</ul>
+<ul>
 <li class="toctree-l1"><a class="reference internal" href="../../../ic/index.html">芯片手册</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../hw/index.html">硬件指南</a></li>
 </ul>
 <ul class="current">
 <li class="toctree-l1 current"><a class="reference internal" href="../../index.html">RTOS SDK</a><ul class="current">
@@ -247,53 +253,54 @@
 <li class="toctree-l3"><a class="reference internal" href="../display/index.html">6.2. Display 使用指南</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../dvp/index.html">6.3. DVP 使用指南</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../ge/index.html">6.4. GE 使用指南</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../ve/index.html">6.5. VE 使用指南</a></li>
-<li class="toctree-l3 current"><a class="reference internal" href="index.html">6.6. MPP 使用指南</a><ul class="current">
-<li class="toctree-l4"><a class="reference internal" href="1_introduction.html">6.6.1. 模块介绍</a></li>
-<li class="toctree-l4"><a class="reference internal" href="2_config_guide.html">6.6.2. 参数配置</a></li>
-<li class="toctree-l4"><a class="reference internal" href="3_debug_guide.html">6.6.3. 调试指南</a></li>
-<li class="toctree-l4"><a class="reference internal" href="4_test_guide.html">6.6.4. 测试指南</a></li>
-<li class="toctree-l4 current"><a class="current reference internal" href="#">6.6.5. 设计说明</a><ul>
-<li class="toctree-l5"><a class="reference internal" href="#id2">6.6.5.1. 源码说明</a></li>
-<li class="toctree-l5"><a class="reference internal" href="#id3">6.6.5.2. 软件架构</a></li>
-<li class="toctree-l5"><a class="reference internal" href="#mpp-decoder">6.6.5.3. MPP Decoder 设计及接口说明</a><ul>
-<li class="toctree-l6"><a class="reference internal" href="#packet">6.6.5.3.1. packet 管理机制</a></li>
-<li class="toctree-l6"><a class="reference internal" href="#frame">6.6.5.3.2. frame 管理机制</a></li>
-<li class="toctree-l6"><a class="reference internal" href="#id4">6.6.5.3.3. 物理连续内存使用情况</a></li>
-<li class="toctree-l6"><a class="reference internal" href="#id5">6.6.5.3.4. MPP Decoder 调用流程</a></li>
-<li class="toctree-l6"><a class="reference internal" href="#id6">6.6.5.3.5. MPP Decoder 数据结构</a></li>
-<li class="toctree-l6"><a class="reference internal" href="#id7">6.6.5.3.6. MPP Decoder 接口设计</a></li>
-<li class="toctree-l6"><a class="reference internal" href="#mpp-decoder-demo">6.6.5.3.7. MPP Decoder 参考Demo</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../i2s/index.html">6.5. I2S 使用指南</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../ve/index.html">6.6. VE 使用指南</a></li>
+<li class="toctree-l3 current"><a class="reference internal" href="index.html">6.7. MPP 使用指南</a><ul class="current">
+<li class="toctree-l4"><a class="reference internal" href="1_introduction.html">6.7.1. 模块介绍</a></li>
+<li class="toctree-l4"><a class="reference internal" href="2_config_guide.html">6.7.2. 参数配置</a></li>
+<li class="toctree-l4"><a class="reference internal" href="3_debug_guide.html">6.7.3. 调试指南</a></li>
+<li class="toctree-l4"><a class="reference internal" href="4_test_guide.html">6.7.4. 测试指南</a></li>
+<li class="toctree-l4 current"><a class="current reference internal" href="#">6.7.5. 设计说明</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="#id2">6.7.5.1. 源码说明</a></li>
+<li class="toctree-l5"><a class="reference internal" href="#id3">6.7.5.2. 软件架构</a></li>
+<li class="toctree-l5"><a class="reference internal" href="#mpp-decoder">6.7.5.3. MPP Decoder 设计及接口说明</a><ul>
+<li class="toctree-l6"><a class="reference internal" href="#packet">6.7.5.3.1. packet 管理机制</a></li>
+<li class="toctree-l6"><a class="reference internal" href="#frame">6.7.5.3.2. frame 管理机制</a></li>
+<li class="toctree-l6"><a class="reference internal" href="#id4">6.7.5.3.3. 物理连续内存使用情况</a></li>
+<li class="toctree-l6"><a class="reference internal" href="#id5">6.7.5.3.4. MPP Decoder 调用流程</a></li>
+<li class="toctree-l6"><a class="reference internal" href="#id6">6.7.5.3.5. MPP Decoder 数据结构</a></li>
+<li class="toctree-l6"><a class="reference internal" href="#id7">6.7.5.3.6. MPP Decoder 接口设计</a></li>
+<li class="toctree-l6"><a class="reference internal" href="#mpp-decoder-demo">6.7.5.3.7. MPP Decoder 参考Demo</a></li>
 </ul>
 </li>
-<li class="toctree-l5"><a class="reference internal" href="#mpp-encoder">6.6.5.4. MPP Encoder 设计及接口说明</a><ul>
-<li class="toctree-l6"><a class="reference internal" href="#id8">6.6.5.4.1. 接口设计</a></li>
-<li class="toctree-l6"><a class="reference internal" href="#mpp-encoder-demo">6.6.5.4.2. MPP Encoder 参考Demo</a></li>
+<li class="toctree-l5"><a class="reference internal" href="#mpp-encoder">6.7.5.4. MPP Encoder 设计及接口说明</a><ul>
+<li class="toctree-l6"><a class="reference internal" href="#id8">6.7.5.4.1. 接口设计</a></li>
+<li class="toctree-l6"><a class="reference internal" href="#mpp-encoder-demo">6.7.5.4.2. MPP Encoder 参考Demo</a></li>
 </ul>
 </li>
-<li class="toctree-l5"><a class="reference internal" href="#mpp-ge">6.6.5.5. MPP GE 设计及接口说明</a><ul>
-<li class="toctree-l6"><a class="reference internal" href="#mpp-ge-open">6.6.5.5.1. mpp_ge_open</a></li>
-<li class="toctree-l6"><a class="reference internal" href="#mpp-ge-close">6.6.5.5.2. mpp_ge_close</a></li>
-<li class="toctree-l6"><a class="reference internal" href="#mpp-ge-get-mode">6.6.5.5.3. mpp_ge_get_mode</a></li>
-<li class="toctree-l6"><a class="reference internal" href="#mpp-ge-fillrect">6.6.5.5.4. mpp_ge_fillrect</a></li>
-<li class="toctree-l6"><a class="reference internal" href="#mpp-ge-bitblt">6.6.5.5.5. mpp_ge_bitblt</a></li>
-<li class="toctree-l6"><a class="reference internal" href="#mpp-ge-rotate">6.6.5.5.6. mpp_ge_rotate</a></li>
-<li class="toctree-l6"><a class="reference internal" href="#mpp-ge-emit">6.6.5.5.7. mpp_ge_emit</a></li>
-<li class="toctree-l6"><a class="reference internal" href="#mpp-ge-sync">6.6.5.5.8. mpp_ge_sync</a></li>
+<li class="toctree-l5"><a class="reference internal" href="#mpp-ge">6.7.5.5. MPP GE 设计及接口说明</a><ul>
+<li class="toctree-l6"><a class="reference internal" href="#mpp-ge-open">6.7.5.5.1. mpp_ge_open</a></li>
+<li class="toctree-l6"><a class="reference internal" href="#mpp-ge-close">6.7.5.5.2. mpp_ge_close</a></li>
+<li class="toctree-l6"><a class="reference internal" href="#mpp-ge-get-mode">6.7.5.5.3. mpp_ge_get_mode</a></li>
+<li class="toctree-l6"><a class="reference internal" href="#mpp-ge-fillrect">6.7.5.5.4. mpp_ge_fillrect</a></li>
+<li class="toctree-l6"><a class="reference internal" href="#mpp-ge-bitblt">6.7.5.5.5. mpp_ge_bitblt</a></li>
+<li class="toctree-l6"><a class="reference internal" href="#mpp-ge-rotate">6.7.5.5.6. mpp_ge_rotate</a></li>
+<li class="toctree-l6"><a class="reference internal" href="#mpp-ge-emit">6.7.5.5.7. mpp_ge_emit</a></li>
+<li class="toctree-l6"><a class="reference internal" href="#mpp-ge-sync">6.7.5.5.8. mpp_ge_sync</a></li>
 </ul>
 </li>
-<li class="toctree-l5"><a class="reference internal" href="#mpp-vin">6.6.5.6. MPP VIN 设计及接口说明</a><ul>
-<li class="toctree-l6"><a class="reference internal" href="#buf">6.6.5.6.1. Buf队列管理</a></li>
-<li class="toctree-l6"><a class="reference internal" href="#id9">6.6.5.6.2. 接口设计</a></li>
-<li class="toctree-l6"><a class="reference internal" href="#demo">6.6.5.6.3. 参考Demo</a></li>
+<li class="toctree-l5"><a class="reference internal" href="#mpp-vin">6.7.5.6. MPP VIN 设计及接口说明</a><ul>
+<li class="toctree-l6"><a class="reference internal" href="#buf">6.7.5.6.1. Buf队列管理</a></li>
+<li class="toctree-l6"><a class="reference internal" href="#id9">6.7.5.6.2. 接口设计</a></li>
+<li class="toctree-l6"><a class="reference internal" href="#demo">6.7.5.6.3. 参考Demo</a></li>
 </ul>
 </li>
 </ul>
 </li>
-<li class="toctree-l4"><a class="reference internal" href="6_faq.html">6.6.6. 常见问题</a></li>
+<li class="toctree-l4"><a class="reference internal" href="6_faq.html">6.7.6. 常见问题</a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="../lvgl/index.html">6.7. LVGL 使用指南</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../lvgl/index.html">6.8. LVGL 使用指南</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="../../interface/index.html">7. 接口</a></li>
@@ -362,9 +369,9 @@
         
           <li><a href="../index.html"><span class="section-number">6. </span>多媒体</a> &raquo;</li>
         
-          <li><a href="index.html"><span class="section-number">6.6. </span>MPP 使用指南</a> &raquo;</li>
+          <li><a href="index.html"><span class="section-number">6.7. </span>MPP 使用指南</a> &raquo;</li>
         
-      <li><span class="section-number">6.6.5. </span>设计说明</li>
+      <li><span class="section-number">6.7.5. </span>设计说明</li>
     
     
       <li class="wy-breadcrumbs-aside">
@@ -382,9 +389,9 @@
            <div itemprop="articleBody">
             
   <div class="section" id="id1">
-<h1><span class="section-number">6.6.5. </span>设计说明<a class="headerlink" href="#id1" title="永久链接至标题">¶</a></h1>
+<h1><span class="section-number">6.7.5. </span>设计说明<a class="headerlink" href="#id1" title="永久链接至标题">¶</a></h1>
 <div class="section" id="id2">
-<h2><span class="section-number">6.6.5.1. </span>源码说明<a class="headerlink" href="#id2" title="永久链接至标题">¶</a></h2>
+<h2><span class="section-number">6.7.5.1. </span>源码说明<a class="headerlink" href="#id2" title="永久链接至标题">¶</a></h2>
 <p>源文件目录：</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>aic-mpp$ tree
 .
@@ -405,7 +412,7 @@
 </div>
 </div>
 <div class="section" id="id3">
-<h2><span class="section-number">6.6.5.2. </span>软件架构<a class="headerlink" href="#id3" title="永久链接至标题">¶</a></h2>
+<h2><span class="section-number">6.7.5.2. </span>软件架构<a class="headerlink" href="#id3" title="永久链接至标题">¶</a></h2>
 <p>mpp 软件框图如下所示：</p>
 <div class="figure align-center" id="id10">
 <img alt="../../../_images/mpp_framework.png" src="../../../_images/mpp_framework.png" />
@@ -428,7 +435,7 @@
 </div></blockquote>
 </div>
 <div class="section" id="mpp-decoder">
-<h2><span class="section-number">6.6.5.3. </span>MPP Decoder 设计及接口说明<a class="headerlink" href="#mpp-decoder" title="永久链接至标题">¶</a></h2>
+<h2><span class="section-number">6.7.5.3. </span>MPP Decoder 设计及接口说明<a class="headerlink" href="#mpp-decoder" title="永久链接至标题">¶</a></h2>
 <p>MPP Decoder 由三个主要模块组成：</p>
 <ul class="simple">
 <li><p>解码模块（H264、JPEG、PNG等）：负责将码流数据解码成视频图像</p></li>
@@ -436,7 +443,7 @@
 <li><p>显示帧管理模块（Frame manager）：负责解码图像 buffer 的管理</p></li>
 </ul>
 <div class="section" id="packet">
-<h3><span class="section-number">6.6.5.3.1. </span>packet 管理机制<a class="headerlink" href="#packet" title="永久链接至标题">¶</a></h3>
+<h3><span class="section-number">6.7.5.3.1. </span>packet 管理机制<a class="headerlink" href="#packet" title="永久链接至标题">¶</a></h3>
 <p>Packet manager 负责管理码流数据和 buffer。初始化时，该模块申请一块物理连续的内存（buffer大小可由外部配置），用于存放视频/图片码流数据。</p>
 <p>Packet manager 管理的数据单元为 packet，packet 表示一笔码流数据，它可以是完整的一帧数据，也支持不是完整的一帧数据。
 每个 packet 与物理内存中的码流数据一一对应，它记录了每一笔码流的物理内存基地址、物理内存结束地址、物理内存偏移、虚拟内存地址、码流数据长度等信息。</p>
@@ -454,7 +461,7 @@
 </div>
 </div>
 <div class="section" id="frame">
-<h3><span class="section-number">6.6.5.3.2. </span>frame 管理机制<a class="headerlink" href="#frame" title="永久链接至标题">¶</a></h3>
+<h3><span class="section-number">6.7.5.3.2. </span>frame 管理机制<a class="headerlink" href="#frame" title="永久链接至标题">¶</a></h3>
 <p>Frame manager 负责管理图像 buffer。Frame manager 内部通过两个链表来管理图像 buffer：empty list 和 render list。
 其中，empty list 存放可以给解码输出使用的图像 buffer，render list 存放解码完成但还未显示的图像 buffer。
 在运行过程中，正在显示的图像 buffer 和用于参考的图像 buffer 可能不在这两个 list 中。</p>
@@ -507,7 +514,7 @@
 </div>
 </div>
 <div class="section" id="id4">
-<h3><span class="section-number">6.6.5.3.3. </span>物理连续内存使用情况<a class="headerlink" href="#id4" title="永久链接至标题">¶</a></h3>
+<h3><span class="section-number">6.7.5.3.3. </span>物理连续内存使用情况<a class="headerlink" href="#id4" title="永久链接至标题">¶</a></h3>
 <p>H264 解码所需的物理连续内存如下所示：</p>
 <table class="docutils align-default">
 <colgroup>
@@ -575,7 +582,7 @@
 </div>
 </div>
 <div class="section" id="id5">
-<h3><span class="section-number">6.6.5.3.4. </span>MPP Decoder 调用流程<a class="headerlink" href="#id5" title="永久链接至标题">¶</a></h3>
+<h3><span class="section-number">6.7.5.3.4. </span>MPP Decoder 调用流程<a class="headerlink" href="#id5" title="永久链接至标题">¶</a></h3>
 <p>在调用 MPP Decoder 的解码函数时，解码模块从 Packet manager 取一笔码流，同时从 Frame maneger 取一个空闲图像 buffer，对码流进行解码
 并输出图像到图像 buffer。</p>
 <p>解码后，解码模块将码流 buffer 归还 Packet manager，将解码图像 buffer 归还 Frame maneger。</p>
@@ -603,9 +610,9 @@
 </div>
 </div>
 <div class="section" id="id6">
-<h3><span class="section-number">6.6.5.3.5. </span>MPP Decoder 数据结构<a class="headerlink" href="#id6" title="永久链接至标题">¶</a></h3>
+<h3><span class="section-number">6.7.5.3.5. </span>MPP Decoder 数据结构<a class="headerlink" href="#id6" title="永久链接至标题">¶</a></h3>
 <div class="section" id="struct-decode-config">
-<h4><span class="section-number">6.6.5.3.5.1. </span>struct decode_config<a class="headerlink" href="#struct-decode-config" title="永久链接至标题">¶</a></h4>
+<h4><span class="section-number">6.7.5.3.5.1. </span>struct decode_config<a class="headerlink" href="#struct-decode-config" title="永久链接至标题">¶</a></h4>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">struct</span> <span class="n">decode_config</span> <span class="p">{</span>
     <span class="n">enum</span> <span class="n">mpp_pixel_format</span> <span class="n">pix_fmt</span><span class="p">;</span>  <span class="o">//</span> <span class="n">output</span> <span class="n">pixel</span> <span class="nb">format</span>
     <span class="nb">int</span> <span class="n">bitstream_buffer_size</span><span class="p">;</span>      <span class="o">//</span> <span class="n">bitstream</span> <span class="n">buffer</span> <span class="n">size</span> <span class="ow">in</span> <span class="n">pm</span>
@@ -623,7 +630,7 @@
 </ul>
 </div>
 <div class="section" id="struct-mpp-packet">
-<h4><span class="section-number">6.6.5.3.5.2. </span>struct mpp_packet<a class="headerlink" href="#struct-mpp-packet" title="永久链接至标题">¶</a></h4>
+<h4><span class="section-number">6.7.5.3.5.2. </span>struct mpp_packet<a class="headerlink" href="#struct-mpp-packet" title="永久链接至标题">¶</a></h4>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">struct</span> <span class="n">mpp_packet</span> <span class="p">{</span>
     <span class="n">void</span> <span class="o">*</span><span class="n">data</span><span class="p">;</span>
     <span class="nb">int</span> <span class="n">size</span><span class="p">;</span>
@@ -641,7 +648,7 @@
 </ul>
 </div>
 <div class="section" id="struct-mpp-frame">
-<h4><span class="section-number">6.6.5.3.5.3. </span>struct mpp_frame<a class="headerlink" href="#struct-mpp-frame" title="永久链接至标题">¶</a></h4>
+<h4><span class="section-number">6.7.5.3.5.3. </span>struct mpp_frame<a class="headerlink" href="#struct-mpp-frame" title="永久链接至标题">¶</a></h4>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">struct</span> <span class="n">mpp_size</span> <span class="p">{</span>
     <span class="nb">int</span> <span class="n">width</span><span class="p">;</span>
     <span class="nb">int</span> <span class="n">height</span><span class="p">;</span>
@@ -698,7 +705,7 @@
 </ul>
 </div>
 <div class="section" id="enum-mpp-dec-errno">
-<h4><span class="section-number">6.6.5.3.5.4. </span>enum mpp_dec_errno<a class="headerlink" href="#enum-mpp-dec-errno" title="永久链接至标题">¶</a></h4>
+<h4><span class="section-number">6.7.5.3.5.4. </span>enum mpp_dec_errno<a class="headerlink" href="#enum-mpp-dec-errno" title="永久链接至标题">¶</a></h4>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">enum</span> <span class="n">mpp_dec_errno</span> <span class="p">{</span>
     <span class="n">DEC_ERR_NOT_SUPPORT</span>         <span class="o">=</span> <span class="mh">0x90000001</span><span class="p">,</span>
     <span class="n">DEC_ERR_NO_EMPTY_PACKET</span>     <span class="o">=</span> <span class="mh">0x90000002</span><span class="p">,</span> <span class="o">//</span> <span class="n">no</span> <span class="n">packet</span> <span class="ow">in</span> <span class="n">empty</span> <span class="nb">list</span>
@@ -721,7 +728,7 @@
 </ul>
 </div>
 <div class="section" id="enum-mpp-codec-type">
-<h4><span class="section-number">6.6.5.3.5.5. </span>enum mpp_codec_type<a class="headerlink" href="#enum-mpp-codec-type" title="永久链接至标题">¶</a></h4>
+<h4><span class="section-number">6.7.5.3.5.5. </span>enum mpp_codec_type<a class="headerlink" href="#enum-mpp-codec-type" title="永久链接至标题">¶</a></h4>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">enum</span> <span class="n">mpp_codec_type</span> <span class="p">{</span>
     <span class="n">MPP_CODEC_VIDEO_DECODER_H264</span> <span class="o">=</span> <span class="mh">0x1000</span><span class="p">,</span>         <span class="o">//</span> <span class="n">decoder</span>
     <span class="n">MPP_CODEC_VIDEO_DECODER_MJPEG</span><span class="p">,</span>
@@ -734,7 +741,7 @@
 <p>mpp_codec_type 枚举类型表示支持的编解码格式。</p>
 </div>
 <div class="section" id="enum-mpp-dec-cmd">
-<h4><span class="section-number">6.6.5.3.5.6. </span>enum mpp_dec_cmd<a class="headerlink" href="#enum-mpp-dec-cmd" title="永久链接至标题">¶</a></h4>
+<h4><span class="section-number">6.7.5.3.5.6. </span>enum mpp_dec_cmd<a class="headerlink" href="#enum-mpp-dec-cmd" title="永久链接至标题">¶</a></h4>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">enum</span> <span class="n">mpp_dec_cmd</span> <span class="p">{</span>
     <span class="n">MPP_DEC_INIT_CMD_SET_EXT_FRAME_ALLOCATOR</span><span class="p">,</span>            <span class="o">//</span> <span class="n">frame</span> <span class="n">buffer</span> <span class="n">allocator</span>
     <span class="n">MPP_DEC_INIT_CMD_SET_ROT_FLIP_FLAG</span><span class="p">,</span>
@@ -754,7 +761,7 @@
 </div>
 </div>
 <div class="section" id="id7">
-<h3><span class="section-number">6.6.5.3.6. </span>MPP Decoder 接口设计<a class="headerlink" href="#id7" title="永久链接至标题">¶</a></h3>
+<h3><span class="section-number">6.7.5.3.6. </span>MPP Decoder 接口设计<a class="headerlink" href="#id7" title="永久链接至标题">¶</a></h3>
 <p>接口如下 :</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">struct</span> <span class="n">decode_config</span> <span class="p">{</span>
     <span class="n">enum</span> <span class="n">mpp_pixel_format</span> <span class="n">pix_fmt</span><span class="p">;</span>  <span class="o">//</span> <span class="n">output</span> <span class="n">pixel</span> <span class="nb">format</span>
@@ -776,7 +783,7 @@
 </pre></div>
 </div>
 <div class="section" id="mpp-decoder-create">
-<h4><span class="section-number">6.6.5.3.6.1. </span>mpp_decoder_create<a class="headerlink" href="#mpp-decoder-create" title="永久链接至标题">¶</a></h4>
+<h4><span class="section-number">6.7.5.3.6.1. </span>mpp_decoder_create<a class="headerlink" href="#mpp-decoder-create" title="永久链接至标题">¶</a></h4>
 <table class="docutils align-default">
 <colgroup>
 <col style="width: 11%" />
@@ -804,7 +811,7 @@
 </table>
 </div>
 <div class="section" id="mpp-decoder-destory">
-<h4><span class="section-number">6.6.5.3.6.2. </span>mpp_decoder_destory<a class="headerlink" href="#mpp-decoder-destory" title="永久链接至标题">¶</a></h4>
+<h4><span class="section-number">6.7.5.3.6.2. </span>mpp_decoder_destory<a class="headerlink" href="#mpp-decoder-destory" title="永久链接至标题">¶</a></h4>
 <table class="docutils align-default">
 <colgroup>
 <col style="width: 11%" />
@@ -832,7 +839,7 @@
 </table>
 </div>
 <div class="section" id="mpp-decoder-init">
-<h4><span class="section-number">6.6.5.3.6.3. </span>mpp_decoder_init<a class="headerlink" href="#mpp-decoder-init" title="永久链接至标题">¶</a></h4>
+<h4><span class="section-number">6.7.5.3.6.3. </span>mpp_decoder_init<a class="headerlink" href="#mpp-decoder-init" title="永久链接至标题">¶</a></h4>
 <table class="docutils align-default">
 <colgroup>
 <col style="width: 11%" />
@@ -868,7 +875,7 @@
 </table>
 </div>
 <div class="section" id="mpp-decoder-decode">
-<h4><span class="section-number">6.6.5.3.6.4. </span>mpp_decoder_decode<a class="headerlink" href="#mpp-decoder-decode" title="永久链接至标题">¶</a></h4>
+<h4><span class="section-number">6.7.5.3.6.4. </span>mpp_decoder_decode<a class="headerlink" href="#mpp-decoder-decode" title="永久链接至标题">¶</a></h4>
 <table class="docutils align-default">
 <colgroup>
 <col style="width: 11%" />
@@ -900,7 +907,7 @@
 </table>
 </div>
 <div class="section" id="mpp-decoder-control">
-<h4><span class="section-number">6.6.5.3.6.5. </span>mpp_decoder_control<a class="headerlink" href="#mpp-decoder-control" title="永久链接至标题">¶</a></h4>
+<h4><span class="section-number">6.7.5.3.6.5. </span>mpp_decoder_control<a class="headerlink" href="#mpp-decoder-control" title="永久链接至标题">¶</a></h4>
 <table class="docutils align-default">
 <colgroup>
 <col style="width: 11%" />
@@ -937,7 +944,7 @@
 </table>
 </div>
 <div class="section" id="mpp-decoder-reset">
-<h4><span class="section-number">6.6.5.3.6.6. </span>mpp_decoder_reset<a class="headerlink" href="#mpp-decoder-reset" title="永久链接至标题">¶</a></h4>
+<h4><span class="section-number">6.7.5.3.6.6. </span>mpp_decoder_reset<a class="headerlink" href="#mpp-decoder-reset" title="永久链接至标题">¶</a></h4>
 <table class="docutils align-default">
 <colgroup>
 <col style="width: 11%" />
@@ -972,7 +979,7 @@
 </table>
 </div>
 <div class="section" id="mpp-decoder-get-packet">
-<h4><span class="section-number">6.6.5.3.6.7. </span>mpp_decoder_get_packet<a class="headerlink" href="#mpp-decoder-get-packet" title="永久链接至标题">¶</a></h4>
+<h4><span class="section-number">6.7.5.3.6.7. </span>mpp_decoder_get_packet<a class="headerlink" href="#mpp-decoder-get-packet" title="永久链接至标题">¶</a></h4>
 <table class="docutils align-default">
 <colgroup>
 <col style="width: 10%" />
@@ -1009,7 +1016,7 @@
 </table>
 </div>
 <div class="section" id="mpp-decoder-put-packet">
-<h4><span class="section-number">6.6.5.3.6.8. </span>mpp_decoder_put_packet<a class="headerlink" href="#mpp-decoder-put-packet" title="永久链接至标题">¶</a></h4>
+<h4><span class="section-number">6.7.5.3.6.8. </span>mpp_decoder_put_packet<a class="headerlink" href="#mpp-decoder-put-packet" title="永久链接至标题">¶</a></h4>
 <table class="docutils align-default">
 <colgroup>
 <col style="width: 11%" />
@@ -1045,7 +1052,7 @@
 </table>
 </div>
 <div class="section" id="mpp-decoder-get-frame">
-<h4><span class="section-number">6.6.5.3.6.9. </span>mpp_decoder_get_frame<a class="headerlink" href="#mpp-decoder-get-frame" title="永久链接至标题">¶</a></h4>
+<h4><span class="section-number">6.7.5.3.6.9. </span>mpp_decoder_get_frame<a class="headerlink" href="#mpp-decoder-get-frame" title="永久链接至标题">¶</a></h4>
 <table class="docutils align-default">
 <colgroup>
 <col style="width: 11%" />
@@ -1081,7 +1088,7 @@
 </table>
 </div>
 <div class="section" id="mpp-decoder-put-frame">
-<h4><span class="section-number">6.6.5.3.6.10. </span>mpp_decoder_put_frame<a class="headerlink" href="#mpp-decoder-put-frame" title="永久链接至标题">¶</a></h4>
+<h4><span class="section-number">6.7.5.3.6.10. </span>mpp_decoder_put_frame<a class="headerlink" href="#mpp-decoder-put-frame" title="永久链接至标题">¶</a></h4>
 <table class="docutils align-default">
 <colgroup>
 <col style="width: 11%" />
@@ -1118,7 +1125,7 @@
 </div>
 </div>
 <div class="section" id="mpp-decoder-demo">
-<h3><span class="section-number">6.6.5.3.7. </span>MPP Decoder 参考Demo<a class="headerlink" href="#mpp-decoder-demo" title="永久链接至标题">¶</a></h3>
+<h3><span class="section-number">6.7.5.3.7. </span>MPP Decoder 参考Demo<a class="headerlink" href="#mpp-decoder-demo" title="永久链接至标题">¶</a></h3>
 <p id="ref-picture-decoder-test">以下 Demo 为基本流程调用，具体实现可以参考代码 mpp/mpp_test/picture_decoder_test.c</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">//*</span> <span class="mf">1.</span><span class="n">创建</span> <span class="n">mpp_decoder</span> <span class="n">对象</span>
 <span class="n">struct</span> <span class="n">mpp_decoder</span><span class="o">*</span> <span class="n">dec</span> <span class="o">=</span> <span class="n">mpp_decoder_create</span><span class="p">(</span><span class="nb">type</span><span class="p">);</span>
@@ -1166,12 +1173,12 @@
 </div>
 </div>
 <div class="section" id="mpp-encoder">
-<h2><span class="section-number">6.6.5.4. </span>MPP Encoder 设计及接口说明<a class="headerlink" href="#mpp-encoder" title="永久链接至标题">¶</a></h2>
+<h2><span class="section-number">6.7.5.4. </span>MPP Encoder 设计及接口说明<a class="headerlink" href="#mpp-encoder" title="永久链接至标题">¶</a></h2>
 <p>MPP Encoder 目前只支持 JPEG 图片编码。</p>
 <div class="section" id="id8">
-<h3><span class="section-number">6.6.5.4.1. </span>接口设计<a class="headerlink" href="#id8" title="永久链接至标题">¶</a></h3>
+<h3><span class="section-number">6.7.5.4.1. </span>接口设计<a class="headerlink" href="#id8" title="永久链接至标题">¶</a></h3>
 <div class="section" id="mpp-encode-jpeg">
-<h4><span class="section-number">6.6.5.4.1.1. </span>mpp_encode_jpeg<a class="headerlink" href="#mpp-encode-jpeg" title="永久链接至标题">¶</a></h4>
+<h4><span class="section-number">6.7.5.4.1.1. </span>mpp_encode_jpeg<a class="headerlink" href="#mpp-encode-jpeg" title="永久链接至标题">¶</a></h4>
 <table class="docutils align-default">
 <colgroup>
 <col style="width: 9%" />
@@ -1216,7 +1223,7 @@
 </div>
 </div>
 <div class="section" id="mpp-encoder-demo">
-<h3><span class="section-number">6.6.5.4.2. </span>MPP Encoder 参考Demo<a class="headerlink" href="#mpp-encoder-demo" title="永久链接至标题">¶</a></h3>
+<h3><span class="section-number">6.7.5.4.2. </span>MPP Encoder 参考Demo<a class="headerlink" href="#mpp-encoder-demo" title="永久链接至标题">¶</a></h3>
 <p>以下 Demo 为基本流程调用，具体实现可以参考代码 mpp/mpp_test/jpeg_encoder_test.c</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>//* 1. 获取 dma-buf device 句柄
 int dma_fd = dmabuf_device_open();
@@ -1248,7 +1255,7 @@ dmabuf_device_close(dma_fd);
 </div>
 </div>
 <div class="section" id="mpp-ge">
-<span id="ref-luban-lite-mpp-ge"></span><h2><span class="section-number">6.6.5.5. </span>MPP GE 设计及接口说明<a class="headerlink" href="#mpp-ge" title="永久链接至标题">¶</a></h2>
+<span id="ref-luban-lite-mpp-ge"></span><h2><span class="section-number">6.7.5.5. </span>MPP GE 设计及接口说明<a class="headerlink" href="#mpp-ge" title="永久链接至标题">¶</a></h2>
 <p><a class="reference internal" href="../ge/5_design_guide.html#ref-luban-lite-ge-cmdq"><span class="std std-ref">MPP GE设计说明请参考</span></a></p>
 <p>由于驱动支持非命令队列和命令队列两种模式，在提供的用户MPP接口中，对调用驱动的接口进行了封装，保持了统一的调用API，
 建议用户统一使用MPP中间层API。在命令队列模式下，task会先缓存在用户的cmd buffer中，当调用mpp_ge_emit后，
@@ -1258,7 +1265,7 @@ dmabuf_device_close(dma_fd);
 <p class="caption"><span class="caption-number">图 6.31 </span><span class="caption-text">应用调用MPP框架</span><a class="headerlink" href="#id17" title="永久链接至图片">¶</a></p>
 </div>
 <div class="section" id="mpp-ge-open">
-<h3><span class="section-number">6.6.5.5.1. </span>mpp_ge_open<a class="headerlink" href="#mpp-ge-open" title="永久链接至标题">¶</a></h3>
+<h3><span class="section-number">6.7.5.5.1. </span>mpp_ge_open<a class="headerlink" href="#mpp-ge-open" title="永久链接至标题">¶</a></h3>
 <div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="k">struct</span> <span class="nc">mpp_ge</span> <span class="o">*</span><span class="n">mpp_ge_open</span><span class="p">();</span>
 </pre></div>
 </div>
@@ -1296,7 +1303,7 @@ dmabuf_device_close(dma_fd);
 </table>
 </div>
 <div class="section" id="mpp-ge-close">
-<h3><span class="section-number">6.6.5.5.2. </span>mpp_ge_close<a class="headerlink" href="#mpp-ge-close" title="永久链接至标题">¶</a></h3>
+<h3><span class="section-number">6.7.5.5.2. </span>mpp_ge_close<a class="headerlink" href="#mpp-ge-close" title="永久链接至标题">¶</a></h3>
 <div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">void</span> <span class="nf">mpp_ge_close</span><span class="p">(</span><span class="k">struct</span> <span class="nc">mpp_ge</span> <span class="o">*</span><span class="n">ge</span><span class="p">);</span>
 </pre></div>
 </div>
@@ -1333,7 +1340,7 @@ dmabuf_device_close(dma_fd);
 </table>
 </div>
 <div class="section" id="mpp-ge-get-mode">
-<h3><span class="section-number">6.6.5.5.3. </span>mpp_ge_get_mode<a class="headerlink" href="#mpp-ge-get-mode" title="永久链接至标题">¶</a></h3>
+<h3><span class="section-number">6.7.5.5.3. </span>mpp_ge_get_mode<a class="headerlink" href="#mpp-ge-get-mode" title="永久链接至标题">¶</a></h3>
 <div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="k">enum</span> <span class="n">ge_mode</span> <span class="n">mpp_ge_get_mode</span><span class="p">(</span><span class="k">struct</span> <span class="nc">mpp_ge</span> <span class="o">*</span><span class="n">ge</span><span class="p">);</span>
 </pre></div>
 </div>
@@ -1372,7 +1379,7 @@ dmabuf_device_close(dma_fd);
 </table>
 </div>
 <div class="section" id="mpp-ge-fillrect">
-<h3><span class="section-number">6.6.5.5.4. </span>mpp_ge_fillrect<a class="headerlink" href="#mpp-ge-fillrect" title="永久链接至标题">¶</a></h3>
+<h3><span class="section-number">6.7.5.5.4. </span>mpp_ge_fillrect<a class="headerlink" href="#mpp-ge-fillrect" title="永久链接至标题">¶</a></h3>
 <div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">int</span> <span class="nf">mpp_ge_fillrect</span><span class="p">(</span><span class="k">struct</span> <span class="nc">mpp_ge</span> <span class="o">*</span><span class="n">ge</span><span class="p">,</span> <span class="k">struct</span> <span class="nc">ge_fillrect</span> <span class="o">*</span><span class="n">fillrect</span><span class="p">);</span>
 </pre></div>
 </div>
@@ -1430,7 +1437,7 @@ dmabuf_device_close(dma_fd);
 </div>
 </div>
 <div class="section" id="mpp-ge-bitblt">
-<h3><span class="section-number">6.6.5.5.5. </span>mpp_ge_bitblt<a class="headerlink" href="#mpp-ge-bitblt" title="永久链接至标题">¶</a></h3>
+<h3><span class="section-number">6.7.5.5.5. </span>mpp_ge_bitblt<a class="headerlink" href="#mpp-ge-bitblt" title="永久链接至标题">¶</a></h3>
 <div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">int</span> <span class="nf">mpp_ge_bitblt</span><span class="p">(</span><span class="k">struct</span> <span class="nc">mpp_ge</span> <span class="o">*</span><span class="n">ge</span><span class="p">,</span> <span class="k">struct</span> <span class="nc">ge_bitblt</span> <span class="o">*</span><span class="n">blt</span><span class="p">);</span>
 </pre></div>
 </div>
@@ -1497,7 +1504,7 @@ dmabuf_device_close(dma_fd);
 <p>在进行位块搬移的同时可以进行alpha blending和color key，同时也支持90/180/270度旋转和镜像。</p>
 </div>
 <div class="section" id="mpp-ge-rotate">
-<h3><span class="section-number">6.6.5.5.6. </span>mpp_ge_rotate<a class="headerlink" href="#mpp-ge-rotate" title="永久链接至标题">¶</a></h3>
+<h3><span class="section-number">6.7.5.5.6. </span>mpp_ge_rotate<a class="headerlink" href="#mpp-ge-rotate" title="永久链接至标题">¶</a></h3>
 <div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">int</span> <span class="nf">mpp_ge_rotate</span><span class="p">(</span><span class="k">struct</span> <span class="nc">mpp_ge</span> <span class="o">*</span><span class="n">ge</span><span class="p">,</span> <span class="k">struct</span> <span class="nc">ge_rotation</span> <span class="o">*</span><span class="n">rot</span><span class="p">);</span>
 </pre></div>
 </div>
@@ -1567,7 +1574,7 @@ dmabuf_device_close(dma_fd);
 </div>
 </div>
 <div class="section" id="mpp-ge-emit">
-<h3><span class="section-number">6.6.5.5.7. </span>mpp_ge_emit<a class="headerlink" href="#mpp-ge-emit" title="永久链接至标题">¶</a></h3>
+<h3><span class="section-number">6.7.5.5.7. </span>mpp_ge_emit<a class="headerlink" href="#mpp-ge-emit" title="永久链接至标题">¶</a></h3>
 <div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">iint</span> <span class="nf">mpp_ge_emit</span><span class="p">(</span><span class="k">struct</span> <span class="nc">mpp_ge</span> <span class="o">*</span><span class="n">ge</span><span class="p">);</span>
 </pre></div>
 </div>
@@ -1608,7 +1615,7 @@ dmabuf_device_close(dma_fd);
 </table>
 </div>
 <div class="section" id="mpp-ge-sync">
-<h3><span class="section-number">6.6.5.5.8. </span>mpp_ge_sync<a class="headerlink" href="#mpp-ge-sync" title="永久链接至标题">¶</a></h3>
+<h3><span class="section-number">6.7.5.5.8. </span>mpp_ge_sync<a class="headerlink" href="#mpp-ge-sync" title="永久链接至标题">¶</a></h3>
 <div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">iint</span> <span class="nf">mpp_ge_sync</span><span class="p">(</span><span class="k">struct</span> <span class="nc">mpp_ge</span> <span class="o">*</span><span class="n">ge</span><span class="p">);</span>
 </pre></div>
 </div>
@@ -1650,7 +1657,7 @@ dmabuf_device_close(dma_fd);
 </div>
 </div>
 <div class="section" id="mpp-vin">
-<h2><span class="section-number">6.6.5.6. </span>MPP VIN 设计及接口说明<a class="headerlink" href="#mpp-vin" title="永久链接至标题">¶</a></h2>
+<h2><span class="section-number">6.7.5.6. </span>MPP VIN 设计及接口说明<a class="headerlink" href="#mpp-vin" title="永久链接至标题">¶</a></h2>
 <p>MPP VIN模块主要实现两个功能：</p>
 <ol class="arabic simple">
 <li><p>对上封装了DVP、Camera驱动的ioctl接口（尽量做到和Linux MPP VIN保持一致）</p></li>
@@ -1661,7 +1668,7 @@ dmabuf_device_close(dma_fd);
 <p class="caption"><span class="caption-number">图 6.35 </span><span class="caption-text">MPP VIN模块的软件框架</span><a class="headerlink" href="#id21" title="永久链接至图片">¶</a></p>
 </div>
 <div class="section" id="buf">
-<span id="ref-lite-mpp-vin-buf"></span><h3><span class="section-number">6.6.5.6.1. </span>Buf队列管理<a class="headerlink" href="#buf" title="永久链接至标题">¶</a></h3>
+<span id="ref-lite-mpp-vin-buf"></span><h3><span class="section-number">6.7.5.6.1. </span>Buf队列管理<a class="headerlink" href="#buf" title="永久链接至标题">¶</a></h3>
 <p>VIN模块中的队列管理，参考了Linux的V4L2框架，通过 <code class="docutils literal notranslate"><span class="pre">struct</span> <span class="pre">vb_queue</span></code> 结构中的两个Buf队列来管理，DVP驱动中还需要维护一个buf_list来配合DVP控制器的地址更新。
 整个Buf流转的过程如下图：</p>
 <div class="figure align-center" id="id22">
@@ -1701,9 +1708,9 @@ dmabuf_device_close(dma_fd);
 <p>根据前面对“Buf队列管理”的分析可知：我们要分配的内存空间 <strong>至少要有3个Buf，每个Buf包含两个Plane</strong>。</p>
 </div>
 <div class="section" id="id9">
-<h3><span class="section-number">6.6.5.6.2. </span>接口设计<a class="headerlink" href="#id9" title="永久链接至标题">¶</a></h3>
+<h3><span class="section-number">6.7.5.6.2. </span>接口设计<a class="headerlink" href="#id9" title="永久链接至标题">¶</a></h3>
 <div class="section" id="mpp-vin-init">
-<h4><span class="section-number">6.6.5.6.2.1. </span>mpp_vin_init<a class="headerlink" href="#mpp-vin-init" title="永久链接至标题">¶</a></h4>
+<h4><span class="section-number">6.7.5.6.2.1. </span>mpp_vin_init<a class="headerlink" href="#mpp-vin-init" title="永久链接至标题">¶</a></h4>
 <table class="docutils align-default">
 <colgroup>
 <col style="width: 13%" />
@@ -1731,7 +1738,7 @@ dmabuf_device_close(dma_fd);
 </table>
 </div>
 <div class="section" id="mpp-vin-deinit">
-<h4><span class="section-number">6.6.5.6.2.2. </span>mpp_vin_deinit<a class="headerlink" href="#mpp-vin-deinit" title="永久链接至标题">¶</a></h4>
+<h4><span class="section-number">6.7.5.6.2.2. </span>mpp_vin_deinit<a class="headerlink" href="#mpp-vin-deinit" title="永久链接至标题">¶</a></h4>
 <table class="docutils align-default">
 <colgroup>
 <col style="width: 13%" />
@@ -1759,7 +1766,7 @@ dmabuf_device_close(dma_fd);
 </table>
 </div>
 <div class="section" id="mpp-dvp-ioctl">
-<h4><span class="section-number">6.6.5.6.2.3. </span>mpp_dvp_ioctl<a class="headerlink" href="#mpp-dvp-ioctl" title="永久链接至标题">¶</a></h4>
+<h4><span class="section-number">6.7.5.6.2.3. </span>mpp_dvp_ioctl<a class="headerlink" href="#mpp-dvp-ioctl" title="永久链接至标题">¶</a></h4>
 <table class="docutils align-default">
 <colgroup>
 <col style="width: 13%" />
@@ -1792,7 +1799,7 @@ dmabuf_device_close(dma_fd);
 </div>
 </div>
 <div class="section" id="demo">
-<span id="ref-lite-mpp-vin-demo"></span><h3><span class="section-number">6.6.5.6.3. </span>参考Demo<a class="headerlink" href="#demo" title="永久链接至标题">¶</a></h3>
+<span id="ref-lite-mpp-vin-demo"></span><h3><span class="section-number">6.7.5.6.3. </span>参考Demo<a class="headerlink" href="#demo" title="永久链接至标题">¶</a></h3>
 <p>命令行工具test_dvp实现了一个完整的 <code class="docutils literal notranslate"><span class="pre">Sensor</span> <span class="pre">-&gt;</span> <span class="pre">DVP</span> <span class="pre">-&gt;</span> <span class="pre">DE</span></code> 数据通路，从Camera采集数据、然后会显到DE 的Video layer。 整体的处理流程如下图（图中按照访问对象分为三列，实际上整体是串行执行）：</p>
 <div class="figure align-center" id="id23">
 <img alt="../../../_images/vin_demo_flow.png" src="../../../_images/vin_demo_flow.png" />
@@ -2229,8 +2236,8 @@ dmabuf_device_close(dma_fd);
           </div>
           <footer>
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
-        <a href="6_faq.html" class="btn btn-neutral float-right" title="6.6.6. 常见问题" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
-        <a href="4_test_guide.html" class="btn btn-neutral float-left" title="6.6.4. 测试指南" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="6_faq.html" class="btn btn-neutral float-right" title="6.7.6. 常见问题" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="4_test_guide.html" class="btn btn-neutral float-left" title="6.7.4. 测试指南" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
     </div>
 
   <hr/>

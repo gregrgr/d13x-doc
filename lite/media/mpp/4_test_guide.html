@@ -7,7 +7,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   
-  <title>6.6.4. 测试指南 &mdash; AIC文档中心 v1.0 文档</title>
+  <title>6.7.4. 测试指南 &mdash; AIC文档中心 v1.0 文档</title>
   
 
   
@@ -41,8 +41,8 @@
     
     <link rel="index" title="索引" href="../../../genindex.html" />
     <link rel="search" title="搜索" href="../../../search.html" />
-    <link rel="next" title="6.6.5. 设计说明" href="5_design_guide.html" />
-    <link rel="prev" title="6.6.3. 调试指南" href="3_debug_guide.html" />
+    <link rel="next" title="6.7.5. 设计说明" href="5_design_guide.html" />
+    <link rel="prev" title="6.7.3. 调试指南" href="3_debug_guide.html" />
     <script>
         $(function () {
 /**
@@ -233,7 +233,13 @@
 <li class="toctree-l1"><a class="reference internal" href="../../../quick-start/index.html">快速入门</a></li>
 </ul>
 <ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../datasheet/index.html">数据手册</a></li>
+</ul>
+<ul>
 <li class="toctree-l1"><a class="reference internal" href="../../../ic/index.html">芯片手册</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../hw/index.html">硬件指南</a></li>
 </ul>
 <ul class="current">
 <li class="toctree-l1 current"><a class="reference internal" href="../../index.html">RTOS SDK</a><ul class="current">
@@ -247,38 +253,39 @@
 <li class="toctree-l3"><a class="reference internal" href="../display/index.html">6.2. Display 使用指南</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../dvp/index.html">6.3. DVP 使用指南</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../ge/index.html">6.4. GE 使用指南</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../ve/index.html">6.5. VE 使用指南</a></li>
-<li class="toctree-l3 current"><a class="reference internal" href="index.html">6.6. MPP 使用指南</a><ul class="current">
-<li class="toctree-l4"><a class="reference internal" href="1_introduction.html">6.6.1. 模块介绍</a></li>
-<li class="toctree-l4"><a class="reference internal" href="2_config_guide.html">6.6.2. 参数配置</a></li>
-<li class="toctree-l4"><a class="reference internal" href="3_debug_guide.html">6.6.3. 调试指南</a></li>
-<li class="toctree-l4 current"><a class="current reference internal" href="#">6.6.4. 测试指南</a><ul>
-<li class="toctree-l5"><a class="reference internal" href="#id2">6.6.4.1. 测试环境</a><ul>
-<li class="toctree-l6"><a class="reference internal" href="#id3">6.6.4.1.1. 硬件</a></li>
-<li class="toctree-l6"><a class="reference internal" href="#id4">6.6.4.1.2. 软件</a></li>
-<li class="toctree-l6"><a class="reference internal" href="#id5">6.6.4.1.3. 软件配置</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../i2s/index.html">6.5. I2S 使用指南</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../ve/index.html">6.6. VE 使用指南</a></li>
+<li class="toctree-l3 current"><a class="reference internal" href="index.html">6.7. MPP 使用指南</a><ul class="current">
+<li class="toctree-l4"><a class="reference internal" href="1_introduction.html">6.7.1. 模块介绍</a></li>
+<li class="toctree-l4"><a class="reference internal" href="2_config_guide.html">6.7.2. 参数配置</a></li>
+<li class="toctree-l4"><a class="reference internal" href="3_debug_guide.html">6.7.3. 调试指南</a></li>
+<li class="toctree-l4 current"><a class="current reference internal" href="#">6.7.4. 测试指南</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="#id2">6.7.4.1. 测试环境</a><ul>
+<li class="toctree-l6"><a class="reference internal" href="#id3">6.7.4.1.1. 硬件</a></li>
+<li class="toctree-l6"><a class="reference internal" href="#id4">6.7.4.1.2. 软件</a></li>
+<li class="toctree-l6"><a class="reference internal" href="#id5">6.7.4.1.3. 软件配置</a></li>
 </ul>
 </li>
-<li class="toctree-l5"><a class="reference internal" href="#id6">6.6.4.2. 运行测试用例</a><ul>
-<li class="toctree-l6"><a class="reference internal" href="#mpp-test">6.6.4.2.1. mpp_test</a></li>
-<li class="toctree-l6"><a class="reference internal" href="#pic-test">6.6.4.2.2. pic_test</a></li>
-<li class="toctree-l6"><a class="reference internal" href="#ge-fill">6.6.4.2.3. ge_fill</a></li>
-<li class="toctree-l6"><a class="reference internal" href="#ge-bitblt">6.6.4.2.4. ge_bitblt</a></li>
-<li class="toctree-l6"><a class="reference internal" href="#ge-rotate">6.6.4.2.5. ge_rotate</a></li>
-<li class="toctree-l6"><a class="reference internal" href="#ge-scan-order">6.6.4.2.6. ge_scan_order</a></li>
-<li class="toctree-l6"><a class="reference internal" href="#ge-dither">6.6.4.2.7. ge_dither</a></li>
-<li class="toctree-l6"><a class="reference internal" href="#ge-alpha-blending">6.6.4.2.8. ge_alpha_blending</a></li>
-<li class="toctree-l6"><a class="reference internal" href="#ge-scale">6.6.4.2.9. ge_scale</a></li>
-<li class="toctree-l6"><a class="reference internal" href="#ge-format">6.6.4.2.10. ge_format</a></li>
+<li class="toctree-l5"><a class="reference internal" href="#id6">6.7.4.2. 运行测试用例</a><ul>
+<li class="toctree-l6"><a class="reference internal" href="#mpp-test">6.7.4.2.1. mpp_test</a></li>
+<li class="toctree-l6"><a class="reference internal" href="#pic-test">6.7.4.2.2. pic_test</a></li>
+<li class="toctree-l6"><a class="reference internal" href="#ge-fill">6.7.4.2.3. ge_fill</a></li>
+<li class="toctree-l6"><a class="reference internal" href="#ge-bitblt">6.7.4.2.4. ge_bitblt</a></li>
+<li class="toctree-l6"><a class="reference internal" href="#ge-rotate">6.7.4.2.5. ge_rotate</a></li>
+<li class="toctree-l6"><a class="reference internal" href="#ge-scan-order">6.7.4.2.6. ge_scan_order</a></li>
+<li class="toctree-l6"><a class="reference internal" href="#ge-dither">6.7.4.2.7. ge_dither</a></li>
+<li class="toctree-l6"><a class="reference internal" href="#ge-alpha-blending">6.7.4.2.8. ge_alpha_blending</a></li>
+<li class="toctree-l6"><a class="reference internal" href="#ge-scale">6.7.4.2.9. ge_scale</a></li>
+<li class="toctree-l6"><a class="reference internal" href="#ge-format">6.7.4.2.10. ge_format</a></li>
 </ul>
 </li>
 </ul>
 </li>
-<li class="toctree-l4"><a class="reference internal" href="5_design_guide.html">6.6.5. 设计说明</a></li>
-<li class="toctree-l4"><a class="reference internal" href="6_faq.html">6.6.6. 常见问题</a></li>
+<li class="toctree-l4"><a class="reference internal" href="5_design_guide.html">6.7.5. 设计说明</a></li>
+<li class="toctree-l4"><a class="reference internal" href="6_faq.html">6.7.6. 常见问题</a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="../lvgl/index.html">6.7. LVGL 使用指南</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../lvgl/index.html">6.8. LVGL 使用指南</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="../../interface/index.html">7. 接口</a></li>
@@ -347,9 +354,9 @@
         
           <li><a href="../index.html"><span class="section-number">6. </span>多媒体</a> &raquo;</li>
         
-          <li><a href="index.html"><span class="section-number">6.6. </span>MPP 使用指南</a> &raquo;</li>
+          <li><a href="index.html"><span class="section-number">6.7. </span>MPP 使用指南</a> &raquo;</li>
         
-      <li><span class="section-number">6.6.4. </span>测试指南</li>
+      <li><span class="section-number">6.7.4. </span>测试指南</li>
     
     
       <li class="wy-breadcrumbs-aside">
@@ -367,11 +374,11 @@
            <div itemprop="articleBody">
             
   <div class="section" id="id1">
-<h1><span class="section-number">6.6.4. </span>测试指南<a class="headerlink" href="#id1" title="永久链接至标题">¶</a></h1>
+<h1><span class="section-number">6.7.4. </span>测试指南<a class="headerlink" href="#id1" title="永久链接至标题">¶</a></h1>
 <div class="section" id="id2">
-<h2><span class="section-number">6.6.4.1. </span>测试环境<a class="headerlink" href="#id2" title="永久链接至标题">¶</a></h2>
+<h2><span class="section-number">6.7.4.1. </span>测试环境<a class="headerlink" href="#id2" title="永久链接至标题">¶</a></h2>
 <div class="section" id="id3">
-<h3><span class="section-number">6.6.4.1.1. </span>硬件<a class="headerlink" href="#id3" title="永久链接至标题">¶</a></h3>
+<h3><span class="section-number">6.7.4.1.1. </span>硬件<a class="headerlink" href="#id3" title="永久链接至标题">¶</a></h3>
 <ul class="simple">
 <li><p>带屏的设备</p></li>
 <li><p>USB Type-C数据线，用于设备供电，以及烧写固件</p></li>
@@ -380,7 +387,7 @@
 </ul>
 </div>
 <div class="section" id="id4">
-<h3><span class="section-number">6.6.4.1.2. </span>软件<a class="headerlink" href="#id4" title="永久链接至标题">¶</a></h3>
+<h3><span class="section-number">6.7.4.1.2. </span>软件<a class="headerlink" href="#id4" title="永久链接至标题">¶</a></h3>
 <ul class="simple">
 <li><p>PC端串口终端软件，用于串口通信</p></li>
 <li><p>AiBurn烧写工具，用于烧写固件</p></li>
@@ -388,29 +395,29 @@
 </ul>
 </div>
 <div class="section" id="id5">
-<h3><span class="section-number">6.6.4.1.3. </span>软件配置<a class="headerlink" href="#id5" title="永久链接至标题">¶</a></h3>
+<h3><span class="section-number">6.7.4.1.3. </span>软件配置<a class="headerlink" href="#id5" title="永久链接至标题">¶</a></h3>
 <div class="section" id="ve">
-<h4><span class="section-number">6.6.4.1.3.1. </span>VE 驱动<a class="headerlink" href="#ve" title="永久链接至标题">¶</a></h4>
+<h4><span class="section-number">6.7.4.1.3.1. </span>VE 驱动<a class="headerlink" href="#ve" title="永久链接至标题">¶</a></h4>
 <p><a class="reference internal" href="2_config_guide.html#ref-luban-lite-mpp-cfg"><span class="std std-ref">请见 MPP 参数配置</span></a></p>
 </div>
 <div class="section" id="mpp">
-<h4><span class="section-number">6.6.4.1.3.2. </span>MPP 中间件<a class="headerlink" href="#mpp" title="永久链接至标题">¶</a></h4>
+<h4><span class="section-number">6.7.4.1.3.2. </span>MPP 中间件<a class="headerlink" href="#mpp" title="永久链接至标题">¶</a></h4>
 <p><a class="reference internal" href="2_config_guide.html#ref-luban-lite-mpp-cfg"><span class="std std-ref">请见 MPP 参数配置</span></a></p>
 </div>
 <div class="section" id="ge">
-<h4><span class="section-number">6.6.4.1.3.3. </span>GE 驱动<a class="headerlink" href="#ge" title="永久链接至标题">¶</a></h4>
+<h4><span class="section-number">6.7.4.1.3.3. </span>GE 驱动<a class="headerlink" href="#ge" title="永久链接至标题">¶</a></h4>
 <p><a class="reference internal" href="../ge/2_config_guide.html"><span class="doc">请见 GE 参数配置</span></a></p>
 </div>
 <div class="section" id="de">
-<h4><span class="section-number">6.6.4.1.3.4. </span>DE 驱动<a class="headerlink" href="#de" title="永久链接至标题">¶</a></h4>
+<h4><span class="section-number">6.7.4.1.3.4. </span>DE 驱动<a class="headerlink" href="#de" title="永久链接至标题">¶</a></h4>
 <p><a class="reference internal" href="../display/02_config_guide/index.html"><span class="doc">请见 DE 参数配置</span></a></p>
 </div>
 </div>
 </div>
 <div class="section" id="id6">
-<h2><span class="section-number">6.6.4.2. </span>运行测试用例<a class="headerlink" href="#id6" title="永久链接至标题">¶</a></h2>
+<h2><span class="section-number">6.7.4.2. </span>运行测试用例<a class="headerlink" href="#id6" title="永久链接至标题">¶</a></h2>
 <div class="section" id="mpp-test">
-<h3><span class="section-number">6.6.4.2.1. </span>mpp_test<a class="headerlink" href="#mpp-test" title="永久链接至标题">¶</a></h3>
+<h3><span class="section-number">6.7.4.2.1. </span>mpp_test<a class="headerlink" href="#mpp-test" title="永久链接至标题">¶</a></h3>
 <p>mpp_test 的主要功能是测试 mpp_decoder 接口，解码视频或图片文件并通过 display 接口显示在屏幕上。</p>
 <p>目前支持 h264, jpg，png 的解码和显示，使用方式如下：</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">[</span><span class="n">aic</span> <span class="o">/&gt;</span><span class="p">]</span> <span class="n">mpp_test</span> <span class="o">-</span><span class="n">h</span>
@@ -430,7 +437,7 @@
 </div>
 </div>
 <div class="section" id="pic-test">
-<h3><span class="section-number">6.6.4.2.2. </span>pic_test<a class="headerlink" href="#pic-test" title="永久链接至标题">¶</a></h3>
+<h3><span class="section-number">6.7.4.2.2. </span>pic_test<a class="headerlink" href="#pic-test" title="永久链接至标题">¶</a></h3>
 <p>pic_test 的主要功能是测试 JPEG/PNG 图片解码和显示，相比于 mpp_test 代码更加精简。</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">[</span><span class="n">aic</span> <span class="o">/&gt;</span><span class="p">]</span> <span class="n">pic_test</span> <span class="o">-</span><span class="n">h</span>
 <span class="n">Usage</span><span class="p">:</span> <span class="n">dec_test</span> <span class="p">[</span><span class="n">options</span><span class="p">]</span>
@@ -449,28 +456,28 @@
 </div>
 </div>
 <div class="section" id="ge-fill">
-<h3><span class="section-number">6.6.4.2.3. </span>ge_fill<a class="headerlink" href="#ge-fill" title="永久链接至标题">¶</a></h3>
+<h3><span class="section-number">6.7.4.2.3. </span>ge_fill<a class="headerlink" href="#ge-fill" title="永久链接至标题">¶</a></h3>
 <p>ge_fill 的主要功能是测试位块填充的功能</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">[</span><span class="n">aic</span> <span class="o">/&gt;</span><span class="p">]</span> <span class="n">ge_fill</span>
 </pre></div>
 </div>
 </div>
 <div class="section" id="ge-bitblt">
-<h3><span class="section-number">6.6.4.2.4. </span>ge_bitblt<a class="headerlink" href="#ge-bitblt" title="永久链接至标题">¶</a></h3>
+<h3><span class="section-number">6.7.4.2.4. </span>ge_bitblt<a class="headerlink" href="#ge-bitblt" title="永久链接至标题">¶</a></h3>
 <p>ge_bitblt 的主要功能是测试位块搬移的功能</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">[</span><span class="n">aic</span> <span class="o">/&gt;</span><span class="p">]</span> <span class="n">ge_fill</span>
 </pre></div>
 </div>
 </div>
 <div class="section" id="ge-rotate">
-<h3><span class="section-number">6.6.4.2.5. </span>ge_rotate<a class="headerlink" href="#ge-rotate" title="永久链接至标题">¶</a></h3>
+<h3><span class="section-number">6.7.4.2.5. </span>ge_rotate<a class="headerlink" href="#ge-rotate" title="永久链接至标题">¶</a></h3>
 <p>ge_rotate 的主要功能是测试图形旋转的功能</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">[</span><span class="n">aic</span> <span class="o">/&gt;</span><span class="p">]</span> <span class="n">ge_rotate</span>
 </pre></div>
 </div>
 </div>
 <div class="section" id="ge-scan-order">
-<h3><span class="section-number">6.6.4.2.6. </span>ge_scan_order<a class="headerlink" href="#ge-scan-order" title="永久链接至标题">¶</a></h3>
+<h3><span class="section-number">6.7.4.2.6. </span>ge_scan_order<a class="headerlink" href="#ge-scan-order" title="永久链接至标题">¶</a></h3>
 <p>ge_scan_order 的主要功能是测试在不同方向读取内存的功能的差异</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">[</span><span class="n">aic</span> <span class="o">/&gt;</span><span class="p">]</span> <span class="n">ge_scan_order</span> <span class="o">-</span><span class="n">u</span>
 <span class="n">Usage</span><span class="p">:</span> <span class="n">ge_scan_order</span> <span class="p">[</span><span class="n">Options</span><span class="p">],</span> <span class="n">built</span> <span class="n">on</span> <span class="n">Jul</span> <span class="mi">25</span> <span class="mi">2023</span> <span class="mi">18</span><span class="p">:</span><span class="mi">54</span><span class="p">:</span><span class="mi">15</span>
@@ -486,7 +493,7 @@
 </div>
 </div>
 <div class="section" id="ge-dither">
-<h3><span class="section-number">6.6.4.2.7. </span>ge_dither<a class="headerlink" href="#ge-dither" title="永久链接至标题">¶</a></h3>
+<h3><span class="section-number">6.7.4.2.7. </span>ge_dither<a class="headerlink" href="#ge-dither" title="永久链接至标题">¶</a></h3>
 <p>ge_dither 的主要功能是测试 Dither的功能</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">[</span><span class="n">aic</span> <span class="o">/</span><span class="p">]</span><span class="o">&gt;</span> <span class="n">ge_dither</span> <span class="o">-</span><span class="n">u</span>
 <span class="n">Usage</span><span class="p">:</span> <span class="n">ge_dither</span> <span class="p">[</span><span class="n">Options</span><span class="p">],</span> <span class="n">built</span> <span class="n">on</span> <span class="n">Jul</span> <span class="mi">25</span> <span class="mi">2023</span> <span class="mi">19</span><span class="p">:</span><span class="mi">11</span><span class="p">:</span><span class="mi">55</span>
@@ -499,7 +506,7 @@
 </div>
 </div>
 <div class="section" id="ge-alpha-blending">
-<h3><span class="section-number">6.6.4.2.8. </span>ge_alpha_blending<a class="headerlink" href="#ge-alpha-blending" title="永久链接至标题">¶</a></h3>
+<h3><span class="section-number">6.7.4.2.8. </span>ge_alpha_blending<a class="headerlink" href="#ge-alpha-blending" title="永久链接至标题">¶</a></h3>
 <p>ge_alpha_blending 的主要功能是测试 alpha 混合的功能</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">[</span><span class="n">aic</span> <span class="o">/</span><span class="p">]</span><span class="o">&gt;</span> <span class="n">ge_alpha_blending</span> <span class="o">-</span><span class="n">u</span>
 <span class="n">Usage</span><span class="p">:</span> <span class="n">ge_alpha_blending</span> <span class="p">[</span><span class="n">Options</span><span class="p">],</span> <span class="n">built</span> <span class="n">on</span> <span class="n">Jul</span> <span class="mi">25</span> <span class="mi">2023</span> <span class="mi">19</span><span class="p">:</span><span class="mi">14</span><span class="p">:</span><span class="mi">42</span>
@@ -514,7 +521,7 @@
 </div>
 </div>
 <div class="section" id="ge-scale">
-<h3><span class="section-number">6.6.4.2.9. </span>ge_scale<a class="headerlink" href="#ge-scale" title="永久链接至标题">¶</a></h3>
+<h3><span class="section-number">6.7.4.2.9. </span>ge_scale<a class="headerlink" href="#ge-scale" title="永久链接至标题">¶</a></h3>
 <p>ge_scale 的主要功能是测试图像缩放的功能</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">[</span><span class="n">aic</span> <span class="o">/</span><span class="p">]</span><span class="o">&gt;</span> <span class="n">ge_scale</span> <span class="o">-</span><span class="n">u</span>
 <span class="n">Usage</span><span class="p">:</span> <span class="n">ge_scale</span> <span class="p">[</span><span class="n">Options</span><span class="p">],</span> <span class="n">built</span> <span class="n">on</span> <span class="n">Jul</span> <span class="mi">25</span> <span class="mi">2023</span> <span class="mi">19</span><span class="p">:</span><span class="mi">08</span><span class="p">:</span><span class="mi">10</span>
@@ -528,7 +535,7 @@
 </div>
 </div>
 <div class="section" id="ge-format">
-<h3><span class="section-number">6.6.4.2.10. </span>ge_format<a class="headerlink" href="#ge-format" title="永久链接至标题">¶</a></h3>
+<h3><span class="section-number">6.7.4.2.10. </span>ge_format<a class="headerlink" href="#ge-format" title="永久链接至标题">¶</a></h3>
 <p>ge_format 的主要功能是测试格式转换的功能</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">[</span><span class="n">aic</span> <span class="o">/</span><span class="p">]</span><span class="o">&gt;</span> <span class="n">ge_format</span> <span class="o">-</span><span class="n">u</span>
 <span class="n">Usage</span><span class="p">:</span> <span class="n">ge_format</span> <span class="p">[</span><span class="n">Options</span><span class="p">],</span> <span class="n">built</span> <span class="n">on</span> <span class="n">Aug</span>  <span class="mi">3</span> <span class="mi">2023</span> <span class="mi">17</span><span class="p">:</span><span class="mi">47</span><span class="p">:</span><span class="mi">13</span>
@@ -548,8 +555,8 @@
           </div>
           <footer>
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
-        <a href="5_design_guide.html" class="btn btn-neutral float-right" title="6.6.5. 设计说明" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
-        <a href="3_debug_guide.html" class="btn btn-neutral float-left" title="6.6.3. 调试指南" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="5_design_guide.html" class="btn btn-neutral float-right" title="6.7.5. 设计说明" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="3_debug_guide.html" class="btn btn-neutral float-left" title="6.7.3. 调试指南" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
     </div>
 
   <hr/>

@@ -7,7 +7,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   
-  <title>6.7.3. 调试指南 &mdash; AIC文档中心 v1.0 文档</title>
+  <title>6.8.3. 调试指南 &mdash; AIC文档中心 v1.0 文档</title>
   
 
   
@@ -41,8 +41,8 @@
     
     <link rel="index" title="索引" href="../../../genindex.html" />
     <link rel="search" title="搜索" href="../../../search.html" />
-    <link rel="next" title="6.7.4. 测试指南" href="4_test_guide.html" />
-    <link rel="prev" title="6.7.2. 参数配置" href="2_configure.html" />
+    <link rel="next" title="6.8.4. 测试指南" href="4_test_guide.html" />
+    <link rel="prev" title="6.8.2. 参数配置" href="2_configure.html" />
     <script>
         $(function () {
 /**
@@ -233,7 +233,13 @@
 <li class="toctree-l1"><a class="reference internal" href="../../../quick-start/index.html">快速入门</a></li>
 </ul>
 <ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../datasheet/index.html">数据手册</a></li>
+</ul>
+<ul>
 <li class="toctree-l1"><a class="reference internal" href="../../../ic/index.html">芯片手册</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../hw/index.html">硬件指南</a></li>
 </ul>
 <ul class="current">
 <li class="toctree-l1 current"><a class="reference internal" href="../../index.html">RTOS SDK</a><ul class="current">
@@ -247,19 +253,20 @@
 <li class="toctree-l3"><a class="reference internal" href="../display/index.html">6.2. Display 使用指南</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../dvp/index.html">6.3. DVP 使用指南</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../ge/index.html">6.4. GE 使用指南</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../ve/index.html">6.5. VE 使用指南</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../mpp/index.html">6.6. MPP 使用指南</a></li>
-<li class="toctree-l3 current"><a class="reference internal" href="index.html">6.7. LVGL 使用指南</a><ul class="current">
-<li class="toctree-l4"><a class="reference internal" href="1_introduction.html">6.7.1. LVGL介绍</a></li>
-<li class="toctree-l4"><a class="reference internal" href="2_configure.html">6.7.2. 参数配置</a></li>
-<li class="toctree-l4 current"><a class="current reference internal" href="#">6.7.3. 调试指南</a><ul>
-<li class="toctree-l5"><a class="reference internal" href="#id2">6.7.3.1. 资源文件路径</a></li>
-<li class="toctree-l5"><a class="reference internal" href="#id3">6.7.3.2. 缓存图片张数</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../i2s/index.html">6.5. I2S 使用指南</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../ve/index.html">6.6. VE 使用指南</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../mpp/index.html">6.7. MPP 使用指南</a></li>
+<li class="toctree-l3 current"><a class="reference internal" href="index.html">6.8. LVGL 使用指南</a><ul class="current">
+<li class="toctree-l4"><a class="reference internal" href="1_introduction.html">6.8.1. LVGL介绍</a></li>
+<li class="toctree-l4"><a class="reference internal" href="2_configure.html">6.8.2. 参数配置</a></li>
+<li class="toctree-l4 current"><a class="current reference internal" href="#">6.8.3. 调试指南</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="#id2">6.8.3.1. 资源文件路径</a></li>
+<li class="toctree-l5"><a class="reference internal" href="#id3">6.8.3.2. 缓存图片张数</a></li>
 </ul>
 </li>
-<li class="toctree-l4"><a class="reference internal" href="4_test_guide.html">6.7.4. 测试指南</a></li>
-<li class="toctree-l4"><a class="reference internal" href="5_design_guide.html">6.7.5. 设计指南</a></li>
-<li class="toctree-l4"><a class="reference internal" href="6_faq.html">6.7.6. 常见问题</a></li>
+<li class="toctree-l4"><a class="reference internal" href="4_test_guide.html">6.8.4. 测试指南</a></li>
+<li class="toctree-l4"><a class="reference internal" href="5_design_guide.html">6.8.5. 设计指南</a></li>
+<li class="toctree-l4"><a class="reference internal" href="6_faq.html">6.8.6. 常见问题</a></li>
 </ul>
 </li>
 </ul>
@@ -330,9 +337,9 @@
         
           <li><a href="../index.html"><span class="section-number">6. </span>多媒体</a> &raquo;</li>
         
-          <li><a href="index.html"><span class="section-number">6.7. </span>LVGL 使用指南</a> &raquo;</li>
+          <li><a href="index.html"><span class="section-number">6.8. </span>LVGL 使用指南</a> &raquo;</li>
         
-      <li><span class="section-number">6.7.3. </span>调试指南</li>
+      <li><span class="section-number">6.8.3. </span>调试指南</li>
     
     
       <li class="wy-breadcrumbs-aside">
@@ -350,9 +357,9 @@
            <div itemprop="articleBody">
             
   <div class="section" id="id1">
-<h1><span class="section-number">6.7.3. </span>调试指南<a class="headerlink" href="#id1" title="永久链接至标题">¶</a></h1>
+<h1><span class="section-number">6.8.3. </span>调试指南<a class="headerlink" href="#id1" title="永久链接至标题">¶</a></h1>
 <div class="section" id="id2">
-<h2><span class="section-number">6.7.3.1. </span>资源文件路径<a class="headerlink" href="#id2" title="永久链接至标题">¶</a></h2>
+<h2><span class="section-number">6.8.3.1. </span>资源文件路径<a class="headerlink" href="#id2" title="永久链接至标题">¶</a></h2>
 <ul>
 <li><p>lvgl demo默认从/ram/目录读取图片数据，从/data/中读取视频文件</p></li>
 <li><p>lvgl demo可以通过aic_ui.h中的宏定义来修改读取视频文件的目录</p>
@@ -365,7 +372,7 @@
 </ul>
 </div>
 <div class="section" id="id3">
-<h2><span class="section-number">6.7.3.2. </span>缓存图片张数<a class="headerlink" href="#id3" title="永久链接至标题">¶</a></h2>
+<h2><span class="section-number">6.8.3.2. </span>缓存图片张数<a class="headerlink" href="#id3" title="永久链接至标题">¶</a></h2>
 <blockquote>
 <div><p>luban-lite/application/os/helloworld/lvgl/lvgl_demo.c，通过宏定义CACHE_IMG_NUM来设置</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1">#define CACHE_IMG_NUM 15</span>
@@ -388,8 +395,8 @@
           </div>
           <footer>
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
-        <a href="4_test_guide.html" class="btn btn-neutral float-right" title="6.7.4. 测试指南" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
-        <a href="2_configure.html" class="btn btn-neutral float-left" title="6.7.2. 参数配置" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="4_test_guide.html" class="btn btn-neutral float-right" title="6.8.4. 测试指南" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="2_configure.html" class="btn btn-neutral float-left" title="6.8.2. 参数配置" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
     </div>
 
   <hr/>
