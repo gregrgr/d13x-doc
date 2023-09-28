@@ -7,7 +7,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   
-  <title>9.3. 有线网络 &mdash; AIC文档中心 v1.0 文档</title>
+  <title>9.4. 有线网络 &mdash; AIC文档中心 v1.0 文档</title>
   
 
   
@@ -41,8 +41,8 @@
     
     <link rel="index" title="索引" href="../../genindex.html" />
     <link rel="search" title="搜索" href="../../search.html" />
-    <link rel="next" title="Baremetal" href="../../baremetal/index.html" />
-    <link rel="prev" title="9.2. 挂载 SD 卡" href="sdcard.html" />
+    <link rel="next" title="10. 应用" href="../app/index.html" />
+    <link rel="prev" title="9.3. 挂载 SD 卡" href="sdcard.html" />
     <script>
         $(function () {
 /**
@@ -252,25 +252,27 @@
 <li class="toctree-l2"><a class="reference internal" href="../interface/index.html">7. 接口</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../security/index.html">8. 安全</a></li>
 <li class="toctree-l2 current"><a class="reference internal" href="index.html">9. 外设</a><ul class="current">
-<li class="toctree-l3"><a class="reference internal" href="udisk.html">9.1. 挂载 U盘</a></li>
-<li class="toctree-l3"><a class="reference internal" href="sdcard.html">9.2. 挂载 SD 卡</a></li>
-<li class="toctree-l3 current"><a class="current reference internal" href="#">9.3. 有线网络</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#gmac">9.3.1. 配置 GMAC 接口</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#lwip">9.3.2. 配置 LwIP</a><ul>
-<li class="toctree-l5"><a class="reference internal" href="#ip">9.3.2.1. 静态 IP 设置</a></li>
-<li class="toctree-l5"><a class="reference internal" href="#id2">9.3.2.2. 动态IP 设置</a></li>
+<li class="toctree-l3"><a class="reference internal" href="touch.html">9.1. 配置触摸屏</a></li>
+<li class="toctree-l3"><a class="reference internal" href="udisk.html">9.2. 挂载 U盘</a></li>
+<li class="toctree-l3"><a class="reference internal" href="sdcard.html">9.3. 挂载 SD 卡</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">9.4. 有线网络</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#gmac">9.4.1. 配置 GMAC 接口</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#lwip">9.4.2. 配置 LwIP</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="#ip">9.4.2.1. 静态 IP 设置</a></li>
+<li class="toctree-l5"><a class="reference internal" href="#id2">9.4.2.2. 动态IP 设置</a></li>
 </ul>
 </li>
-<li class="toctree-l4"><a class="reference internal" href="#id3">9.3.3. 编译烧录</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#id4">9.3.4. 验证</a><ul>
-<li class="toctree-l5"><a class="reference internal" href="#id5">9.3.4.1. 系统启动</a></li>
-<li class="toctree-l5"><a class="reference internal" href="#ping">9.3.4.2. ping 包</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id3">9.4.3. 编译烧录</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id4">9.4.4. 验证</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="#id5">9.4.4.1. 系统启动</a></li>
+<li class="toctree-l5"><a class="reference internal" href="#ping">9.4.4.2. ping 包</a></li>
 </ul>
 </li>
 </ul>
 </li>
 </ul>
 </li>
+<li class="toctree-l2"><a class="reference internal" href="../app/index.html">10. 应用</a></li>
 </ul>
 </li>
 </ul>
@@ -334,7 +336,7 @@
         
           <li><a href="index.html"><span class="section-number">9. </span>外设</a> &raquo;</li>
         
-      <li><span class="section-number">9.3. </span>有线网络</li>
+      <li><span class="section-number">9.4. </span>有线网络</li>
     
     
       <li class="wy-breadcrumbs-aside">
@@ -352,14 +354,14 @@
            <div itemprop="articleBody">
             
   <div class="section" id="id1">
-<h1><span class="section-number">9.3. </span>有线网络<a class="headerlink" href="#id1" title="永久链接至标题">¶</a></h1>
+<h1><span class="section-number">9.4. </span>有线网络<a class="headerlink" href="#id1" title="永久链接至标题">¶</a></h1>
 <p>本章节讲解如何在 luban-lite 系统中配置有线网络，需要配置的主要有两部分：</p>
 <ul class="simple">
 <li><p>配置 GMAC 接口；</p></li>
 <li><p>配置 LwIP 协议栈；</p></li>
 </ul>
 <div class="section" id="gmac">
-<h2><span class="section-number">9.3.1. </span>配置 GMAC 接口<a class="headerlink" href="#gmac" title="永久链接至标题">¶</a></h2>
+<h2><span class="section-number">9.4.1. </span>配置 GMAC 接口<a class="headerlink" href="#gmac" title="永久链接至标题">¶</a></h2>
 <p>使用 GMAC 接口前，需将 对应 GMAC 接口选中，以 D211DCV-DEMO-V1-0 开发板为例，使用 <code class="docutils literal notranslate"><span class="pre">scons</span> <span class="pre">--meunconfig</span></code> 命令进行配置：</p>
 <div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>Board options  ---&gt;
     <span class="o">[</span>*<span class="o">]</span> Using Gmac0
@@ -378,9 +380,9 @@
 </div>
 </div>
 <div class="section" id="lwip">
-<h2><span class="section-number">9.3.2. </span>配置 LwIP<a class="headerlink" href="#lwip" title="永久链接至标题">¶</a></h2>
+<h2><span class="section-number">9.4.2. </span>配置 LwIP<a class="headerlink" href="#lwip" title="永久链接至标题">¶</a></h2>
 <div class="section" id="ip">
-<h3><span class="section-number">9.3.2.1. </span>静态 IP 设置<a class="headerlink" href="#ip" title="永久链接至标题">¶</a></h3>
+<h3><span class="section-number">9.4.2.1. </span>静态 IP 设置<a class="headerlink" href="#ip" title="永久链接至标题">¶</a></h3>
 <p>使用 <code class="docutils literal notranslate"><span class="pre">scons</span> <span class="pre">--menuconfig</span></code> 命令进入配置页面，配置如下：</p>
 <div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>Local packages options  ---&gt;
     Third-party packages options  ---&gt;
@@ -400,7 +402,7 @@
 </div>
 </div>
 <div class="section" id="id2">
-<h3><span class="section-number">9.3.2.2. </span>动态IP 设置<a class="headerlink" href="#id2" title="永久链接至标题">¶</a></h3>
+<h3><span class="section-number">9.4.2.2. </span>动态IP 设置<a class="headerlink" href="#id2" title="永久链接至标题">¶</a></h3>
 <p>使用 <code class="docutils literal notranslate"><span class="pre">scons</span> <span class="pre">--menuconfig</span></code> 命令进入配置页面，配置如下：</p>
 <div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>Local packages options  ---&gt;
     Third-party packages options  ---&gt;
@@ -423,13 +425,13 @@
 </div>
 </div>
 <div class="section" id="id3">
-<h2><span class="section-number">9.3.3. </span>编译烧录<a class="headerlink" href="#id3" title="永久链接至标题">¶</a></h2>
+<h2><span class="section-number">9.4.3. </span>编译烧录<a class="headerlink" href="#id3" title="永久链接至标题">¶</a></h2>
 <p>配置完成后，保存退出，编译、烧录</p>
 </div>
 <div class="section" id="id4">
-<h2><span class="section-number">9.3.4. </span>验证<a class="headerlink" href="#id4" title="永久链接至标题">¶</a></h2>
+<h2><span class="section-number">9.4.4. </span>验证<a class="headerlink" href="#id4" title="永久链接至标题">¶</a></h2>
 <div class="section" id="id5">
-<h3><span class="section-number">9.3.4.1. </span>系统启动<a class="headerlink" href="#id5" title="永久链接至标题">¶</a></h3>
+<h3><span class="section-number">9.4.4.1. </span>系统启动<a class="headerlink" href="#id5" title="永久链接至标题">¶</a></h3>
 <p>烧录完成后，重启，检查设备，看到 LwIP 启动、网卡获取 IP 为配置后的 IP：</p>
 <div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>aic /&gt; Starting lwIP, <span class="nb">local</span> interface IP is <span class="m">192</span>.168.10.200
 <span class="o">[</span>I<span class="o">]</span> aicphy_poll_thread<span class="o">()</span><span class="m">635</span>  Port <span class="m">0</span> link UP! autoneg mode: speed 100M, full duplex, flow control on.
@@ -437,7 +439,7 @@
 </div>
 </div>
 <div class="section" id="ping">
-<h3><span class="section-number">9.3.4.2. </span>ping 包<a class="headerlink" href="#ping" title="永久链接至标题">¶</a></h3>
+<h3><span class="section-number">9.4.4.2. </span>ping 包<a class="headerlink" href="#ping" title="永久链接至标题">¶</a></h3>
 <p>使用 PC 进行 ping 包验证， 配置同网段 IP ，ping 包结果如下：</p>
 <div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>C:<span class="se">\U</span>sers<span class="se">\g</span>uojun.dong&gt;ping <span class="m">192</span>.168.10.200 -t
 
@@ -479,8 +481,8 @@
           </div>
           <footer>
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
-        <a href="../../baremetal/index.html" class="btn btn-neutral float-right" title="Baremetal" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
-        <a href="sdcard.html" class="btn btn-neutral float-left" title="9.2. 挂载 SD 卡" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="../app/index.html" class="btn btn-neutral float-right" title="10. 应用" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="sdcard.html" class="btn btn-neutral float-left" title="9.3. 挂载 SD 卡" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
     </div>
 
   <hr/>

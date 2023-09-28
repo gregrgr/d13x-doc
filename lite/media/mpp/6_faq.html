@@ -41,7 +41,7 @@
     
     <link rel="index" title="索引" href="../../../genindex.html" />
     <link rel="search" title="搜索" href="../../../search.html" />
-    <link rel="next" title="6.8. LVGL 使用指南" href="../lvgl/index.html" />
+    <link rel="next" title="6.8. MPP 播放器使用指南" href="../player/index.html" />
     <link rel="prev" title="6.7.5. 设计说明" href="5_design_guide.html" />
     <script>
         $(function () {
@@ -262,12 +262,12 @@
 <li class="toctree-l4"><a class="reference internal" href="4_test_guide.html">6.7.4. 测试指南</a></li>
 <li class="toctree-l4"><a class="reference internal" href="5_design_guide.html">6.7.5. 设计说明</a></li>
 <li class="toctree-l4 current"><a class="current reference internal" href="#">6.7.6. 常见问题</a><ul>
-<li class="toctree-l5"><a class="reference internal" href="#id2">6.7.6.1. 播放视频花屏</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="#id2">6.7.6.1. 图像解码花屏</a><ul>
 <li class="toctree-l6"><a class="reference internal" href="#id3">6.7.6.1.1. 现象</a></li>
 <li class="toctree-l6"><a class="reference internal" href="#id4">6.7.6.1.2. 原因分析</a></li>
 </ul>
 </li>
-<li class="toctree-l5"><a class="reference internal" href="#id5">6.7.6.2. 播放视频出错</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="#id5">6.7.6.2. 图像解码出错</a><ul>
 <li class="toctree-l6"><a class="reference internal" href="#id6">6.7.6.2.1. 现象</a></li>
 <li class="toctree-l6"><a class="reference internal" href="#id7">6.7.6.2.2. 原因分析</a></li>
 </ul>
@@ -276,12 +276,14 @@
 </li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="../lvgl/index.html">6.8. LVGL 使用指南</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../player/index.html">6.8. MPP 播放器使用指南</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../lvgl/index.html">6.9. LVGL 使用指南</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="../../interface/index.html">7. 接口</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../security/index.html">8. 安全</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../peripheral/index.html">9. 外设</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../app/index.html">10. 应用</a></li>
 </ul>
 </li>
 </ul>
@@ -367,36 +369,30 @@
   <div class="section" id="id1">
 <h1><span class="section-number">6.7.6. </span>常见问题<a class="headerlink" href="#id1" title="永久链接至标题">¶</a></h1>
 <div class="section" id="id2">
-<h2><span class="section-number">6.7.6.1. </span>播放视频花屏<a class="headerlink" href="#id2" title="永久链接至标题">¶</a></h2>
+<h2><span class="section-number">6.7.6.1. </span>图像解码花屏<a class="headerlink" href="#id2" title="永久链接至标题">¶</a></h2>
 <div class="section" id="id3">
 <h3><span class="section-number">6.7.6.1.1. </span>现象<a class="headerlink" href="#id3" title="永久链接至标题">¶</a></h3>
-<p>播放视频出现花屏现象。</p>
+<p>解码后的图像出现花屏现象。</p>
 </div>
 <div class="section" id="id4">
 <h3><span class="section-number">6.7.6.1.2. </span>原因分析<a class="headerlink" href="#id4" title="永久链接至标题">¶</a></h3>
 <p>逐步排除以下原因：</p>
 <ol class="arabic simple">
-<li><p>是否源文件花屏，可参考PC端播放视频，是否有花屏现象;</p></li>
-<li><p>通过保存视频帧数据，在PC端查看图像是否有花屏现象，如果PC端查看图像正常，则需要排查是否设置图像格式错误，或排查Display模块相关原因。</p></li>
-<li><p>码流解析是否正确，相关VE寄存器信息是否配置正确，具体请查看VE Spec说明。</p></li>
+<li><p>是否源文件本身有数据错误，可使用 PC 端视频播放软件或图像浏览器查看，是否有花屏现象;</p></li>
+<li><p>通过保存解码帧数据，在 PC 端查看图像是否有花屏现象，如果 PC 端查看图像正常，则需要排查是否设置图像格式错误，或排查 Display 模块相关原因。</p></li>
+<li><p>码流解析是否正确，相关 VE 寄存器信息是否配置正确，具体请查看 VE Spec 说明。</p></li>
 </ol>
 </div>
 </div>
 <div class="section" id="id5">
-<h2><span class="section-number">6.7.6.2. </span>播放视频出错<a class="headerlink" href="#id5" title="永久链接至标题">¶</a></h2>
+<h2><span class="section-number">6.7.6.2. </span>图像解码出错<a class="headerlink" href="#id5" title="永久链接至标题">¶</a></h2>
 <div class="section" id="id6">
 <h3><span class="section-number">6.7.6.2.1. </span>现象<a class="headerlink" href="#id6" title="永久链接至标题">¶</a></h3>
 <p>解码异常报错，未得到解码后的视频帧，或者视频帧数据出错。</p>
 </div>
 <div class="section" id="id7">
 <h3><span class="section-number">6.7.6.2.2. </span>原因分析<a class="headerlink" href="#id7" title="永久链接至标题">¶</a></h3>
-<p>逐步排除以下原因：</p>
-<ol class="arabic simple">
-<li><p>源文件是否是VE驱动支持的媒体文件格式，具体请参考模块介绍的硬件编解码格式章节;</p></li>
-<li><p>源文件是否损坏，可参考PC端是否可正常播放;</p></li>
-<li><p>码流解析是否正确，相关VE寄存器信息是否配置正确。</p></li>
-</ol>
-<p>解码报错后，VE驱动中返回了解码当前帧的寄存器状态信息，请参考VE Spec说明对应分析。</p>
+<p>请查看VE使用指南 <a class="reference internal" href="../ve/6_faq.html#ref-luban-lite-ve-error"><span class="std std-ref">解码报错</span></a></p>
 </div>
 </div>
 </div>
@@ -407,7 +403,7 @@
           </div>
           <footer>
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
-        <a href="../lvgl/index.html" class="btn btn-neutral float-right" title="6.8. LVGL 使用指南" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="../player/index.html" class="btn btn-neutral float-right" title="6.8. MPP 播放器使用指南" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
         <a href="5_design_guide.html" class="btn btn-neutral float-left" title="6.7.5. 设计说明" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
     </div>
 

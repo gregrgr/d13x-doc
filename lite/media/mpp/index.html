@@ -264,12 +264,14 @@
 <li class="toctree-l4"><a class="reference internal" href="6_faq.html">6.7.6. 常见问题</a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="../lvgl/index.html">6.8. LVGL 使用指南</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../player/index.html">6.8. MPP 播放器使用指南</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../lvgl/index.html">6.9. LVGL 使用指南</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="../../interface/index.html">7. 接口</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../security/index.html">8. 安全</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../peripheral/index.html">9. 外设</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../app/index.html">10. 应用</a></li>
 </ul>
 </li>
 </ul>
@@ -414,32 +416,37 @@
 <li class="toctree-l3"><a class="reference internal" href="5_design_guide.html#mpp-encoder-demo">6.7.5.4.2. MPP Encoder 参考Demo</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="5_design_guide.html#mpp-ge">6.7.5.5. MPP GE 设计及接口说明</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="5_design_guide.html#mpp-ge-open">6.7.5.5.1. mpp_ge_open</a></li>
-<li class="toctree-l3"><a class="reference internal" href="5_design_guide.html#mpp-ge-close">6.7.5.5.2. mpp_ge_close</a></li>
-<li class="toctree-l3"><a class="reference internal" href="5_design_guide.html#mpp-ge-get-mode">6.7.5.5.3. mpp_ge_get_mode</a></li>
-<li class="toctree-l3"><a class="reference internal" href="5_design_guide.html#mpp-ge-fillrect">6.7.5.5.4. mpp_ge_fillrect</a></li>
-<li class="toctree-l3"><a class="reference internal" href="5_design_guide.html#mpp-ge-bitblt">6.7.5.5.5. mpp_ge_bitblt</a></li>
-<li class="toctree-l3"><a class="reference internal" href="5_design_guide.html#mpp-ge-rotate">6.7.5.5.6. mpp_ge_rotate</a></li>
-<li class="toctree-l3"><a class="reference internal" href="5_design_guide.html#mpp-ge-emit">6.7.5.5.7. mpp_ge_emit</a></li>
-<li class="toctree-l3"><a class="reference internal" href="5_design_guide.html#mpp-ge-sync">6.7.5.5.8. mpp_ge_sync</a></li>
+<li class="toctree-l2"><a class="reference internal" href="5_design_guide.html#mpp-zlib">6.7.5.5. MPP zlib 设计及接口说明</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="5_design_guide.html#id9">6.7.5.5.1. 接口设计</a></li>
+<li class="toctree-l3"><a class="reference internal" href="5_design_guide.html#demo">6.7.5.5.2. 参考Demo</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="5_design_guide.html#mpp-vin">6.7.5.6. MPP VIN 设计及接口说明</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="5_design_guide.html#buf">6.7.5.6.1. Buf队列管理</a></li>
-<li class="toctree-l3"><a class="reference internal" href="5_design_guide.html#id9">6.7.5.6.2. 接口设计</a></li>
-<li class="toctree-l3"><a class="reference internal" href="5_design_guide.html#demo">6.7.5.6.3. 参考Demo</a></li>
+<li class="toctree-l2"><a class="reference internal" href="5_design_guide.html#mpp-ge">6.7.5.6. MPP GE 设计及接口说明</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="5_design_guide.html#mpp-ge-open">6.7.5.6.1. mpp_ge_open</a></li>
+<li class="toctree-l3"><a class="reference internal" href="5_design_guide.html#mpp-ge-close">6.7.5.6.2. mpp_ge_close</a></li>
+<li class="toctree-l3"><a class="reference internal" href="5_design_guide.html#mpp-ge-get-mode">6.7.5.6.3. mpp_ge_get_mode</a></li>
+<li class="toctree-l3"><a class="reference internal" href="5_design_guide.html#mpp-ge-fillrect">6.7.5.6.4. mpp_ge_fillrect</a></li>
+<li class="toctree-l3"><a class="reference internal" href="5_design_guide.html#mpp-ge-bitblt">6.7.5.6.5. mpp_ge_bitblt</a></li>
+<li class="toctree-l3"><a class="reference internal" href="5_design_guide.html#mpp-ge-rotate">6.7.5.6.6. mpp_ge_rotate</a></li>
+<li class="toctree-l3"><a class="reference internal" href="5_design_guide.html#mpp-ge-emit">6.7.5.6.7. mpp_ge_emit</a></li>
+<li class="toctree-l3"><a class="reference internal" href="5_design_guide.html#mpp-ge-sync">6.7.5.6.8. mpp_ge_sync</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="5_design_guide.html#mpp-vin">6.7.5.7. MPP VIN 设计及接口说明</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="5_design_guide.html#buf">6.7.5.7.1. Buf队列管理</a></li>
+<li class="toctree-l3"><a class="reference internal" href="5_design_guide.html#id10">6.7.5.7.2. 接口设计</a></li>
+<li class="toctree-l3"><a class="reference internal" href="5_design_guide.html#ref-lite-mpp-vin-demo">6.7.5.7.3. 参考Demo</a></li>
 </ul>
 </li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="6_faq.html">6.7.6. 常见问题</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="6_faq.html#id2">6.7.6.1. 播放视频花屏</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="6_faq.html#id2">6.7.6.1. 图像解码花屏</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="6_faq.html#id3">6.7.6.1.1. 现象</a></li>
 <li class="toctree-l3"><a class="reference internal" href="6_faq.html#id4">6.7.6.1.2. 原因分析</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="6_faq.html#id5">6.7.6.2. 播放视频出错</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="6_faq.html#id5">6.7.6.2. 图像解码出错</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="6_faq.html#id6">6.7.6.2.1. 现象</a></li>
 <li class="toctree-l3"><a class="reference internal" href="6_faq.html#id7">6.7.6.2.2. 原因分析</a></li>
 </ul>

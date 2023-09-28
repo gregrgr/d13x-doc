@@ -285,6 +285,7 @@
 <li class="toctree-l2"><a class="reference internal" href="../interface/index.html">7. 接口</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../security/index.html">8. 安全</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../peripheral/index.html">9. 外设</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../app/index.html">10. 应用</a></li>
 </ul>
 </li>
 </ul>
@@ -467,10 +468,12 @@
 <li><p>关闭 i2c、touch panel</p></li>
 </ul>
 <div class="highlight-kconfig notranslate"><div class="highlight"><pre><span></span>Board options  ---&gt;
-        [] Using i2c3
+    [] Using i2c3
+Drivers options  ---&gt;
+    Peripheral  ---&gt;
         Touch Panel Support  ---&gt;
-                Gt911 touch panel options  ---&gt;
-                        [] Using touch panel gt911
+            Gt911 touch panel options  ---&gt;
+                [] Using touch panel gt911
 </pre></div>
 </div>
 <div class="admonition attention">

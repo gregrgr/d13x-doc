@@ -277,12 +277,14 @@
 <li class="toctree-l3"><a class="reference internal" href="../../i2s/index.html">6.5. I2S 使用指南</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../ve/index.html">6.6. VE 使用指南</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../mpp/index.html">6.7. MPP 使用指南</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../lvgl/index.html">6.8. LVGL 使用指南</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../player/index.html">6.8. MPP 播放器使用指南</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../lvgl/index.html">6.9. LVGL 使用指南</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="../../../interface/index.html">7. 接口</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../../security/index.html">8. 安全</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../../peripheral/index.html">9. 外设</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../app/index.html">10. 应用</a></li>
 </ul>
 </li>
 </ul>
@@ -399,7 +401,7 @@
 </div>
 <div class="section" id="video-layer">
 <h2><span class="section-number">6.2.4.2. </span>video_layer 测试<a class="headerlink" href="#video-layer" title="永久链接至标题">¶</a></h2>
-<p>video_layer 的主要功能是测试显示引擎UI图层和Video图层blend，在Video图层播放一个视频帧文件</p>
+<p>video_layer 的主要功能是测试显示引擎 UI 图层和 Video 图层 blend，在 Video 图层播放一个视频帧文件</p>
 <p>测试需要依赖 SD Card，将 YUV 数据保存在 SD Card 中，在系统启动后进行挂载：</p>
 <div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>mount sd0p0 / elm
 </pre></div>
@@ -437,7 +439,7 @@ All parameter range <span class="k">in</span> <span class="o">[</span><span clas
 Example: disp_prop -b <span class="m">35</span> -c <span class="m">40</span> -s <span class="m">45</span> -h <span class="m">44</span>
 </pre></div>
 </div>
-<p>设置参数后再次在 video 图层播放一个 YUV视频帧文件，可以看到两者显示效果不同：</p>
+<p>设置参数后再次在 video 图层播放一个 YUV 视频帧文件，可以看到两者显示效果不同：</p>
 <div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>aic /&gt; video_layer -w <span class="m">176</span> -h <span class="m">144</span> -f yuv420p -i my.yuv
 </pre></div>
 </div>

@@ -2541,7 +2541,7 @@
 </thead>
 <tbody>
 <tr class="row-even"><td><p>PA0</p></td>
-<td><p>GPAI0</p></td>
+<td><p>GPADC0</p></td>
 <td><p>IR_TX</p></td>
 <td><p>I2C0_SCL</p></td>
 <td><p>UART0_TX</p></td>
@@ -2550,7 +2550,7 @@
 <td><p>CPU_NMI</p></td>
 </tr>
 <tr class="row-odd"><td><p>PA1</p></td>
-<td><p>GPAI1</p></td>
+<td><p>GPADC1</p></td>
 <td><p>IR_RX</p></td>
 <td><p>I2C0_SDA</p></td>
 <td><p>UART0_RX</p></td>
@@ -2559,7 +2559,7 @@
 <td><p>DE_TE</p></td>
 </tr>
 <tr class="row-even"><td><p>PA2</p></td>
-<td><p>GPAI2</p></td>
+<td><p>GPADC2</p></td>
 <td></td>
 <td><p>I2C1_SCL</p></td>
 <td><p>UART1_TX</p></td>
@@ -2568,7 +2568,7 @@
 <td><p>UART2_CTS</p></td>
 </tr>
 <tr class="row-odd"><td><p>PA3</p></td>
-<td><p>GPAI3</p></td>
+<td><p>GPADC3</p></td>
 <td></td>
 <td><p>I2C1_SDA</p></td>
 <td><p>UART1_RX</p></td>
@@ -2577,7 +2577,7 @@
 <td><p>UART2_RTS</p></td>
 </tr>
 <tr class="row-even"><td><p>PA4</p></td>
-<td><p>GPAI4</p></td>
+<td><p>GPADC4</p></td>
 <td></td>
 <td><p>CAN0_TX</p></td>
 <td><p>UART2_TX</p></td>
@@ -2586,7 +2586,7 @@
 <td></td>
 </tr>
 <tr class="row-odd"><td><p>PA5</p></td>
-<td><p>GPAI5</p></td>
+<td><p>GPADC5</p></td>
 <td></td>
 <td><p>CAN0_RX</p></td>
 <td><p>UART2_RX</p></td>
@@ -2595,7 +2595,7 @@
 <td><p>RTC_32K</p></td>
 </tr>
 <tr class="row-even"><td><p>PA6</p></td>
-<td><p>GPAI6</p></td>
+<td><p>GPADC6</p></td>
 <td></td>
 <td><p>CAN1_TX</p></td>
 <td><p>UART3_TX</p></td>
@@ -2604,7 +2604,7 @@
 <td></td>
 </tr>
 <tr class="row-odd"><td><p>PA7</p></td>
-<td><p>GPAI7</p></td>
+<td><p>GPADC7</p></td>
 <td></td>
 <td><p>CAN1_RX</p></td>
 <td><p>UART3_RX</p></td>
@@ -3325,7 +3325,11 @@
 <td><p>RESETN</p></td>
 <td><p>INPUT</p></td>
 <td><p>系统复位</p></td>
-<td><p>内部自带RC上拉，外挂电容不超过4.7uF</p></td>
+<td><div class="line-block">
+<div class="line">内置约30Kohm上拉电阻和去抖滤波，不使用可</div>
+<div class="line">直接悬空，若外挂电容建议不超过4.7uF</div>
+</div>
+</td>
 </tr>
 <tr class="row-even"><td colspan="5"><p>Power</p></td>
 </tr>
@@ -3355,7 +3359,7 @@
 <td><p>VDD11_SYS</p></td>
 <td><p>POWER</p></td>
 <td><p>CPU Core电压</p></td>
-<td><p>1.1V供电</p></td>
+<td><p>1.1V供电，若使用内置LDO1x，必须做好芯片散热</p></td>
 </tr>
 </tbody>
 </table>
@@ -3387,7 +3391,7 @@
 </tr>
 <tr class="row-odd"><td><p>56</p></td>
 <td><p>PA0</p></td>
-<td><p>GPAI0</p></td>
+<td><p>GPADC0</p></td>
 <td><p>IR_TX</p></td>
 <td><p>I2C0_SCL</p></td>
 <td><p>UART0_TX</p></td>
@@ -3396,7 +3400,7 @@
 </tr>
 <tr class="row-even"><td><p>57</p></td>
 <td><p>PA1</p></td>
-<td><p>GPAI1</p></td>
+<td><p>GPADC1</p></td>
 <td><p>IR_RX</p></td>
 <td><p>I2C0_SDA</p></td>
 <td><p>UART0_RX</p></td>
@@ -3405,7 +3409,7 @@
 </tr>
 <tr class="row-odd"><td><p>58</p></td>
 <td><p>PA2</p></td>
-<td><p>GPAI2</p></td>
+<td><p>GPADC2</p></td>
 <td></td>
 <td><p>I2C1_SCL</p></td>
 <td><p>UART1_TX</p></td>
@@ -3414,7 +3418,7 @@
 </tr>
 <tr class="row-even"><td><p>59</p></td>
 <td><p>PA3</p></td>
-<td><p>GPAI3</p></td>
+<td><p>GPADC3</p></td>
 <td></td>
 <td><p>I2C1_SDA</p></td>
 <td><p>UART1_RX</p></td>
@@ -3423,7 +3427,7 @@
 </tr>
 <tr class="row-odd"><td><p>60</p></td>
 <td><p>PA4</p></td>
-<td><p>GPAI4</p></td>
+<td><p>GPADC4</p></td>
 <td></td>
 <td><p>CAN0_TX</p></td>
 <td><p>UART2_TX</p></td>
@@ -3432,7 +3436,7 @@
 </tr>
 <tr class="row-even"><td><p>61</p></td>
 <td><p>PA5</p></td>
-<td><p>GPAI5</p></td>
+<td><p>GPADC5</p></td>
 <td></td>
 <td><p>CAN0_RX</p></td>
 <td><p>UART2_RX</p></td>
@@ -3983,7 +3987,11 @@
 <td><p>RESETN</p></td>
 <td><p>INPUT</p></td>
 <td><p>系统复位</p></td>
-<td><p>内部自带RC上拉，外挂电容不超过4.7uF</p></td>
+<td><div class="line-block">
+<div class="line">内置约30Kohm上拉电阻和去抖滤波，不使用可</div>
+<div class="line">直接悬空，若外挂电容建议不超过4.7uF</div>
+</div>
+</td>
 </tr>
 <tr class="row-odd"><td><p>81</p></td>
 <td><p>PLL_XO</p></td>
@@ -4025,7 +4033,7 @@
 <td><p>VDD11_SYS</p></td>
 <td><p>POWER</p></td>
 <td><p>CPU Core电压</p></td>
-<td><p>1.1V供电</p></td>
+<td><p>1.1V供电，若使用内置LDO1x，必须做好芯片散热</p></td>
 </tr>
 </tbody>
 </table>
@@ -4057,7 +4065,7 @@
 </tr>
 <tr class="row-odd"><td><p>71</p></td>
 <td><p>PA0</p></td>
-<td><p>GPAI0</p></td>
+<td><p>GPADC0</p></td>
 <td><p>IR_TX</p></td>
 <td><p>I2C0_SCL</p></td>
 <td><p>UART0_TX</p></td>
@@ -4066,7 +4074,7 @@
 </tr>
 <tr class="row-even"><td><p>72</p></td>
 <td><p>PA1</p></td>
-<td><p>GPAI1</p></td>
+<td><p>GPADC1</p></td>
 <td><p>IR_RX</p></td>
 <td><p>I2C0_SDA</p></td>
 <td><p>UART0_RX</p></td>
@@ -4075,7 +4083,7 @@
 </tr>
 <tr class="row-odd"><td><p>73</p></td>
 <td><p>PA2</p></td>
-<td><p>GPAI2</p></td>
+<td><p>GPADC2</p></td>
 <td></td>
 <td><p>I2C1_SCL</p></td>
 <td><p>UART1_TX</p></td>
@@ -4084,7 +4092,7 @@
 </tr>
 <tr class="row-even"><td><p>74</p></td>
 <td><p>PA3</p></td>
-<td><p>GPAI3</p></td>
+<td><p>GPADC3</p></td>
 <td></td>
 <td><p>I2C1_SDA</p></td>
 <td><p>UART1_RX</p></td>
@@ -4093,7 +4101,7 @@
 </tr>
 <tr class="row-odd"><td><p>75</p></td>
 <td><p>PA4</p></td>
-<td><p>GPAI4</p></td>
+<td><p>GPADC4</p></td>
 <td></td>
 <td><p>CAN0_TX</p></td>
 <td><p>UART2_TX</p></td>
@@ -4102,7 +4110,7 @@
 </tr>
 <tr class="row-even"><td><p>76</p></td>
 <td><p>PA5</p></td>
-<td><p>GPAI5</p></td>
+<td><p>GPADC5</p></td>
 <td></td>
 <td><p>CAN0_RX</p></td>
 <td><p>UART2_RX</p></td>
@@ -4781,7 +4789,11 @@
 <td><p>RESETN</p></td>
 <td><p>INPUT</p></td>
 <td><p>系统复位</p></td>
-<td><p>内部自带RC上拉，外挂电容不超过4.7uF</p></td>
+<td><div class="line-block">
+<div class="line">内置约30Kohm上拉电阻和去抖滤波，不使用可</div>
+<div class="line">直接悬空，若外挂电容建议不超过4.7uF</div>
+</div>
+</td>
 </tr>
 <tr class="row-odd"><td><p>91</p></td>
 <td><p>PLL_XO</p></td>
@@ -4823,7 +4835,7 @@
 <td><p>VDD11_SYS</p></td>
 <td><p>POWER</p></td>
 <td><p>CPU Core电压</p></td>
-<td><p>1.1V供电</p></td>
+<td><p>1.1V供电，若使用内置LDO1x，必须做好芯片散热</p></td>
 </tr>
 </tbody>
 </table>
@@ -4855,7 +4867,7 @@
 </tr>
 <tr class="row-odd"><td><p>79</p></td>
 <td><p>PA0</p></td>
-<td><p>GPAI0</p></td>
+<td><p>GPADC0</p></td>
 <td><p>IR_TX</p></td>
 <td><p>I2C0_SCL</p></td>
 <td><p>UART0_TX</p></td>
@@ -4864,7 +4876,7 @@
 </tr>
 <tr class="row-even"><td><p>80</p></td>
 <td><p>PA1</p></td>
-<td><p>GPAI1</p></td>
+<td><p>GPADC1</p></td>
 <td><p>IR_RX</p></td>
 <td><p>I2C0_SDA</p></td>
 <td><p>UART0_RX</p></td>
@@ -4873,7 +4885,7 @@
 </tr>
 <tr class="row-odd"><td><p>81</p></td>
 <td><p>PA2</p></td>
-<td><p>GPAI2</p></td>
+<td><p>GPADC2</p></td>
 <td></td>
 <td><p>I2C1_SCL</p></td>
 <td><p>UART1_TX</p></td>
@@ -4882,7 +4894,7 @@
 </tr>
 <tr class="row-even"><td><p>82</p></td>
 <td><p>PA3</p></td>
-<td><p>GPAI3</p></td>
+<td><p>GPADC3</p></td>
 <td></td>
 <td><p>I2C1_SDA</p></td>
 <td><p>UART1_RX</p></td>
@@ -4891,7 +4903,7 @@
 </tr>
 <tr class="row-odd"><td><p>83</p></td>
 <td><p>PA4</p></td>
-<td><p>GPAI4</p></td>
+<td><p>GPADC4</p></td>
 <td></td>
 <td><p>CAN0_TX</p></td>
 <td><p>UART2_TX</p></td>
@@ -4900,7 +4912,7 @@
 </tr>
 <tr class="row-even"><td><p>84</p></td>
 <td><p>PA5</p></td>
-<td><p>GPAI5</p></td>
+<td><p>GPADC5</p></td>
 <td></td>
 <td><p>CAN0_RX</p></td>
 <td><p>UART2_RX</p></td>
@@ -4909,7 +4921,7 @@
 </tr>
 <tr class="row-odd"><td><p>85</p></td>
 <td><p>PA6</p></td>
-<td><p>GPAI6</p></td>
+<td><p>GPADC6</p></td>
 <td></td>
 <td><p>CAN1_TX</p></td>
 <td><p>UART3_TX</p></td>
@@ -4918,7 +4930,7 @@
 </tr>
 <tr class="row-even"><td><p>86</p></td>
 <td><p>PA7</p></td>
-<td><p>GPAI7</p></td>
+<td><p>GPADC7</p></td>
 <td></td>
 <td><p>CAN1_RX</p></td>
 <td><p>UART3_RX</p></td>
@@ -5701,7 +5713,7 @@
 </tr>
 <tr class="row-odd"><td colspan="3"><p>ADC，x = 0~7</p></td>
 </tr>
-<tr class="row-even"><td><p>GPAIx</p></td>
+<tr class="row-even"><td><p>GPADCx</p></td>
 <td><p>模拟采样信号输入</p></td>
 <td><p>AI</p></td>
 </tr>

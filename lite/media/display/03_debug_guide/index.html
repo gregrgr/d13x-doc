@@ -272,12 +272,14 @@
 <li class="toctree-l3"><a class="reference internal" href="../../i2s/index.html">6.5. I2S 使用指南</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../ve/index.html">6.6. VE 使用指南</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../mpp/index.html">6.7. MPP 使用指南</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../lvgl/index.html">6.8. LVGL 使用指南</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../player/index.html">6.8. MPP 播放器使用指南</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../lvgl/index.html">6.9. LVGL 使用指南</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="../../../interface/index.html">7. 接口</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../../security/index.html">8. 安全</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../../peripheral/index.html">9. 外设</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../app/index.html">10. 应用</a></li>
 </ul>
 </li>
 </ul>
@@ -370,7 +372,7 @@
         [*] Enable Display driver debug
 </pre></div>
 </div>
-<p>此DEBUG选项打开的影响：</p>
+<p>此 DEBUG 选项打开的影响：</p>
 <ul class="simple">
 <li><p>显示驱动的 pr_debug() 调试信息会被打印输出</p></li>
 </ul>
@@ -383,7 +385,7 @@
        [*] Display color block
 </pre></div>
 </div>
-<p>此选项开启后，系统上电时 LCD 屏幕会显示红，绿，蓝，黑，白五种颜色的矩形色块，矩形色块是通过 CPU 进行绘制。</p>
+<p>此选项开启后，系统上电时 LCD 屏幕会显示红，绿，蓝，黑，白五种颜色的矩形色块，矩形色块通过 CPU 进行绘制。</p>
 </div>
 <div class="section" id="color-bar">
 <h2><span class="section-number">6.2.3.3. </span>使能 color bar<a class="headerlink" href="#color-bar" title="永久链接至标题">¶</a></h2>
@@ -392,8 +394,8 @@
 m 0x18a00008 <span class="m">1</span>
 </pre></div>
 </div>
-<p>此命令会使能显示引擎的 colorbar 模式。此时，显示引擎不再从内存中读取数据，直接生成 colorbar 数据并传送给显示接口。</p>
-<p>colorbar 模式仅供调试使用。禁用 colorbar 模式的命令为:</p>
+<p>此命令会使能显示引擎的 colorbar 模式。此时，显示引擎不再从内存中读取数据，而是直接生成 colorbar 数据并传送给显示接口。colorbar 模式仅供调试使用。</p>
+<p>禁用 colorbar 模式的命令为:</p>
 <div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>m 0x18a00004 <span class="m">0</span>
 m 0x18a00008 <span class="m">1</span>
 </pre></div>

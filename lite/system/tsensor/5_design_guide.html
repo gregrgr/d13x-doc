@@ -7,7 +7,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   
-  <title>4.5.5. 设计说明 &mdash; AIC文档中心 v1.0 文档</title>
+  <title>4.6.5. 设计说明 &mdash; AIC文档中心 v1.0 文档</title>
   
 
   
@@ -41,8 +41,8 @@
     
     <link rel="index" title="索引" href="../../../genindex.html" />
     <link rel="search" title="搜索" href="../../../search.html" />
-    <link rel="next" title="4.5.6. 常见问题" href="6_faq.html" />
-    <link rel="prev" title="4.5.4. 测试指南" href="4_test_guide.html" />
+    <link rel="next" title="4.6.6. 常见问题" href="6_faq.html" />
+    <link rel="prev" title="4.6.4. 测试指南" href="4_test_guide.html" />
     <script>
         $(function () {
 /**
@@ -247,41 +247,42 @@
 <li class="toctree-l2"><a class="reference internal" href="../../sdk/index.html">2. 使用指南</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../boot/index.html">3. 启动引导</a></li>
 <li class="toctree-l2 current"><a class="reference internal" href="../index.html">4. 系统</a><ul class="current">
-<li class="toctree-l3"><a class="reference internal" href="../dma/index.html">4.1. DMA 使用指南</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../hrtimer/index.html">4.2. HRTimer 使用指南</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../mtop/index.html">4.3. MTOP 使用指南</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../rtc/index.html">4.4. RTC 使用指南</a></li>
-<li class="toctree-l3 current"><a class="reference internal" href="index.html">4.5. TSensor 使用指南</a><ul class="current">
-<li class="toctree-l4"><a class="reference internal" href="1_introduction.html">4.5.1. 模块介绍</a></li>
-<li class="toctree-l4"><a class="reference internal" href="2_config_guide.html">4.5.2. 参数配置</a></li>
-<li class="toctree-l4"><a class="reference internal" href="3_debug_guide.html">4.5.3. 调试指南</a></li>
-<li class="toctree-l4"><a class="reference internal" href="4_test_guide.html">4.5.4. 测试指南</a></li>
-<li class="toctree-l4 current"><a class="current reference internal" href="#">4.5.5. 设计说明</a><ul>
-<li class="toctree-l5"><a class="reference internal" href="#id2">4.5.5.1. 源码说明</a></li>
-<li class="toctree-l5"><a class="reference internal" href="#id3">4.5.5.2. 模块架构</a></li>
-<li class="toctree-l5"><a class="reference internal" href="#id4">4.5.5.3. 关键流程设计</a><ul>
-<li class="toctree-l6"><a class="reference internal" href="#id5">4.5.5.3.1. 初始化流程</a></li>
-<li class="toctree-l6"><a class="reference internal" href="#id6">4.5.5.3.2. 中断处理流程</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../cmu/index.html">4.1. CMU 使用指南</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../dma/index.html">4.2. DMA 使用指南</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../hrtimer/index.html">4.3. HRTimer 使用指南</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../mtop/index.html">4.4. MTOP 使用指南</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../rtc/index.html">4.5. RTC 使用指南</a></li>
+<li class="toctree-l3 current"><a class="reference internal" href="index.html">4.6. TSensor 使用指南</a><ul class="current">
+<li class="toctree-l4"><a class="reference internal" href="1_introduction.html">4.6.1. 模块介绍</a></li>
+<li class="toctree-l4"><a class="reference internal" href="2_config_guide.html">4.6.2. 参数配置</a></li>
+<li class="toctree-l4"><a class="reference internal" href="3_debug_guide.html">4.6.3. 调试指南</a></li>
+<li class="toctree-l4"><a class="reference internal" href="4_test_guide.html">4.6.4. 测试指南</a></li>
+<li class="toctree-l4 current"><a class="current reference internal" href="#">4.6.5. 设计说明</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="#id2">4.6.5.1. 源码说明</a></li>
+<li class="toctree-l5"><a class="reference internal" href="#id3">4.6.5.2. 模块架构</a></li>
+<li class="toctree-l5"><a class="reference internal" href="#id4">4.6.5.3. 关键流程设计</a><ul>
+<li class="toctree-l6"><a class="reference internal" href="#id5">4.6.5.3.1. 初始化流程</a></li>
+<li class="toctree-l6"><a class="reference internal" href="#id6">4.6.5.3.2. 中断处理流程</a></li>
 </ul>
 </li>
-<li class="toctree-l5"><a class="reference internal" href="#id7">4.5.5.4. 数据结构设计</a><ul>
-<li class="toctree-l6"><a class="reference internal" href="#struct-aic-tsen-dev">4.5.5.4.1. struct aic_tsen_dev</a></li>
-<li class="toctree-l6"><a class="reference internal" href="#struct-aic-tsen-ch">4.5.5.4.2. struct aic_tsen_ch</a></li>
+<li class="toctree-l5"><a class="reference internal" href="#id7">4.6.5.4. 数据结构设计</a><ul>
+<li class="toctree-l6"><a class="reference internal" href="#struct-aic-tsen-dev">4.6.5.4.1. struct aic_tsen_dev</a></li>
+<li class="toctree-l6"><a class="reference internal" href="#struct-aic-tsen-ch">4.6.5.4.2. struct aic_tsen_ch</a></li>
 </ul>
 </li>
-<li class="toctree-l5"><a class="reference internal" href="#driver">4.5.5.5. Driver 层接口设计</a><ul>
-<li class="toctree-l6"><a class="reference internal" href="#aic-tsen-fetch">4.5.5.5.1. aic_tsen_fetch</a></li>
-<li class="toctree-l6"><a class="reference internal" href="#aic-tsen-control">4.5.5.5.2. aic_tsen_control</a></li>
+<li class="toctree-l5"><a class="reference internal" href="#driver">4.6.5.5. Driver 层接口设计</a><ul>
+<li class="toctree-l6"><a class="reference internal" href="#aic-tsen-fetch">4.6.5.5.1. aic_tsen_fetch</a></li>
+<li class="toctree-l6"><a class="reference internal" href="#aic-tsen-control">4.6.5.5.2. aic_tsen_control</a></li>
 </ul>
 </li>
-<li class="toctree-l5"><a class="reference internal" href="#hal">4.5.5.6. HAL 层接口设计</a></li>
-<li class="toctree-l5"><a class="reference internal" href="#demo">4.5.5.7. Demo</a></li>
+<li class="toctree-l5"><a class="reference internal" href="#hal">4.6.5.6. HAL 层接口设计</a></li>
+<li class="toctree-l5"><a class="reference internal" href="#demo">4.6.5.7. Demo</a></li>
 </ul>
 </li>
-<li class="toctree-l4"><a class="reference internal" href="6_faq.html">4.5.6. 常见问题</a></li>
+<li class="toctree-l4"><a class="reference internal" href="6_faq.html">4.6.6. 常见问题</a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="../watchdog/index.html">4.6. Watchdog 使用指南</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../watchdog/index.html">4.7. Watchdog 使用指南</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="../../memory/index.html">5. 存储</a></li>
@@ -289,6 +290,7 @@
 <li class="toctree-l2"><a class="reference internal" href="../../interface/index.html">7. 接口</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../security/index.html">8. 安全</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../peripheral/index.html">9. 外设</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../app/index.html">10. 应用</a></li>
 </ul>
 </li>
 </ul>
@@ -352,9 +354,9 @@
         
           <li><a href="../index.html"><span class="section-number">4. </span>系统</a> &raquo;</li>
         
-          <li><a href="index.html"><span class="section-number">4.5. </span>TSensor 使用指南</a> &raquo;</li>
+          <li><a href="index.html"><span class="section-number">4.6. </span>TSensor 使用指南</a> &raquo;</li>
         
-      <li><span class="section-number">4.5.5. </span>设计说明</li>
+      <li><span class="section-number">4.6.5. </span>设计说明</li>
     
     
       <li class="wy-breadcrumbs-aside">
@@ -372,9 +374,9 @@
            <div itemprop="articleBody">
             
   <div class="section" id="id1">
-<h1><span class="section-number">4.5.5. </span>设计说明<a class="headerlink" href="#id1" title="永久链接至标题">¶</a></h1>
+<h1><span class="section-number">4.6.5. </span>设计说明<a class="headerlink" href="#id1" title="永久链接至标题">¶</a></h1>
 <div class="section" id="id2">
-<h2><span class="section-number">4.5.5.1. </span>源码说明<a class="headerlink" href="#id2" title="永久链接至标题">¶</a></h2>
+<h2><span class="section-number">4.6.5.1. </span>源码说明<a class="headerlink" href="#id2" title="永久链接至标题">¶</a></h2>
 <p>源代码位于 <code class="docutils literal notranslate"><span class="pre">bsp/artinchip/</span></code>：</p>
 <ul class="simple">
 <li><p>bsp/artinchip/drv/tsen/drv_tsen.c，TSenor Driver 层实现</p></li>
@@ -383,17 +385,17 @@
 </ul>
 </div>
 <div class="section" id="id3">
-<h2><span class="section-number">4.5.5.2. </span>模块架构<a class="headerlink" href="#id3" title="永久链接至标题">¶</a></h2>
+<h2><span class="section-number">4.6.5.2. </span>模块架构<a class="headerlink" href="#id3" title="永久链接至标题">¶</a></h2>
 <p>TSensor 驱动 Driver 层采用 RT-Thread 的Sensor设备驱动框架，如果只使用HAL层也可以支持 baremetal 方式的应用场景。</p>
 <div class="figure align-center" id="id8">
-<img alt="../../../_images/sw_system12.png" src="../../../_images/sw_system12.png" />
+<img alt="../../../_images/sw_system14.png" src="../../../_images/sw_system14.png" />
 <p class="caption"><span class="caption-number">图 4.10 </span><span class="caption-text">TSensor 驱动的软件架构图</span><a class="headerlink" href="#id8" title="永久链接至图片">¶</a></p>
 </div>
 </div>
 <div class="section" id="id4">
-<h2><span class="section-number">4.5.5.3. </span>关键流程设计<a class="headerlink" href="#id4" title="永久链接至标题">¶</a></h2>
+<h2><span class="section-number">4.6.5.3. </span>关键流程设计<a class="headerlink" href="#id4" title="永久链接至标题">¶</a></h2>
 <div class="section" id="id5">
-<h3><span class="section-number">4.5.5.3.1. </span>初始化流程<a class="headerlink" href="#id5" title="永久链接至标题">¶</a></h3>
+<h3><span class="section-number">4.6.5.3.1. </span>初始化流程<a class="headerlink" href="#id5" title="永久链接至标题">¶</a></h3>
 <p>TSensor 驱动的初始化接口通过 <code class="docutils literal notranslate"><span class="pre">INIT_DEVICE_EXPORT(drv_tsen_init)</span></code> 完成，会通过调用 Sensor子系统的接口 rt_hw_sensor_register() 注册一个 Sensor设备。</p>
 <p>TSensor 控制器的初始化过程，主要步骤有：</p>
 <ol class="arabic simple">
@@ -404,7 +406,7 @@
 </ol>
 </div>
 <div class="section" id="id6">
-<h3><span class="section-number">4.5.5.3.2. </span>中断处理流程<a class="headerlink" href="#id6" title="永久链接至标题">¶</a></h3>
+<h3><span class="section-number">4.6.5.3.2. </span>中断处理流程<a class="headerlink" href="#id6" title="永久链接至标题">¶</a></h3>
 <p>TSensor 支持使用中断方式来读取数据，这样避免应用层的忙等待。</p>
 <div class="figure align-center" id="id9">
 <img alt="../../../_images/tsen_irq_flow.png" src="../../../_images/tsen_irq_flow.png" />
@@ -419,9 +421,9 @@
 </div>
 </div>
 <div class="section" id="id7">
-<h2><span class="section-number">4.5.5.4. </span>数据结构设计<a class="headerlink" href="#id7" title="永久链接至标题">¶</a></h2>
+<h2><span class="section-number">4.6.5.4. </span>数据结构设计<a class="headerlink" href="#id7" title="永久链接至标题">¶</a></h2>
 <div class="section" id="struct-aic-tsen-dev">
-<h3><span class="section-number">4.5.5.4.1. </span>struct aic_tsen_dev<a class="headerlink" href="#struct-aic-tsen-dev" title="永久链接至标题">¶</a></h3>
+<h3><span class="section-number">4.6.5.4.1. </span>struct aic_tsen_dev<a class="headerlink" href="#struct-aic-tsen-dev" title="永久链接至标题">¶</a></h3>
 <p>属于 Driver 层内部使用的数据结构，管理TSensor控制器的设备资源：</p>
 <div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="k">struct</span> <span class="nc">aic_tsen_dev</span> <span class="p">{</span>
     <span class="k">struct</span> <span class="nc">rt_sensor_device</span> <span class="n">dev</span><span class="p">;</span>
@@ -432,7 +434,7 @@
 </div>
 </div>
 <div class="section" id="struct-aic-tsen-ch">
-<h3><span class="section-number">4.5.5.4.2. </span>struct aic_tsen_ch<a class="headerlink" href="#struct-aic-tsen-ch" title="永久链接至标题">¶</a></h3>
+<h3><span class="section-number">4.6.5.4.2. </span>struct aic_tsen_ch<a class="headerlink" href="#struct-aic-tsen-ch" title="永久链接至标题">¶</a></h3>
 <p>属于 HAL 层接口，管理一个 TSensor 通道的配置信息：</p>
 <div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="k">struct</span> <span class="nc">aic_tsen_ch</span> <span class="p">{</span>
     <span class="kt">int</span> <span class="n">id</span><span class="p">;</span>
@@ -463,7 +465,7 @@
 </div>
 </div>
 <div class="section" id="driver">
-<h2><span class="section-number">4.5.5.5. </span>Driver 层接口设计<a class="headerlink" href="#driver" title="永久链接至标题">¶</a></h2>
+<h2><span class="section-number">4.6.5.5. </span>Driver 层接口设计<a class="headerlink" href="#driver" title="永久链接至标题">¶</a></h2>
 <p>以下接口是 TSensor 设备驱动框架的标准接口。</p>
 <div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="k">struct</span> <span class="nc">rt_sensor_ops</span>
 <span class="p">{</span>
@@ -473,7 +475,7 @@
 </pre></div>
 </div>
 <div class="section" id="aic-tsen-fetch">
-<h3><span class="section-number">4.5.5.5.1. </span>aic_tsen_fetch<a class="headerlink" href="#aic-tsen-fetch" title="永久链接至标题">¶</a></h3>
+<h3><span class="section-number">4.6.5.5.1. </span>aic_tsen_fetch<a class="headerlink" href="#aic-tsen-fetch" title="永久链接至标题">¶</a></h3>
 <table class="docutils align-default">
 <colgroup>
 <col style="width: 11%" />
@@ -506,7 +508,7 @@
 </table>
 </div>
 <div class="section" id="aic-tsen-control">
-<h3><span class="section-number">4.5.5.5.2. </span>aic_tsen_control<a class="headerlink" href="#aic-tsen-control" title="永久链接至标题">¶</a></h3>
+<h3><span class="section-number">4.6.5.5.2. </span>aic_tsen_control<a class="headerlink" href="#aic-tsen-control" title="永久链接至标题">¶</a></h3>
 <table class="docutils align-default">
 <colgroup>
 <col style="width: 11%" />
@@ -540,7 +542,7 @@
 </div>
 </div>
 <div class="section" id="hal">
-<h2><span class="section-number">4.5.5.6. </span>HAL 层接口设计<a class="headerlink" href="#hal" title="永久链接至标题">¶</a></h2>
+<h2><span class="section-number">4.6.5.6. </span>HAL 层接口设计<a class="headerlink" href="#hal" title="永久链接至标题">¶</a></h2>
 <p>HAL 层的函数接口声明存放在 hal_tsen.h 中，主要接口有：</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">void</span> <span class="n">hal_tsen_enable</span><span class="p">(</span><span class="nb">int</span> <span class="n">enable</span><span class="p">);</span>
 <span class="n">void</span> <span class="n">hal_tsen_ch_enable</span><span class="p">(</span><span class="n">u32</span> <span class="n">ch</span><span class="p">,</span> <span class="nb">int</span> <span class="n">enable</span><span class="p">);</span>
@@ -556,7 +558,7 @@
 </div>
 </div>
 <div class="section" id="demo">
-<h2><span class="section-number">4.5.5.7. </span>Demo<a class="headerlink" href="#demo" title="永久链接至标题">¶</a></h2>
+<h2><span class="section-number">4.6.5.7. </span>Demo<a class="headerlink" href="#demo" title="永久链接至标题">¶</a></h2>
 <p>此Demo是 <code class="docutils literal notranslate"><span class="pre">sensor_polling</span></code> 命令的部分代码（详见kernel/rt-thread/components/drivers/sensors/sensor_cmd.c），可以作为 TSensor设备的使用参考：</p>
 <div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="k">static</span> <span class="kt">void</span> <span class="n">sensor_polling</span><span class="p">(</span><span class="kt">int</span> <span class="n">argc</span><span class="p">,</span> <span class="kt">char</span> <span class="o">**</span><span class="n">argv</span><span class="p">)</span>
 <span class="p">{</span>
@@ -606,8 +608,8 @@
           </div>
           <footer>
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
-        <a href="6_faq.html" class="btn btn-neutral float-right" title="4.5.6. 常见问题" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
-        <a href="4_test_guide.html" class="btn btn-neutral float-left" title="4.5.4. 测试指南" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="6_faq.html" class="btn btn-neutral float-right" title="4.6.6. 常见问题" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="4_test_guide.html" class="btn btn-neutral float-left" title="4.6.4. 测试指南" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
     </div>
 
   <hr/>

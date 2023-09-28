@@ -279,12 +279,14 @@
 <li class="toctree-l3"><a class="reference internal" href="../../i2s/index.html">6.5. I2S 使用指南</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../ve/index.html">6.6. VE 使用指南</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../mpp/index.html">6.7. MPP 使用指南</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../lvgl/index.html">6.8. LVGL 使用指南</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../player/index.html">6.8. MPP 播放器使用指南</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../lvgl/index.html">6.9. LVGL 使用指南</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="../../../interface/index.html">7. 接口</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../../security/index.html">8. 安全</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../../peripheral/index.html">9. 外设</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../app/index.html">10. 应用</a></li>
 </ul>
 </li>
 </ul>
@@ -382,7 +384,7 @@
 <div class="figure align-center">
 <img alt="../../../../_images/sw_framework.png" src="../../../../_images/sw_framework.png" />
 </div>
-<p>在显示框架上 DE/DI 属于同一级的模块，都是 display subsystem 中的 component，使用 <cite>struct platform_driver</cite> 来表示。</p>
+<p>DE 和 DI 在显示框架上属于同级模块，都是 display subsystem 中的 component，使用 <code class="docutils literal notranslate"><span class="pre">struct</span> <span class="pre">platform_driver</span></code> 来表示。</p>
 <div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="k">struct</span> <span class="nc">platform_driver</span> <span class="p">{</span>
     <span class="k">const</span> <span class="kt">char</span> <span class="o">*</span><span class="n">name</span><span class="p">;</span>
     <span class="kt">int</span> <span class="n">component_type</span><span class="p">;</span>
@@ -395,7 +397,7 @@
 <span class="p">};</span>
 </pre></div>
 </div>
-<p>LCD panel 使用 <cite>struct aic_panel</cite> 来表示。严格来说，panel component 不算一个 driver，只是一些屏参数和回调函数的结合。</p>
+<p>LCD panel 使用 <code class="docutils literal notranslate"><span class="pre">struct</span> <span class="pre">aic_panel</span></code> 来表示。严格来说，panel component 不算一个 driver，只是一些屏参数和回调函数的结合。</p>
 <div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="k">struct</span> <span class="nc">aic_panel</span> <span class="p">{</span>
     <span class="k">const</span> <span class="kt">char</span> <span class="o">*</span><span class="n">name</span><span class="p">;</span>
     <span class="k">struct</span> <span class="nc">aic_panel_funcs</span> <span class="o">*</span><span class="n">funcs</span><span class="p">;</span>
@@ -413,11 +415,11 @@
 </pre></div>
 </div>
 <ul class="simple">
-<li><p><cite>struct aic_panel_funcs *funcs;</cite> 是 panel 提供，供 fb 调用的回调</p></li>
-<li><p><cite>struct aic_panel_callbacks callbacks;</cite> 是 DE, DI 提供，供 panel 调用的回调</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">struct</span> <span class="pre">aic_panel_funcs</span> <span class="pre">*funcs;</span></code> 由 panel 提供，供 fb 调用的回调</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">struct</span> <span class="pre">aic_panel_callbacks</span> <span class="pre">callbacks;</span></code> 由 DE/DI 提供，供 panel 调用的回调</p></li>
 </ul>
-<p>在 panel 提供的 <cite>struct aic_panel_funcs</cite> 中， 会调用 DE/DI 提供的 <cite>struct aic_panel_callbacks</cite>。</p>
-<p>这样的设计主要是为了满足 DE、DI、panel 三个硬件模块在初始化时有一些时序上的要求，包含先后顺序、延迟大小等，主要约束来自于 panel 侧。</p>
+<p>在 panel 提供的 <code class="docutils literal notranslate"><span class="pre">struct</span> <span class="pre">aic_panel_funcs</span></code> 中， 会调用 DE/DI 提供的 <code class="docutils literal notranslate"><span class="pre">struct</span> <span class="pre">aic_panel_callbacks</span></code>。</p>
+<p><code class="docutils literal notranslate"><span class="pre">callbacks</span></code> 的设计是为了满足 DE、DI、panel 三个硬件模块的初始化时序，包含先后顺序、延迟大小等。时序约束主要来自 panel 侧。</p>
 </div>
 <div class="section" id="id3">
 <h1><span class="section-number">6.2.5.2.3. </span>初始化流程<a class="headerlink" href="#id3" title="永久链接至标题">¶</a></h1>
@@ -444,11 +446,11 @@
 <span class="p">};</span>
 </pre></div>
 </div>
-<p>通过 <cite>component_type</cite> 来适配 menuconfig 指定的 driver。</p>
+<p>通过 <code class="docutils literal notranslate"><span class="pre">component_type</span></code> 来适配 menuconfig 指定的 driver。</p>
 </div>
 <div class="section" id="panel">
 <h2><span class="section-number">6.2.5.2.3.2. </span>panel 的匹配<a class="headerlink" href="#panel" title="永久链接至标题">¶</a></h2>
-<p>在 <cite>panel_com.c</cite> 中维护了一个 panel 的指针数组。</p>
+<p><code class="docutils literal notranslate"><span class="pre">panel_com.c</span></code> 维护了一个 panel 的指针数组。</p>
 <div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="k">static</span> <span class="k">struct</span> <span class="nc">aic_panel</span> <span class="o">*</span><span class="n">panels</span><span class="p">[]</span> <span class="o">=</span> <span class="p">{</span>
 <span class="cp">#ifdef AIC_DISP_RGB</span>
     <span class="o">&amp;</span><span class="n">aic_panel_rgb</span><span class="p">,</span>
@@ -462,9 +464,9 @@
 <span class="p">};</span>
 </pre></div>
 </div>
-<p>通过 <cite>struct aic_panel *aic_find_panel(u32 connector_type)</cite> 即可获取一个跟显示接口匹配的 LCD panel。</p>
+<p>通过 <code class="docutils literal notranslate"><span class="pre">struct</span> <span class="pre">aic_panel</span> <span class="pre">*aic_find_panel(u32</span> <span class="pre">connector_type)</span></code> 即可获取一个跟显示接口匹配的 LCD panel。</p>
 <p>在 menuconfig 中选择 panel 时，只能使能其中一个。</p>
-<p><cite>panel_simple.c</cite> 为不需要初始化命令的 LCD 提供 panel，例如：常用的 prgb, lvds 屏幕。</p>
+<p><code class="docutils literal notranslate"><span class="pre">panel_simple.c</span></code> 为不需要初始化命令的 LCD 提供 panel，例如：常用的 prgb, lvds 屏幕。</p>
 </div>
 <div class="section" id="backlight">
 <h2><span class="section-number">6.2.5.2.3.3. </span>backlight<a class="headerlink" href="#backlight" title="永久链接至标题">¶</a></h2>

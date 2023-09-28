@@ -7,7 +7,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   
-  <title>7.5.5. 设计说明 &mdash; AIC文档中心 v1.0 文档</title>
+  <title>7.7.5. 设计说明 &mdash; AIC文档中心 v1.0 文档</title>
   
 
   
@@ -41,8 +41,8 @@
     
     <link rel="index" title="索引" href="../../../genindex.html" />
     <link rel="search" title="搜索" href="../../../search.html" />
-    <link rel="next" title="7.5.6. 常见问题" href="6_faq.html" />
-    <link rel="prev" title="7.5.4. 测试指南" href="4_test_guide.html" />
+    <link rel="next" title="7.7.6. 常见问题" href="6_faq.html" />
+    <link rel="prev" title="7.7.4. 测试指南" href="4_test_guide.html" />
     <script>
         $(function () {
 /**
@@ -253,43 +253,46 @@
 <li class="toctree-l3"><a class="reference internal" href="../can/index.html">7.1. CAN 使用指南</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../cir/index.html">7.2. CIR 使用指南</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../gpai/index.html">7.3. GPAI 使用指南</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../psadc/index.html">7.4. PSADC 使用指南</a></li>
-<li class="toctree-l3 current"><a class="reference internal" href="index.html">7.5. PWM 使用指南</a><ul class="current">
-<li class="toctree-l4"><a class="reference internal" href="1_introduction.html">7.5.1. 模块介绍</a></li>
-<li class="toctree-l4"><a class="reference internal" href="2_config_guide.html">7.5.2. 参数配置</a></li>
-<li class="toctree-l4"><a class="reference internal" href="3_debug_guide.html">7.5.3. 调试指南</a></li>
-<li class="toctree-l4"><a class="reference internal" href="4_test_guide.html">7.5.4. 测试指南</a></li>
-<li class="toctree-l4 current"><a class="current reference internal" href="#">7.5.5. 设计说明</a><ul>
-<li class="toctree-l5"><a class="reference internal" href="#id2">7.5.5.1. 源码说明</a></li>
-<li class="toctree-l5"><a class="reference internal" href="#id3">7.5.5.2. 模块架构</a></li>
-<li class="toctree-l5"><a class="reference internal" href="#id4">7.5.5.3. 关键流程设计</a><ul>
-<li class="toctree-l6"><a class="reference internal" href="#id5">7.5.5.3.1. 初始化流程</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../gpio/index.html">7.4. GPIO 使用指南</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../i2c/index.html">7.5. I2C 使用指南</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../psadc/index.html">7.6. PSADC 使用指南</a></li>
+<li class="toctree-l3 current"><a class="reference internal" href="index.html">7.7. PWM 使用指南</a><ul class="current">
+<li class="toctree-l4"><a class="reference internal" href="1_introduction.html">7.7.1. 模块介绍</a></li>
+<li class="toctree-l4"><a class="reference internal" href="2_config_guide.html">7.7.2. 参数配置</a></li>
+<li class="toctree-l4"><a class="reference internal" href="3_debug_guide.html">7.7.3. 调试指南</a></li>
+<li class="toctree-l4"><a class="reference internal" href="4_test_guide.html">7.7.4. 测试指南</a></li>
+<li class="toctree-l4 current"><a class="current reference internal" href="#">7.7.5. 设计说明</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="#id2">7.7.5.1. 源码说明</a></li>
+<li class="toctree-l5"><a class="reference internal" href="#id3">7.7.5.2. 模块架构</a></li>
+<li class="toctree-l5"><a class="reference internal" href="#id4">7.7.5.3. 关键流程设计</a><ul>
+<li class="toctree-l6"><a class="reference internal" href="#id5">7.7.5.3.1. 初始化流程</a></li>
 </ul>
 </li>
-<li class="toctree-l5"><a class="reference internal" href="#id6">7.5.5.4. 数据结构设计</a><ul>
-<li class="toctree-l6"><a class="reference internal" href="#struct-aic-pwm-arg">7.5.5.4.1. struct aic_pwm_arg</a></li>
-<li class="toctree-l6"><a class="reference internal" href="#struct-aic-pwm-action">7.5.5.4.2. struct aic_pwm_action</a></li>
+<li class="toctree-l5"><a class="reference internal" href="#id6">7.7.5.4. 数据结构设计</a><ul>
+<li class="toctree-l6"><a class="reference internal" href="#struct-aic-pwm-arg">7.7.5.4.1. struct aic_pwm_arg</a></li>
+<li class="toctree-l6"><a class="reference internal" href="#struct-aic-pwm-action">7.7.5.4.2. struct aic_pwm_action</a></li>
 </ul>
 </li>
-<li class="toctree-l5"><a class="reference internal" href="#driver">7.5.5.5. Driver 层接口设计</a><ul>
-<li class="toctree-l6"><a class="reference internal" href="#drv-pwm-control">7.5.5.5.1. drv_pwm_control</a></li>
+<li class="toctree-l5"><a class="reference internal" href="#driver">7.7.5.5. Driver 层接口设计</a><ul>
+<li class="toctree-l6"><a class="reference internal" href="#drv-pwm-control">7.7.5.5.1. drv_pwm_control</a></li>
 </ul>
 </li>
-<li class="toctree-l5"><a class="reference internal" href="#hal">7.5.5.6. HAL 层接口设计</a></li>
-<li class="toctree-l5"><a class="reference internal" href="#demo">7.5.5.7. Demo</a></li>
+<li class="toctree-l5"><a class="reference internal" href="#hal">7.7.5.6. HAL 层接口设计</a></li>
+<li class="toctree-l5"><a class="reference internal" href="#demo">7.7.5.7. Demo</a></li>
 </ul>
 </li>
-<li class="toctree-l4"><a class="reference internal" href="6_faq.html">7.5.6. 常见问题</a></li>
+<li class="toctree-l4"><a class="reference internal" href="6_faq.html">7.7.6. 常见问题</a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="../rtp/index.html">7.6. RTP 使用指南</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../spi/index.html">7.7. QSPI 使用指南</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../i2c/index.html">7.8. I2C 使用指南</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../uart/index.html">7.9. UART 使用指南</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../rtp/index.html">7.8. RTP 使用指南</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../spi/index.html">7.9. QSPI 使用指南</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../uart/index.html">7.10. UART 使用指南</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../mac/index.html">7.11. MAC 使用指南</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="../../security/index.html">8. 安全</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../peripheral/index.html">9. 外设</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../app/index.html">10. 应用</a></li>
 </ul>
 </li>
 </ul>
@@ -353,9 +356,9 @@
         
           <li><a href="../index.html"><span class="section-number">7. </span>接口</a> &raquo;</li>
         
-          <li><a href="index.html"><span class="section-number">7.5. </span>PWM 使用指南</a> &raquo;</li>
+          <li><a href="index.html"><span class="section-number">7.7. </span>PWM 使用指南</a> &raquo;</li>
         
-      <li><span class="section-number">7.5.5. </span>设计说明</li>
+      <li><span class="section-number">7.7.5. </span>设计说明</li>
     
     
       <li class="wy-breadcrumbs-aside">
@@ -373,9 +376,9 @@
            <div itemprop="articleBody">
             
   <div class="section" id="id1">
-<h1><span class="section-number">7.5.5. </span>设计说明<a class="headerlink" href="#id1" title="永久链接至标题">¶</a></h1>
+<h1><span class="section-number">7.7.5. </span>设计说明<a class="headerlink" href="#id1" title="永久链接至标题">¶</a></h1>
 <div class="section" id="id2">
-<h2><span class="section-number">7.5.5.1. </span>源码说明<a class="headerlink" href="#id2" title="永久链接至标题">¶</a></h2>
+<h2><span class="section-number">7.7.5.1. </span>源码说明<a class="headerlink" href="#id2" title="永久链接至标题">¶</a></h2>
 <p>源代码位于 <code class="docutils literal notranslate"><span class="pre">bsp/artinchip/</span></code>：</p>
 <ul class="simple">
 <li><p>bsp/artinchip/drv/pwm/drv_pwm.c，PWM Driver 层实现</p></li>
@@ -384,17 +387,17 @@
 </ul>
 </div>
 <div class="section" id="id3">
-<h2><span class="section-number">7.5.5.2. </span>模块架构<a class="headerlink" href="#id3" title="永久链接至标题">¶</a></h2>
+<h2><span class="section-number">7.7.5.2. </span>模块架构<a class="headerlink" href="#id3" title="永久链接至标题">¶</a></h2>
 <p>PWM 驱动 Driver 层采用 RT-Thread 的 PWM设备驱动框架，如果只使用HAL层也可以支持 baremetal 方式的应用场景。</p>
 <div class="figure align-center" id="id7">
-<img alt="../../../_images/sw_system2.png" src="../../../_images/sw_system2.png" />
+<img alt="../../../_images/sw_system3.png" src="../../../_images/sw_system3.png" />
 <p class="caption"><span class="caption-number">图 7.36 </span><span class="caption-text">PWM驱动的软件架构图</span><a class="headerlink" href="#id7" title="永久链接至图片">¶</a></p>
 </div>
 </div>
 <div class="section" id="id4">
-<h2><span class="section-number">7.5.5.3. </span>关键流程设计<a class="headerlink" href="#id4" title="永久链接至标题">¶</a></h2>
+<h2><span class="section-number">7.7.5.3. </span>关键流程设计<a class="headerlink" href="#id4" title="永久链接至标题">¶</a></h2>
 <div class="section" id="id5">
-<h3><span class="section-number">7.5.5.3.1. </span>初始化流程<a class="headerlink" href="#id5" title="永久链接至标题">¶</a></h3>
+<h3><span class="section-number">7.7.5.3.1. </span>初始化流程<a class="headerlink" href="#id5" title="永久链接至标题">¶</a></h3>
 <p>PWM 驱动的初始化接口通过 <code class="docutils literal notranslate"><span class="pre">INIT_DEVICE_EXPORT(drv_pwm_init)</span></code> 完成，主要是通过调用 PWM子系统的接口 rt_device_pwm_register() 注册一个 PWM设备。</p>
 <p>PWM 控制器的初始化过程，主要步骤有：</p>
 <ol class="arabic simple">
@@ -405,9 +408,9 @@
 </div>
 </div>
 <div class="section" id="id6">
-<h2><span class="section-number">7.5.5.4. </span>数据结构设计<a class="headerlink" href="#id6" title="永久链接至标题">¶</a></h2>
+<h2><span class="section-number">7.7.5.4. </span>数据结构设计<a class="headerlink" href="#id6" title="永久链接至标题">¶</a></h2>
 <div class="section" id="struct-aic-pwm-arg">
-<h3><span class="section-number">7.5.5.4.1. </span>struct aic_pwm_arg<a class="headerlink" href="#struct-aic-pwm-arg" title="永久链接至标题">¶</a></h3>
+<h3><span class="section-number">7.7.5.4.1. </span>struct aic_pwm_arg<a class="headerlink" href="#struct-aic-pwm-arg" title="永久链接至标题">¶</a></h3>
 <p>属于 HAL 层接口，记录每一个PWM通道的配置信息：</p>
 <div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="k">struct</span> <span class="nc">aic_pwm_arg</span> <span class="p">{</span>
     <span class="n">u16</span> <span class="n">available</span><span class="p">;</span>
@@ -426,7 +429,7 @@
 </div>
 </div>
 <div class="section" id="struct-aic-pwm-action">
-<h3><span class="section-number">7.5.5.4.2. </span>struct aic_pwm_action<a class="headerlink" href="#struct-aic-pwm-action" title="永久链接至标题">¶</a></h3>
+<h3><span class="section-number">7.7.5.4.2. </span>struct aic_pwm_action<a class="headerlink" href="#struct-aic-pwm-action" title="永久链接至标题">¶</a></h3>
 <p>属于 HAL 层接口，记录一组Action的配置信息：</p>
 <div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="k">struct</span> <span class="nc">aic_pwm_action</span> <span class="p">{</span>
     <span class="k">enum</span> <span class="n">aic_pwm_action_type</span> <span class="n">CBD</span><span class="p">;</span>
@@ -441,7 +444,7 @@
 </div>
 </div>
 <div class="section" id="driver">
-<h2><span class="section-number">7.5.5.5. </span>Driver 层接口设计<a class="headerlink" href="#driver" title="永久链接至标题">¶</a></h2>
+<h2><span class="section-number">7.7.5.5. </span>Driver 层接口设计<a class="headerlink" href="#driver" title="永久链接至标题">¶</a></h2>
 <p>以下接口是 PWM 设备驱动框架需要的标准接口。</p>
 <div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="k">struct</span> <span class="nc">rt_pwm_ops</span>
 <span class="p">{</span>
@@ -450,7 +453,7 @@
 </pre></div>
 </div>
 <div class="section" id="drv-pwm-control">
-<h3><span class="section-number">7.5.5.5.1. </span>drv_pwm_control<a class="headerlink" href="#drv-pwm-control" title="永久链接至标题">¶</a></h3>
+<h3><span class="section-number">7.7.5.5.1. </span>drv_pwm_control<a class="headerlink" href="#drv-pwm-control" title="永久链接至标题">¶</a></h3>
 <table class="docutils align-default">
 <colgroup>
 <col style="width: 12%" />
@@ -484,7 +487,7 @@
 </div>
 </div>
 <div class="section" id="hal">
-<h2><span class="section-number">7.5.5.6. </span>HAL 层接口设计<a class="headerlink" href="#hal" title="永久链接至标题">¶</a></h2>
+<h2><span class="section-number">7.7.5.6. </span>HAL 层接口设计<a class="headerlink" href="#hal" title="永久链接至标题">¶</a></h2>
 <p>HAL 层的函数接口声明存放在 hal_pwm.h 中，主要接口有：</p>
 <div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">void</span> <span class="nf">hal_pwm_ch_init</span><span class="p">(</span><span class="n">u32</span> <span class="n">ch</span><span class="p">,</span> <span class="k">enum</span> <span class="n">aic_pwm_mode</span> <span class="n">mode</span><span class="p">,</span> <span class="n">u32</span> <span class="n">default_level</span><span class="p">,</span>
                      <span class="k">struct</span> <span class="nc">aic_pwm_action</span> <span class="o">*</span><span class="n">a0</span><span class="p">,</span> <span class="k">struct</span> <span class="nc">aic_pwm_action</span> <span class="o">*</span><span class="n">a1</span><span class="p">);</span>
@@ -502,7 +505,7 @@
 </div>
 </div>
 <div class="section" id="demo">
-<h2><span class="section-number">7.5.5.7. </span>Demo<a class="headerlink" href="#demo" title="永久链接至标题">¶</a></h2>
+<h2><span class="section-number">7.7.5.7. </span>Demo<a class="headerlink" href="#demo" title="永久链接至标题">¶</a></h2>
 <p>本Demo实现了通过 PWM 来控制背光的亮度：</p>
 <div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">void</span> <span class="nf">turn_on_lcd_backlight</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span>
 <span class="p">{</span>
@@ -525,8 +528,8 @@
           </div>
           <footer>
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
-        <a href="6_faq.html" class="btn btn-neutral float-right" title="7.5.6. 常见问题" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
-        <a href="4_test_guide.html" class="btn btn-neutral float-left" title="7.5.4. 测试指南" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="6_faq.html" class="btn btn-neutral float-right" title="7.7.6. 常见问题" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="4_test_guide.html" class="btn btn-neutral float-left" title="7.7.4. 测试指南" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
     </div>
 
   <hr/>

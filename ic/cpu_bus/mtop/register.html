@@ -420,10 +420,10 @@
 <h2><span class="section-number">5.5.3.1. </span>0x0000 MTOP_CTL<a class="headerlink" href="#x0000-mtop-ctl" title="永久链接至标题">¶</a></h2>
 <table class="docutils align-default">
 <colgroup>
-<col style="width: 6%" />
-<col style="width: 6%" />
-<col style="width: 10%" />
-<col style="width: 78%" />
+<col style="width: 7%" />
+<col style="width: 7%" />
+<col style="width: 11%" />
+<col style="width: 75%" />
 </colgroup>
 <thead>
 <tr class="row-odd"><th class="head" colspan="3"><p>默认值：0x00000000</p></th>
@@ -445,7 +445,7 @@
 </td>
 </tr>
 <tr class="row-even"><td><p>29</p></td>
-<td><p>R/W</p></td>
+<td><p>R/W1C</p></td>
 <td><p>0</p></td>
 <td><div class="line-block">
 <div class="line">MTOP_TRIG</div>
@@ -462,8 +462,8 @@
 <div class="line">带宽监控模式</div>
 <div class="line">0: 循环模式</div>
 <div class="line">1: 触发模式</div>
-<div class="line"><strong>此位配置为0时，为自动模式，周期循环统计并输出最近周期的统计结果</strong></div>
-<div class="line"><strong>此位配置为1时，为手动模式，需要配置bit[29]触发，每触发一次输出最近两次触发的统计结果</strong></div>
+<div class="line"><strong>循环模式，则是周期循环统计并输出最近周期的统计结果</strong></div>
+<div class="line"><strong>触发模式，则需要配置bit[29]触发，每触发一次输出最近两次触发的统计结果</strong></div>
 </div>
 </td>
 </tr>

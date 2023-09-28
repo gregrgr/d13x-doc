@@ -7,7 +7,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   
-  <title>7.5.4. 测试指南 &mdash; AIC文档中心 v1.0 文档</title>
+  <title>7.7.4. 测试指南 &mdash; AIC文档中心 v1.0 文档</title>
   
 
   
@@ -41,8 +41,8 @@
     
     <link rel="index" title="索引" href="../../../genindex.html" />
     <link rel="search" title="搜索" href="../../../search.html" />
-    <link rel="next" title="7.5.5. 设计说明" href="5_design_guide.html" />
-    <link rel="prev" title="7.5.3. 调试指南" href="3_debug_guide.html" />
+    <link rel="next" title="7.7.5. 设计说明" href="5_design_guide.html" />
+    <link rel="prev" title="7.7.3. 调试指南" href="3_debug_guide.html" />
     <script>
         $(function () {
 /**
@@ -253,33 +253,36 @@
 <li class="toctree-l3"><a class="reference internal" href="../can/index.html">7.1. CAN 使用指南</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../cir/index.html">7.2. CIR 使用指南</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../gpai/index.html">7.3. GPAI 使用指南</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../psadc/index.html">7.4. PSADC 使用指南</a></li>
-<li class="toctree-l3 current"><a class="reference internal" href="index.html">7.5. PWM 使用指南</a><ul class="current">
-<li class="toctree-l4"><a class="reference internal" href="1_introduction.html">7.5.1. 模块介绍</a></li>
-<li class="toctree-l4"><a class="reference internal" href="2_config_guide.html">7.5.2. 参数配置</a></li>
-<li class="toctree-l4"><a class="reference internal" href="3_debug_guide.html">7.5.3. 调试指南</a></li>
-<li class="toctree-l4 current"><a class="current reference internal" href="#">7.5.4. 测试指南</a><ul>
-<li class="toctree-l5"><a class="reference internal" href="#id2">7.5.4.1. 测试环境</a><ul>
-<li class="toctree-l6"><a class="reference internal" href="#id3">7.5.4.1.1. 硬件</a></li>
-<li class="toctree-l6"><a class="reference internal" href="#id4">7.5.4.1.2. 软件</a></li>
-<li class="toctree-l6"><a class="reference internal" href="#id5">7.5.4.1.3. 软件配置</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../gpio/index.html">7.4. GPIO 使用指南</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../i2c/index.html">7.5. I2C 使用指南</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../psadc/index.html">7.6. PSADC 使用指南</a></li>
+<li class="toctree-l3 current"><a class="reference internal" href="index.html">7.7. PWM 使用指南</a><ul class="current">
+<li class="toctree-l4"><a class="reference internal" href="1_introduction.html">7.7.1. 模块介绍</a></li>
+<li class="toctree-l4"><a class="reference internal" href="2_config_guide.html">7.7.2. 参数配置</a></li>
+<li class="toctree-l4"><a class="reference internal" href="3_debug_guide.html">7.7.3. 调试指南</a></li>
+<li class="toctree-l4 current"><a class="current reference internal" href="#">7.7.4. 测试指南</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="#id2">7.7.4.1. 测试环境</a><ul>
+<li class="toctree-l6"><a class="reference internal" href="#id3">7.7.4.1.1. 硬件</a></li>
+<li class="toctree-l6"><a class="reference internal" href="#id4">7.7.4.1.2. 软件</a></li>
+<li class="toctree-l6"><a class="reference internal" href="#id5">7.7.4.1.3. 软件配置</a></li>
 </ul>
 </li>
-<li class="toctree-l5"><a class="reference internal" href="#pwm">7.5.4.2. 动态配置 PWM</a></li>
+<li class="toctree-l5"><a class="reference internal" href="#pwm">7.7.4.2. 动态配置 PWM</a></li>
 </ul>
 </li>
-<li class="toctree-l4"><a class="reference internal" href="5_design_guide.html">7.5.5. 设计说明</a></li>
-<li class="toctree-l4"><a class="reference internal" href="6_faq.html">7.5.6. 常见问题</a></li>
+<li class="toctree-l4"><a class="reference internal" href="5_design_guide.html">7.7.5. 设计说明</a></li>
+<li class="toctree-l4"><a class="reference internal" href="6_faq.html">7.7.6. 常见问题</a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="../rtp/index.html">7.6. RTP 使用指南</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../spi/index.html">7.7. QSPI 使用指南</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../i2c/index.html">7.8. I2C 使用指南</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../uart/index.html">7.9. UART 使用指南</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../rtp/index.html">7.8. RTP 使用指南</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../spi/index.html">7.9. QSPI 使用指南</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../uart/index.html">7.10. UART 使用指南</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../mac/index.html">7.11. MAC 使用指南</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="../../security/index.html">8. 安全</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../peripheral/index.html">9. 外设</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../app/index.html">10. 应用</a></li>
 </ul>
 </li>
 </ul>
@@ -343,9 +346,9 @@
         
           <li><a href="../index.html"><span class="section-number">7. </span>接口</a> &raquo;</li>
         
-          <li><a href="index.html"><span class="section-number">7.5. </span>PWM 使用指南</a> &raquo;</li>
+          <li><a href="index.html"><span class="section-number">7.7. </span>PWM 使用指南</a> &raquo;</li>
         
-      <li><span class="section-number">7.5.4. </span>测试指南</li>
+      <li><span class="section-number">7.7.4. </span>测试指南</li>
     
     
       <li class="wy-breadcrumbs-aside">
@@ -363,30 +366,30 @@
            <div itemprop="articleBody">
             
   <div class="section" id="id1">
-<h1><span class="section-number">7.5.4. </span>测试指南<a class="headerlink" href="#id1" title="永久链接至标题">¶</a></h1>
+<h1><span class="section-number">7.7.4. </span>测试指南<a class="headerlink" href="#id1" title="永久链接至标题">¶</a></h1>
 <div class="section" id="id2">
-<h2><span class="section-number">7.5.4.1. </span>测试环境<a class="headerlink" href="#id2" title="永久链接至标题">¶</a></h2>
+<h2><span class="section-number">7.7.4.1. </span>测试环境<a class="headerlink" href="#id2" title="永久链接至标题">¶</a></h2>
 <div class="section" id="id3">
-<h3><span class="section-number">7.5.4.1.1. </span>硬件<a class="headerlink" href="#id3" title="永久链接至标题">¶</a></h3>
+<h3><span class="section-number">7.7.4.1.1. </span>硬件<a class="headerlink" href="#id3" title="永久链接至标题">¶</a></h3>
 <ul class="simple">
 <li><p>开发板</p></li>
 <li><p>示波器，用于观察输出PWM信号的波形</p></li>
 </ul>
 </div>
 <div class="section" id="id4">
-<h3><span class="section-number">7.5.4.1.2. </span>软件<a class="headerlink" href="#id4" title="永久链接至标题">¶</a></h3>
+<h3><span class="section-number">7.7.4.1.2. </span>软件<a class="headerlink" href="#id4" title="永久链接至标题">¶</a></h3>
 <ul class="simple">
 <li><p>PC端的串口终端软件，用于PC和开发板进行串口通信</p></li>
 <li><p>RT-Thread 系统自带的 <code class="docutils literal notranslate"><span class="pre">pwm</span></code> 命令行工具</p></li>
 </ul>
 </div>
 <div class="section" id="id5">
-<h3><span class="section-number">7.5.4.1.3. </span>软件配置<a class="headerlink" href="#id5" title="永久链接至标题">¶</a></h3>
+<h3><span class="section-number">7.7.4.1.3. </span>软件配置<a class="headerlink" href="#id5" title="永久链接至标题">¶</a></h3>
 <p>当打开 RT-Thread 系统的 PWM设备驱动框架，就会在启动时注册生成 <code class="docutils literal notranslate"><span class="pre">pwm</span></code> 命令。</p>
 </div>
 </div>
 <div class="section" id="pwm">
-<h2><span class="section-number">7.5.4.2. </span>动态配置 PWM<a class="headerlink" href="#pwm" title="永久链接至标题">¶</a></h2>
+<h2><span class="section-number">7.7.4.2. </span>动态配置 PWM<a class="headerlink" href="#pwm" title="永久链接至标题">¶</a></h2>
 <p>使用 <code class="docutils literal notranslate"><span class="pre">pwm</span></code> 命令来配置某一通道的步骤：（以通道3为例）</p>
 <ol class="arabic simple">
 <li><p>先要probe，选择一个pwm设备</p></li>
@@ -425,8 +428,8 @@ pwm info <span class="nb">set</span> on pwm at channel <span class="m">3</span>
           </div>
           <footer>
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
-        <a href="5_design_guide.html" class="btn btn-neutral float-right" title="7.5.5. 设计说明" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
-        <a href="3_debug_guide.html" class="btn btn-neutral float-left" title="7.5.3. 调试指南" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="5_design_guide.html" class="btn btn-neutral float-right" title="7.7.5. 设计说明" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="3_debug_guide.html" class="btn btn-neutral float-left" title="7.7.3. 调试指南" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
     </div>
 
   <hr/>

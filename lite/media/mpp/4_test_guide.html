@@ -285,12 +285,14 @@
 <li class="toctree-l4"><a class="reference internal" href="6_faq.html">6.7.6. 常见问题</a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="../lvgl/index.html">6.8. LVGL 使用指南</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../player/index.html">6.8. MPP 播放器使用指南</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../lvgl/index.html">6.9. LVGL 使用指南</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="../../interface/index.html">7. 接口</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../security/index.html">8. 安全</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../peripheral/index.html">9. 外设</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../app/index.html">10. 应用</a></li>
 </ul>
 </li>
 </ul>
@@ -459,13 +461,23 @@
 <h3><span class="section-number">6.7.4.2.3. </span>ge_fill<a class="headerlink" href="#ge-fill" title="永久链接至标题">¶</a></h3>
 <p>ge_fill 的主要功能是测试位块填充的功能</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">[</span><span class="n">aic</span> <span class="o">/&gt;</span><span class="p">]</span> <span class="n">ge_fill</span>
+<span class="p">[</span><span class="n">I</span><span class="p">]</span> <span class="n">ge_bitblt</span><span class="p">()</span><span class="mi">436</span> <span class="n">ge</span> <span class="n">bitblt</span> <span class="n">test</span> <span class="n">app</span> <span class="n">start</span><span class="o">........</span>
+<span class="n">Usage</span><span class="p">:</span> <span class="n">ge_bitblt</span> <span class="p">[</span><span class="n">Options</span><span class="p">],</span> <span class="n">built</span> <span class="n">on</span> <span class="n">Sep</span> <span class="mi">11</span> <span class="mi">2023</span> <span class="mi">11</span><span class="p">:</span><span class="mi">02</span><span class="p">:</span><span class="mi">38</span>
+    <span class="o">-</span><span class="n">c</span><span class="p">,</span> <span class="o">--</span><span class="n">circle</span> <span class="n">test</span>
+    <span class="o">-</span><span class="n">n</span><span class="p">,</span> <span class="o">--</span><span class="n">number</span> <span class="n">of</span> <span class="n">run</span><span class="p">,</span> <span class="n">default</span> <span class="n">run</span> <span class="n">once</span>
+    <span class="o">-</span><span class="n">u</span><span class="p">,</span> <span class="o">--</span><span class="n">usage</span>
 </pre></div>
 </div>
 </div>
 <div class="section" id="ge-bitblt">
 <h3><span class="section-number">6.7.4.2.4. </span>ge_bitblt<a class="headerlink" href="#ge-bitblt" title="永久链接至标题">¶</a></h3>
 <p>ge_bitblt 的主要功能是测试位块搬移的功能</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">[</span><span class="n">aic</span> <span class="o">/&gt;</span><span class="p">]</span> <span class="n">ge_fill</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">[</span><span class="n">aic</span> <span class="o">/&gt;</span><span class="p">]</span> <span class="n">ge_bitblt</span>
+<span class="p">[</span><span class="n">I</span><span class="p">]</span> <span class="n">ge_bitblt</span><span class="p">()</span><span class="mi">436</span> <span class="n">ge</span> <span class="n">bitblt</span> <span class="n">test</span> <span class="n">app</span> <span class="n">start</span><span class="o">........</span>
+<span class="n">Usage</span><span class="p">:</span> <span class="n">ge_bitblt</span> <span class="p">[</span><span class="n">Options</span><span class="p">],</span> <span class="n">built</span> <span class="n">on</span> <span class="n">Sep</span> <span class="mi">11</span> <span class="mi">2023</span> <span class="mi">11</span><span class="p">:</span><span class="mi">02</span><span class="p">:</span><span class="mi">38</span>
+    <span class="o">-</span><span class="n">c</span><span class="p">,</span> <span class="o">--</span><span class="n">circle</span> <span class="n">test</span>
+    <span class="o">-</span><span class="n">n</span><span class="p">,</span> <span class="o">--</span><span class="n">number</span> <span class="n">of</span> <span class="n">run</span><span class="p">,</span> <span class="n">default</span> <span class="n">run</span> <span class="n">once</span>
+    <span class="o">-</span><span class="n">u</span><span class="p">,</span> <span class="o">--</span><span class="n">usage</span>
 </pre></div>
 </div>
 </div>
@@ -473,6 +485,11 @@
 <h3><span class="section-number">6.7.4.2.5. </span>ge_rotate<a class="headerlink" href="#ge-rotate" title="永久链接至标题">¶</a></h3>
 <p>ge_rotate 的主要功能是测试图形旋转的功能</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">[</span><span class="n">aic</span> <span class="o">/&gt;</span><span class="p">]</span> <span class="n">ge_rotate</span>
+<span class="p">[</span><span class="n">I</span><span class="p">]</span> <span class="n">ge_bitblt</span><span class="p">()</span><span class="mi">436</span> <span class="n">ge</span> <span class="n">bitblt</span> <span class="n">test</span> <span class="n">app</span> <span class="n">start</span><span class="o">........</span>
+<span class="n">Usage</span><span class="p">:</span> <span class="n">ge_bitblt</span> <span class="p">[</span><span class="n">Options</span><span class="p">],</span> <span class="n">built</span> <span class="n">on</span> <span class="n">Sep</span> <span class="mi">11</span> <span class="mi">2023</span> <span class="mi">11</span><span class="p">:</span><span class="mi">02</span><span class="p">:</span><span class="mi">38</span>
+    <span class="o">-</span><span class="n">c</span><span class="p">,</span> <span class="o">--</span><span class="n">circle</span> <span class="n">test</span>
+    <span class="o">-</span><span class="n">n</span><span class="p">,</span> <span class="o">--</span><span class="n">number</span> <span class="n">of</span> <span class="n">run</span><span class="p">,</span> <span class="n">default</span> <span class="n">run</span> <span class="n">once</span>
+    <span class="o">-</span><span class="n">u</span><span class="p">,</span> <span class="o">--</span><span class="n">usage</span>
 </pre></div>
 </div>
 </div>

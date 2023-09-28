@@ -260,12 +260,12 @@
 <li class="toctree-l5"><a class="reference internal" href="#x010-usb-int-sts">12.1.3.5. 0x010 USB_INT_STS</a></li>
 <li class="toctree-l5"><a class="reference internal" href="#x014-usb-int-msk">12.1.3.6. 0x014 USB_INT_MSK</a></li>
 <li class="toctree-l5"><a class="reference internal" href="#x018-rxfifo-siz">12.1.3.7. 0x018 RXFIFO_SIZ</a></li>
-<li class="toctree-l5"><a class="reference internal" href="#x01c-rxfifo-sts">12.1.3.8. 0x01C RXFIFO_STS</a></li>
+<li class="toctree-l5"><a class="reference internal" href="#x01c-rxfifo-sts-pop">12.1.3.8. 0x01C RXFIFO_STS_POP</a></li>
 <li class="toctree-l5"><a class="reference internal" href="#x020-nptxfifo-siz">12.1.3.9. 0x020 NPTXFIFO_SIZ</a></li>
 <li class="toctree-l5"><a class="reference internal" href="#x024-nptxfifo-sts">12.1.3.10. 0x024 NPTXFIFO_STS</a></li>
 <li class="toctree-l5"><a class="reference internal" href="#x028-txfifo1-siz">12.1.3.11. 0x028 TXFIFO1_SIZ</a></li>
 <li class="toctree-l5"><a class="reference internal" href="#x02c-txfifo-siz2">12.1.3.12. 0x02C TXFIFO_SIZ2</a></li>
-<li class="toctree-l5"><a class="reference internal" href="#x030-rxfifo-sts-pop">12.1.3.13. 0x030 RXFIFO_STS_POP</a></li>
+<li class="toctree-l5"><a class="reference internal" href="#x030-rxfifo-sts">12.1.3.13. 0x030 RXFIFO_STS</a></li>
 <li class="toctree-l5"><a class="reference internal" href="#x040-phy-clk-ctl">12.1.3.14. 0x040 PHY_CLK_CTL</a></li>
 <li class="toctree-l5"><a class="reference internal" href="#x050-usb-version">12.1.3.15. 0x050 USB_VERSION</a></li>
 <li class="toctree-l5"><a class="reference internal" href="#x200-usb-dev-conf">12.1.3.16. 0x200 USB_DEV_CONF</a></li>
@@ -1343,8 +1343,8 @@
 </tbody>
 </table>
 </div>
-<div class="section" id="x01c-rxfifo-sts">
-<h2><span class="section-number">12.1.3.8. </span>0x01C RXFIFO_STS<a class="headerlink" href="#x01c-rxfifo-sts" title="永久链接至标题">¶</a></h2>
+<div class="section" id="x01c-rxfifo-sts-pop">
+<h2><span class="section-number">12.1.3.8. </span>0x01C RXFIFO_STS_POP<a class="headerlink" href="#x01c-rxfifo-sts-pop" title="永久链接至标题">¶</a></h2>
 <table class="docutils align-default">
 <colgroup>
 <col style="width: 8%" />
@@ -1354,7 +1354,7 @@
 </colgroup>
 <thead>
 <tr class="row-odd"><th class="head" colspan="3"><p>默认值：0x00000000</p></th>
-<th class="head"><p>RXFIFO状态寄存器（RXFIFO Status）</p></th>
+<th class="head"><p>RXFIFO状态寄存器（RXFIFO Status Pop）</p></th>
 </tr>
 <tr class="row-even"><th class="head"><p>位域</p></th>
 <th class="head"><p>类型</p></th>
@@ -1628,8 +1628,8 @@
 </tbody>
 </table>
 </div>
-<div class="section" id="x030-rxfifo-sts-pop">
-<h2><span class="section-number">12.1.3.13. </span>0x030 RXFIFO_STS_POP<a class="headerlink" href="#x030-rxfifo-sts-pop" title="永久链接至标题">¶</a></h2>
+<div class="section" id="x030-rxfifo-sts">
+<h2><span class="section-number">12.1.3.13. </span>0x030 RXFIFO_STS<a class="headerlink" href="#x030-rxfifo-sts" title="永久链接至标题">¶</a></h2>
 <table class="docutils align-default">
 <colgroup>
 <col style="width: 8%" />
@@ -1639,7 +1639,7 @@
 </colgroup>
 <thead>
 <tr class="row-odd"><th class="head" colspan="3"><p>默认值：0x00000000</p></th>
-<th class="head"><p>RXFIFO 状态寄存器（RXFIFO Status Pop）</p></th>
+<th class="head"><p>RXFIFO 状态寄存器（RXFIFO Status）</p></th>
 </tr>
 <tr class="row-even"><th class="head"><p>位域</p></th>
 <th class="head"><p>类型</p></th>

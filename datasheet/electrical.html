@@ -399,18 +399,6 @@
 <td><p>3.6</p></td>
 <td><p>V</p></td>
 </tr>
-<tr class="row-odd"><td><p>LDO25</p></td>
-<td><p>2.5V LDO 输出</p></td>
-<td><p>-0.3</p></td>
-<td><p>2.75</p></td>
-<td><p>V</p></td>
-</tr>
-<tr class="row-even"><td><p>LDO18</p></td>
-<td><p>1.8V LDO 输出</p></td>
-<td><p>-0.3</p></td>
-<td><p>1.85</p></td>
-<td><p>V</p></td>
-</tr>
 <tr class="row-odd"><td><p>VDD11_SYS</p></td>
 <td><p>内核及系统电源</p></td>
 <td><p>-0.3</p></td>
@@ -419,8 +407,8 @@
 </tr>
 <tr class="row-even"><td><p>Iio</p></td>
 <td><p>IO输入输出电流</p></td>
-<td><p>-50</p></td>
-<td><p>50</p></td>
+<td><p>-55</p></td>
+<td><p>60</p></td>
 <td><p>mA</p></td>
 </tr>
 </tbody>
@@ -450,14 +438,14 @@
 <tbody>
 <tr class="row-even"><td><p>Tj</p></td>
 <td><p>结温</p></td>
-<td><p>-20</p></td>
+<td><p>-40</p></td>
 <td></td>
 <td><p>105</p></td>
 <td><p>°C</p></td>
 </tr>
 <tr class="row-odd"><td><p>Ta</p></td>
 <td><p>环境温度</p></td>
-<td><p>-20</p></td>
+<td><p>-40</p></td>
 <td></td>
 <td><p>85</p></td>
 <td><p>°C</p></td>
@@ -473,7 +461,7 @@
 <td><p>RTC电源</p></td>
 <td><p>2.1</p></td>
 <td><p>3.0</p></td>
-<td><p>3.6</p></td>
+<td><p>VCC33_IO</p></td>
 <td><p>V</p></td>
 </tr>
 <tr class="row-even"><td><p>VDD11_SYS</p></td>
@@ -490,11 +478,11 @@
 <div class="section" id="rtc">
 <h2>RTC 供电<a class="headerlink" href="#rtc" title="永久链接至标题">¶</a></h2>
 <ul>
-<li><p>RTC供电来源于VCC33-IO和VCOIN，内部电路自动检测VCC33-IO和VCOIN电压，并采用电压高的那一路供电。</p>
+<li><p>RTC供电来源于VCC33_IO和VCOIN，内部电路自动检测VCC33_IO和VCOIN电压，并采用电压高的那一路供电。</p>
 <blockquote>
 <div><ul class="simple">
-<li><p>开机下：VCC33-IO为3.3V，VCOIN接纽扣电池典型为3.0V，则采用VCC33-IO供电</p></li>
-<li><p>关机下：VCC33-IO未供电，VCOIN接纽扣电池典型为3.0V，则采用VCOIN供电，典型功耗为2uA</p></li>
+<li><p>开机下：VCC33_IO为3.3V，VCOIN接纽扣电池典型为3.0V，则采用VCC33_IO供电</p></li>
+<li><p>关机下：VCC33_IO未供电，VCOIN接纽扣电池典型为3.0V，则采用VCOIN供电，典型功耗为2uA</p></li>
 </ul>
 </div></blockquote>
 </li>
@@ -512,13 +500,13 @@
 <li><p>芯片系统有7种复位源，以下任何一种复位条件成立，会对芯片产生复位：</p>
 <blockquote>
 <div><ul class="simple">
-<li><p>SYS上电复位：在VCC33-IO上电后产生复位，上电10ms内系统自动放开此复位</p></li>
-<li><p>RTC上电复位：在RTC上电后（供电来源VCC33-IO和VCOIN）自动完成复位</p></li>
+<li><p>SYS上电复位：在VCC33_IO上电后产生复位，上电10ms内系统自动放开此复位</p></li>
+<li><p>RTC上电复位：在RTC上电后（供电来源VCC33_IO和VCOIN）自动完成复位</p></li>
 <li><p>外部引脚复位：引脚RESETN输入低电平并持续2ms以上产生复位</p></li>
 <li><p>调试器复位：在接收到JTAG IO上的RESET命令后立即产生复位</p></li>
-<li><p>看门狗复位：在WDOG超时复位条件满足下立即产生复位</p></li>
-<li><p>过温复位：在THS温度超过设定值时立即产生复位</p></li>
-<li><p>电压比较复位：在RTC_IO电压比参考电压高（可配置，或比参考电压低时）立即产生复位</p></li>
+<li><p>看门狗复位：通过软件使能后，在WDOG超时复位条件满足下立即产生复位</p></li>
+<li><p>过温复位：通过软件使能后，在THS温度超过设定值时立即产生复位</p></li>
+<li><p>电压比较复位：通过软件使能后，在RTC_IO电压比参考电压高（可配置，或比参考电压低时）立即产生复位</p></li>
 </ul>
 </div></blockquote>
 </li>

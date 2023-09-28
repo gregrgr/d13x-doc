@@ -273,12 +273,14 @@
 <li class="toctree-l3"><a class="reference internal" href="../i2s/index.html">6.5. I2S 使用指南</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../ve/index.html">6.6. VE 使用指南</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../mpp/index.html">6.7. MPP 使用指南</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../lvgl/index.html">6.8. LVGL 使用指南</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../player/index.html">6.8. MPP 播放器使用指南</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../lvgl/index.html">6.9. LVGL 使用指南</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="../../interface/index.html">7. 接口</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../security/index.html">8. 安全</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../peripheral/index.html">9. 外设</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../app/index.html">10. 应用</a></li>
 </ul>
 </li>
 </ul>
@@ -387,24 +389,24 @@
         [*] Enable AUDIO driver test comnand
 </pre></div>
 </div>
-<p>重新编译代码，会生成 <code class="docutils literal notranslate"><span class="pre">test_wavplay</span></code> 和 <code class="docutils literal notranslate"><span class="pre">test_wavrecord</span></code> 两个命令行工具。</p>
+<p>重新编译代码，会生成 <code class="docutils literal notranslate"><span class="pre">aplay</span></code> 和 <code class="docutils literal notranslate"><span class="pre">arecord</span></code> 两个命令行工具。</p>
 </div>
 <div class="section" id="id6">
 <h3><span class="section-number">6.1.4.1.4. </span>音频测试<a class="headerlink" href="#id6" title="永久链接至标题">¶</a></h3>
 <div class="section" id="id7">
 <h4><span class="section-number">6.1.4.1.4.1. </span>音频播放<a class="headerlink" href="#id7" title="永久链接至标题">¶</a></h4>
-<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>test_wavplay test.wav
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>aplay test.wav
 </pre></div>
 </div>
 </div>
 <div class="section" id="id8">
 <h4><span class="section-number">6.1.4.1.4.2. </span>音频录制<a class="headerlink" href="#id8" title="永久链接至标题">¶</a></h4>
-<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>test_wavrecord test.wav
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>arecord test.wav
 </pre></div>
 </div>
 <div class="admonition note">
 <p class="admonition-title">注解</p>
-<p>test_wavrecord只是一个示例，功能还不够完善，默认录制的是16bit深度，16K采样率，立体声音频。</p>
+<p>arecord只是一个示例，默认录制的是16bit深度，32K采样率，立体声音频。</p>
 </div>
 </div>
 </div>

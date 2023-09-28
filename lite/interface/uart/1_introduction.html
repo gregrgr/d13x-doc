@@ -7,7 +7,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   
-  <title>7.9.1. 模块介绍 &mdash; AIC文档中心 v1.0 文档</title>
+  <title>7.10.1. 模块介绍 &mdash; AIC文档中心 v1.0 文档</title>
   
 
   
@@ -41,8 +41,8 @@
     
     <link rel="index" title="索引" href="../../../genindex.html" />
     <link rel="search" title="搜索" href="../../../search.html" />
-    <link rel="next" title="7.9.2. 使用指南" href="2_config_guide.html" />
-    <link rel="prev" title="7.9. UART 使用指南" href="index.html" />
+    <link rel="next" title="7.10.2. 使用指南" href="2_config_guide.html" />
+    <link rel="prev" title="7.10. UART 使用指南" href="index.html" />
     <script>
         $(function () {
 /**
@@ -253,49 +253,52 @@
 <li class="toctree-l3"><a class="reference internal" href="../can/index.html">7.1. CAN 使用指南</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../cir/index.html">7.2. CIR 使用指南</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../gpai/index.html">7.3. GPAI 使用指南</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../psadc/index.html">7.4. PSADC 使用指南</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../pwm/index.html">7.5. PWM 使用指南</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../rtp/index.html">7.6. RTP 使用指南</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../spi/index.html">7.7. QSPI 使用指南</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../i2c/index.html">7.8. I2C 使用指南</a></li>
-<li class="toctree-l3 current"><a class="reference internal" href="index.html">7.9. UART 使用指南</a><ul class="current">
-<li class="toctree-l4 current"><a class="current reference internal" href="#">7.9.1. 模块介绍</a><ul>
-<li class="toctree-l5"><a class="reference internal" href="#id2">7.9.1.1. 术语定义</a></li>
-<li class="toctree-l5"><a class="reference internal" href="#id3">7.9.1.2. 模块简介</a></li>
-<li class="toctree-l5"><a class="reference internal" href="#id4">7.9.1.3. 通信协议</a></li>
-<li class="toctree-l5"><a class="reference internal" href="#id5">7.9.1.4. 参数信息</a></li>
-<li class="toctree-l5"><a class="reference internal" href="#id6">7.9.1.5. 常用接口</a><ul>
-<li class="toctree-l6"><a class="reference internal" href="#ttl">7.9.1.5.1. TTL</a></li>
-<li class="toctree-l6"><a class="reference internal" href="#rs232">7.9.1.5.2. RS232</a></li>
-<li class="toctree-l6"><a class="reference internal" href="#rs422">7.9.1.5.3. RS422</a></li>
-<li class="toctree-l6"><a class="reference internal" href="#rs485">7.9.1.5.4. RS485</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../gpio/index.html">7.4. GPIO 使用指南</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../i2c/index.html">7.5. I2C 使用指南</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../psadc/index.html">7.6. PSADC 使用指南</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../pwm/index.html">7.7. PWM 使用指南</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../rtp/index.html">7.8. RTP 使用指南</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../spi/index.html">7.9. QSPI 使用指南</a></li>
+<li class="toctree-l3 current"><a class="reference internal" href="index.html">7.10. UART 使用指南</a><ul class="current">
+<li class="toctree-l4 current"><a class="current reference internal" href="#">7.10.1. 模块介绍</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="#id2">7.10.1.1. 术语定义</a></li>
+<li class="toctree-l5"><a class="reference internal" href="#id3">7.10.1.2. 模块简介</a></li>
+<li class="toctree-l5"><a class="reference internal" href="#id4">7.10.1.3. 通信协议</a></li>
+<li class="toctree-l5"><a class="reference internal" href="#id5">7.10.1.4. 参数信息</a></li>
+<li class="toctree-l5"><a class="reference internal" href="#id6">7.10.1.5. 常用接口</a><ul>
+<li class="toctree-l6"><a class="reference internal" href="#ttl">7.10.1.5.1. TTL</a></li>
+<li class="toctree-l6"><a class="reference internal" href="#rs232">7.10.1.5.2. RS232</a></li>
+<li class="toctree-l6"><a class="reference internal" href="#rs422">7.10.1.5.3. RS422</a></li>
+<li class="toctree-l6"><a class="reference internal" href="#rs485">7.10.1.5.4. RS485</a></li>
 </ul>
 </li>
-<li class="toctree-l5"><a class="reference internal" href="#id7">7.9.1.6. 插头</a><ul>
-<li class="toctree-l6"><a class="reference internal" href="#id8">7.9.1.6.1. 公母之分</a></li>
-<li class="toctree-l6"><a class="reference internal" href="#db-9">7.9.1.6.2. DB-9接口</a></li>
+<li class="toctree-l5"><a class="reference internal" href="#id7">7.10.1.6. 插头</a><ul>
+<li class="toctree-l6"><a class="reference internal" href="#id8">7.10.1.6.1. 公母之分</a></li>
+<li class="toctree-l6"><a class="reference internal" href="#db-9">7.10.1.6.2. DB-9接口</a></li>
 </ul>
 </li>
-<li class="toctree-l5"><a class="reference internal" href="#id9">7.9.1.7. 流控</a><ul>
-<li class="toctree-l6"><a class="reference internal" href="#id10">7.9.1.7.1. 硬件流控</a></li>
-<li class="toctree-l6"><a class="reference internal" href="#id11">7.9.1.7.2. 软件流控</a></li>
+<li class="toctree-l5"><a class="reference internal" href="#id9">7.10.1.7. 流控</a><ul>
+<li class="toctree-l6"><a class="reference internal" href="#id10">7.10.1.7.1. 硬件流控</a></li>
+<li class="toctree-l6"><a class="reference internal" href="#id11">7.10.1.7.2. 软件流控</a></li>
 </ul>
 </li>
-<li class="toctree-l5"><a class="reference internal" href="#raw">7.9.1.8. RAW模式</a></li>
-<li class="toctree-l5"><a class="reference internal" href="#id12">7.9.1.9. 模块特性</a></li>
+<li class="toctree-l5"><a class="reference internal" href="#raw">7.10.1.8. RAW模式</a></li>
+<li class="toctree-l5"><a class="reference internal" href="#id12">7.10.1.9. 模块特性</a></li>
 </ul>
 </li>
-<li class="toctree-l4"><a class="reference internal" href="2_config_guide.html">7.9.2. 使用指南</a></li>
-<li class="toctree-l4"><a class="reference internal" href="3_debug_guide.html">7.9.3. 调试指南</a></li>
-<li class="toctree-l4"><a class="reference internal" href="4_test_guide.html">7.9.4. 测试指南</a></li>
-<li class="toctree-l4"><a class="reference internal" href="5_design_guide.html">7.9.5. 源码说明</a></li>
-<li class="toctree-l4"><a class="reference internal" href="6_faq.html">7.9.6. 常见问题</a></li>
+<li class="toctree-l4"><a class="reference internal" href="2_config_guide.html">7.10.2. 使用指南</a></li>
+<li class="toctree-l4"><a class="reference internal" href="3_debug_guide.html">7.10.3. 调试指南</a></li>
+<li class="toctree-l4"><a class="reference internal" href="4_test_guide.html">7.10.4. 测试指南</a></li>
+<li class="toctree-l4"><a class="reference internal" href="5_design_guide.html">7.10.5. 源码说明</a></li>
+<li class="toctree-l4"><a class="reference internal" href="6_faq.html">7.10.6. 常见问题</a></li>
 </ul>
 </li>
+<li class="toctree-l3"><a class="reference internal" href="../mac/index.html">7.11. MAC 使用指南</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="../../security/index.html">8. 安全</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../peripheral/index.html">9. 外设</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../app/index.html">10. 应用</a></li>
 </ul>
 </li>
 </ul>
@@ -359,9 +362,9 @@
         
           <li><a href="../index.html"><span class="section-number">7. </span>接口</a> &raquo;</li>
         
-          <li><a href="index.html"><span class="section-number">7.9. </span>UART 使用指南</a> &raquo;</li>
+          <li><a href="index.html"><span class="section-number">7.10. </span>UART 使用指南</a> &raquo;</li>
         
-      <li><span class="section-number">7.9.1. </span>模块介绍</li>
+      <li><span class="section-number">7.10.1. </span>模块介绍</li>
     
     
       <li class="wy-breadcrumbs-aside">
@@ -379,9 +382,9 @@
            <div itemprop="articleBody">
             
   <div class="section" id="id1">
-<h1><span class="section-number">7.9.1. </span>模块介绍<a class="headerlink" href="#id1" title="永久链接至标题">¶</a></h1>
+<h1><span class="section-number">7.10.1. </span>模块介绍<a class="headerlink" href="#id1" title="永久链接至标题">¶</a></h1>
 <div class="section" id="id2">
-<h2><span class="section-number">7.9.1.1. </span>术语定义<a class="headerlink" href="#id2" title="永久链接至标题">¶</a></h2>
+<h2><span class="section-number">7.10.1.1. </span>术语定义<a class="headerlink" href="#id2" title="永久链接至标题">¶</a></h2>
 <table class="docutils align-default">
 <colgroup>
 <col style="width: 7%" />
@@ -443,14 +446,14 @@
 </table>
 </div>
 <div class="section" id="id3">
-<h2><span class="section-number">7.9.1.2. </span>模块简介<a class="headerlink" href="#id3" title="永久链接至标题">¶</a></h2>
+<h2><span class="section-number">7.10.1.2. </span>模块简介<a class="headerlink" href="#id3" title="永久链接至标题">¶</a></h2>
 <p>通用异步收发传输器（Universal Asynchronous Receiver/Transmitter)，通常称作 UART，是一种通用串行数据总线。</p>
 <p>串行通信是指利用一条传输线将数据一位位地顺序传送，通信线路非常简单。</p>
 <p>UART 为双向通信，可以实现全双工传输和接收。在嵌入式设计中，UART 用于主机与辅助设备通信，如汽车音响与外接AP之间的通信，也用于 PC 机通信包括与监控调试器和其它器件，如 EEPROM 通信。</p>
 <p>在 UART 上追加同步方式的序列信号变换电路的产品，被称为 USART(Universal Synchronous Asynchronous Receiver Transmitter)</p>
 </div>
 <div class="section" id="id4">
-<h2><span class="section-number">7.9.1.3. </span>通信协议<a class="headerlink" href="#id4" title="永久链接至标题">¶</a></h2>
+<h2><span class="section-number">7.10.1.3. </span>通信协议<a class="headerlink" href="#id4" title="永久链接至标题">¶</a></h2>
 <p>UART 作为异步串行通信协议的一种，工作原理是将传输数据的每个字符一位接一位地传输。其协议中添加了一些特殊的表示位：</p>
 <ul class="simple">
 <li><dl class="simple">
@@ -491,20 +494,20 @@
 </ul>
 </div>
 <div class="section" id="id5">
-<h2><span class="section-number">7.9.1.4. </span>参数信息<a class="headerlink" href="#id5" title="永久链接至标题">¶</a></h2>
+<h2><span class="section-number">7.10.1.4. </span>参数信息<a class="headerlink" href="#id5" title="永久链接至标题">¶</a></h2>
 <p>在 UART 进行通信的时候，双方需要协商相关参数，否则无法进行信息解析，因此在通信之初，需要对所使用的工具设置上述的所有参数</p>
 <div class="figure align-center">
 <img alt="../../../_images/uart-param.jpg" src="../../../_images/uart-param.jpg" />
 </div>
 </div>
 <div class="section" id="id6">
-<h2><span class="section-number">7.9.1.5. </span>常用接口<a class="headerlink" href="#id6" title="永久链接至标题">¶</a></h2>
+<h2><span class="section-number">7.10.1.5. </span>常用接口<a class="headerlink" href="#id6" title="永久链接至标题">¶</a></h2>
 <ul class="simple">
 <li><p>串口、COM 口是指的物理接口形式(硬件)。</p></li>
 <li><p>TTL、RS-232、RS-485 是指的电平标准(电信号)。</p></li>
 </ul>
 <div class="section" id="ttl">
-<h3><span class="section-number">7.9.1.5.1. </span>TTL<a class="headerlink" href="#ttl" title="永久链接至标题">¶</a></h3>
+<h3><span class="section-number">7.10.1.5.1. </span>TTL<a class="headerlink" href="#ttl" title="永久链接至标题">¶</a></h3>
 <ul class="simple">
 <li><p>TTL标准是低电平（0V）为0，高电平（+5V）为1。</p></li>
 <li><p>TTL 接口需要对端接口也为 TTL，但诸如 PC 等设备无 TTL 接口的UART口，一般转 TTL 为 USB 等 PC 更通用的接口。</p></li>
@@ -513,7 +516,7 @@
 </ul>
 </div>
 <div class="section" id="rs232">
-<h3><span class="section-number">7.9.1.5.2. </span>RS232<a class="headerlink" href="#rs232" title="永久链接至标题">¶</a></h3>
+<h3><span class="section-number">7.10.1.5.2. </span>RS232<a class="headerlink" href="#rs232" title="永久链接至标题">¶</a></h3>
 <ul class="simple">
 <li><p>RS232 标准是正电平（+3V~+15V）为0，负电平（-13V~-15V）为1。</p></li>
 <li><p>RS232 接口在总线上只允许连接1个收发器，单站能力。</p></li>
@@ -523,7 +526,7 @@
 </ul>
 </div>
 <div class="section" id="rs422">
-<h3><span class="section-number">7.9.1.5.3. </span>RS422<a class="headerlink" href="#rs422" title="永久链接至标题">¶</a></h3>
+<h3><span class="section-number">7.10.1.5.3. </span>RS422<a class="headerlink" href="#rs422" title="永久链接至标题">¶</a></h3>
 <ul class="simple">
 <li><p>RS422 标准采用差分信号负逻辑，逻辑“1”以两线间的电压差为+（2—6）V表示；逻辑“0”以两线间的电压差为-（2—6）V表示。接口信号电平比 RS232 降低了，就不易损坏接口电路的芯片，且该电平与 TTL 电平兼容，可方便与TTL电路连接。</p></li>
 <li><p>RS422 接口在总线上是允许连接多达128个收发器，多站能力。</p></li>
@@ -534,7 +537,7 @@
 </ul>
 </div>
 <div class="section" id="rs485">
-<h3><span class="section-number">7.9.1.5.4. </span>RS485<a class="headerlink" href="#rs485" title="永久链接至标题">¶</a></h3>
+<h3><span class="section-number">7.10.1.5.4. </span>RS485<a class="headerlink" href="#rs485" title="永久链接至标题">¶</a></h3>
 <ul class="simple">
 <li><p>RS485 的电气性能和 RS422 完全一样，主要区别是 RS485 是半双工。连接设备的时候一般接 A-/A+/GND，DB9 接口定义了两组，同时必须使用同一组的+/-。</p></li>
 <li><p>信号线也采用交叉的方式，即源端的 A- 连接目标设备的A-，源端的 A+ 连接目标设备的 A+。</p></li>
@@ -542,9 +545,9 @@
 </div>
 </div>
 <div class="section" id="id7">
-<h2><span class="section-number">7.9.1.6. </span>插头<a class="headerlink" href="#id7" title="永久链接至标题">¶</a></h2>
+<h2><span class="section-number">7.10.1.6. </span>插头<a class="headerlink" href="#id7" title="永久链接至标题">¶</a></h2>
 <div class="section" id="id8">
-<h3><span class="section-number">7.9.1.6.1. </span>公母之分<a class="headerlink" href="#id8" title="永久链接至标题">¶</a></h3>
+<h3><span class="section-number">7.10.1.6.1. </span>公母之分<a class="headerlink" href="#id8" title="永久链接至标题">¶</a></h3>
 <ul class="simple">
 <li><p>针形的为公头，孔形的为母头</p></li>
 <li><p>PC 串口一般为公头，设备的一般为母头</p></li>
@@ -554,7 +557,7 @@
 </div>
 </div>
 <div class="section" id="db-9">
-<h3><span class="section-number">7.9.1.6.2. </span>DB-9接口<a class="headerlink" href="#db-9" title="永久链接至标题">¶</a></h3>
+<h3><span class="section-number">7.10.1.6.2. </span>DB-9接口<a class="headerlink" href="#db-9" title="永久链接至标题">¶</a></h3>
 <p>RS232DB9 的信号分分四组：</p>
 <ul class="simple">
 <li><p>DCD/RI：电气 Ready 参数</p></li>
@@ -660,12 +663,12 @@
 </div>
 </div>
 <div class="section" id="id9">
-<h2><span class="section-number">7.9.1.7. </span>流控<a class="headerlink" href="#id9" title="永久链接至标题">¶</a></h2>
+<h2><span class="section-number">7.10.1.7. </span>流控<a class="headerlink" href="#id9" title="永久链接至标题">¶</a></h2>
 <p>这里讲到的 “流”，指的是数据流；在数据通信中，流控制是管理两个节点之间数据传输速率的过程，以防止出现接收端的数据缓冲区已满，而发送端依然继续发送数据，所导致数据丢失。</p>
 <p>当接收端的数据缓冲区已满，无法处理数据来时，就发出 “不再接收” 的信号，发送端则停止发送，直到发送端收到 “可以继续发送” 的信号再发送数据。</p>
 <p>计算机中常用的两种流控制分别是硬件流控制（RTS /CTS、DTR /DSR等）和软件流控制（XON /XOFF）。</p>
 <div class="section" id="id10">
-<h3><span class="section-number">7.9.1.7.1. </span>硬件流控<a class="headerlink" href="#id10" title="永久链接至标题">¶</a></h3>
+<h3><span class="section-number">7.10.1.7.1. </span>硬件流控<a class="headerlink" href="#id10" title="永久链接至标题">¶</a></h3>
 <p>RTS/CTS 属于硬件握手的一种，最初是设计为电传打字机和调制解调器半双工协作通信的，每次它只能一方调制解调器发送数据。终端必须发送请求发送信号然后等到调制解调器回应清除发送信号。</p>
 <div class="figure align-center">
 <img alt="../../../_images/flowctrol.jpg" src="../../../_images/flowctrol.jpg" />
@@ -673,7 +676,7 @@
 <p>A 端的 DTR（数据设备就绪）发出信号， 当 B 端准备好后，B 端的 DTR（数据设备就绪）向 A端的 DSR（通讯设备就绪）发出信号。 接下来就可以通过 RTS（请求发送）和 DTR（允许发送）来控制通信。</p>
 </div>
 <div class="section" id="id11">
-<h3><span class="section-number">7.9.1.7.2. </span>软件流控<a class="headerlink" href="#id11" title="永久链接至标题">¶</a></h3>
+<h3><span class="section-number">7.10.1.7.2. </span>软件流控<a class="headerlink" href="#id11" title="永久链接至标题">¶</a></h3>
 <p>软件流控制（Software flow control）是在计算机数据链路中的一种流控制方法，特别适用于 RS232 串口通信；它是采用特殊字符来传输带内信令，特殊编码字符称作 XOFF 与 XON（分别表示 “transmit off” 与 “transmit on”）。因此，也被称作 “XON /XOFF流控制”。</p>
 <table class="docutils align-default">
 <colgroup>
@@ -709,7 +712,7 @@
 </div>
 </div>
 <div class="section" id="raw">
-<h2><span class="section-number">7.9.1.8. </span>RAW模式<a class="headerlink" href="#raw" title="永久链接至标题">¶</a></h2>
+<h2><span class="section-number">7.10.1.8. </span>RAW模式<a class="headerlink" href="#raw" title="永久链接至标题">¶</a></h2>
 <p>UART 作为tty设备工作的时候，有两种工作方式：</p>
 <ul class="simple">
 <li><dl class="simple">
@@ -726,7 +729,7 @@
 <p>两种工作模式均为kernel层逻辑，和驱动/硬件无关，对于普通的uart应用，建议Canonical方式，对于RS485应用，建议使用Raw方式，二者通过termios的lflag参数的ICANON 位进行区分。</p>
 </div>
 <div class="section" id="id12">
-<h2><span class="section-number">7.9.1.9. </span>模块特性<a class="headerlink" href="#id12" title="永久链接至标题">¶</a></h2>
+<h2><span class="section-number">7.10.1.9. </span>模块特性<a class="headerlink" href="#id12" title="永久链接至标题">¶</a></h2>
 <ul class="simple">
 <li><p>兼容工业标准16550 UART</p></li>
 <li><p>256x8bit发送与接收FIFO</p></li>
@@ -749,8 +752,8 @@
           </div>
           <footer>
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
-        <a href="2_config_guide.html" class="btn btn-neutral float-right" title="7.9.2. 使用指南" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
-        <a href="index.html" class="btn btn-neutral float-left" title="7.9. UART 使用指南" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="2_config_guide.html" class="btn btn-neutral float-right" title="7.10.2. 使用指南" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="index.html" class="btn btn-neutral float-left" title="7.10. UART 使用指南" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
     </div>
 
   <hr/>

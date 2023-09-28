@@ -261,7 +261,7 @@
 <li class="toctree-l5"><a class="reference internal" href="#id3">6.2.6.2. 屏配置说明</a></li>
 <li class="toctree-l5"><a class="reference internal" href="#id4">6.2.6.3. 屏驱动说明</a><ul>
 <li class="toctree-l6"><a class="reference internal" href="#id5">6.2.6.3.1. 屏源码位置</a></li>
-<li class="toctree-l6"><a class="reference internal" href="#id6">6.2.6.3.2. 新屏驱动支持</a></li>
+<li class="toctree-l6"><a class="reference internal" href="#id6">6.2.6.3.2. 新屏驱动适配</a></li>
 <li class="toctree-l6"><a class="reference internal" href="#id7">6.2.6.3.3. 数据结构</a></li>
 <li class="toctree-l6"><a class="reference internal" href="#id8">6.2.6.3.4. 函数接口</a></li>
 </ul>
@@ -278,12 +278,14 @@
 <li class="toctree-l3"><a class="reference internal" href="../../i2s/index.html">6.5. I2S 使用指南</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../ve/index.html">6.6. VE 使用指南</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../mpp/index.html">6.7. MPP 使用指南</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../lvgl/index.html">6.8. LVGL 使用指南</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../player/index.html">6.8. MPP 播放器使用指南</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../lvgl/index.html">6.9. LVGL 使用指南</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="../../../interface/index.html">7. 接口</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../../security/index.html">8. 安全</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../../peripheral/index.html">9. 外设</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../app/index.html">10. 应用</a></li>
 </ul>
 </li>
 </ul>
@@ -369,11 +371,6 @@
   <div class="section" id="ref-to-lite-panel-port">
 <span id="id1"></span><h1><span class="section-number">6.2.6. </span>屏适配指南<a class="headerlink" href="#ref-to-lite-panel-port" title="永久链接至标题">¶</a></h1>
 <p>本章节介绍 LCD 外设在 Luban-Lite 上的适配方法。</p>
-<div class="admonition tip">
-<p class="admonition-title">小技巧</p>
-<p>ArtInChip平台SDK已适配多款LCD屏幕，包括通用的RGB，LVDS屏幕以及多款MIPI屏幕。
-推荐使用已有的panel驱动，如果无法满足需求再考虑对现有驱动进行扩展或单独编写一个panel驱动</p>
-</div>
 <div class="section" id="id2">
 <h2><span class="section-number">6.2.6.1. </span>屏配置方式<a class="headerlink" href="#id2" title="永久链接至标题">¶</a></h2>
 <p>方式一：通过 menuconfig 修改屏参数</p>
@@ -393,7 +390,7 @@
 <p class="admonition-title">小技巧</p>
 <p>方式一仅支持修改 simple panel 的时序参数和 RGB/LVDS 的部分参数。</p>
 </div>
-<p>方式二：将屏参数写入panel驱动源码中</p>
+<p>方式二：将屏参数写入 panel 驱动源码中</p>
 <ul class="simple">
 <li><p>时序参数</p></li>
 </ul>
@@ -422,14 +419,14 @@
 </div>
 <div class="admonition note">
 <p class="admonition-title">注解</p>
-<p>如果方式一和方式二都配置了屏幕参数，将采用方式二以 hard code 方式配置的参数。</p>
+<p>如果方式一和方式二都配置了屏幕参数，最终生效的是方式二的参数。</p>
 </div>
 </div>
 <div class="section" id="id3">
 <h2><span class="section-number">6.2.6.2. </span>屏配置说明<a class="headerlink" href="#id3" title="永久链接至标题">¶</a></h2>
-<p>如果适配一款 RGB/LVDS 接口的屏幕，这些屏幕往往不需要特定的初始化命令，通过 menuconfig 选择 simple panel，
-并修改相应的显示参数即可。详情可参考 <a class="reference internal" href="../02_config_guide/menuconfig/index.html#ref-to-display-menuconfig"><span class="std std-ref">menuconfig</span></a> 配置指南章节。</p>
-<p>如果要额外适配一款 LCD 屏幕，则需要为其单独编写一个 panel 驱动，详情可参考后续的屏驱动说明章节。</p>
+<p>如果适配一款 RGB/LVDS 屏幕，通过 menuconfig 选择 <code class="docutils literal notranslate"><span class="pre">ArtInChip</span> <span class="pre">simple</span> <span class="pre">panel</span></code> ，
+修改显示参数即可。这类屏幕往往不需要初始化，使用通用的屏驱动即可。详情可参考 <a class="reference internal" href="../02_config_guide/menuconfig/index.html#ref-to-display-menuconfig"><span class="std std-ref">menuconfig</span></a> 配置指南章节。</p>
+<p>如果 LCD 屏幕需要初始化动作，则需要为其编写一个 panel 驱动，详情可参考后续的屏驱动说明章节。</p>
 </div>
 <div class="section" id="id4">
 <h2><span class="section-number">6.2.6.3. </span>屏驱动说明<a class="headerlink" href="#id4" title="永久链接至标题">¶</a></h2>
@@ -438,47 +435,60 @@
 <p>bsp/drivers/video/fbdev/artinchip/panel/</p>
 </div>
 <div class="section" id="id6">
-<h3><span class="section-number">6.2.6.3.2. </span>新屏驱动支持<a class="headerlink" href="#id6" title="永久链接至标题">¶</a></h3>
-<p>LCD屏驱动，即panel，本质上是一个回调函数和屏参信息的集合。新屏适配实际上是重新实现一个 <code class="docutils literal notranslate"><span class="pre">struct</span> <span class="pre">aic_panel</span></code> 结构体。</p>
-<p>新增一款屏驱动，可以在 panel 源码目录下，根据屏接口类型选择一个合适的模板，在模版的基础上进行修改。</p>
+<h3><span class="section-number">6.2.6.3.2. </span>新屏驱动适配<a class="headerlink" href="#id6" title="永久链接至标题">¶</a></h3>
+<p>LCD屏驱动，即 panel，本质上是一个回调函数和屏参的集合。新屏适配实际上是重新实现一个 <code class="docutils literal notranslate"><span class="pre">struct</span> <span class="pre">aic_panel</span></code> 结构体。</p>
+<p>新增一款屏驱动，可以在 panel 源码目录下，根据屏接口选择一个模板，在模版的基础上进行修改。</p>
 <ul class="simple">
-<li><p>DSI接口可参考 panel_dsi_xm91080.c</p></li>
+<li><p>DSI 接口可参考 panel_dsi_xm91080.c</p></li>
 </ul>
 <ol class="arabic simple">
-<li><p>修改struct aic_panel的命名，将其注册到 <code class="docutils literal notranslate"><span class="pre">panel_com.c</span></code> 中的 <code class="docutils literal notranslate"><span class="pre">panels[]</span></code> 指针数组和并在 <code class="docutils literal notranslate"><span class="pre">panel_com.h</span></code> 中 <code class="docutils literal notranslate"><span class="pre">extern</span></code>。</p></li>
+<li><p>拷贝一份模板文件，命名为 panel_dsi_xxx.c，将新文件添加进 Kconifg 和 SConscript 文件中</p></li>
+</ol>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>// bsp/artinchip/drv/display/panel/Kconfig
+config AIC_PANEL_DSI_XXX
+    bool <span class="s2">&quot;ArtInChip MIPI DSI xxx panel&quot;</span>
+    depends on AIC_DISP_MIPI_DSI
+
+// bsp/artinchip/SConscript
+<span class="k">if</span> GetDepend<span class="o">(</span><span class="s1">&#39;AIC_PANEL_DSI_XXX&#39;</span><span class="o">)</span>:
+    <span class="nv">src</span> <span class="o">+=</span> Glob<span class="o">(</span><span class="s1">&#39;drv/display/panel/panel_dsi_xxx.c&#39;</span><span class="o">)</span>
+</pre></div>
+</div>
+<ol class="arabic" start="2">
+<li><p>修改 <code class="docutils literal notranslate"><span class="pre">struct</span> <span class="pre">aic_panel</span></code> 的命名，并将其注册。</p>
+<blockquote>
+<div><ol class="loweralpha simple">
+<li><p>将 struct aic_panel 添加到 <code class="docutils literal notranslate"><span class="pre">panel_com.c</span></code> 文件的 <code class="docutils literal notranslate"><span class="pre">panels[]</span></code> 指针数组中</p></li>
+<li><p>在 <code class="docutils literal notranslate"><span class="pre">panel_com.h</span></code> 文件中 <code class="docutils literal notranslate"><span class="pre">extern</span></code> struct aic_panel。</p></li>
+</ol>
+</div></blockquote>
+</li>
 </ol>
 <div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="c1">//panel_com.c</span>
 <span class="k">static</span> <span class="k">struct</span> <span class="nc">aic_panel</span> <span class="o">*</span><span class="n">panels</span><span class="p">[]</span> <span class="o">=</span> <span class="p">{</span>
-<span class="cp">#ifdef AIC_DISP_RGB</span>
-    <span class="o">&amp;</span><span class="n">aic_panel_rgb</span><span class="p">,</span>
-<span class="cp">#endif</span>
-<span class="cp">#ifdef AIC_DISP_LVDS</span>
-    <span class="o">&amp;</span><span class="n">aic_panel_lvds</span><span class="p">,</span>
-<span class="cp">#endif</span>
-<span class="cp">#ifdef AIC_PANEL_DSI_XM91080</span>
-    <span class="o">&amp;</span><span class="n">dsi_xm91080</span><span class="p">,</span>
+<span class="p">...</span>
+<span class="cp">#ifdef AIC_PANEL_DSI_XXX</span>
+    <span class="o">&amp;</span><span class="n">dsi_xxx</span><span class="p">,</span>
 <span class="cp">#endif</span>
 <span class="p">};</span>
 
 <span class="c1">//panel_com.h</span>
-<span class="k">extern</span> <span class="k">struct</span> <span class="nc">aic_panel</span> <span class="n">aic_panel_rgb</span><span class="p">;</span>
-<span class="k">extern</span> <span class="k">struct</span> <span class="nc">aic_panel</span> <span class="n">aic_panel_lvds</span><span class="p">;</span>
-<span class="k">extern</span> <span class="k">struct</span> <span class="nc">aic_panel</span> <span class="n">dsi_xm91080</span><span class="p">;</span>
+<span class="k">extern</span> <span class="k">struct</span> <span class="nc">aic_panel</span> <span class="n">dsi_xxx</span><span class="p">;</span>
 </pre></div>
 </div>
-<ol class="arabic simple" start="2">
+<ol class="arabic simple" start="3">
 <li><p>修改 <code class="docutils literal notranslate"><span class="pre">struct</span> <span class="pre">display_timing</span></code> 结构体，根据 LCD 屏幕规格书修改时序参数。</p></li>
-<li><p>重新实现 <a class="reference internal" href="#ref-to-lite-struct-aic-panel-funcs"><span class="std std-ref">aic_panel_funcs</span></a> 结构体中的 <code class="docutils literal notranslate"><span class="pre">prepare</span></code> 或者 <code class="docutils literal notranslate"><span class="pre">enable</span></code> 接口，将新屏所需要的初始化操作添加进去。</p></li>
+<li><p>重新实现 <a class="reference internal" href="#ref-to-lite-struct-aic-panel-funcs"><span class="std std-ref">aic_panel_funcs</span></a> 结构体中的 <code class="docutils literal notranslate"><span class="pre">prepare</span></code> 或者 <code class="docutils literal notranslate"><span class="pre">enable</span></code> 接口，添加初始化操作。</p></li>
 </ol>
 <p><strong>对于 mipi 屏幕</strong></p>
 <ol class="arabic">
-<li><p>在发送 init_sequence 之前需要调用 <a class="reference internal" href="#ref-to-lite-panel-mipi-send-perpare"><span class="std std-ref">panel_mipi_send_perpare</span></a> 以确保屏幕能正确无误地接受到命令。</p></li>
-<li><p>在发送完init_sequence后调用 <a class="reference internal" href="#ref-to-lite-panel-mipi-setup-realmode"><span class="std std-ref">panel_mipi_setup_realmode</span></a> 设置正确的mipi模式。</p></li>
+<li><p>在发送 init_sequence 之前需要调用 <a class="reference internal" href="#ref-to-lite-panel-mipi-send-perpare"><span class="std std-ref">panel_mipi_send_perpare()</span></a> 以确保屏幕能正确无误地接受到命令。</p></li>
+<li><p>在发送完 init_sequence 后需要调用 <a class="reference internal" href="#ref-to-lite-panel-mipi-setup-realmode"><span class="std std-ref">panel_mipi_setup_realmode()</span></a> 设置正确的mipi模式。</p></li>
 <li><p>panel_dsi.c 中为 mipi-dsi 的 init_sequence 封装了两个接口：</p>
 <blockquote>
 <div><ol class="loweralpha simple">
-<li><p><a class="reference internal" href="#ref-to-lite-panel-dsi-dcs-send-seq"><span class="std std-ref">panel_dsi_dcs_send_seq</span></a> ：发送屏厂根据 mipi 协议扩展的 command</p></li>
-<li><p><a class="reference internal" href="#ref-to-lite-panel-dsi-generic-send-seq"><span class="std std-ref">panel_dsi_generic_send_seq</span></a> ：发送 mipi 协议标准的 command</p></li>
+<li><p><a class="reference internal" href="#ref-to-lite-panel-dsi-dcs-send-seq"><span class="std std-ref">panel_dsi_dcs_send_seq()</span></a> ：发送屏厂根据 mipi 协议扩展的 command</p></li>
+<li><p><a class="reference internal" href="#ref-to-lite-panel-dsi-generic-send-seq"><span class="std std-ref">panel_dsi_generic_send_seq()</span></a> ：发送 mipi 协议标准的 command</p></li>
 </ol>
 </div></blockquote>
 </li>
@@ -522,7 +532,7 @@
 </div>
 <div class="section" id="struct-aic-panel-callbacks">
 <span id="ref-to-lite-struct-aic-panel-callbacks"></span><h4><span class="section-number">6.2.6.3.3.3. </span>struct aic_panel_callbacks<a class="headerlink" href="#struct-aic-panel-callbacks" title="永久链接至标题">¶</a></h4>
-<p>panel无需实现，由DE、DI提供，供panel调用的回调。</p>
+<p>panel 无需实现，由 DE、DI 提供，供 panel 调用的回调。</p>
 <div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="k">struct</span> <span class="nc">aic_panel_callbacks</span> <span class="p">{</span>
     <span class="kt">int</span> <span class="p">(</span><span class="o">*</span><span class="n">di_enable</span><span class="p">)(</span><span class="kt">void</span><span class="p">);</span>
     <span class="kt">int</span> <span class="p">(</span><span class="o">*</span><span class="n">di_disable</span><span class="p">)(</span><span class="kt">void</span><span class="p">);</span>

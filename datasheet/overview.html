@@ -333,13 +333,13 @@
             
   <div class="section" id="id1">
 <h1>简介<a class="headerlink" href="#id1" title="永久链接至标题">¶</a></h1>
-<p>D13X 系列是一款高性能的全高清显示和智能控制MCU，采用国产自主高算力RISC-V 内核，
-内置片上256KB~1MB大容量SRAM以及32Mb/64Mb PSRAM，并提供丰富的互联外设接口，配备了2D 图像加速引擎和JPEG/PNG解码引擎，
+<p>D13X 系列是一款高性能的显示交互和智能控制MCU，采用国产自主高算力RISC-V 内核，
+内置片上256KB~1MB大容量SRAM以及32Mb/64Mb PSRAM，并提供丰富的互联外设接口，配备了2D 图像加速引擎和PNG解码/JPEG编解码引擎，
 可以满足各类交互设计场景和多媒体互动需求，具有高可靠性、高安全性、高开放度的特点，可以面向于泛工业领域应用。</p>
 <div class="section" id="id2">
 <h2>功能框图<a class="headerlink" href="#id2" title="永久链接至标题">¶</a></h2>
 <div class="figure align-center" id="id6">
-<img alt="../_images/d13x_overview_block.png" src="../_images/d13x_overview_block.png" />
+<a class="reference internal image-reference" href="../_images/d13x_overview_block.png"><img alt="../_images/d13x_overview_block.png" src="../_images/d13x_overview_block.png" style="width: 700px;" /></a>
 <p class="caption"><span class="caption-number">图 1 </span><span class="caption-text">D13X 系列芯片功能框图</span><a class="headerlink" href="#id6" title="永久链接至图片">¶</a></p>
 </div>
 </div>
@@ -532,8 +532,8 @@
 <p><strong>模拟</strong></p>
 <blockquote>
 <div><ul class="simple">
-<li><p>内置 12通道 12bit PSADC，采样速率最高4MSPS</p></li>
-<li><p>内置 8 通道 12bit GPADC，采样速率最高4MSPS</p></li>
+<li><p>内置 12通道 12bit PSADC，采样速率最高2MSPS</p></li>
+<li><p>内置 8 通道 12bit GPADC，采样速率最高2MSPS</p></li>
 <li><p>集成 RTP 电阻触摸屏接口</p></li>
 </ul>
 </div></blockquote>
@@ -554,8 +554,8 @@
 <blockquote>
 <div><ul class="simple">
 <li><p>LDO25 (2.5V 100mA)，用于系统复位启动、ADC 供电、eFuse供电</p></li>
-<li><p>LDO18 (1.8V 100mA)，用于PSRAM IO和PSRAM颗粒供电</p></li>
-<li><p>LDO1x (0.9~1.9V 500mA，每档50mV)，用于VDD11_SYS供电</p></li>
+<li><p>LDO18 (1.8V 100mA)，可用于PSRAM IO和PSRAM颗粒供电</p></li>
+<li><p>LDO1x (0.9~1.9V 500mA，每档50mV)，可用于VDD11_SYS供电</p></li>
 </ul>
 </div></blockquote>
 </li>
@@ -581,20 +581,20 @@
 </tr>
 </thead>
 <tbody>
-<tr class="row-even"><td><p>D131BBV</p></td>
+<tr class="row-even"><td><p>D131BBS</p></td>
 <td><p>8MB PSRAM</p></td>
 <td><p>QFN68,7x7x0.85mm,0.35mm 间距</p></td>
-<td><p>-20至+105°C</p></td>
+<td><p>-40至+105°C</p></td>
 </tr>
-<tr class="row-odd"><td><p>D133CBV</p></td>
+<tr class="row-odd"><td><p>D133CBS</p></td>
 <td><p>8MB PSRAM</p></td>
 <td><p>QFN88,10x10x0.85mm,0.4mm 间距</p></td>
-<td><p>-20至+105°C</p></td>
+<td><p>-40至+105°C</p></td>
 </tr>
-<tr class="row-even"><td><p>D133EBV</p></td>
+<tr class="row-even"><td><p>D133EBS</p></td>
 <td><p>8MB PSRAM</p></td>
 <td><p>QFN100,12x12x0.85mm,0.4mm 间距</p></td>
-<td><p>-20至+105°C</p></td>
+<td><p>-40至+105°C</p></td>
 </tr>
 </tbody>
 </table>

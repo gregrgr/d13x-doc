@@ -7,7 +7,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   
-  <title>9.2. 挂载 SD 卡 &mdash; AIC文档中心 v1.0 文档</title>
+  <title>9.3. 挂载 SD 卡 &mdash; AIC文档中心 v1.0 文档</title>
   
 
   
@@ -41,8 +41,8 @@
     
     <link rel="index" title="索引" href="../../genindex.html" />
     <link rel="search" title="搜索" href="../../search.html" />
-    <link rel="next" title="9.3. 有线网络" href="ethernet.html" />
-    <link rel="prev" title="9.1. 挂载 U盘" href="udisk.html" />
+    <link rel="next" title="9.4. 有线网络" href="ethernet.html" />
+    <link rel="prev" title="9.2. 挂载 U盘" href="udisk.html" />
     <script>
         $(function () {
 /**
@@ -252,21 +252,23 @@
 <li class="toctree-l2"><a class="reference internal" href="../interface/index.html">7. 接口</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../security/index.html">8. 安全</a></li>
 <li class="toctree-l2 current"><a class="reference internal" href="index.html">9. 外设</a><ul class="current">
-<li class="toctree-l3"><a class="reference internal" href="udisk.html">9.1. 挂载 U盘</a></li>
-<li class="toctree-l3 current"><a class="current reference internal" href="#">9.2. 挂载 SD 卡</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#sdmc">9.2.1. 配置 SDMC 接口</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#id1">9.2.2. 设置自动挂载</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#id2">9.2.3. 编译烧录</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#id3">9.2.4. 验证</a><ul>
-<li class="toctree-l5"><a class="reference internal" href="#id4">9.2.4.1. SD 卡识别</a></li>
-<li class="toctree-l5"><a class="reference internal" href="#id5">9.2.4.2. 查看文件</a></li>
+<li class="toctree-l3"><a class="reference internal" href="touch.html">9.1. 配置触摸屏</a></li>
+<li class="toctree-l3"><a class="reference internal" href="udisk.html">9.2. 挂载 U盘</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">9.3. 挂载 SD 卡</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#sdmc">9.3.1. 配置 SDMC 接口</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id1">9.3.2. 设置自动挂载</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id2">9.3.3. 编译烧录</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id3">9.3.4. 验证</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="#id4">9.3.4.1. SD 卡识别</a></li>
+<li class="toctree-l5"><a class="reference internal" href="#id5">9.3.4.2. 查看文件</a></li>
 </ul>
 </li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="ethernet.html">9.3. 有线网络</a></li>
+<li class="toctree-l3"><a class="reference internal" href="ethernet.html">9.4. 有线网络</a></li>
 </ul>
 </li>
+<li class="toctree-l2"><a class="reference internal" href="../app/index.html">10. 应用</a></li>
 </ul>
 </li>
 </ul>
@@ -330,7 +332,7 @@
         
           <li><a href="index.html"><span class="section-number">9. </span>外设</a> &raquo;</li>
         
-      <li><span class="section-number">9.2. </span>挂载 SD 卡</li>
+      <li><span class="section-number">9.3. </span>挂载 SD 卡</li>
     
     
       <li class="wy-breadcrumbs-aside">
@@ -348,13 +350,13 @@
            <div itemprop="articleBody">
             
   <div class="section" id="sd">
-<h1><span class="section-number">9.2. </span>挂载 SD 卡<a class="headerlink" href="#sd" title="永久链接至标题">¶</a></h1>
+<h1><span class="section-number">9.3. </span>挂载 SD 卡<a class="headerlink" href="#sd" title="永久链接至标题">¶</a></h1>
 <p>luban-lite 可以实现挂载 SD 卡（FAT32 格式），需要配置如下内容：</p>
 <ul class="simple">
 <li><p>配置 SDMC 接口；</p></li>
 </ul>
 <div class="section" id="sdmc">
-<h2><span class="section-number">9.2.1. </span>配置 SDMC 接口<a class="headerlink" href="#sdmc" title="永久链接至标题">¶</a></h2>
+<h2><span class="section-number">9.3.1. </span>配置 SDMC 接口<a class="headerlink" href="#sdmc" title="永久链接至标题">¶</a></h2>
 <p>挂载 SD 卡时，需将 对应 SDMC 接口选中，以 D211BBV-DEMO-V2.0 开发板为例，核对原理图可知，SD 卡对接的是 SDMC1，进入 SDK 的 menuconfig 菜单做如下配置：</p>
 <div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>Board options  ---&gt;
     <span class="o">[</span>*<span class="o">]</span> Using SDMC1
@@ -363,7 +365,7 @@
 </div>
 </div>
 <div class="section" id="id1">
-<h2><span class="section-number">9.2.2. </span>设置自动挂载<a class="headerlink" href="#id1" title="永久链接至标题">¶</a></h2>
+<h2><span class="section-number">9.3.2. </span>设置自动挂载<a class="headerlink" href="#id1" title="永久链接至标题">¶</a></h2>
 <p>在 <code class="docutils literal notranslate"><span class="pre">target/&lt;cpu&gt;/&lt;board&gt;/board.c</span></code> 中，找到 <code class="docutils literal notranslate"><span class="pre">mount_table</span></code> 数组，添加代码如下：</p>
 <div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="k">const</span> <span class="k">struct</span> <span class="nc">dfs_mount_tbl</span> <span class="n">mount_table</span><span class="p">[]</span> <span class="o">=</span> <span class="p">{</span>
 <span class="p">...</span>
@@ -383,13 +385,13 @@
 <p>编译烧录后，系统会自动挂载 SD 卡。</p>
 </div>
 <div class="section" id="id2">
-<h2><span class="section-number">9.2.3. </span>编译烧录<a class="headerlink" href="#id2" title="永久链接至标题">¶</a></h2>
+<h2><span class="section-number">9.3.3. </span>编译烧录<a class="headerlink" href="#id2" title="永久链接至标题">¶</a></h2>
 <p>配置完成后，保存退出，编译、烧录</p>
 </div>
 <div class="section" id="id3">
-<h2><span class="section-number">9.2.4. </span>验证<a class="headerlink" href="#id3" title="永久链接至标题">¶</a></h2>
+<h2><span class="section-number">9.3.4. </span>验证<a class="headerlink" href="#id3" title="永久链接至标题">¶</a></h2>
 <div class="section" id="id4">
-<h3><span class="section-number">9.2.4.1. </span>SD 卡识别<a class="headerlink" href="#id4" title="永久链接至标题">¶</a></h3>
+<h3><span class="section-number">9.3.4.1. </span>SD 卡识别<a class="headerlink" href="#id4" title="永久链接至标题">¶</a></h3>
 <p>烧录完成后，断开电源，接入 SD 卡，上电，检查设备，看到 sd0 和 sd0p0 设备，表明系统已识别 SD 卡：</p>
 <div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>aic /&gt; list_device
 device           <span class="nb">type</span>         ref count
@@ -406,7 +408,7 @@ sd0p0    Block Device         <span class="m">1</span>
 </div>
 </div>
 <div class="section" id="id5">
-<h3><span class="section-number">9.2.4.2. </span>查看文件<a class="headerlink" href="#id5" title="永久链接至标题">¶</a></h3>
+<h3><span class="section-number">9.3.4.2. </span>查看文件<a class="headerlink" href="#id5" title="永久链接至标题">¶</a></h3>
 <p>进入 sdcard 目录，查看文件：</p>
 <div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>aic /&gt; <span class="nb">cd</span> sd
 aic /&gt; <span class="nb">cd</span> sdcard
@@ -429,8 +431,8 @@ aic /sdcard&gt;
           </div>
           <footer>
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
-        <a href="ethernet.html" class="btn btn-neutral float-right" title="9.3. 有线网络" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
-        <a href="udisk.html" class="btn btn-neutral float-left" title="9.1. 挂载 U盘" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="ethernet.html" class="btn btn-neutral float-right" title="9.4. 有线网络" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="udisk.html" class="btn btn-neutral float-left" title="9.2. 挂载 U盘" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
     </div>
 
   <hr/>

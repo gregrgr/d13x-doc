@@ -531,10 +531,10 @@
 <h2><span class="section-number">6.3.4.3. </span>0x0008 EFUSE_WDATA<a class="headerlink" href="#x0008-efuse-wdata" title="永久链接至标题">¶</a></h2>
 <table class="docutils align-default">
 <colgroup>
-<col style="width: 8%" />
-<col style="width: 8%" />
-<col style="width: 13%" />
-<col style="width: 70%" />
+<col style="width: 7%" />
+<col style="width: 7%" />
+<col style="width: 12%" />
+<col style="width: 74%" />
 </colgroup>
 <thead>
 <tr class="row-odd"><th class="head" colspan="3"><p>默认值：0x00000000</p></th>
@@ -553,6 +553,9 @@
 <td><div class="line-block">
 <div class="line">EFUSE_WDATA</div>
 <div class="line">eFuse写数据寄存器</div>
+<div class="line"><strong>注意eFuse为单次烧写，默认未烧写时候为0，烧写为1后无法再变回为0</strong></div>
+<div class="line"><strong>该字段对应的bits为1，则对应进行烧写，对应的bits为0即不进行烧写，</strong>
+<strong>32bits可以分多次针对不同bits进行烧写</strong></div>
 </div>
 </td>
 </tr>

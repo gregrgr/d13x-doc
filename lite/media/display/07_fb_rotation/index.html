@@ -282,12 +282,14 @@
 <li class="toctree-l3"><a class="reference internal" href="../../i2s/index.html">6.5. I2S 使用指南</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../ve/index.html">6.6. VE 使用指南</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../mpp/index.html">6.7. MPP 使用指南</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../lvgl/index.html">6.8. LVGL 使用指南</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../player/index.html">6.8. MPP 播放器使用指南</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../lvgl/index.html">6.9. LVGL 使用指南</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="../../../interface/index.html">7. 接口</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../../security/index.html">8. 安全</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../../peripheral/index.html">9. 外设</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../app/index.html">10. 应用</a></li>
 </ul>
 </li>
 </ul>
@@ -373,7 +375,7 @@
   <div class="section" id="id1">
 <h1><span class="section-number">6.2.7. </span>竖屏横用、横屏竖用<a class="headerlink" href="#id1" title="永久链接至标题">¶</a></h1>
 <p>ArtinChip 平台支持屏幕旋转，支持竖屏横用和横屏竖用，兼容单 buffer 和双 buffer 的应用程序。</p>
-<p>display engine 并不提供旋转功能，旋转是由显示驱动调用 graphics engine 实现的。支持 0°/90°/180°/270° 旋转。</p>
+<p>display engine 并不提供旋转功能，旋转是由显示驱动调用 graphics engine 实现的。支持顺时针旋转 0°/90°/180°/270°。</p>
 <div class="section" id="lcd">
 <h2><span class="section-number">6.2.7.1. </span>LCD 适配<a class="headerlink" href="#lcd" title="永久链接至标题">¶</a></h2>
 <p>无论是竖屏横用，还是横屏竖用，在适配 LCD 屏幕时，按照屏幕的物理宽高配置时序参数即可，不需要将时序参数中的宽高互换。</p>

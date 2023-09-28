@@ -7,7 +7,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   
-  <title>9.1. 挂载 U盘 &mdash; AIC文档中心 v1.0 文档</title>
+  <title>9.2. 挂载 U盘 &mdash; AIC文档中心 v1.0 文档</title>
   
 
   
@@ -41,8 +41,8 @@
     
     <link rel="index" title="索引" href="../../genindex.html" />
     <link rel="search" title="搜索" href="../../search.html" />
-    <link rel="next" title="9.2. 挂载 SD 卡" href="sdcard.html" />
-    <link rel="prev" title="9. 外设" href="index.html" />
+    <link rel="next" title="9.3. 挂载 SD 卡" href="sdcard.html" />
+    <link rel="prev" title="9.1. 配置触摸屏" href="touch.html" />
     <script>
         $(function () {
 /**
@@ -252,22 +252,24 @@
 <li class="toctree-l2"><a class="reference internal" href="../interface/index.html">7. 接口</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../security/index.html">8. 安全</a></li>
 <li class="toctree-l2 current"><a class="reference internal" href="index.html">9. 外设</a><ul class="current">
-<li class="toctree-l3 current"><a class="current reference internal" href="#">9.1. 挂载 U盘</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#usb-host">9.1.1. 配置 USB Host</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#cherry-usb">9.1.2. 配置 cherry USB 协议栈</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#id1">9.1.3. 设置自动挂载</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#id2">9.1.4. 编译烧录</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#id3">9.1.5. 验证</a><ul>
-<li class="toctree-l5"><a class="reference internal" href="#id4">9.1.5.1. U 盘识别</a></li>
-<li class="toctree-l5"><a class="reference internal" href="#id5">9.1.5.2. 查看文件</a></li>
+<li class="toctree-l3"><a class="reference internal" href="touch.html">9.1. 配置触摸屏</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">9.2. 挂载 U盘</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#usb-host">9.2.1. 配置 USB Host</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#cherry-usb">9.2.2. 配置 cherry USB 协议栈</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id1">9.2.3. 设置自动挂载</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id2">9.2.4. 编译烧录</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id3">9.2.5. 验证</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="#id4">9.2.5.1. U 盘识别</a></li>
+<li class="toctree-l5"><a class="reference internal" href="#id5">9.2.5.2. 查看文件</a></li>
 </ul>
 </li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="sdcard.html">9.2. 挂载 SD 卡</a></li>
-<li class="toctree-l3"><a class="reference internal" href="ethernet.html">9.3. 有线网络</a></li>
+<li class="toctree-l3"><a class="reference internal" href="sdcard.html">9.3. 挂载 SD 卡</a></li>
+<li class="toctree-l3"><a class="reference internal" href="ethernet.html">9.4. 有线网络</a></li>
 </ul>
 </li>
+<li class="toctree-l2"><a class="reference internal" href="../app/index.html">10. 应用</a></li>
 </ul>
 </li>
 </ul>
@@ -331,7 +333,7 @@
         
           <li><a href="index.html"><span class="section-number">9. </span>外设</a> &raquo;</li>
         
-      <li><span class="section-number">9.1. </span>挂载 U盘</li>
+      <li><span class="section-number">9.2. </span>挂载 U盘</li>
     
     
       <li class="wy-breadcrumbs-aside">
@@ -349,7 +351,7 @@
            <div itemprop="articleBody">
             
   <div class="section" id="u">
-<h1><span class="section-number">9.1. </span>挂载 U盘<a class="headerlink" href="#u" title="永久链接至标题">¶</a></h1>
+<h1><span class="section-number">9.2. </span>挂载 U盘<a class="headerlink" href="#u" title="永久链接至标题">¶</a></h1>
 <p>luban-lite 可以实现挂载 U 盘（FAT32 格式），需要配置如下内容：</p>
 <ul class="simple">
 <li><p>配置 USB host；</p></li>
@@ -357,7 +359,7 @@
 <li><p>检查 USB-SW 短接线；（某些开发板需要，例如 D211BBV 系列）</p></li>
 </ul>
 <div class="section" id="usb-host">
-<h2><span class="section-number">9.1.1. </span>配置 USB Host<a class="headerlink" href="#usb-host" title="永久链接至标题">¶</a></h2>
+<h2><span class="section-number">9.2.1. </span>配置 USB Host<a class="headerlink" href="#usb-host" title="永久链接至标题">¶</a></h2>
 <p>挂载 U 盘时，需将 对应 USB 接口配置为 HOST，以 D211BBV-DEMO-V2.0 为例，进入 SDK 的 menuconfig 菜单做如下配置：</p>
 <div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>Board options  ---&gt;
     <span class="o">[</span>*<span class="o">]</span> Using Usb0
@@ -366,7 +368,7 @@
 </div>
 </div>
 <div class="section" id="cherry-usb">
-<h2><span class="section-number">9.1.2. </span>配置 cherry USB 协议栈<a class="headerlink" href="#cherry-usb" title="永久链接至标题">¶</a></h2>
+<h2><span class="section-number">9.2.2. </span>配置 cherry USB 协议栈<a class="headerlink" href="#cherry-usb" title="永久链接至标题">¶</a></h2>
 <p>配置 cherry USB 如下：</p>
 <div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>Local packages options  ---&gt;
     Third-party packages options  ---&gt;
@@ -379,7 +381,7 @@
 </div>
 </div>
 <div class="section" id="id1">
-<h2><span class="section-number">9.1.3. </span>设置自动挂载<a class="headerlink" href="#id1" title="永久链接至标题">¶</a></h2>
+<h2><span class="section-number">9.2.3. </span>设置自动挂载<a class="headerlink" href="#id1" title="永久链接至标题">¶</a></h2>
 <p>在 <code class="docutils literal notranslate"><span class="pre">target/&lt;cpu&gt;/&lt;board&gt;/board.c</span></code> 中，找到 <code class="docutils literal notranslate"><span class="pre">mount_table</span></code> 数组，添加代码如下：</p>
 <div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="k">const</span> <span class="k">struct</span> <span class="nc">dfs_mount_tbl</span> <span class="n">mount_table</span><span class="p">[]</span> <span class="o">=</span> <span class="p">{</span>
 <span class="p">...</span>
@@ -391,7 +393,7 @@
 <p>编译烧录后，系统会自动挂载 U 盘。</p>
 </div>
 <div class="section" id="id2">
-<h2><span class="section-number">9.1.4. </span>编译烧录<a class="headerlink" href="#id2" title="永久链接至标题">¶</a></h2>
+<h2><span class="section-number">9.2.4. </span>编译烧录<a class="headerlink" href="#id2" title="永久链接至标题">¶</a></h2>
 <p>配置完成后，保存退出，编译、烧录</p>
 <div class="admonition attention">
 <p class="admonition-title">注意</p>
@@ -399,9 +401,9 @@
 </div>
 </div>
 <div class="section" id="id3">
-<h2><span class="section-number">9.1.5. </span>验证<a class="headerlink" href="#id3" title="永久链接至标题">¶</a></h2>
+<h2><span class="section-number">9.2.5. </span>验证<a class="headerlink" href="#id3" title="永久链接至标题">¶</a></h2>
 <div class="section" id="id4">
-<h3><span class="section-number">9.1.5.1. </span>U 盘识别<a class="headerlink" href="#id4" title="永久链接至标题">¶</a></h3>
+<h3><span class="section-number">9.2.5.1. </span>U 盘识别<a class="headerlink" href="#id4" title="永久链接至标题">¶</a></h3>
 <p>烧录完成后，断开电源，接入 U 盘，短接 USB-SW，上电</p>
 <div class="admonition attention">
 <p class="admonition-title">注意</p>
@@ -422,7 +424,7 @@ udisk    Block Device         <span class="m">1</span>
 </div>
 </div>
 <div class="section" id="id5">
-<h3><span class="section-number">9.1.5.2. </span>查看文件<a class="headerlink" href="#id5" title="永久链接至标题">¶</a></h3>
+<h3><span class="section-number">9.2.5.2. </span>查看文件<a class="headerlink" href="#id5" title="永久链接至标题">¶</a></h3>
 <p>进入 U 盘目录，查看文件：</p>
 <div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>aic /&gt; <span class="nb">cd</span> udisk
 aic /udisk&gt; ls
@@ -443,8 +445,8 @@ ARTINCHIP.PPT        <span class="m">4814660</span>
           </div>
           <footer>
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
-        <a href="sdcard.html" class="btn btn-neutral float-right" title="9.2. 挂载 SD 卡" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
-        <a href="index.html" class="btn btn-neutral float-left" title="9. 外设" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="sdcard.html" class="btn btn-neutral float-right" title="9.3. 挂载 SD 卡" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="touch.html" class="btn btn-neutral float-left" title="9.1. 配置触摸屏" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
     </div>
 
   <hr/>

@@ -7,7 +7,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   
-  <title>7.7.5. 设计说明 &mdash; AIC文档中心 v1.0 文档</title>
+  <title>7.9.5. 设计说明 &mdash; AIC文档中心 v1.0 文档</title>
   
 
   
@@ -41,8 +41,8 @@
     
     <link rel="index" title="索引" href="../../../genindex.html" />
     <link rel="search" title="搜索" href="../../../search.html" />
-    <link rel="next" title="7.7.6. 常见问题" href="6_faq.html" />
-    <link rel="prev" title="7.7.4. 测试指南" href="4_test_guide.html" />
+    <link rel="next" title="7.9.6. 常见问题" href="6_faq.html" />
+    <link rel="prev" title="7.9.4. 测试指南" href="4_test_guide.html" />
     <script>
         $(function () {
 /**
@@ -253,51 +253,54 @@
 <li class="toctree-l3"><a class="reference internal" href="../can/index.html">7.1. CAN 使用指南</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../cir/index.html">7.2. CIR 使用指南</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../gpai/index.html">7.3. GPAI 使用指南</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../psadc/index.html">7.4. PSADC 使用指南</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../pwm/index.html">7.5. PWM 使用指南</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../rtp/index.html">7.6. RTP 使用指南</a></li>
-<li class="toctree-l3 current"><a class="reference internal" href="index.html">7.7. QSPI 使用指南</a><ul class="current">
-<li class="toctree-l4"><a class="reference internal" href="1_introduce.html">7.7.1. 模块介绍</a></li>
-<li class="toctree-l4"><a class="reference internal" href="2_user_guide.html">7.7.2. 参数配置</a></li>
-<li class="toctree-l4"><a class="reference internal" href="3_debug_guide.html">7.7.3. 调试指南</a></li>
-<li class="toctree-l4"><a class="reference internal" href="4_test_guide.html">7.7.4. 测试指南</a></li>
-<li class="toctree-l4 current"><a class="current reference internal" href="#">7.7.5. 设计说明</a><ul>
-<li class="toctree-l5"><a class="reference internal" href="#id2">7.7.5.1. 源码说明</a></li>
-<li class="toctree-l5"><a class="reference internal" href="#id3">7.7.5.2. 模块架构</a></li>
-<li class="toctree-l5"><a class="reference internal" href="#hal-drv">7.7.5.3. HAL 与 DRV</a></li>
-<li class="toctree-l5"><a class="reference internal" href="#id4">7.7.5.4. 关键流程</a><ul>
-<li class="toctree-l6"><a class="reference internal" href="#qspi">7.7.5.4.1. 添加 QSPI 总线</a></li>
-<li class="toctree-l6"><a class="reference internal" href="#id5">7.7.5.4.2. 添加 QSPI 设备</a></li>
-<li class="toctree-l6"><a class="reference internal" href="#id6">7.7.5.4.3. 初始化流程</a></li>
-<li class="toctree-l6"><a class="reference internal" href="#id7">7.7.5.4.4. 中断处理流程</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../gpio/index.html">7.4. GPIO 使用指南</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../i2c/index.html">7.5. I2C 使用指南</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../psadc/index.html">7.6. PSADC 使用指南</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../pwm/index.html">7.7. PWM 使用指南</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../rtp/index.html">7.8. RTP 使用指南</a></li>
+<li class="toctree-l3 current"><a class="reference internal" href="index.html">7.9. QSPI 使用指南</a><ul class="current">
+<li class="toctree-l4"><a class="reference internal" href="1_introduce.html">7.9.1. 模块介绍</a></li>
+<li class="toctree-l4"><a class="reference internal" href="2_user_guide.html">7.9.2. 参数配置</a></li>
+<li class="toctree-l4"><a class="reference internal" href="3_debug_guide.html">7.9.3. 调试指南</a></li>
+<li class="toctree-l4"><a class="reference internal" href="4_test_guide.html">7.9.4. 测试指南</a></li>
+<li class="toctree-l4 current"><a class="current reference internal" href="#">7.9.5. 设计说明</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="#id2">7.9.5.1. 源码说明</a></li>
+<li class="toctree-l5"><a class="reference internal" href="#id3">7.9.5.2. 模块架构</a></li>
+<li class="toctree-l5"><a class="reference internal" href="#hal-drv">7.9.5.3. HAL 与 DRV</a></li>
+<li class="toctree-l5"><a class="reference internal" href="#id4">7.9.5.4. 关键流程</a><ul>
+<li class="toctree-l6"><a class="reference internal" href="#qspi">7.9.5.4.1. 添加 QSPI 总线</a></li>
+<li class="toctree-l6"><a class="reference internal" href="#id5">7.9.5.4.2. 添加 QSPI 设备</a></li>
+<li class="toctree-l6"><a class="reference internal" href="#id6">7.9.5.4.3. 初始化流程</a></li>
+<li class="toctree-l6"><a class="reference internal" href="#id7">7.9.5.4.4. 中断处理流程</a></li>
 </ul>
 </li>
-<li class="toctree-l5"><a class="reference internal" href="#id8">7.7.5.5. 数据结构</a></li>
-<li class="toctree-l5"><a class="reference internal" href="#id9">7.7.5.6. 接口设计</a><ul>
-<li class="toctree-l6"><a class="reference internal" href="#hal-qspi-master-init">7.7.5.6.1. hal_qspi_master_init</a></li>
-<li class="toctree-l6"><a class="reference internal" href="#hal-qspi-master-deinit">7.7.5.6.2. hal_qspi_master_deinit</a></li>
-<li class="toctree-l6"><a class="reference internal" href="#hal-qspi-master-set-cs">7.7.5.6.3. hal_qspi_master_set_cs</a></li>
-<li class="toctree-l6"><a class="reference internal" href="#hal-qspi-master-set-bus-freq">7.7.5.6.4. hal_qspi_master_set_bus_freq</a></li>
-<li class="toctree-l6"><a class="reference internal" href="#hal-qspi-master-set-bus-width">7.7.5.6.5. hal_qspi_master_set_bus_width</a></li>
-<li class="toctree-l6"><a class="reference internal" href="#hal-qspi-master-dma-config">7.7.5.6.6. hal_qspi_master_dma_config</a></li>
-<li class="toctree-l6"><a class="reference internal" href="#hal-qspi-master-register-cb">7.7.5.6.7. hal_qspi_master_register_cb</a></li>
-<li class="toctree-l6"><a class="reference internal" href="#hal-qspi-master-transfer-async">7.7.5.6.8. hal_qspi_master_transfer_async</a></li>
-<li class="toctree-l6"><a class="reference internal" href="#hal-qspi-master-transfer-sync">7.7.5.6.9. hal_qspi_master_transfer_sync</a></li>
-<li class="toctree-l6"><a class="reference internal" href="#hal-qspi-master-get-status">7.7.5.6.10. hal_qspi_master_get_status</a></li>
-<li class="toctree-l6"><a class="reference internal" href="#hal-qspi-master-irq-handler">7.7.5.6.11. hal_qspi_master_irq_handler</a></li>
+<li class="toctree-l5"><a class="reference internal" href="#id8">7.9.5.5. 数据结构</a></li>
+<li class="toctree-l5"><a class="reference internal" href="#id9">7.9.5.6. 接口设计</a><ul>
+<li class="toctree-l6"><a class="reference internal" href="#hal-qspi-master-init">7.9.5.6.1. hal_qspi_master_init</a></li>
+<li class="toctree-l6"><a class="reference internal" href="#hal-qspi-master-deinit">7.9.5.6.2. hal_qspi_master_deinit</a></li>
+<li class="toctree-l6"><a class="reference internal" href="#hal-qspi-master-set-cs">7.9.5.6.3. hal_qspi_master_set_cs</a></li>
+<li class="toctree-l6"><a class="reference internal" href="#hal-qspi-master-set-bus-freq">7.9.5.6.4. hal_qspi_master_set_bus_freq</a></li>
+<li class="toctree-l6"><a class="reference internal" href="#hal-qspi-master-set-bus-width">7.9.5.6.5. hal_qspi_master_set_bus_width</a></li>
+<li class="toctree-l6"><a class="reference internal" href="#hal-qspi-master-dma-config">7.9.5.6.6. hal_qspi_master_dma_config</a></li>
+<li class="toctree-l6"><a class="reference internal" href="#hal-qspi-master-register-cb">7.9.5.6.7. hal_qspi_master_register_cb</a></li>
+<li class="toctree-l6"><a class="reference internal" href="#hal-qspi-master-transfer-async">7.9.5.6.8. hal_qspi_master_transfer_async</a></li>
+<li class="toctree-l6"><a class="reference internal" href="#hal-qspi-master-transfer-sync">7.9.5.6.9. hal_qspi_master_transfer_sync</a></li>
+<li class="toctree-l6"><a class="reference internal" href="#hal-qspi-master-get-status">7.9.5.6.10. hal_qspi_master_get_status</a></li>
+<li class="toctree-l6"><a class="reference internal" href="#hal-qspi-master-irq-handler">7.9.5.6.11. hal_qspi_master_irq_handler</a></li>
 </ul>
 </li>
 </ul>
 </li>
-<li class="toctree-l4"><a class="reference internal" href="6_faq.html">7.7.6. 常见问题</a></li>
+<li class="toctree-l4"><a class="reference internal" href="6_faq.html">7.9.6. 常见问题</a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="../i2c/index.html">7.8. I2C 使用指南</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../uart/index.html">7.9. UART 使用指南</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../uart/index.html">7.10. UART 使用指南</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../mac/index.html">7.11. MAC 使用指南</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="../../security/index.html">8. 安全</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../peripheral/index.html">9. 外设</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../app/index.html">10. 应用</a></li>
 </ul>
 </li>
 </ul>
@@ -361,9 +364,9 @@
         
           <li><a href="../index.html"><span class="section-number">7. </span>接口</a> &raquo;</li>
         
-          <li><a href="index.html"><span class="section-number">7.7. </span>QSPI 使用指南</a> &raquo;</li>
+          <li><a href="index.html"><span class="section-number">7.9. </span>QSPI 使用指南</a> &raquo;</li>
         
-      <li><span class="section-number">7.7.5. </span>设计说明</li>
+      <li><span class="section-number">7.9.5. </span>设计说明</li>
     
     
       <li class="wy-breadcrumbs-aside">
@@ -381,9 +384,9 @@
            <div itemprop="articleBody">
             
   <div class="section" id="id1">
-<h1><span class="section-number">7.7.5. </span>设计说明<a class="headerlink" href="#id1" title="永久链接至标题">¶</a></h1>
+<h1><span class="section-number">7.9.5. </span>设计说明<a class="headerlink" href="#id1" title="永久链接至标题">¶</a></h1>
 <div class="section" id="id2">
-<h2><span class="section-number">7.7.5.1. </span>源码说明<a class="headerlink" href="#id2" title="永久链接至标题">¶</a></h2>
+<h2><span class="section-number">7.9.5.1. </span>源码说明<a class="headerlink" href="#id2" title="永久链接至标题">¶</a></h2>
 <table class="colwidths-given docutils align-default">
 <colgroup>
 <col style="width: 20%" />
@@ -408,7 +411,7 @@
 </table>
 </div>
 <div class="section" id="id3">
-<h2><span class="section-number">7.7.5.2. </span>模块架构<a class="headerlink" href="#id3" title="永久链接至标题">¶</a></h2>
+<h2><span class="section-number">7.9.5.2. </span>模块架构<a class="headerlink" href="#id3" title="永久链接至标题">¶</a></h2>
 <div class="figure align-center" id="id10">
 <img alt="../../../_images/spi_kernel_arch.png" src="../../../_images/spi_kernel_arch.png" />
 <p class="caption"><span class="caption-number">图 7.49 </span><span class="caption-text">Luban-Lite QSPI 框图</span><a class="headerlink" href="#id10" title="永久链接至图片">¶</a></p>
@@ -417,7 +420,7 @@
 <p>ArtInChip 提供了 QSPI HAL 层，并且实现了对接 RT-Thread 的驱动层。由于 QSPI 传输需要使用 DMA，因此 DMA HAL 是一个相关模块。</p>
 </div>
 <div class="section" id="hal-drv">
-<h2><span class="section-number">7.7.5.3. </span>HAL 与 DRV<a class="headerlink" href="#hal-drv" title="永久链接至标题">¶</a></h2>
+<h2><span class="section-number">7.9.5.3. </span>HAL 与 DRV<a class="headerlink" href="#hal-drv" title="永久链接至标题">¶</a></h2>
 <p>ArtInChip 的 QSPI 驱动按照 HAL 层 + Driver 层的结构进行设计，其中 HAL 层为硬件抽象层，提供系统无关的硬件驱动实现；
 在 HAL 层之上，可根据不同 RTOS 的驱动框架，实现对应的 QSPI DRV 层进行对接。</p>
 <div class="figure align-center" id="id11">
@@ -437,9 +440,9 @@
 由 HAL 层进行使用。</p>
 </div>
 <div class="section" id="id4">
-<h2><span class="section-number">7.7.5.4. </span>关键流程<a class="headerlink" href="#id4" title="永久链接至标题">¶</a></h2>
+<h2><span class="section-number">7.9.5.4. </span>关键流程<a class="headerlink" href="#id4" title="永久链接至标题">¶</a></h2>
 <div class="section" id="qspi">
-<h3><span class="section-number">7.7.5.4.1. </span>添加 QSPI 总线<a class="headerlink" href="#qspi" title="永久链接至标题">¶</a></h3>
+<h3><span class="section-number">7.9.5.4.1. </span>添加 QSPI 总线<a class="headerlink" href="#qspi" title="永久链接至标题">¶</a></h3>
 <p>在 RT-Thread 板级初始化过程中，会调用 rt_hw_qspi_bus_init() 函数，将板子支持的 QSPI 控制器(总线)
 添加到系统中。</p>
 <div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">INIT_BOARD_EXPORT</span><span class="p">(</span><span class="n">rt_hw_qspi_bus_init</span><span class="p">);</span> <span class="c1">// bsp/artinchip/drv/qspi/drv_qspi.c</span>
@@ -451,7 +454,7 @@
 </div>
 </div>
 <div class="section" id="id5">
-<h3><span class="section-number">7.7.5.4.2. </span>添加 QSPI 设备<a class="headerlink" href="#id5" title="永久链接至标题">¶</a></h3>
+<h3><span class="section-number">7.9.5.4.2. </span>添加 QSPI 设备<a class="headerlink" href="#id5" title="永久链接至标题">¶</a></h3>
 <p>将 QSPI 设备挂载到总线上。</p>
 <div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">aic_qspi_bus_attach_device</span><span class="p">(</span><span class="s">&quot;qspi0&quot;</span><span class="p">,</span> <span class="s">&quot;GD25B127D&quot;</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="n">RT_NULL</span><span class="p">,</span> <span class="n">RT_NULL</span><span class="p">);</span> <span class="c1">// bsp/artinchip/drv/qspi/drv_qspi.c</span>
 <span class="o">|-&gt;</span> <span class="n">rt_spi_bus_attach_device</span><span class="p">();</span> <span class="c1">// kernel/rt-thread/components/drivers/spi/spi_core.c</span>
@@ -461,7 +464,7 @@
 </div>
 </div>
 <div class="section" id="id6">
-<h3><span class="section-number">7.7.5.4.3. </span>初始化流程<a class="headerlink" href="#id6" title="永久链接至标题">¶</a></h3>
+<h3><span class="section-number">7.9.5.4.3. </span>初始化流程<a class="headerlink" href="#id6" title="永久链接至标题">¶</a></h3>
 <p>当 QSPI 设备需要使用之前，必须进行初始化配置。</p>
 <div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="n">rt_sfud_flash_probe_ex</span><span class="p">();</span>
 <span class="o">|-&gt;</span> <span class="n">rt_qspi_configure</span><span class="p">(</span><span class="n">qspi_dev</span><span class="p">,</span> <span class="n">qspi_cfg</span><span class="p">);</span> <span class="c1">// kernel/rt-thread/components/drivers/spi/qspi_core.c</span>
@@ -473,7 +476,7 @@
 </div>
 </div>
 <div class="section" id="id7">
-<h3><span class="section-number">7.7.5.4.4. </span>中断处理流程<a class="headerlink" href="#id7" title="永久链接至标题">¶</a></h3>
+<h3><span class="section-number">7.9.5.4.4. </span>中断处理流程<a class="headerlink" href="#id7" title="永久链接至标题">¶</a></h3>
 <p>QSPI HAL 层提供了中断处理函数，但是是否使用中断模式由 DRV 层决定。
 Luban-Lite SDK 中对接 RT-Thread 时，使能了中断处理模式。</p>
 <p>首先在初始化时，注册了对应的中断处理函数。</p>
@@ -489,7 +492,7 @@ Luban-Lite SDK 中对接 RT-Thread 时，使能了中断处理模式。</p>
 </div>
 </div>
 <div class="section" id="id8">
-<h2><span class="section-number">7.7.5.5. </span>数据结构<a class="headerlink" href="#id8" title="永久链接至标题">¶</a></h2>
+<h2><span class="section-number">7.9.5.5. </span>数据结构<a class="headerlink" href="#id8" title="永久链接至标题">¶</a></h2>
 <p>HAL 层主要数据结构。</p>
 <div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="k">struct</span> <span class="nc">qspi_master_config</span> <span class="p">{</span>
     <span class="kt">uint32_t</span> <span class="n">idx</span><span class="p">;</span>
@@ -543,11 +546,11 @@ Luban-Lite SDK 中对接 RT-Thread 时，使能了中断处理模式。</p>
 </div>
 </div>
 <div class="section" id="id9">
-<h2><span class="section-number">7.7.5.6. </span>接口设计<a class="headerlink" href="#id9" title="永久链接至标题">¶</a></h2>
+<h2><span class="section-number">7.9.5.6. </span>接口设计<a class="headerlink" href="#id9" title="永久链接至标题">¶</a></h2>
 <p>RT-Thread 中的 QSPI 接口设计，在 RT-Thread 的文档中已经有详细说明。
 此处介绍 QSPI HAL 层的接口设计。</p>
 <div class="section" id="hal-qspi-master-init">
-<h3><span class="section-number">7.7.5.6.1. </span>hal_qspi_master_init<a class="headerlink" href="#hal-qspi-master-init" title="永久链接至标题">¶</a></h3>
+<h3><span class="section-number">7.9.5.6.1. </span>hal_qspi_master_init<a class="headerlink" href="#hal-qspi-master-init" title="永久链接至标题">¶</a></h3>
 <table class="colwidths-given docutils align-default">
 <colgroup>
 <col style="width: 20%" />
@@ -587,7 +590,7 @@ Luban-Lite SDK 中对接 RT-Thread 时，使能了中断处理模式。</p>
 </table>
 </div>
 <div class="section" id="hal-qspi-master-deinit">
-<h3><span class="section-number">7.7.5.6.2. </span>hal_qspi_master_deinit<a class="headerlink" href="#hal-qspi-master-deinit" title="永久链接至标题">¶</a></h3>
+<h3><span class="section-number">7.9.5.6.2. </span>hal_qspi_master_deinit<a class="headerlink" href="#hal-qspi-master-deinit" title="永久链接至标题">¶</a></h3>
 <table class="colwidths-given docutils align-default">
 <colgroup>
 <col style="width: 20%" />
@@ -623,7 +626,7 @@ Luban-Lite SDK 中对接 RT-Thread 时，使能了中断处理模式。</p>
 </table>
 </div>
 <div class="section" id="hal-qspi-master-set-cs">
-<h3><span class="section-number">7.7.5.6.3. </span>hal_qspi_master_set_cs<a class="headerlink" href="#hal-qspi-master-set-cs" title="永久链接至标题">¶</a></h3>
+<h3><span class="section-number">7.9.5.6.3. </span>hal_qspi_master_set_cs<a class="headerlink" href="#hal-qspi-master-set-cs" title="永久链接至标题">¶</a></h3>
 <table class="colwidths-given docutils align-default">
 <colgroup>
 <col style="width: 20%" />
@@ -663,7 +666,7 @@ Luban-Lite SDK 中对接 RT-Thread 时，使能了中断处理模式。</p>
 </table>
 </div>
 <div class="section" id="hal-qspi-master-set-bus-freq">
-<h3><span class="section-number">7.7.5.6.4. </span>hal_qspi_master_set_bus_freq<a class="headerlink" href="#hal-qspi-master-set-bus-freq" title="永久链接至标题">¶</a></h3>
+<h3><span class="section-number">7.9.5.6.4. </span>hal_qspi_master_set_bus_freq<a class="headerlink" href="#hal-qspi-master-set-bus-freq" title="永久链接至标题">¶</a></h3>
 <table class="colwidths-given docutils align-default">
 <colgroup>
 <col style="width: 20%" />
@@ -703,7 +706,7 @@ Luban-Lite SDK 中对接 RT-Thread 时，使能了中断处理模式。</p>
 </table>
 </div>
 <div class="section" id="hal-qspi-master-set-bus-width">
-<h3><span class="section-number">7.7.5.6.5. </span>hal_qspi_master_set_bus_width<a class="headerlink" href="#hal-qspi-master-set-bus-width" title="永久链接至标题">¶</a></h3>
+<h3><span class="section-number">7.9.5.6.5. </span>hal_qspi_master_set_bus_width<a class="headerlink" href="#hal-qspi-master-set-bus-width" title="永久链接至标题">¶</a></h3>
 <table class="colwidths-given docutils align-default">
 <colgroup>
 <col style="width: 20%" />
@@ -743,7 +746,7 @@ Luban-Lite SDK 中对接 RT-Thread 时，使能了中断处理模式。</p>
 </table>
 </div>
 <div class="section" id="hal-qspi-master-dma-config">
-<h3><span class="section-number">7.7.5.6.6. </span>hal_qspi_master_dma_config<a class="headerlink" href="#hal-qspi-master-dma-config" title="永久链接至标题">¶</a></h3>
+<h3><span class="section-number">7.9.5.6.6. </span>hal_qspi_master_dma_config<a class="headerlink" href="#hal-qspi-master-dma-config" title="永久链接至标题">¶</a></h3>
 <table class="colwidths-given docutils align-default">
 <colgroup>
 <col style="width: 20%" />
@@ -783,7 +786,7 @@ Luban-Lite SDK 中对接 RT-Thread 时，使能了中断处理模式。</p>
 </table>
 </div>
 <div class="section" id="hal-qspi-master-register-cb">
-<h3><span class="section-number">7.7.5.6.7. </span>hal_qspi_master_register_cb<a class="headerlink" href="#hal-qspi-master-register-cb" title="永久链接至标题">¶</a></h3>
+<h3><span class="section-number">7.9.5.6.7. </span>hal_qspi_master_register_cb<a class="headerlink" href="#hal-qspi-master-register-cb" title="永久链接至标题">¶</a></h3>
 <table class="colwidths-given docutils align-default">
 <colgroup>
 <col style="width: 20%" />
@@ -827,7 +830,7 @@ Luban-Lite SDK 中对接 RT-Thread 时，使能了中断处理模式。</p>
 </table>
 </div>
 <div class="section" id="hal-qspi-master-transfer-async">
-<h3><span class="section-number">7.7.5.6.8. </span>hal_qspi_master_transfer_async<a class="headerlink" href="#hal-qspi-master-transfer-async" title="永久链接至标题">¶</a></h3>
+<h3><span class="section-number">7.9.5.6.8. </span>hal_qspi_master_transfer_async<a class="headerlink" href="#hal-qspi-master-transfer-async" title="永久链接至标题">¶</a></h3>
 <table class="colwidths-given docutils align-default">
 <colgroup>
 <col style="width: 20%" />
@@ -867,7 +870,7 @@ Luban-Lite SDK 中对接 RT-Thread 时，使能了中断处理模式。</p>
 </table>
 </div>
 <div class="section" id="hal-qspi-master-transfer-sync">
-<h3><span class="section-number">7.7.5.6.9. </span>hal_qspi_master_transfer_sync<a class="headerlink" href="#hal-qspi-master-transfer-sync" title="永久链接至标题">¶</a></h3>
+<h3><span class="section-number">7.9.5.6.9. </span>hal_qspi_master_transfer_sync<a class="headerlink" href="#hal-qspi-master-transfer-sync" title="永久链接至标题">¶</a></h3>
 <table class="colwidths-given docutils align-default">
 <colgroup>
 <col style="width: 20%" />
@@ -907,7 +910,7 @@ Luban-Lite SDK 中对接 RT-Thread 时，使能了中断处理模式。</p>
 </table>
 </div>
 <div class="section" id="hal-qspi-master-get-status">
-<h3><span class="section-number">7.7.5.6.10. </span>hal_qspi_master_get_status<a class="headerlink" href="#hal-qspi-master-get-status" title="永久链接至标题">¶</a></h3>
+<h3><span class="section-number">7.9.5.6.10. </span>hal_qspi_master_get_status<a class="headerlink" href="#hal-qspi-master-get-status" title="永久链接至标题">¶</a></h3>
 <table class="colwidths-given docutils align-default">
 <colgroup>
 <col style="width: 20%" />
@@ -943,7 +946,7 @@ Luban-Lite SDK 中对接 RT-Thread 时，使能了中断处理模式。</p>
 </table>
 </div>
 <div class="section" id="hal-qspi-master-irq-handler">
-<h3><span class="section-number">7.7.5.6.11. </span>hal_qspi_master_irq_handler<a class="headerlink" href="#hal-qspi-master-irq-handler" title="永久链接至标题">¶</a></h3>
+<h3><span class="section-number">7.9.5.6.11. </span>hal_qspi_master_irq_handler<a class="headerlink" href="#hal-qspi-master-irq-handler" title="永久链接至标题">¶</a></h3>
 <table class="colwidths-given docutils align-default">
 <colgroup>
 <col style="width: 20%" />
@@ -986,8 +989,8 @@ Luban-Lite SDK 中对接 RT-Thread 时，使能了中断处理模式。</p>
           </div>
           <footer>
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
-        <a href="6_faq.html" class="btn btn-neutral float-right" title="7.7.6. 常见问题" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
-        <a href="4_test_guide.html" class="btn btn-neutral float-left" title="7.7.4. 测试指南" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="6_faq.html" class="btn btn-neutral float-right" title="7.9.6. 常见问题" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="4_test_guide.html" class="btn btn-neutral float-left" title="7.9.4. 测试指南" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
     </div>
 
   <hr/>

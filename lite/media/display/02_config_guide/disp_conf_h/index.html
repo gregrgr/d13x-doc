@@ -275,12 +275,14 @@
 <li class="toctree-l3"><a class="reference internal" href="../../../i2s/index.html">6.5. I2S 使用指南</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../../ve/index.html">6.6. VE 使用指南</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../../mpp/index.html">6.7. MPP 使用指南</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../../lvgl/index.html">6.8. LVGL 使用指南</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../player/index.html">6.8. MPP 播放器使用指南</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../lvgl/index.html">6.9. LVGL 使用指南</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="../../../../interface/index.html">7. 接口</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../../../security/index.html">8. 安全</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../../../peripheral/index.html">9. 外设</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../app/index.html">10. 应用</a></li>
 </ul>
 </li>
 </ul>
@@ -374,8 +376,8 @@
 <p>menuconfig 主要配置跟 LCD 外设强相关或者改动较为频繁的参数，而 <code class="docutils literal notranslate"><span class="pre">disp_conf.h</span></code> 主要配置显示接口相关的参数。</p>
 <div class="admonition note">
 <p class="admonition-title">注解</p>
-<p>引入 <code class="docutils literal notranslate"><span class="pre">disp_conf.h</span></code> 头文件的目的，是为了避免 menuconfig 参数过多导致客户误改。</p>
-<p>这部分参数可方便 PCB layout 走线，参数配置有误会导致显示异常。推荐在硬件工程师的确认下，结合芯片手册进行修改。</p>
+<p>引入 <code class="docutils literal notranslate"><span class="pre">disp_conf.h</span></code> 头文件的目的，是为了避免 menuconfig 参数过多导致误改。</p>
+<p>这部分参数可方便 PCB layout 走线，配置有误会导致显示异常。推荐在硬件工程师的确认下，结合芯片手册进行修改。</p>
 </div>
 <div class="section" id="lvds">
 <h2><span class="section-number">6.2.2.2.1. </span>LVDS 参数<a class="headerlink" href="#lvds" title="永久链接至标题">¶</a></h2>
