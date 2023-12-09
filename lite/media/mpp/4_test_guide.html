@@ -293,6 +293,7 @@
 <li class="toctree-l2"><a class="reference internal" href="../../security/index.html">8. 安全</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../peripheral/index.html">9. 外设</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../app/index.html">10. 应用</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../bringup/index.html">11. BringUp</a></li>
 </ul>
 </li>
 </ul>
@@ -452,114 +453,110 @@
 <div class="admonition note">
 <p class="admonition-title">注解</p>
 <ol class="arabic simple">
-<li><p>GE 的测试文件图片数据放在目录：luban-lite/packages/artinchip/mpp/mpp_test/ge_test/test_data</p></li>
-<li><p>ge_test_data所有的图片文件放在 <code class="docutils literal notranslate"><span class="pre">SD卡</span></code> ：sdmc/ge_test/test_data/ 目录下，如果没有该目录请自行创建</p></li>
+<li><p>GE 测试文件在luban-lite/packages/artinchip/mpp/mpp_test/ge_test, 需要把ge_test整个文件复制到``SD卡``根目录下</p></li>
 </ol>
 </div>
 </div>
 <div class="section" id="ge-fill">
 <h3><span class="section-number">6.7.4.2.3. </span>ge_fill<a class="headerlink" href="#ge-fill" title="永久链接至标题">¶</a></h3>
 <p>ge_fill 的主要功能是测试位块填充的功能</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">[</span><span class="n">aic</span> <span class="o">/&gt;</span><span class="p">]</span> <span class="n">ge_fill</span>
-<span class="p">[</span><span class="n">I</span><span class="p">]</span> <span class="n">ge_bitblt</span><span class="p">()</span><span class="mi">436</span> <span class="n">ge</span> <span class="n">bitblt</span> <span class="n">test</span> <span class="n">app</span> <span class="n">start</span><span class="o">........</span>
-<span class="n">Usage</span><span class="p">:</span> <span class="n">ge_bitblt</span> <span class="p">[</span><span class="n">Options</span><span class="p">],</span> <span class="n">built</span> <span class="n">on</span> <span class="n">Sep</span> <span class="mi">11</span> <span class="mi">2023</span> <span class="mi">11</span><span class="p">:</span><span class="mi">02</span><span class="p">:</span><span class="mi">38</span>
-    <span class="o">-</span><span class="n">c</span><span class="p">,</span> <span class="o">--</span><span class="n">circle</span> <span class="n">test</span>
-    <span class="o">-</span><span class="n">n</span><span class="p">,</span> <span class="o">--</span><span class="n">number</span> <span class="n">of</span> <span class="n">run</span><span class="p">,</span> <span class="n">default</span> <span class="n">run</span> <span class="n">once</span>
-    <span class="o">-</span><span class="n">u</span><span class="p">,</span> <span class="o">--</span><span class="n">usage</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>[aic /&gt;] ge_fill
+Usage: ge_fill [Options]：
+    -c, --circle test
+    -n, --number of run, default run once
+    -u, --usage
 </pre></div>
 </div>
 </div>
 <div class="section" id="ge-bitblt">
 <h3><span class="section-number">6.7.4.2.4. </span>ge_bitblt<a class="headerlink" href="#ge-bitblt" title="永久链接至标题">¶</a></h3>
 <p>ge_bitblt 的主要功能是测试位块搬移的功能</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">[</span><span class="n">aic</span> <span class="o">/&gt;</span><span class="p">]</span> <span class="n">ge_bitblt</span>
-<span class="p">[</span><span class="n">I</span><span class="p">]</span> <span class="n">ge_bitblt</span><span class="p">()</span><span class="mi">436</span> <span class="n">ge</span> <span class="n">bitblt</span> <span class="n">test</span> <span class="n">app</span> <span class="n">start</span><span class="o">........</span>
-<span class="n">Usage</span><span class="p">:</span> <span class="n">ge_bitblt</span> <span class="p">[</span><span class="n">Options</span><span class="p">],</span> <span class="n">built</span> <span class="n">on</span> <span class="n">Sep</span> <span class="mi">11</span> <span class="mi">2023</span> <span class="mi">11</span><span class="p">:</span><span class="mi">02</span><span class="p">:</span><span class="mi">38</span>
-    <span class="o">-</span><span class="n">c</span><span class="p">,</span> <span class="o">--</span><span class="n">circle</span> <span class="n">test</span>
-    <span class="o">-</span><span class="n">n</span><span class="p">,</span> <span class="o">--</span><span class="n">number</span> <span class="n">of</span> <span class="n">run</span><span class="p">,</span> <span class="n">default</span> <span class="n">run</span> <span class="n">once</span>
-    <span class="o">-</span><span class="n">u</span><span class="p">,</span> <span class="o">--</span><span class="n">usage</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>[aic /&gt;] ge_bitblt
+Usage: ge_bitblt [Options]：
+    -c, --circle test
+    -n, --number of run, default run once
+    -u, --usage
 </pre></div>
 </div>
 </div>
 <div class="section" id="ge-rotate">
 <h3><span class="section-number">6.7.4.2.5. </span>ge_rotate<a class="headerlink" href="#ge-rotate" title="永久链接至标题">¶</a></h3>
 <p>ge_rotate 的主要功能是测试图形旋转的功能</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">[</span><span class="n">aic</span> <span class="o">/&gt;</span><span class="p">]</span> <span class="n">ge_rotate</span>
-<span class="p">[</span><span class="n">I</span><span class="p">]</span> <span class="n">ge_bitblt</span><span class="p">()</span><span class="mi">436</span> <span class="n">ge</span> <span class="n">bitblt</span> <span class="n">test</span> <span class="n">app</span> <span class="n">start</span><span class="o">........</span>
-<span class="n">Usage</span><span class="p">:</span> <span class="n">ge_bitblt</span> <span class="p">[</span><span class="n">Options</span><span class="p">],</span> <span class="n">built</span> <span class="n">on</span> <span class="n">Sep</span> <span class="mi">11</span> <span class="mi">2023</span> <span class="mi">11</span><span class="p">:</span><span class="mi">02</span><span class="p">:</span><span class="mi">38</span>
-    <span class="o">-</span><span class="n">c</span><span class="p">,</span> <span class="o">--</span><span class="n">circle</span> <span class="n">test</span>
-    <span class="o">-</span><span class="n">n</span><span class="p">,</span> <span class="o">--</span><span class="n">number</span> <span class="n">of</span> <span class="n">run</span><span class="p">,</span> <span class="n">default</span> <span class="n">run</span> <span class="n">once</span>
-    <span class="o">-</span><span class="n">u</span><span class="p">,</span> <span class="o">--</span><span class="n">usage</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>[aic /&gt;] ge_rotate
+Usage: ge_rotate [Options]：
+    -c, --circle test
+    -n, --number of run, default run once
+    -u, --usage
 </pre></div>
 </div>
 </div>
 <div class="section" id="ge-scan-order">
 <h3><span class="section-number">6.7.4.2.6. </span>ge_scan_order<a class="headerlink" href="#ge-scan-order" title="永久链接至标题">¶</a></h3>
 <p>ge_scan_order 的主要功能是测试在不同方向读取内存的功能的差异</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">[</span><span class="n">aic</span> <span class="o">/&gt;</span><span class="p">]</span> <span class="n">ge_scan_order</span> <span class="o">-</span><span class="n">u</span>
-<span class="n">Usage</span><span class="p">:</span> <span class="n">ge_scan_order</span> <span class="p">[</span><span class="n">Options</span><span class="p">],</span> <span class="n">built</span> <span class="n">on</span> <span class="n">Jul</span> <span class="mi">25</span> <span class="mi">2023</span> <span class="mi">18</span><span class="p">:</span><span class="mi">54</span><span class="p">:</span><span class="mi">15</span>
-        <span class="o">-</span><span class="n">r</span><span class="p">,</span> <span class="o">--</span><span class="n">region</span> <span class="n">the</span>  <span class="n">region</span> <span class="n">of</span> <span class="n">screen</span> <span class="p">(</span><span class="n">default</span> <span class="mi">0</span><span class="p">),</span><span class="n">The</span> <span class="nb">range</span> <span class="n">of</span> <span class="n">region</span> <span class="ow">is</span> <span class="mi">0</span><span class="o">~</span><span class="mi">7</span>
-        <span class="o">-</span><span class="n">m</span><span class="p">,</span> <span class="o">--</span><span class="n">mode</span>   <span class="n">scan</span> <span class="n">order</span> <span class="n">flags</span> <span class="k">for</span> <span class="n">GE</span> <span class="n">ctrl</span> <span class="p">(</span><span class="n">default</span> <span class="mi">0</span><span class="p">)</span>
-            <span class="o">--</span><span class="n">mode</span><span class="o">=</span><span class="mi">0</span> <span class="n">scan</span> <span class="n">order</span> <span class="n">flags</span> <span class="o">=</span> <span class="n">MPP_LR_TB</span>
-            <span class="o">--</span><span class="n">mode</span><span class="o">=</span><span class="mi">1</span> <span class="n">scan</span> <span class="n">order</span> <span class="n">flags</span> <span class="o">=</span> <span class="n">MPP_RL_TB</span>
-            <span class="o">--</span><span class="n">mode</span><span class="o">=</span><span class="mi">2</span> <span class="n">scan</span> <span class="n">order</span> <span class="n">flags</span> <span class="o">=</span> <span class="n">MPP_LR_BT</span>
-            <span class="o">--</span><span class="n">mode</span><span class="o">=</span><span class="mi">3</span> <span class="n">scan</span> <span class="n">order</span> <span class="n">flags</span> <span class="o">=</span> <span class="n">MPP_RL_BT</span>
-        <span class="o">-</span><span class="n">u</span><span class="p">,</span> <span class="o">--</span><span class="n">usage</span>
-        <span class="o">-</span><span class="n">h</span><span class="p">,</span> <span class="o">--</span><span class="n">help</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>[aic /&gt;] ge_scan_order -u
+Usage: ge_scan_order [Options]：
+        -r, --region the  region of screen (default 0),The range of region is 0~7
+        -m, --mode   scan order flags for GE ctrl (default 0)
+            --mode=0 scan order flags = MPP_LR_TB
+            --mode=1 scan order flags = MPP_RL_TB
+            --mode=2 scan order flags = MPP_LR_BT
+            --mode=3 scan order flags = MPP_RL_BT
+        -u, --usage
+        -h, --help
 </pre></div>
 </div>
 </div>
 <div class="section" id="ge-dither">
 <h3><span class="section-number">6.7.4.2.7. </span>ge_dither<a class="headerlink" href="#ge-dither" title="永久链接至标题">¶</a></h3>
 <p>ge_dither 的主要功能是测试 Dither的功能</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">[</span><span class="n">aic</span> <span class="o">/</span><span class="p">]</span><span class="o">&gt;</span> <span class="n">ge_dither</span> <span class="o">-</span><span class="n">u</span>
-<span class="n">Usage</span><span class="p">:</span> <span class="n">ge_dither</span> <span class="p">[</span><span class="n">Options</span><span class="p">],</span> <span class="n">built</span> <span class="n">on</span> <span class="n">Jul</span> <span class="mi">25</span> <span class="mi">2023</span> <span class="mi">19</span><span class="p">:</span><span class="mi">11</span><span class="p">:</span><span class="mi">55</span>
-        <span class="o">-</span><span class="n">o</span><span class="p">,</span> <span class="o">--</span><span class="n">dither_on</span><span class="p">,</span>  <span class="n">Select</span> <span class="nb">open</span> <span class="n">dither</span> <span class="p">(</span><span class="n">default</span> <span class="mi">0</span><span class="p">),</span> <span class="mi">0</span> <span class="p">:</span><span class="n">close</span>  <span class="mi">1</span> <span class="p">:</span><span class="nb">open</span>
-        <span class="o">-</span><span class="n">s</span><span class="p">,</span> <span class="o">--</span><span class="n">src_format</span><span class="p">,</span> <span class="n">Select</span> <span class="n">src</span> <span class="nb">format</span>  <span class="p">(</span><span class="n">default</span> <span class="n">argb8888</span><span class="p">)</span>
-        <span class="o">-</span><span class="n">d</span><span class="p">,</span> <span class="o">--</span><span class="n">dst_format</span><span class="p">,</span> <span class="n">Select</span> <span class="n">dst</span> <span class="nb">format</span>  <span class="p">(</span><span class="n">default</span> <span class="n">argb4444</span><span class="p">)</span>
-        <span class="o">-</span><span class="n">u</span><span class="p">,</span> <span class="o">--</span><span class="n">usage</span>
-        <span class="o">-</span><span class="n">h</span><span class="p">,</span> <span class="o">--</span><span class="n">help</span><span class="p">,</span> <span class="nb">list</span> <span class="n">the</span> <span class="n">supported</span> <span class="nb">format</span> <span class="ow">and</span> <span class="n">the</span> <span class="n">test</span> <span class="n">instructions</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>[aic /]&gt; ge_dither -u
+Usage: ge_dither [Options]：
+        -o, --dither_on,  Select open dither (default 0), 0 :close  1 :open
+        -s, --src_format, Select src format  (default argb8888)
+        -d, --dst_format, Select dst format  (default argb4444)
+        -u, --usage
+        -h, --help, list the supported format and the test instructions
 </pre></div>
 </div>
 </div>
 <div class="section" id="ge-alpha-blending">
 <h3><span class="section-number">6.7.4.2.8. </span>ge_alpha_blending<a class="headerlink" href="#ge-alpha-blending" title="永久链接至标题">¶</a></h3>
 <p>ge_alpha_blending 的主要功能是测试 alpha 混合的功能</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">[</span><span class="n">aic</span> <span class="o">/</span><span class="p">]</span><span class="o">&gt;</span> <span class="n">ge_alpha_blending</span> <span class="o">-</span><span class="n">u</span>
-<span class="n">Usage</span><span class="p">:</span> <span class="n">ge_alpha_blending</span> <span class="p">[</span><span class="n">Options</span><span class="p">],</span> <span class="n">built</span> <span class="n">on</span> <span class="n">Jul</span> <span class="mi">25</span> <span class="mi">2023</span> <span class="mi">19</span><span class="p">:</span><span class="mi">14</span><span class="p">:</span><span class="mi">42</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>[aic /]&gt; ge_alpha_blending -u
+Usage: ge_alpha_blending [Options]：
 
-        <span class="o">-</span><span class="n">s</span><span class="p">,</span> <span class="o">--</span><span class="n">src_alpha_mode</span><span class="p">,</span>   <span class="n">Select</span> <span class="n">src_alpha_mode</span> <span class="p">(</span><span class="n">default</span> <span class="mi">0</span><span class="p">),</span> <span class="mi">0</span><span class="p">:</span> <span class="n">pixel</span> <span class="n">alpha</span> <span class="n">mode</span><span class="p">,</span> <span class="mi">1</span><span class="p">:</span> <span class="k">global</span> <span class="n">alpha</span> <span class="n">mode</span><span class="p">,</span> <span class="mi">2</span><span class="p">:</span> <span class="n">mixded</span> <span class="n">alpha</span> <span class="n">mode</span>
-        <span class="o">-</span><span class="n">g</span><span class="p">,</span> <span class="o">--</span><span class="n">src_alpha_global</span><span class="p">,</span> <span class="n">Set</span> <span class="n">src_alpha_global</span> <span class="n">value</span> <span class="p">(</span><span class="n">default</span> <span class="mi">0</span><span class="p">),</span> <span class="n">source</span> <span class="k">global</span> <span class="n">alpha</span> <span class="n">value</span> <span class="p">(</span><span class="mi">0</span><span class="o">~</span><span class="mi">255</span><span class="p">)</span>
+        -s, --src_alpha_mode,   Select src_alpha_mode (default 0), 0: pixel alpha mode, 1: global alpha mode, 2: mixded alpha mode
+        -g, --src_alpha_global, Set src_alpha_global value (default 0), source global alpha value (0~255)
 
-        <span class="o">-</span><span class="n">d</span><span class="p">,</span> <span class="o">--</span><span class="n">dst_alpha_mode</span><span class="p">,</span>   <span class="n">Select</span> <span class="n">dst_alpha_mode</span> <span class="p">(</span><span class="n">default</span> <span class="mi">0</span><span class="p">),</span> <span class="mi">0</span><span class="p">:</span> <span class="n">pixel</span> <span class="n">alpha</span> <span class="n">mode</span><span class="p">,</span> <span class="mi">1</span><span class="p">:</span> <span class="k">global</span> <span class="n">alpha</span> <span class="n">mode</span><span class="p">,</span> <span class="mi">2</span><span class="p">:</span> <span class="n">mixded</span> <span class="n">alpha</span> <span class="n">mode</span>
-        <span class="o">-</span><span class="n">p</span><span class="p">,</span> <span class="o">--</span><span class="n">dst_alpha_global</span><span class="p">,</span> <span class="n">Select</span> <span class="n">dst_alpha_global</span> <span class="n">value</span> <span class="p">(</span><span class="n">default</span> <span class="mi">0</span><span class="p">),</span> <span class="n">destination</span> <span class="k">global</span> <span class="n">alpha</span> <span class="n">value</span> <span class="p">(</span><span class="mi">0</span><span class="o">~</span><span class="mi">255</span><span class="p">)</span>
-        <span class="o">-</span><span class="n">u</span><span class="p">,</span> <span class="o">--</span><span class="n">usage</span>
+        -d, --dst_alpha_mode,   Select dst_alpha_mode (default 0), 0: pixel alpha mode, 1: global alpha mode, 2: mixded alpha mode
+        -p, --dst_alpha_global, Select dst_alpha_global value (default 0), destination global alpha value (0~255)
+        -u, --usage
 </pre></div>
 </div>
 </div>
 <div class="section" id="ge-scale">
 <h3><span class="section-number">6.7.4.2.9. </span>ge_scale<a class="headerlink" href="#ge-scale" title="永久链接至标题">¶</a></h3>
 <p>ge_scale 的主要功能是测试图像缩放的功能</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">[</span><span class="n">aic</span> <span class="o">/</span><span class="p">]</span><span class="o">&gt;</span> <span class="n">ge_scale</span> <span class="o">-</span><span class="n">u</span>
-<span class="n">Usage</span><span class="p">:</span> <span class="n">ge_scale</span> <span class="p">[</span><span class="n">Options</span><span class="p">],</span> <span class="n">built</span> <span class="n">on</span> <span class="n">Jul</span> <span class="mi">25</span> <span class="mi">2023</span> <span class="mi">19</span><span class="p">:</span><span class="mi">08</span><span class="p">:</span><span class="mi">10</span>
-            <span class="o">--</span><span class="n">Framebuffer</span> <span class="n">uses</span> <span class="n">double</span> <span class="n">buffer</span> <span class="ow">in</span> <span class="n">this</span> <span class="n">test</span><span class="p">,</span> <span class="n">ensure</span> <span class="n">that</span> <span class="n">fb0</span> <span class="ow">is</span> <span class="n">properly</span> <span class="n">configure</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>[aic /]&gt; ge_scale -u
+Usage: ge_scale [Options]：
+            --Framebuffer uses double buffer in this test, ensure that fb0 is properly configure
 
-        <span class="o">-</span><span class="n">t</span><span class="p">,</span> <span class="o">--</span><span class="nb">type</span><span class="p">,</span> <span class="n">Select</span> <span class="n">scale</span> <span class="nb">type</span> <span class="p">(</span><span class="n">default</span> <span class="mi">2</span><span class="p">)</span>
-            <span class="o">--</span><span class="nb">type</span><span class="p">,</span> <span class="mi">0</span><span class="p">:</span> <span class="n">wide</span> <span class="n">stretch</span><span class="p">,</span> <span class="mi">1</span><span class="p">:</span> <span class="n">height</span> <span class="n">stretch</span><span class="p">,</span> <span class="mi">2</span><span class="p">:</span> <span class="n">width</span> <span class="ow">and</span> <span class="n">height</span> <span class="n">stretch</span>
+        -t, --type, Select scale type (default 2)
+            --type, 0: wide stretch, 1: height stretch, 2: width and height stretch
 
-        <span class="o">-</span><span class="n">u</span><span class="p">,</span> <span class="o">--</span><span class="n">usage</span>
+        -u, --usage
 </pre></div>
 </div>
 </div>
 <div class="section" id="ge-format">
 <h3><span class="section-number">6.7.4.2.10. </span>ge_format<a class="headerlink" href="#ge-format" title="永久链接至标题">¶</a></h3>
 <p>ge_format 的主要功能是测试格式转换的功能</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">[</span><span class="n">aic</span> <span class="o">/</span><span class="p">]</span><span class="o">&gt;</span> <span class="n">ge_format</span> <span class="o">-</span><span class="n">u</span>
-<span class="n">Usage</span><span class="p">:</span> <span class="n">ge_format</span> <span class="p">[</span><span class="n">Options</span><span class="p">],</span> <span class="n">built</span> <span class="n">on</span> <span class="n">Aug</span>  <span class="mi">3</span> <span class="mi">2023</span> <span class="mi">17</span><span class="p">:</span><span class="mi">47</span><span class="p">:</span><span class="mi">13</span>
-        <span class="o">-</span><span class="n">m</span><span class="p">,</span> <span class="o">--</span><span class="n">mode</span><span class="p">,</span> <span class="n">select</span> <span class="nb">format</span> <span class="n">conversion</span> <span class="nb">type</span> <span class="p">(</span><span class="n">default</span> <span class="n">rgbtorgb</span><span class="p">),</span>
-        <span class="n">Format</span> <span class="n">conversion</span> <span class="n">supports</span> <span class="n">rgbtorgb</span><span class="p">,</span> <span class="n">yuvtoyuv</span><span class="p">,</span> <span class="n">yuvtorgb</span> <span class="ow">and</span> <span class="n">rgbtoyuv</span><span class="o">.</span>
-        <span class="o">-</span><span class="n">u</span><span class="p">,</span> <span class="o">--</span><span class="n">usage</span>
-        <span class="o">-</span><span class="n">h</span><span class="p">,</span> <span class="o">--</span><span class="n">help</span> <span class="n">to</span> <span class="n">see</span> <span class="n">more</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>[aic /]&gt; ge_format -u
+Usage: ge_format [Options]：
+        -m, --mode, select format conversion type (default rgbtorgb),
+        Format conversion supports rgbtorgb, yuvtoyuv, yuvtorgb and rgbtoyuv.
+        -u, --usage
+        -h, --help to see more
 </pre></div>
 </div>
 </div>

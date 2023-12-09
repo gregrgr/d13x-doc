@@ -7,7 +7,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   
-  <title>4.2.5. 设计说明 &mdash; AIC文档中心 v1.0 文档</title>
+  <title>4.3.5. 设计说明 &mdash; AIC文档中心 v1.0 文档</title>
   
 
   
@@ -41,8 +41,8 @@
     
     <link rel="index" title="索引" href="../../../genindex.html" />
     <link rel="search" title="搜索" href="../../../search.html" />
-    <link rel="next" title="4.2.6. 常见问题" href="6_faq.html" />
-    <link rel="prev" title="4.2.4. 测试指南" href="4_test_guide.html" />
+    <link rel="next" title="4.3.6. 常见问题" href="6_faq.html" />
+    <link rel="prev" title="4.3.4. 测试指南" href="4_test_guide.html" />
     <script>
         $(function () {
 /**
@@ -247,56 +247,57 @@
 <li class="toctree-l2"><a class="reference internal" href="../../sdk/index.html">2. 使用指南</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../boot/index.html">3. 启动引导</a></li>
 <li class="toctree-l2 current"><a class="reference internal" href="../index.html">4. 系统</a><ul class="current">
-<li class="toctree-l3"><a class="reference internal" href="../cmu/index.html">4.1. CMU 使用指南</a></li>
-<li class="toctree-l3 current"><a class="reference internal" href="index.html">4.2. DMA 使用指南</a><ul class="current">
-<li class="toctree-l4"><a class="reference internal" href="1_introduction.html">4.2.1. 模块介绍</a></li>
-<li class="toctree-l4"><a class="reference internal" href="2_config_guide.html">4.2.2. 参数配置</a></li>
-<li class="toctree-l4"><a class="reference internal" href="3_debug_guide.html">4.2.3. 调试指南</a></li>
-<li class="toctree-l4"><a class="reference internal" href="4_test_guide.html">4.2.4. 测试指南</a></li>
-<li class="toctree-l4 current"><a class="current reference internal" href="#">4.2.5. 设计说明</a><ul>
-<li class="toctree-l5"><a class="reference internal" href="#id2">4.2.5.1. 源码说明</a></li>
-<li class="toctree-l5"><a class="reference internal" href="#id3">4.2.5.2. 模块架构</a></li>
-<li class="toctree-l5"><a class="reference internal" href="#id4">4.2.5.3. 关键流程设计</a><ul>
-<li class="toctree-l6"><a class="reference internal" href="#id5">4.2.5.3.1. 初始化流程</a></li>
-<li class="toctree-l6"><a class="reference internal" href="#dma-client">4.2.5.3.2. DMA Client 的调用流程</a></li>
-<li class="toctree-l6"><a class="reference internal" href="#id6">4.2.5.3.3. 中断处理流程</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../interrupt/index.html">4.1. Interrupt 使用指南</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../cmu/index.html">4.2. CMU 使用指南</a></li>
+<li class="toctree-l3 current"><a class="reference internal" href="index.html">4.3. DMA 使用指南</a><ul class="current">
+<li class="toctree-l4"><a class="reference internal" href="1_introduction.html">4.3.1. 模块介绍</a></li>
+<li class="toctree-l4"><a class="reference internal" href="2_config_guide.html">4.3.2. 参数配置</a></li>
+<li class="toctree-l4"><a class="reference internal" href="3_debug_guide.html">4.3.3. 调试指南</a></li>
+<li class="toctree-l4"><a class="reference internal" href="4_test_guide.html">4.3.4. 测试指南</a></li>
+<li class="toctree-l4 current"><a class="current reference internal" href="#">4.3.5. 设计说明</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="#id2">4.3.5.1. 源码说明</a></li>
+<li class="toctree-l5"><a class="reference internal" href="#id3">4.3.5.2. 模块架构</a></li>
+<li class="toctree-l5"><a class="reference internal" href="#id4">4.3.5.3. 关键流程设计</a><ul>
+<li class="toctree-l6"><a class="reference internal" href="#id5">4.3.5.3.1. 初始化流程</a></li>
+<li class="toctree-l6"><a class="reference internal" href="#dma-client">4.3.5.3.2. DMA Client 的调用流程</a></li>
+<li class="toctree-l6"><a class="reference internal" href="#id6">4.3.5.3.3. 中断处理流程</a></li>
 </ul>
 </li>
-<li class="toctree-l5"><a class="reference internal" href="#id7">4.2.5.4. 数据结构设计</a><ul>
-<li class="toctree-l6"><a class="reference internal" href="#struct-aic-dma-dev">4.2.5.4.1. struct aic_dma_dev</a></li>
-<li class="toctree-l6"><a class="reference internal" href="#struct-aic-dma-chan">4.2.5.4.2. struct aic_dma_chan</a></li>
-<li class="toctree-l6"><a class="reference internal" href="#struct-aic-dma-task">4.2.5.4.3. struct aic_dma_task</a></li>
-<li class="toctree-l6"><a class="reference internal" href="#struct-dma-slave-config">4.2.5.4.4. struct dma_slave_config</a></li>
+<li class="toctree-l5"><a class="reference internal" href="#id7">4.3.5.4. 数据结构设计</a><ul>
+<li class="toctree-l6"><a class="reference internal" href="#struct-aic-dma-dev">4.3.5.4.1. struct aic_dma_dev</a></li>
+<li class="toctree-l6"><a class="reference internal" href="#struct-aic-dma-chan">4.3.5.4.2. struct aic_dma_chan</a></li>
+<li class="toctree-l6"><a class="reference internal" href="#struct-aic-dma-task">4.3.5.4.3. struct aic_dma_task</a></li>
+<li class="toctree-l6"><a class="reference internal" href="#struct-dma-slave-config">4.3.5.4.4. struct dma_slave_config</a></li>
 </ul>
 </li>
-<li class="toctree-l5"><a class="reference internal" href="#driver">4.2.5.5. Driver 层接口设计</a><ul>
-<li class="toctree-l6"><a class="reference internal" href="#dmaengine-slave-config">4.2.5.5.1. dmaengine_slave_config</a></li>
-<li class="toctree-l6"><a class="reference internal" href="#dmaengine-pause">4.2.5.5.2. dmaengine_pause</a></li>
-<li class="toctree-l6"><a class="reference internal" href="#dmaengine-resume">4.2.5.5.3. dmaengine_resume</a></li>
-<li class="toctree-l6"><a class="reference internal" href="#dmaengine-prep-dma-memcpy">4.2.5.5.4. dmaengine_prep_dma_memcpy</a></li>
-<li class="toctree-l6"><a class="reference internal" href="#dmaengine-prep-dma-device">4.2.5.5.5. dmaengine_prep_dma_device</a></li>
-<li class="toctree-l6"><a class="reference internal" href="#dmaengine-prep-dma-cyclic">4.2.5.5.6. dmaengine_prep_dma_cyclic</a></li>
-<li class="toctree-l6"><a class="reference internal" href="#dma-async-issue-pending">4.2.5.5.7. dma_async_issue_pending</a></li>
-<li class="toctree-l6"><a class="reference internal" href="#dmaengine-terminate-async">4.2.5.5.8. dmaengine_terminate_async</a></li>
-<li class="toctree-l6"><a class="reference internal" href="#dmaengine-tx-status">4.2.5.5.9. dmaengine_tx_status</a></li>
+<li class="toctree-l5"><a class="reference internal" href="#driver">4.3.5.5. Driver 层接口设计</a><ul>
+<li class="toctree-l6"><a class="reference internal" href="#dmaengine-slave-config">4.3.5.5.1. dmaengine_slave_config</a></li>
+<li class="toctree-l6"><a class="reference internal" href="#dmaengine-pause">4.3.5.5.2. dmaengine_pause</a></li>
+<li class="toctree-l6"><a class="reference internal" href="#dmaengine-resume">4.3.5.5.3. dmaengine_resume</a></li>
+<li class="toctree-l6"><a class="reference internal" href="#dmaengine-prep-dma-memcpy">4.3.5.5.4. dmaengine_prep_dma_memcpy</a></li>
+<li class="toctree-l6"><a class="reference internal" href="#dmaengine-prep-dma-device">4.3.5.5.5. dmaengine_prep_dma_device</a></li>
+<li class="toctree-l6"><a class="reference internal" href="#dmaengine-prep-dma-cyclic">4.3.5.5.6. dmaengine_prep_dma_cyclic</a></li>
+<li class="toctree-l6"><a class="reference internal" href="#dma-async-issue-pending">4.3.5.5.7. dma_async_issue_pending</a></li>
+<li class="toctree-l6"><a class="reference internal" href="#dmaengine-terminate-async">4.3.5.5.8. dmaengine_terminate_async</a></li>
+<li class="toctree-l6"><a class="reference internal" href="#dmaengine-tx-status">4.3.5.5.9. dmaengine_tx_status</a></li>
 </ul>
 </li>
-<li class="toctree-l5"><a class="reference internal" href="#hal">4.2.5.6. HAL 层接口设计</a></li>
-<li class="toctree-l5"><a class="reference internal" href="#demo">4.2.5.7. Demo</a><ul>
-<li class="toctree-l6"><a class="reference internal" href="#mem-to-device">4.2.5.7.1. Mem to Device</a></li>
-<li class="toctree-l6"><a class="reference internal" href="#mem-to-mem">4.2.5.7.2. Mem to Mem</a></li>
+<li class="toctree-l5"><a class="reference internal" href="#hal">4.3.5.6. HAL 层接口设计</a></li>
+<li class="toctree-l5"><a class="reference internal" href="#demo">4.3.5.7. Demo</a><ul>
+<li class="toctree-l6"><a class="reference internal" href="#mem-to-device">4.3.5.7.1. Mem to Device</a></li>
+<li class="toctree-l6"><a class="reference internal" href="#mem-to-mem">4.3.5.7.2. Mem to Mem</a></li>
 </ul>
 </li>
 </ul>
 </li>
-<li class="toctree-l4"><a class="reference internal" href="6_faq.html">4.2.6. 常见问题</a></li>
+<li class="toctree-l4"><a class="reference internal" href="6_faq.html">4.3.6. 常见问题</a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="../hrtimer/index.html">4.3. HRTimer 使用指南</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../mtop/index.html">4.4. MTOP 使用指南</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../rtc/index.html">4.5. RTC 使用指南</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../tsensor/index.html">4.6. TSensor 使用指南</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../watchdog/index.html">4.7. Watchdog 使用指南</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../hrtimer/index.html">4.4. HRTimer 使用指南</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../mtop/index.html">4.5. MTOP 使用指南</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../rtc/index.html">4.6. RTC 使用指南</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../tsensor/index.html">4.7. TSensor 使用指南</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../watchdog/index.html">4.8. Watchdog 使用指南</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="../../memory/index.html">5. 存储</a></li>
@@ -305,6 +306,7 @@
 <li class="toctree-l2"><a class="reference internal" href="../../security/index.html">8. 安全</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../peripheral/index.html">9. 外设</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../app/index.html">10. 应用</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../bringup/index.html">11. BringUp</a></li>
 </ul>
 </li>
 </ul>
@@ -368,9 +370,9 @@
         
           <li><a href="../index.html"><span class="section-number">4. </span>系统</a> &raquo;</li>
         
-          <li><a href="index.html"><span class="section-number">4.2. </span>DMA 使用指南</a> &raquo;</li>
+          <li><a href="index.html"><span class="section-number">4.3. </span>DMA 使用指南</a> &raquo;</li>
         
-      <li><span class="section-number">4.2.5. </span>设计说明</li>
+      <li><span class="section-number">4.3.5. </span>设计说明</li>
     
     
       <li class="wy-breadcrumbs-aside">
@@ -388,9 +390,9 @@
            <div itemprop="articleBody">
             
   <div class="section" id="id1">
-<h1><span class="section-number">4.2.5. </span>设计说明<a class="headerlink" href="#id1" title="永久链接至标题">¶</a></h1>
+<h1><span class="section-number">4.3.5. </span>设计说明<a class="headerlink" href="#id1" title="永久链接至标题">¶</a></h1>
 <div class="section" id="id2">
-<h2><span class="section-number">4.2.5.1. </span>源码说明<a class="headerlink" href="#id2" title="永久链接至标题">¶</a></h2>
+<h2><span class="section-number">4.3.5.1. </span>源码说明<a class="headerlink" href="#id2" title="永久链接至标题">¶</a></h2>
 <p>源代码位于 <code class="docutils literal notranslate"><span class="pre">bsp/artinchip/</span></code>：</p>
 <ul class="simple">
 <li><p>bsp/artinchip/drv/dma/drv_dma.c，DMA Driver 层实现</p></li>
@@ -401,7 +403,7 @@
 </ul>
 </div>
 <div class="section" id="id3">
-<h2><span class="section-number">4.2.5.2. </span>模块架构<a class="headerlink" href="#id3" title="永久链接至标题">¶</a></h2>
+<h2><span class="section-number">4.3.5.2. </span>模块架构<a class="headerlink" href="#id3" title="永久链接至标题">¶</a></h2>
 <p>RTOS 系统中并没有提供了一个类似 Linux 的 DMA Engine 子系统，为了方便DMA使用者的代码兼容，DMA驱动提供了类似Linux的DMA Engine接口定义。</p>
 <p>DMA 驱动的软件框架如下图：</p>
 <div class="figure align-center" id="id8">
@@ -411,9 +413,9 @@
 <p>图中可以看到，DMA 驱动不依赖任何 RTOS 的设备驱动模型，所以无论是在 RTOS 环境、还是 baremetal 环境，都是可以直接调用 DMA Engine API 的。</p>
 </div>
 <div class="section" id="id4">
-<h2><span class="section-number">4.2.5.3. </span>关键流程设计<a class="headerlink" href="#id4" title="永久链接至标题">¶</a></h2>
+<h2><span class="section-number">4.3.5.3. </span>关键流程设计<a class="headerlink" href="#id4" title="永久链接至标题">¶</a></h2>
 <div class="section" id="id5">
-<h3><span class="section-number">4.2.5.3.1. </span>初始化流程<a class="headerlink" href="#id5" title="永久链接至标题">¶</a></h3>
+<h3><span class="section-number">4.3.5.3.1. </span>初始化流程<a class="headerlink" href="#id5" title="永久链接至标题">¶</a></h3>
 <p>DMA 驱动的初始化接口通过 <code class="docutils literal notranslate"><span class="pre">INIT_BOARD_EXPORT(drv_dma_init)</span></code> 完成注册，其中主要步骤有：</p>
 <ol class="arabic simple">
 <li><p>初始化模块的clk</p></li>
@@ -422,7 +424,7 @@
 </ol>
 </div>
 <div class="section" id="dma-client">
-<h3><span class="section-number">4.2.5.3.2. </span>DMA Client 的调用流程<a class="headerlink" href="#dma-client" title="永久链接至标题">¶</a></h3>
+<h3><span class="section-number">4.3.5.3.2. </span>DMA Client 的调用流程<a class="headerlink" href="#dma-client" title="永久链接至标题">¶</a></h3>
 <p>作为DMA 用户，调用流程和 Linux 的 DMA Engine 完全相同，如下：</p>
 <div class="figure align-center" id="id9">
 <img alt="../../../_images/client_flow.png" src="../../../_images/client_flow.png" />
@@ -435,7 +437,7 @@
 </ul>
 </div>
 <div class="section" id="id6">
-<h3><span class="section-number">4.2.5.3.3. </span>中断处理流程<a class="headerlink" href="#id6" title="永久链接至标题">¶</a></h3>
+<h3><span class="section-number">4.3.5.3.3. </span>中断处理流程<a class="headerlink" href="#id6" title="永久链接至标题">¶</a></h3>
 <p>中断处理流程主要是：</p>
 <ol class="arabic simple">
 <li><p>逐个DMA通道的查看完成状态；</p></li>
@@ -444,9 +446,9 @@
 </div>
 </div>
 <div class="section" id="id7">
-<h2><span class="section-number">4.2.5.4. </span>数据结构设计<a class="headerlink" href="#id7" title="永久链接至标题">¶</a></h2>
+<h2><span class="section-number">4.3.5.4. </span>数据结构设计<a class="headerlink" href="#id7" title="永久链接至标题">¶</a></h2>
 <div class="section" id="struct-aic-dma-dev">
-<h3><span class="section-number">4.2.5.4.1. </span>struct aic_dma_dev<a class="headerlink" href="#struct-aic-dma-dev" title="永久链接至标题">¶</a></h3>
+<h3><span class="section-number">4.3.5.4.1. </span>struct aic_dma_dev<a class="headerlink" href="#struct-aic-dma-dev" title="永久链接至标题">¶</a></h3>
 <p>属于 HAL 层接口，记录DMA控制器的配置信息：</p>
 <div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="k">struct</span> <span class="nc">aic_dma_dev</span> <span class="p">{</span>
     <span class="k">struct</span> <span class="nc">aic_dma_task</span> <span class="n">task</span><span class="p">[</span><span class="n">TASK_MAX_NUM</span><span class="p">];</span>
@@ -461,7 +463,7 @@
 </div>
 </div>
 <div class="section" id="struct-aic-dma-chan">
-<h3><span class="section-number">4.2.5.4.2. </span>struct aic_dma_chan<a class="headerlink" href="#struct-aic-dma-chan" title="永久链接至标题">¶</a></h3>
+<h3><span class="section-number">4.3.5.4.2. </span>struct aic_dma_chan<a class="headerlink" href="#struct-aic-dma-chan" title="永久链接至标题">¶</a></h3>
 <p>属于 HAL 层接口，记录了一个 DMA 物理通道对应的通道号、寄存器基地址等信息：</p>
 <div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="k">struct</span> <span class="nc">aic_dma_chan</span> <span class="p">{</span>
     <span class="n">u8</span> <span class="n">ch_nr</span><span class="p">;</span> <span class="cm">/* drq port number */</span>
@@ -480,7 +482,7 @@
 </div>
 </div>
 <div class="section" id="struct-aic-dma-task">
-<h3><span class="section-number">4.2.5.4.3. </span>struct aic_dma_task<a class="headerlink" href="#struct-aic-dma-task" title="永久链接至标题">¶</a></h3>
+<h3><span class="section-number">4.3.5.4.3. </span>struct aic_dma_task<a class="headerlink" href="#struct-aic-dma-task" title="永久链接至标题">¶</a></h3>
 <p>DMA 控制器支持散列（Scatter Gather）的描述符参数形式，需要提前将参数分组（一个Buffer对应一组散列参数）打包到多个描述符中，这些描述符会组成一个链表，然后将这个链表的第一个描述符的物理地址传给DMA控制器。描述符组成的链表结构如下图：</p>
 <div class="figure align-center" id="id10">
 <img alt="../../../_images/dma_task.png" src="../../../_images/dma_task.png" />
@@ -513,7 +515,7 @@
 </div>
 </div>
 <div class="section" id="struct-dma-slave-config">
-<h3><span class="section-number">4.2.5.4.4. </span>struct dma_slave_config<a class="headerlink" href="#struct-dma-slave-config" title="永久链接至标题">¶</a></h3>
+<h3><span class="section-number">4.3.5.4.4. </span>struct dma_slave_config<a class="headerlink" href="#struct-dma-slave-config" title="永久链接至标题">¶</a></h3>
 <p>DAM 通道的配置信息，和 Linux DMA Engine 接口的定义保持一致。</p>
 <div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="k">struct</span> <span class="nc">dma_slave_config</span> <span class="p">{</span>
     <span class="k">enum</span> <span class="n">dma_transfer_direction</span> <span class="n">direction</span><span class="p">;</span>
@@ -530,10 +532,10 @@
 </div>
 </div>
 <div class="section" id="driver">
-<h2><span class="section-number">4.2.5.5. </span>Driver 层接口设计<a class="headerlink" href="#driver" title="永久链接至标题">¶</a></h2>
+<h2><span class="section-number">4.3.5.5. </span>Driver 层接口设计<a class="headerlink" href="#driver" title="永久链接至标题">¶</a></h2>
 <p>以下接口是遵循 Linux DMA Engine 子系统的标准接口。</p>
 <div class="section" id="dmaengine-slave-config">
-<h3><span class="section-number">4.2.5.5.1. </span>dmaengine_slave_config<a class="headerlink" href="#dmaengine-slave-config" title="永久链接至标题">¶</a></h3>
+<h3><span class="section-number">4.3.5.5.1. </span>dmaengine_slave_config<a class="headerlink" href="#dmaengine-slave-config" title="永久链接至标题">¶</a></h3>
 <table class="docutils align-default">
 <colgroup>
 <col style="width: 11%" />
@@ -565,7 +567,7 @@
 </table>
 </div>
 <div class="section" id="dmaengine-pause">
-<h3><span class="section-number">4.2.5.5.2. </span>dmaengine_pause<a class="headerlink" href="#dmaengine-pause" title="永久链接至标题">¶</a></h3>
+<h3><span class="section-number">4.3.5.5.2. </span>dmaengine_pause<a class="headerlink" href="#dmaengine-pause" title="永久链接至标题">¶</a></h3>
 <table class="docutils align-default">
 <colgroup>
 <col style="width: 17%" />
@@ -593,7 +595,7 @@
 </table>
 </div>
 <div class="section" id="dmaengine-resume">
-<h3><span class="section-number">4.2.5.5.3. </span>dmaengine_resume<a class="headerlink" href="#dmaengine-resume" title="永久链接至标题">¶</a></h3>
+<h3><span class="section-number">4.3.5.5.3. </span>dmaengine_resume<a class="headerlink" href="#dmaengine-resume" title="永久链接至标题">¶</a></h3>
 <table class="docutils align-default">
 <colgroup>
 <col style="width: 17%" />
@@ -621,7 +623,7 @@
 </table>
 </div>
 <div class="section" id="dmaengine-prep-dma-memcpy">
-<h3><span class="section-number">4.2.5.5.4. </span>dmaengine_prep_dma_memcpy<a class="headerlink" href="#dmaengine-prep-dma-memcpy" title="永久链接至标题">¶</a></h3>
+<h3><span class="section-number">4.3.5.5.4. </span>dmaengine_prep_dma_memcpy<a class="headerlink" href="#dmaengine-prep-dma-memcpy" title="永久链接至标题">¶</a></h3>
 <table class="docutils align-default">
 <colgroup>
 <col style="width: 15%" />
@@ -659,7 +661,7 @@
 </table>
 </div>
 <div class="section" id="dmaengine-prep-dma-device">
-<h3><span class="section-number">4.2.5.5.5. </span>dmaengine_prep_dma_device<a class="headerlink" href="#dmaengine-prep-dma-device" title="永久链接至标题">¶</a></h3>
+<h3><span class="section-number">4.3.5.5.5. </span>dmaengine_prep_dma_device<a class="headerlink" href="#dmaengine-prep-dma-device" title="永久链接至标题">¶</a></h3>
 <table class="docutils align-default">
 <colgroup>
 <col style="width: 15%" />
@@ -699,7 +701,7 @@
 </table>
 </div>
 <div class="section" id="dmaengine-prep-dma-cyclic">
-<h3><span class="section-number">4.2.5.5.6. </span>dmaengine_prep_dma_cyclic<a class="headerlink" href="#dmaengine-prep-dma-cyclic" title="永久链接至标题">¶</a></h3>
+<h3><span class="section-number">4.3.5.5.6. </span>dmaengine_prep_dma_cyclic<a class="headerlink" href="#dmaengine-prep-dma-cyclic" title="永久链接至标题">¶</a></h3>
 <table class="docutils align-default">
 <colgroup>
 <col style="width: 14%" />
@@ -739,7 +741,7 @@
 </table>
 </div>
 <div class="section" id="dma-async-issue-pending">
-<h3><span class="section-number">4.2.5.5.7. </span>dma_async_issue_pending<a class="headerlink" href="#dma-async-issue-pending" title="永久链接至标题">¶</a></h3>
+<h3><span class="section-number">4.3.5.5.7. </span>dma_async_issue_pending<a class="headerlink" href="#dma-async-issue-pending" title="永久链接至标题">¶</a></h3>
 <table class="docutils align-default">
 <colgroup>
 <col style="width: 16%" />
@@ -767,7 +769,7 @@
 </table>
 </div>
 <div class="section" id="dmaengine-terminate-async">
-<h3><span class="section-number">4.2.5.5.8. </span>dmaengine_terminate_async<a class="headerlink" href="#dmaengine-terminate-async" title="永久链接至标题">¶</a></h3>
+<h3><span class="section-number">4.3.5.5.8. </span>dmaengine_terminate_async<a class="headerlink" href="#dmaengine-terminate-async" title="永久链接至标题">¶</a></h3>
 <table class="docutils align-default">
 <colgroup>
 <col style="width: 16%" />
@@ -795,7 +797,7 @@
 </table>
 </div>
 <div class="section" id="dmaengine-tx-status">
-<h3><span class="section-number">4.2.5.5.9. </span>dmaengine_tx_status<a class="headerlink" href="#dmaengine-tx-status" title="永久链接至标题">¶</a></h3>
+<h3><span class="section-number">4.3.5.5.9. </span>dmaengine_tx_status<a class="headerlink" href="#dmaengine-tx-status" title="永久链接至标题">¶</a></h3>
 <table class="docutils align-default">
 <colgroup>
 <col style="width: 11%" />
@@ -828,7 +830,7 @@
 </div>
 </div>
 <div class="section" id="hal">
-<h2><span class="section-number">4.2.5.6. </span>HAL 层接口设计<a class="headerlink" href="#hal" title="永久链接至标题">¶</a></h2>
+<h2><span class="section-number">4.3.5.6. </span>HAL 层接口设计<a class="headerlink" href="#hal" title="永久链接至标题">¶</a></h2>
 <p>HAL 层的函数接口声明存放在 hal_dma.h 中，主要接口有：</p>
 <div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="kt">int</span> <span class="nf">hal_dma_chan_prep_memset</span><span class="p">(</span><span class="k">struct</span> <span class="nc">aic_dma_chan</span> <span class="o">*</span><span class="n">chan</span><span class="p">,</span>
                              <span class="kt">uint32_t</span> <span class="n">p_dest</span><span class="p">,</span>
@@ -870,9 +872,9 @@
 </div>
 </div>
 <div class="section" id="demo">
-<h2><span class="section-number">4.2.5.7. </span>Demo<a class="headerlink" href="#demo" title="永久链接至标题">¶</a></h2>
+<h2><span class="section-number">4.3.5.7. </span>Demo<a class="headerlink" href="#demo" title="永久链接至标题">¶</a></h2>
 <div class="section" id="mem-to-device">
-<h3><span class="section-number">4.2.5.7.1. </span>Mem to Device<a class="headerlink" href="#mem-to-device" title="永久链接至标题">¶</a></h3>
+<h3><span class="section-number">4.3.5.7.1. </span>Mem to Device<a class="headerlink" href="#mem-to-device" title="永久链接至标题">¶</a></h3>
 <p>SPI 驱动（详见 bsp/artinchip/hal/qspi/aic_hal_qspi.c）中调用了DMA进行数据传输，其使用过程可以当作Demo参考：</p>
 <div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="k">static</span> <span class="n">s32</span> <span class="n">qspi_tx_rx_dma</span><span class="p">(</span><span class="n">u32</span> <span class="n">base</span><span class="p">,</span> <span class="n">u8</span> <span class="o">*</span><span class="n">tx</span><span class="p">,</span> <span class="n">u32</span> <span class="n">txlen</span><span class="p">,</span> <span class="n">u8</span> <span class="o">*</span><span class="n">rx</span><span class="p">,</span> <span class="n">u32</span> <span class="n">rxlen</span><span class="p">)</span>
 <span class="p">{</span>
@@ -998,7 +1000,7 @@
 </div>
 </div>
 <div class="section" id="mem-to-mem">
-<h3><span class="section-number">4.2.5.7.2. </span>Mem to Mem<a class="headerlink" href="#mem-to-mem" title="永久链接至标题">¶</a></h3>
+<h3><span class="section-number">4.3.5.7.2. </span>Mem to Mem<a class="headerlink" href="#mem-to-mem" title="永久链接至标题">¶</a></h3>
 <p>本Demo是 test_dma_memcpy 的源码（bsp/examples/test-dma/test_dma.c），完成一次Mem to Mem的拷贝操作：</p>
 <div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="k">static</span> <span class="kt">void</span> <span class="n">dma_test_cb</span><span class="p">(</span><span class="kt">void</span> <span class="o">*</span><span class="n">param</span><span class="p">)</span>
 <span class="p">{</span>
@@ -1108,8 +1110,8 @@
           </div>
           <footer>
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
-        <a href="6_faq.html" class="btn btn-neutral float-right" title="4.2.6. 常见问题" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
-        <a href="4_test_guide.html" class="btn btn-neutral float-left" title="4.2.4. 测试指南" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="6_faq.html" class="btn btn-neutral float-right" title="4.3.6. 常见问题" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="4_test_guide.html" class="btn btn-neutral float-left" title="4.3.4. 测试指南" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
     </div>
 
   <hr/>

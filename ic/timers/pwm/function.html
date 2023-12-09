@@ -257,8 +257,7 @@
 <li class="toctree-l5"><a class="reference internal" href="#id2">11.4.2.1. 时基子模块</a></li>
 <li class="toctree-l5"><a class="reference internal" href="#id3">11.4.2.2. 计数比较子模块</a></li>
 <li class="toctree-l5"><a class="reference internal" href="#id4">11.4.2.3. 动作限定子模块</a></li>
-<li class="toctree-l5"><a class="reference internal" href="#id5">11.4.2.4. 死区子模块</a></li>
-<li class="toctree-l5"><a class="reference internal" href="#id6">11.4.2.5. 事件触发子模块</a></li>
+<li class="toctree-l5"><a class="reference internal" href="#id5">11.4.2.4. 事件触发子模块</a></li>
 </ul>
 </li>
 <li class="toctree-l4"><a class="reference internal" href="register.html">11.4.3. 寄存器定义</a></li>
@@ -358,61 +357,53 @@
             
   <div class="section" id="id1">
 <h1><span class="section-number">11.4.2. </span>功能描述<a class="headerlink" href="#id1" title="永久链接至标题">¶</a></h1>
-<p>每个PWM信号发生器包含5个子模块，分别是时基（Time-Base）子模块、计数比较(Counter-Compare)子模块、动作限定(Action-Qualifier)子模块、死区(Dead-Band)子模块、事件触发(Event-Trigger)子模块，
+<p>每个PWM信号发生器包含4个子模块，分别是时基（Time-Base）子模块、计数比较(Counter-Compare)子模块、动作限定(Action-Qualifier)子模块、事件触发(Event-Trigger)子模块，
 每个子模块可以通过软件配置实现特定功能。</p>
-<div class="figure align-center" id="id7">
+<div class="figure align-center" id="id6">
 <img alt="../../../_images/pwm_submodule_blockdiagram.png" src="../../../_images/pwm_submodule_blockdiagram.png" />
-<p class="caption"><span class="caption-number">图 11.4 </span><span class="caption-text">PWM信号发生器框图</span><a class="headerlink" href="#id7" title="永久链接至图片">¶</a></p>
+<p class="caption"><span class="caption-number">图 11.4 </span><span class="caption-text">PWM信号发生器框图</span><a class="headerlink" href="#id6" title="永久链接至图片">¶</a></p>
 </div>
 <div class="section" id="id2">
 <h2><span class="section-number">11.4.2.1. </span>时基子模块<a class="headerlink" href="#id2" title="永久链接至标题">¶</a></h2>
 <p>每个PWM信号发生器都有一个自己的时基子模块，用以确定PWM信号发生器所有事件的时序。</p>
-<div class="figure align-center" id="id8">
+<div class="figure align-center" id="id7">
 <img alt="../../../_images/pwm_submodule_tb_reg.png" src="../../../_images/pwm_submodule_tb_reg.png" />
-<p class="caption"><span class="caption-number">图 11.5 </span><span class="caption-text">时基子模块信号和寄存器</span><a class="headerlink" href="#id8" title="永久链接至图片">¶</a></p>
+<p class="caption"><span class="caption-number">图 11.5 </span><span class="caption-text">时基子模块信号和寄存器</span><a class="headerlink" href="#id7" title="永久链接至图片">¶</a></p>
 </div>
 <p>PWM信号频率由时基周期寄存器TBPRD和时基计数器模式决定，下图给出了时基计数器在递增模式、递减模式、增减模式下PWM周期和频率的关系。
 周期设置为4（TBPRD=4），每一步增加时间由时基时钟TBCLK决定，时基时钟由系统时钟SYSCLKOUT分频得到。</p>
-<div class="figure align-center" id="id9">
+<div class="figure align-center" id="id8">
 <img alt="../../../_images/pwm_submodule_tb_prd.png" src="../../../_images/pwm_submodule_tb_prd.png" />
-<p class="caption"><span class="caption-number">图 11.6 </span><span class="caption-text">时基频率和周期</span><a class="headerlink" href="#id9" title="永久链接至图片">¶</a></p>
+<p class="caption"><span class="caption-number">图 11.6 </span><span class="caption-text">时基频率和周期</span><a class="headerlink" href="#id8" title="永久链接至图片">¶</a></p>
 </div>
 </div>
 <div class="section" id="id3">
 <h2><span class="section-number">11.4.2.2. </span>计数比较子模块<a class="headerlink" href="#id3" title="永久链接至标题">¶</a></h2>
 <p>计数比较子模块将时基计数器的值作为输入，该值不断与计数比较器A（CMPA）和计数比较器B（CMPB）寄存器的值作比较，
 当时基计数器的值等于任意一个比较寄存器的值时，计数比较单元将产生一个相应的事件。</p>
-<div class="figure align-center" id="id10">
+<div class="figure align-center" id="id9">
 <img alt="../../../_images/pwm_submodule_cm_reg.png" src="../../../_images/pwm_submodule_cm_reg.png" />
-<p class="caption"><span class="caption-number">图 11.7 </span><span class="caption-text">计数比较子模块信号和寄存器</span><a class="headerlink" href="#id10" title="永久链接至图片">¶</a></p>
+<p class="caption"><span class="caption-number">图 11.7 </span><span class="caption-text">计数比较子模块信号和寄存器</span><a class="headerlink" href="#id9" title="永久链接至图片">¶</a></p>
 </div>
 </div>
 <div class="section" id="id4">
 <h2><span class="section-number">11.4.2.3. </span>动作限定子模块<a class="headerlink" href="#id4" title="永久链接至标题">¶</a></h2>
 <p>动作限定子模块用于决定哪个事件被用来转换为哪种动作类型，从而在PWMxA和PWNxB输出要求的波形。</p>
-<div class="figure align-center" id="id11">
+<div class="figure align-center" id="id10">
 <img alt="../../../_images/pwm_submodule_aq_inout.png" src="../../../_images/pwm_submodule_aq_inout.png" />
-<p class="caption"><span class="caption-number">图 11.8 </span><span class="caption-text">动作限定子模块的输入和输出</span><a class="headerlink" href="#id11" title="永久链接至图片">¶</a></p>
+<p class="caption"><span class="caption-number">图 11.8 </span><span class="caption-text">动作限定子模块的输入和输出</span><a class="headerlink" href="#id10" title="永久链接至图片">¶</a></p>
 </div>
-<div class="figure align-center" id="id12">
+<div class="figure align-center" id="id11">
 <img alt="../../../_images/pwm_submodule_aq_actions.png" src="../../../_images/pwm_submodule_aq_actions.png" />
-<p class="caption"><span class="caption-number">图 11.9 </span><span class="caption-text">PWMxA和PWMxB可能的动作限定器动作输出</span><a class="headerlink" href="#id12" title="永久链接至图片">¶</a></p>
+<p class="caption"><span class="caption-number">图 11.9 </span><span class="caption-text">PWMxA和PWMxB可能的动作限定器动作输出</span><a class="headerlink" href="#id11" title="永久链接至图片">¶</a></p>
 </div>
 </div>
 <div class="section" id="id5">
-<h2><span class="section-number">11.4.2.4. </span>死区子模块<a class="headerlink" href="#id5" title="永久链接至标题">¶</a></h2>
-<p>死区子模块支持独立上升沿延时和下降沿延时控制，延时时间通过DBRED和DBFED寄存器设置。</p>
-<div class="figure align-center" id="id13">
-<img alt="../../../_images/pwm_submodule_db_config.png" src="../../../_images/pwm_submodule_db_config.png" />
-<p class="caption"><span class="caption-number">图 11.10 </span><span class="caption-text">死区子模块的配置选项</span><a class="headerlink" href="#id13" title="永久链接至图片">¶</a></p>
-</div>
-</div>
-<div class="section" id="id6">
-<h2><span class="section-number">11.4.2.5. </span>事件触发子模块<a class="headerlink" href="#id6" title="永久链接至标题">¶</a></h2>
+<h2><span class="section-number">11.4.2.4. </span>事件触发子模块<a class="headerlink" href="#id5" title="永久链接至标题">¶</a></h2>
 <p>事件触发子模块管理由时基子模块和计数比较子模块产生的事件，产生一个中断到CPU。</p>
-<div class="figure align-center" id="id14">
+<div class="figure align-center" id="id12">
 <img alt="../../../_images/pwm_submodule_et_connect.png" src="../../../_images/pwm_submodule_et_connect.png" />
-<p class="caption"><span class="caption-number">图 11.11 </span><span class="caption-text">事件触发子模块与中断控制器的互连</span><a class="headerlink" href="#id14" title="永久链接至图片">¶</a></p>
+<p class="caption"><span class="caption-number">图 11.10 </span><span class="caption-text">事件触发子模块与中断控制器的互连</span><a class="headerlink" href="#id12" title="永久链接至图片">¶</a></p>
 </div>
 </div>
 </div>

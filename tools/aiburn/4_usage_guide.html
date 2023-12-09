@@ -458,11 +458,15 @@
 </div>
 <div class="section" id="id4">
 <h2><span class="section-number">1.2.3. </span>烧写模式<a class="headerlink" href="#id4" title="永久链接至标题">¶</a></h2>
-<p>AiBurn 需要检测到终端设备处于烧写模式才会开烧写功能，终端设备进入烧写模式有三种方法：</p>
+<p>开发板需要在刷机模式下才能开始刷机，开发板进入烧写模式有很多种方法：</p>
 <ul class="simple">
-<li><p>终端设备为空片，则上电直接进入 USB 烧写模式</p></li>
-<li><p>终端设备非空片，如果能进入 U-Boot ，则 U-Boot 中可以使用 aicupg usb 0 命令进入烧写模式</p></li>
-<li><p>终端设备非空片，如果能进入 Linux，则依次执行命令 aicupg ，系统直接重启后进入烧写模式</p></li>
+<li><p>开发板设备为空片，则上电直接进入刷机模式</p></li>
+<li><p>短路烧录引脚（PA0）到地，则上电直接进入刷机模式</p></li>
+<li><p>开发板如果有刷机按键的，则按住刷机键上电或者 reset，则进入刷机模式，开发板上标注为 uboot 按键</p></li>
+<li><p>短路存储介质的 command、clk等引脚到地，造成读数据失败，则上电直接进入刷机模式，如短路 SPINAND 的 4、5 脚</p></li>
+<li><p>如果开发板能进入 U-Boot ，在开机的过程中在连接正常的串口终端窗口按住 ctrl + c, 则系统会进入 U-Boot 控制台，输入 aicupg usb 0 命令可以进入烧写模式</p></li>
+<li><p>如果开发板能能进入 Linux 控制台，输入 aicupg 命令，系统可以重启后进入烧写模式</p></li>
+<li><p>如果开发板能能进入 Linux 系统，并且 adb 服务开启，刷机工具会检查到设备并使能 “开始” 按钮，可以直接点击 “开始” 刷机</p></li>
 </ul>
 </div>
 <div class="section" id="id5">

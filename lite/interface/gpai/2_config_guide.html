@@ -272,11 +272,13 @@
 <li class="toctree-l3"><a class="reference internal" href="../spi/index.html">7.9. QSPI 使用指南</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../uart/index.html">7.10. UART 使用指南</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../mac/index.html">7.11. MAC 使用指南</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../usb/index.html">7.12. USB 使用指南</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="../../security/index.html">8. 安全</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../peripheral/index.html">9. 外设</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../app/index.html">10. 应用</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../bringup/index.html">11. BringUp</a></li>
 </ul>
 </li>
 </ul>
@@ -363,16 +365,23 @@
 <h1><span class="section-number">7.3.2. </span>参数配置<a class="headerlink" href="#id1" title="永久链接至标题">¶</a></h1>
 <div class="section" id="id2">
 <h2><span class="section-number">7.3.2.1. </span>驱动配置<a class="headerlink" href="#id2" title="永久链接至标题">¶</a></h2>
-<p>在 Luban-Lite 根目录下执行 <code class="docutils literal notranslate"><span class="pre">scons</span> <span class="pre">--menuconfig</span></code>，进入menuconfig的功能配置界面，按如下选择（配置中只打开了 GPAI2和GPAI7，作为示例）：</p>
+<p>在 Luban-Lite 根目录下执行 <code class="docutils literal notranslate"><span class="pre">scons</span> <span class="pre">--menuconfig</span></code>，进入menuconfig的功能配置界面，通道参数默认采用周期模式，采样周期为1ms，按如下选择（配置中只打开了 GPAI2和GPAI7，作为示例）：</p>
 <div class="highlight-kconfig notranslate"><div class="highlight"><pre><span></span>Board options  ---&gt;
-    [ ] Using GPAI0
-    [ ] Using GPAI1
-    [*] Using GPAI2
-    [ ] Using GPAI3
-    [ ] Using GPAI4
-    [ ] Using GPAI5
-    [ ] Using GPAI6
-    [*] Using GPAI7
+  [*] Using GPAI
+    GPAI options  ---&gt;
+        [ ] Using GPAI0
+        [ ] Using GPAI1
+        [*] Using GPAI2
+        [ ] Using GPAI3
+        [ ] Using GPAI4
+        [ ] Using GPAI5
+        [ ] Using GPAI6
+        [*] Using GPAI7
+        GPAI2 Parameter  ---&gt;
+        GPAI7 Parameter  ---&gt;
+            obtaning data mode <span class="p">(</span>CPU interrupt mode)  ---&gt;
+            period mode <span class="p">(</span>period mode)
+            <span class="p">(</span><span class="mi">1</span><span class="p">)</span> sample period time <span class="p">(</span>ms)
 </pre></div>
 </div>
 <p>当使用 RT-Thread 内核的时候，GPAI 驱动需要依赖RT-Thread的 ADC 设备驱动框架，也是在menuconfig界面中打开：</p>

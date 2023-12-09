@@ -283,6 +283,7 @@
 <li class="toctree-l2"><a class="reference internal" href="../../../../security/index.html">8. 安全</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../../../peripheral/index.html">9. 外设</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../../../app/index.html">10. 应用</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../bringup/index.html">11. BringUp</a></li>
 </ul>
 </li>
 </ul>
@@ -381,47 +382,59 @@
 </div>
 <div class="section" id="lvds">
 <h2><span class="section-number">6.2.2.2.1. </span>LVDS 参数<a class="headerlink" href="#lvds" title="永久链接至标题">¶</a></h2>
-<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="cm">/* lvds sync mode enable */</span>
-<span class="cp">#define AIC_LVDS_SYNC_MODE_EN   1</span>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="cm">/* lvds link swap enable, swap lvds link0 and link1 */</span>
+<span class="cp">#define AIC_LVDS_LINK_SWAP_EN   0</span>
 
-<span class="cm">/* lvds swap enable, swap lvds link0 and link1 */</span>
-<span class="cp">#define AIC_LVDS_SWAP_EN    0</span>
+<span class="cm">/**</span>
+<span class="cm"> * lvds channel output order</span>
+<span class="cm"> *</span>
+<span class="cm"> * works on both link0 and link1 (if exists)</span>
+<span class="cm"> *</span>
+<span class="cm"> * default D3 CK D2 D1 D0</span>
+<span class="cm"> *          4  3  2  1  0</span>
+<span class="cm"> */</span>
+<span class="cp">#define AIC_LVDS_LINES      0x43210</span>
 
-<span class="cm">/* lvds data channel swap */</span>
-<span class="cp">#define AIC_LVDS_SWAP       0x0</span>
-
-<span class="cm">/* lvds channel polarities */</span>
+<span class="cm">/**</span>
+<span class="cm"> * lvds channel polarities, works on both link0 and link1 (if exists)</span>
+<span class="cm"> */</span>
 <span class="cp">#define AIC_LVDS_POL        0x0</span>
 
-<span class="cm">/* lvds channel phy */</span>
+<span class="cm">/**</span>
+<span class="cm"> * lvds channel phy config, works on both link0 and link1 (if exists)</span>
+<span class="cm"> */</span>
 <span class="cp">#define AIC_LVDS_PHY        0xFA</span>
 </pre></div>
 </div>
 <ul>
 <li><p>AIC_LVDS_SYNC_MODE_EN</p>
 <blockquote>
-<div><p>开启LVDS同步前端信号模式。 防止前端给到半帧数据时打开LVDS模块，出现显示异常，不推荐关闭。</p>
+<div><p>开启 lvds 同步前端信号模式。 防止前端给到半帧数据时打开LVDS模块，出现显示异常，不推荐关闭。</p>
 </div></blockquote>
 </li>
-<li><p>AIC_LVDS_SWAP_EN</p>
+<li><p>AIC_LVDS_LINK_SWAP_EN</p>
 <blockquote>
-<div><p>LVDS互换使能，link 0 通道与 link 1 通道输出互换</p>
+<div><p>lvds link 互换使能，link 0 通道与 link 1 通道输出互换</p>
 </div></blockquote>
 </li>
-<li><p>AIC_LVDS_SWAP</p>
+<li><p>AIC_LVDS_LINES</p>
 <blockquote>
-<div><p>LVDS link 通道内输出选择。如果设置为 0 ，默认通道输出为 D0 D1 D2 CLK D3。</p>
-<p>对应芯片手册 lvds_0_swap 和 lvds_1_swap 寄存器的值。推荐结合芯片手册进行修改。</p>
+<div><p>lvds link 通道内输出选择。控制 lvds link 内部 5 个通道的差分信号输出，允许 5 对差分信号任意互换</p>
+<p>5 个通道分别为 D3 CK D2 D1 D0，缺省值为：0x43210</p>
+<p>0x43210 表示 D3 通道输出 D3，CK 通道输出 CK，D2 通道输出 D2，D1 通道输出 D1，D0 通道输出 D0</p>
+<p>0x01234 表示 D3 通道输出 D0，CK 通道输出 D1，D2 通道输出 D2，D1 通道输出 CK，D0 通道输出 D3</p>
 </div></blockquote>
 </li>
 <li><p>AIC_LVDS_POL</p>
 <blockquote>
-<div><p>LVDS 通道极性控制，对应芯片手册 LVDS_0_POL_CTL 和 LVDS_1_POL_CTL 寄存器的数值，推荐结合芯片手册进行修改。</p>
+<div><p>lvds 通道极性控制，低 5 bit 分别控制 lvds 五个通道差分信号的极性。通道顺序为 D3 CK D2 D1 D0</p>
+<p>0x3 表示 D1 D0 通道极性反相，0x8 表示 CK 通道反相</p>
+<p>AIC_LVDS_POL 受 AIC_LVDS_LINES 影响，如果 CK 通道选择输出 D0，则该 bit 控制 D0 相位，0x8 表示 D0 反相</p>
 </div></blockquote>
 </li>
 <li><p>AIC_LVDS_PHY</p>
 <blockquote>
-<div><p>LVDS 物理层控制，对应芯片手册 LVDS_0_PHY_CTL 和 LVDS_1_PHY_CTL 寄存器的数值，推荐结合芯片手册进行修改。</p>
+<div><p>lvds 物理层控制，对应芯片手册 LVDS_0_PHY_CTL 和 LVDS_1_PHY_CTL 寄存器的数值，推荐结合芯片手册进行修改。</p>
 </div></blockquote>
 </li>
 </ul>

@@ -1,0 +1,935 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="zh-CN" >
+<head>
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>7.12.1. USB 简介 &mdash; AIC文档中心 v1.0 文档</title>
+  
+
+  
+  <link rel="stylesheet" href="../../../_static/css/theme_overrides.css" type="text/css" />
+  <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+
+  
+  
+    <link rel="shortcut icon" href="../../../_static/aic_logo.png"/>
+  
+
+  
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../../" src="../../../_static/documentation_options.js"></script>
+        <script src="../../../_static/jquery.js"></script>
+        <script src="../../../_static/underscore.js"></script>
+        <script src="../../../_static/doctools.js"></script>
+        <script src="../../../_static/translations.js"></script>
+    
+    <script type="text/javascript" src="../../../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="索引" href="../../../genindex.html" />
+    <link rel="search" title="搜索" href="../../../search.html" />
+    <link rel="next" title="7.12.2. USB 设备枚举简介" href="1_introd_usb_enum.html" />
+    <link rel="prev" title="7.12. USB 使用指南" href="index.html" />
+    <script>
+        $(function () {
+/**
+            var $body = $(".rst-content");
+            $body.attr("oncontextmenu", "return false"); 
+            $body.attr("ondragstart", "return false");
+            $body.attr("onselectstart", "return false");
+            $body.attr("onbeforecopy", "return false");
+
+            if (document.selection) {
+                $body.attr("onselect", "document.selection.empty()");
+                $body.attr("oncopy", "document.selection.empty()");
+                $body.attr("onmouseup", "document.selection.empty()");
+            } else {
+                $body.attr("onselect", "document.getSelection().removeAllRanges()");
+                $body.attr("oncopy", "document.getSelection().removeAllRanges()");
+                $body.attr("onmouseup", "document.getSelection().removeAllRanges()");
+            }
+
+            $(".wy-menu-vertical .toctree-l4.current .current.toctree-l5 > ul").wrap("<div></div>");
+
+            $(document).keydown(function (e) {
+                var $div = $(".wy-menu-vertical .toctree-l4.current .current.toctree-l5 > div");
+                var scrollLeft = $div.scrollLeft();
+                var step = 50;
+                var code = e.keyCode;
+                switch (code) {
+                    case 37:
+                        $div.scrollLeft(scrollLeft - step);
+                        break;
+                    case 39:
+                        $div.scrollLeft(scrollLeft + step);
+                        break;
+                    case 65:
+                    case 67:
+                    case 83:
+                    case 86:
+                        var ctrlKey = navigator.platform.match("Mac") ? e.metaKey : e.ctrlKey;
+                        if (ctrlKey) {
+                            e.preventDefault();
+                            window.event.returnValue = false;
+                        }
+                        break;
+                    case 123:
+                        e.preventDefault();
+                        window.event.returnValue = false;
+                        break;
+                }
+	    });  **/
+
+            watermark({
+                watermark_id: ".wy-nav-content",
+                watermark_txt: "ArtInChip",
+                watermark_font: "微软雅黑",
+                watermark_fontsize: "100px",
+                watermark_width: 600,
+                watermark_height: 300,
+                watermark_alpha: 0.1,
+                watermark_rows: 0,
+                watermark_y: 100,
+                watermark_x_space: 0,
+                watermark_y_space: 100
+            });
+
+        });
+
+        function watermark(settings) {
+            var defaultSettings = {
+                watermark_id: "body",
+                watermark_txt: "text",
+                watermark_x: 20,
+                watermark_y: 20,
+                watermark_rows: 20,
+                watermark_cols: 20,
+                watermark_x_space: 100,
+                watermark_y_space: 50,
+                watermark_color: '#aaa',
+                watermark_alpha: 0.4,
+                watermark_fontsize: '15px',
+                watermark_font: 'Times New Roman',
+                watermark_width: 210,
+                watermark_height: 80,
+                watermark_angle: 20
+            };
+
+            for (key in settings) {
+                defaultSettings[key] = settings[key];
+            }
+
+            var oTemp = document.createDocumentFragment();
+
+            var $container = $(defaultSettings.watermark_id);
+
+            var page_width = $container.width();
+            var col_width = defaultSettings.watermark_width + defaultSettings.watermark_x_space;
+            defaultSettings.watermark_cols = page_width / col_width;
+
+            var page_height = $container.height();
+            var row_height = defaultSettings.watermark_height + defaultSettings.watermark_y_space;
+            defaultSettings.watermark_rows = page_height / row_height;
+
+            var x, y;
+            for (var i = 0; i < defaultSettings.watermark_rows; i++) {
+                y = defaultSettings.watermark_y + (defaultSettings.watermark_y_space + defaultSettings.watermark_height) * i;
+                for (var j = 0; j < defaultSettings.watermark_cols; j++) {
+                    x = defaultSettings.watermark_x + (defaultSettings.watermark_width + defaultSettings.watermark_x_space) * j;
+                    var mask_div = document.createElement('div');
+                    mask_div.id = 'mask_div' + i + j;
+                    mask_div.className = 'mask_div';
+                    mask_div.appendChild(document.createTextNode(defaultSettings.watermark_txt));
+
+                    mask_div.style.webkitTransform = "rotate(-" + defaultSettings.watermark_angle + "deg)";
+                    mask_div.style.MozTransform = "rotate(-" + defaultSettings.watermark_angle + "deg)";
+                    mask_div.style.msTransform = "rotate(-" + defaultSettings.watermark_angle + "deg)";
+                    mask_div.style.OTransform = "rotate(-" + defaultSettings.watermark_angle + "deg)";
+                    mask_div.style.transform = "rotate(-" + defaultSettings.watermark_angle + "deg)";
+                    mask_div.style.visibility = "";
+                    mask_div.style.position = "absolute";
+                    mask_div.style.left = x + 'px';
+                    mask_div.style.top = y + 'px';
+                    mask_div.style.overflow = "hidden";
+                    mask_div.style.zIndex = "9999";
+
+                    mask_div.style.pointerEvents = 'none';
+                    mask_div.style.opacity = defaultSettings.watermark_alpha;
+                    mask_div.style.fontSize = defaultSettings.watermark_fontsize;
+                    mask_div.style.fontFamily = defaultSettings.watermark_font;
+                    mask_div.style.color = defaultSettings.watermark_color;
+                    mask_div.style.textAlign = "center";
+                    mask_div.style.width = defaultSettings.watermark_width + 'px';
+                    mask_div.style.height = defaultSettings.watermark_height + 'px';
+                    mask_div.style.display = "block";
+                    oTemp.appendChild(mask_div);
+                };
+            };
+            $container.append(oTemp);
+        }
+    </script>
+
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../../index.html" class="icon icon-home"> AIC文档中心
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../product/index.html">产品简介</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../quick-start/index.html">快速入门</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../datasheet/index.html">数据手册</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../ic/index.html">芯片手册</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../hw/index.html">硬件指南</a></li>
+</ul>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="../../index.html">RTOS SDK</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../../env/index.html">1. 编译准备</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../sdk/index.html">2. 使用指南</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../boot/index.html">3. 启动引导</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../system/index.html">4. 系统</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../memory/index.html">5. 存储</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../media/index.html">6. 多媒体</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="../index.html">7. 接口</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="../can/index.html">7.1. CAN 使用指南</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../cir/index.html">7.2. CIR 使用指南</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../gpai/index.html">7.3. GPAI 使用指南</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../gpio/index.html">7.4. GPIO 使用指南</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../i2c/index.html">7.5. I2C 使用指南</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../psadc/index.html">7.6. PSADC 使用指南</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../pwm/index.html">7.7. PWM 使用指南</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../rtp/index.html">7.8. RTP 使用指南</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../spi/index.html">7.9. QSPI 使用指南</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../uart/index.html">7.10. UART 使用指南</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../mac/index.html">7.11. MAC 使用指南</a></li>
+<li class="toctree-l3 current"><a class="reference internal" href="index.html">7.12. USB 使用指南</a><ul class="current">
+<li class="toctree-l4 current"><a class="current reference internal" href="#">7.12.1. USB 简介</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="#id1">7.12.1.1. USB 发展历史</a><ul>
+<li class="toctree-l6"><a class="reference internal" href="#usb-1-0-2-0">7.12.1.1.1. USB 1.0/2.0</a></li>
+<li class="toctree-l6"><a class="reference internal" href="#usb-3-0">7.12.1.1.2. USB 3.0</a></li>
+<li class="toctree-l6"><a class="reference internal" href="#id2">7.12.1.1.3. 速度识别</a></li>
+<li class="toctree-l6"><a class="reference internal" href="#otg">7.12.1.1.4. OTG</a></li>
+<li class="toctree-l6"><a class="reference internal" href="#phy">7.12.1.1.5. phy 总线</a></li>
+<li class="toctree-l6"><a class="reference internal" href="#id3">7.12.1.1.6. 传输编码方式</a></li>
+</ul>
+</li>
+<li class="toctree-l5"><a class="reference internal" href="#id4">7.12.1.2. 总线拓扑</a><ul>
+<li class="toctree-l6"><a class="reference internal" href="#device">7.12.1.2.1. Device 内部的逻辑关系</a></li>
+<li class="toctree-l6"><a class="reference internal" href="#compound-composite-device">7.12.1.2.2. Compound / Composite Device</a></li>
+<li class="toctree-l6"><a class="reference internal" href="#hub">7.12.1.2.3. Hub</a></li>
+<li class="toctree-l6"><a class="reference internal" href="#configure-descriptor">7.12.1.2.4. Configure Descriptor</a></li>
+</ul>
+</li>
+<li class="toctree-l5"><a class="reference internal" href="#id5">7.12.1.3. 总线调度</a><ul>
+<li class="toctree-l6"><a class="reference internal" href="#frames-microframes">7.12.1.3.1. Frames / Microframes</a></li>
+<li class="toctree-l6"><a class="reference internal" href="#bulk-transactions">7.12.1.3.2. Bulk Transactions</a></li>
+<li class="toctree-l6"><a class="reference internal" href="#control-transfers">7.12.1.3.3. Control Transfers</a></li>
+<li class="toctree-l6"><a class="reference internal" href="#interrupt-transactions">7.12.1.3.4. Interrupt Transactions</a></li>
+<li class="toctree-l6"><a class="reference internal" href="#isochronous-transactions">7.12.1.3.5. Isochronous Transactions</a></li>
+<li class="toctree-l6"><a class="reference internal" href="#usb-pcie">7.12.1.3.6. USB 和 PCIE 调度的区别</a></li>
+</ul>
+</li>
+<li class="toctree-l5"><a class="reference internal" href="#id6">7.12.1.4. 传输格式</a><ul>
+<li class="toctree-l6"><a class="reference internal" href="#packet">7.12.1.4.1. Packet</a></li>
+</ul>
+</li>
+<li class="toctree-l5"><a class="reference internal" href="#id7">7.12.1.5. 通讯模型</a></li>
+<li class="toctree-l5"><a class="reference internal" href="#id8">7.12.1.6. 参考资料</a></li>
+</ul>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="1_introd_usb_enum.html">7.12.2. USB 设备枚举简介</a></li>
+<li class="toctree-l4"><a class="reference internal" href="2_config_guide.html">7.12.3. 配置指南</a></li>
+<li class="toctree-l4"><a class="reference internal" href="3_debug_guide.html">7.12.4. 调试指南</a></li>
+<li class="toctree-l4"><a class="reference internal" href="4_test_guide.html">7.12.5. 测试指南</a></li>
+<li class="toctree-l4"><a class="reference internal" href="5_design_guide.html">7.12.6. 设计说明</a></li>
+<li class="toctree-l4"><a class="reference internal" href="6_faq.html">7.12.7. 常见问题</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../security/index.html">8. 安全</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../peripheral/index.html">9. 外设</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../app/index.html">10. 应用</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../bringup/index.html">11. BringUp</a></li>
+</ul>
+</li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../baremetal/index.html">Baremetal</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../tools/index.html">工具指南</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../aboutus/index.html">关于我们</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../index.html">AIC文档中心</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+          <li><a href="../../index.html">RTOS SDK</a> &raquo;</li>
+        
+          <li><a href="../index.html"><span class="section-number">7. </span>接口</a> &raquo;</li>
+        
+          <li><a href="index.html"><span class="section-number">7.12. </span>USB 使用指南</a> &raquo;</li>
+        
+      <li><span class="section-number">7.12.1. </span>USB 简介</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="usb">
+<h1><span class="section-number">7.12.1. </span>USB 简介<a class="headerlink" href="#usb" title="永久链接至标题">¶</a></h1>
+<div class="section" id="id1">
+<h2><span class="section-number">7.12.1.1. </span>USB 发展历史<a class="headerlink" href="#id1" title="永久链接至标题">¶</a></h2>
+<p>USB(Universal Serial
+Bus)通用串行总线是非常成功的一种总线技术，应用场景很广、发展也非常迅速。到现在一共经历了以下版本：</p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 18%" />
+<col style="width: 27%" />
+<col style="width: 10%" />
+<col style="width: 22%" />
+<col style="width: 22%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Version</p></th>
+<th class="head"><p>App</p></th>
+<th class="head"><p>Speed</p></th>
+<th class="head"><p>Direction</p></th>
+<th class="head"><p>Data Line</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>USB 1.0</p></td>
+<td><p>低速 Low Speed</p></td>
+<td><p>1.5Mbps</p></td>
+<td><p>Half 半双工模式</p></td>
+<td><p>1对差分线 D+/D1</p></td>
+</tr>
+<tr class="row-odd"><td><p>USB 1.1</p></td>
+<td><p>全速 Full Speed</p></td>
+<td><p>12Mbps</p></td>
+<td><p>Half 半双工模式</p></td>
+<td><p>1对差分线 D+/D1</p></td>
+</tr>
+<tr class="row-even"><td><p>USB 2.0</p></td>
+<td><p>高速 Hi-Speed</p></td>
+<td><p>480Mbps</p></td>
+<td><p>Half 半双工模式</p></td>
+<td><p>1对差分线 D+/D1</p></td>
+</tr>
+<tr class="row-odd"><td><p>USB 3.1 Gen1</p></td>
+<td><p>超高速 SuperSpeed</p></td>
+<td><p>5Gbps</p></td>
+<td><p>Full 双工模式</p></td>
+<td><p>2对差分线</p></td>
+</tr>
+<tr class="row-even"><td><p>USB 3.1 Gen2</p></td>
+<td><p>超高速 SuperSpeed+</p></td>
+<td><p>10Gbps</p></td>
+<td><p>Full 双工模式</p></td>
+<td><p>2对差分线</p></td>
+</tr>
+<tr class="row-odd"><td><p>USB 3.2</p></td>
+<td><p>超高速 SuperSpeed+</p></td>
+<td><p>20Gbps</p></td>
+<td><p>Full 双工模式</p></td>
+<td><p>4对差分线</p></td>
+</tr>
+<tr class="row-even"><td><p>USB 4.0</p></td>
+<td><p>超高速 SuperSpeed+</p></td>
+<td><p>40Gbps</p></td>
+<td><p>Full 双工模式</p></td>
+<td><p>4对差分线</p></td>
+</tr>
+</tbody>
+</table>
+<p><img alt="image0" src="../../../_images/usb_history.jpg" /></p>
+<div class="section" id="usb-1-0-2-0">
+<h3><span class="section-number">7.12.1.1.1. </span>USB 1.0/2.0<a class="headerlink" href="#usb-1-0-2-0" title="永久链接至标题">¶</a></h3>
+<p>在 USB 1.0/2.0 时期只需要用到 4 根线：1 根电源线、1 根地线、1 对差分数据线。因为只有 1 条数据通路，所以只能是半双工的，同一时间只能是接收或者发送数据。</p>
+<p><img alt="image1" src="../../../_images/usb_port_12_pin.png" /></p>
+<p>使用 <code class="docutils literal notranslate"><span class="pre">Type</span> <span class="pre">A</span></code> 和 <code class="docutils literal notranslate"><span class="pre">Type</span> <span class="pre">B</span></code> 型的接口：</p>
+<p><img alt="image2" src="../../../_images/usb_port_12.png" /></p>
+<p>还有一系列小尺寸的变种：</p>
+<p><img alt="image3" src="../../../_images/usb_port_12_all.png" /></p>
+</div>
+<div class="section" id="usb-3-0">
+<h3><span class="section-number">7.12.1.1.2. </span>USB 3.0<a class="headerlink" href="#usb-3-0" title="永久链接至标题">¶</a></h3>
+<p>在 USB 3.0 时代从两个方向来增加速度：</p>
+<ul class="simple">
+<li><p>增加传输的时钟速率。速率从 480M 增加到了 5G，高速信号会给 PCB 走线、EMC、线缆带来不小的压力。</p></li>
+<li><p>增加差分数据通路的数量。首先发明了改进型的 USB3.0 <code class="docutils literal notranslate"><span class="pre">Type</span> <span class="pre">A</span></code> 接口，在原有 4 线的基础上再增加了 5 条线：</p></li>
+</ul>
+<p><img alt="image4" src="../../../_images/usb_port_3_pin.png" /></p>
+<p>可以看到增加的5条线分别为 1 条地线和 2 对差分数据线。因为有了 2 条数据通路，所以可以双工，同一时间能同时接收和发送数据。在工作在 USB 3.0 模式时，原来的 D+/D- 差分线是不使用的。</p>
+<p><img alt="image5" src="../../../_images/usb_port_3.png" /></p>
+<p>上图是 USB3.0 <code class="docutils literal notranslate"><span class="pre">Type</span> <span class="pre">A</span></code> 接口示意图，注意新增的 5条线已断针的形式隐藏在后面，这样的设计是为了和 USB 2.0 兼容。但是颜色改成了蓝色，以示区别。</p>
+<p>在 USB 3.0 还出现了一种全新的接口类型 <code class="docutils literal notranslate"><span class="pre">Type</span> <span class="pre">C</span></code> 接口，它带来了以下好处：</p>
+<ul class="simple">
+<li><p>接口线数量猛增到了 24 线，其中数据通路在 <code class="docutils literal notranslate"><span class="pre">D+/D-</span></code> 之外再提供了 4 条差分数据线。</p></li>
+<li><p>实现了正反面任意插拔，大大方便了用户使用。</p></li>
+</ul>
+<p><img alt="image6" src="../../../_images/usb_poert_typec.png" /></p>
+<div class="admonition tip">
+<p class="admonition-title">小技巧</p>
+<p>从 USB 3.2 开始，因为它需要使用 4 对数据差分线，所以目前唯一支持的只有 <code class="docutils literal notranslate"><span class="pre">Type</span> <span class="pre">C</span></code> 接口。</p>
+</div>
+</div>
+<div class="section" id="id2">
+<h3><span class="section-number">7.12.1.1.3. </span>速度识别<a class="headerlink" href="#id2" title="永久链接至标题">¶</a></h3>
+<p><img alt="image7" src="../../../_images/usb_speed_1.png" /></p>
+<p>首先通过 D+/D- 的上拉电阻来区分 USB 1.0 和 1.1 ：</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">D+</span></code> 上拉，USB 1.1 <code class="docutils literal notranslate"><span class="pre">Full-speed</span></code>。</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">D-</span></code> 上拉，USB 1.0 <code class="docutils literal notranslate"><span class="pre">Low-speed</span></code>。</p></li>
+</ul>
+<p><img alt="image8" src="../../../_images/usb_speed_2.png" /></p>
+<p>然后通过编码识别来进一步区分 <code class="docutils literal notranslate"><span class="pre">High-speed</span></code> 和 <code class="docutils literal notranslate"><span class="pre">Full-speed</span></code>。USB 2.0 <code class="docutils literal notranslate"><span class="pre">High-speed</span></code> 的 <code class="docutils literal notranslate"><span class="pre">D+</span></code> 上拉，首先被当成 USB 1.1 <code class="docutils literal notranslate"><span class="pre">Full-speed</span></code> ：</p>
+<ul class="simple">
+<li><p>Hub检测到有设备插入上电，向主机通报，主机发送 Set_Port_Feature 请求让 Hub 复位新插入的设备。设备复位操作是 Hub 通过驱动数据线到复位状态 <code class="docutils literal notranslate"><span class="pre">SE0</span></code> （即 D+ 和 D- 全为低电平），并持续至少 10ms。</p></li>
+<li><p>高速设备看到复位信号，通过内部的电流源向 D- 线持续灌大小为 17.78mA 电流。因为此时高速设备的 1.5k 上拉电阻未撤销，在 Hub 端，全速/低速驱动器形成一个阻抗为 45Ohm 的终端电阻，  <code class="docutils literal notranslate"><span class="pre">1.5k</span> <span class="pre">与</span> <span class="pre">45Ohm</span> <span class="pre">的电阻并联</span></code> ，仍然是 45Ohm，所以在 Hub 端看到一个约 800mV 的电压，这就是 <code class="docutils literal notranslate"><span class="pre">Chirp</span> <span class="pre">K</span></code> 信号。 <code class="docutils literal notranslate"><span class="pre">Chirp</span> <span class="pre">K</span></code> 信号持续 1ms ~ 7ms。</p></li>
+<li><p>在Hub端，虽然设置了复位信号，并一直驱动着 <code class="docutils literal notranslate"><span class="pre">SE0</span></code> ，但 USB2.0 的高速接收器一直在检测 <code class="docutils literal notranslate"><span class="pre">Chirp</span> <span class="pre">K</span></code> 信号，如果没有 <code class="docutils literal notranslate"><span class="pre">Chirp</span> <span class="pre">K</span></code> 信号看到，就继续复位操作，直到复位结束，然后识别为全速设备。</p></li>
+<li><p>设备发送的 <code class="docutils literal notranslate"><span class="pre">Chirp</span> <span class="pre">K</span></code> 信号结束后 100us 内，Hub 必须开始恢复一连串的 <code class="docutils literal notranslate"><span class="pre">KJKJKJ…</span></code> 序列，向设备表明这是一个 USB2.0 的 Hub。这里的 KJ 序列是连续的，中间不能间断，而且每个 K 或 J 的持续时间在 40us~60us。KJ 序列停止后的的100-500us 内结束复位操作。Hub 发送 <code class="docutils literal notranslate"><span class="pre">Chirp</span> <span class="pre">KJ</span></code> 序列的方式和设备一样，通过电流源向差分数据线交替灌 17.78mA 的电流实现。</p></li>
+<li><dl class="simple">
+<dt>再回到设备端来。设备检测到 6 个 Hub 发送的 <code class="docutils literal notranslate"><span class="pre">Chirp</span></code> 信号后（3 对KJ序列），它必须在 500us 内切换到高速模式。切换动作有：</dt><dd><ul>
+<li><p>断开 1.5K 的上拉电阻。</p></li>
+<li><p>连接 D+/D-上 的高速终端电阻，实际上就是全速/低速差分驱动器。</p></li>
+<li><p>进入默认的高速状态。执行上两步后，USB 信号线上看到的现象就发生变化，Hub 发送出来的 <code class="docutils literal notranslate"><span class="pre">Chirp</span> <span class="pre">KJ</span></code> 序列幅值降到原来的一半，即 400mV。这是因为设备端挂载新的中断电阻，并联后的阻抗是 22.5Ohm。之后高速操作的信号幅度就是 400mV，而不像全速/低速那样的 3V。</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+<p><img alt="image9" src="../../../_images/usb_speed_resistor.png" /></p>
+<p>USB <code class="docutils literal notranslate"><span class="pre">Chirp</span> <span class="pre">K</span></code> 、 <code class="docutils literal notranslate"><span class="pre">Chirp</span> <span class="pre">J</span></code> 、 <code class="docutils literal notranslate"><span class="pre">SE0</span></code> 信号定义：</p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 11%" />
+<col style="width: 27%" />
+<col style="width: 32%" />
+<col style="width: 29%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>信号</p></th>
+<th class="head"><p>低速模式Low-speed</p></th>
+<th class="head"><p>全速速模式Full-speed</p></th>
+<th class="head"><p>高速模式High-speed</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Chirp J</p></td>
+<td><p>D+ = 0，D- = 1</p></td>
+<td><p>D+ = 0，D- = 1</p></td>
+<td><p>D+ = 1，D- =0</p></td>
+</tr>
+<tr class="row-odd"><td><p>Chirp K</p></td>
+<td><p>D+ =1， D- = 0</p></td>
+<td><p>D+ =1， D- = 0</p></td>
+<td><p>D+ =0， D- = 1</p></td>
+</tr>
+<tr class="row-even"><td><p>SE0</p></td>
+<td><p>D+ = 0， D- =0</p></td>
+<td><p>D+ = 0， D- =0</p></td>
+<td><p>D+ = 0， D- =0</p></td>
+</tr>
+<tr class="row-odd"><td><p>IDLE</p></td>
+<td><p>K 状态</p></td>
+<td><p>J 状态</p></td>
+<td><p>SE0 状态</p></td>
+</tr>
+</tbody>
+</table>
+<ul class="simple">
+<li><p>从 J 到 K 或者从 K 到 J，信号翻转，说明发送的信号是 0。从 J 到 J 或从 K 到 K，信号不变，说明发送的信号是 1。</p></li>
+<li><p>Chirp J K 状态高速设备与低速设备相反。</p></li>
+</ul>
+<p>对于 USB 3.0 以后的速度识别，暂未涉及。</p>
+</div>
+<div class="section" id="otg">
+<h3><span class="section-number">7.12.1.1.4. </span>OTG<a class="headerlink" href="#otg" title="永久链接至标题">¶</a></h3>
+<p>USB
+OTG技术可实现没有主机时设备与设备之间的数据传输。例如：数码相机可以直接与打印机连接并打印照片，手机与手机之间可以直接传送数据等，从而拓展了USB技术的应用范围。</p>
+<p>在OTG中，初始主机设备称为 <code class="docutils literal notranslate"><span class="pre">A</span> <span class="pre">设备</span></code> ，外设称为 <code class="docutils literal notranslate"><span class="pre">B</span> <span class="pre">设备</span></code> 。也就是说，手机既可以做外设，又可以做主机来传送数据，可用电缆的连接方式来决定初始角色 (由 ID 线的状态来决定)。</p>
+<p>在 Mini/Micro USB 接口一共有 5 根线，在原有 USB 的基础上多出了一根 <code class="docutils literal notranslate"><span class="pre">ID</span></code> 线。OTG的识别是通过 ID 脚的电平进行决定 OTG 作为 Device 还是 Host：</p>
+<p><img alt="image10" src="../../../_images/usb_otg_id.png" /></p>
+<p>当OTG设备检测到接地的ID引脚时，表示默认的是 A 设备（主机），而检测到ID引脚浮空的设备则认为是 B 设备（外设）。</p>
+</div>
+<div class="section" id="phy">
+<h3><span class="section-number">7.12.1.1.5. </span>phy 总线<a class="headerlink" href="#phy" title="永久链接至标题">¶</a></h3>
+<p>USB 信号传输前，需要通过 phy 把 usb 控制器的数字信号转成线缆上的模拟信号。usb 控制器和 phy 之间的总线主要有 3 种：</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">UTMI</span></code> (USB2.0 Transceiver Macrocell Interface)。最早的 USB controller 和 USB PHY 通信的协议。</p></li>
+</ul>
+<p><img alt="image11" src="../../../_images/phy_utmi.png" /></p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">ULPI</span></code> (UTMI+Low Pin Interface)。从名字上就可以看出 ULPI 是 UTMI 的 Low Pin版本</p></li>
+</ul>
+<p><img alt="image12" src="../../../_images/phy_ulpi.png" /></p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">HSIC</span></code> (USB 2.0 High Speed Inter Chip)。是 USB 2.0 的芯片到芯片变体，它消除了普通 USB 中的传统模拟收发器。速度可达 480M，是 IIC 的理想替代。</p></li>
+</ul>
+<p><img alt="image13" src="../../../_images/phy_hsic.png" /></p>
+</div>
+<div class="section" id="id3">
+<h3><span class="section-number">7.12.1.1.6. </span>传输编码方式<a class="headerlink" href="#id3" title="永久链接至标题">¶</a></h3>
+<p>USB 信号在线路上传输时，需要采取合适的编码方式。</p>
+<ul class="simple">
+<li><p>USB 1.0/2.0 采用的是 URZI (No Return Zero-Inverse) 编码。无需同步的时钟信号也能产生同步的数据存取。NRZI的编码规则是，当数据位为1时不转换，当数据位为0时转换，如下图所示。位传输的顺序以LSB优先。</p></li>
+</ul>
+<p><img alt="image14" src="../../../_images/usb_encode_urzi.png" /></p>
+<p>这种编码方式会遇到一个严重的问题，若重复相同的1信号时，就会造成数据长时间无法转换，逐渐的累积而导致堵塞的情况，使得读取的时序出现严重的错误。因此，在 NRZI 编码之间，还需执行所谓的位填塞（bit-stuffing）。即是，若原始的串行数据含有连续的 6 个 1 时，就执行位填塞工作，填塞一个 0。</p>
+<ul class="simple">
+<li><p>USB 3.0 采用的是 8b/10b 编码。</p></li>
+<li><p>USB 3.1/3.2 采用的是 128/132 (64b/66b) 编码。</p></li>
+</ul>
+</div>
+</div>
+<div class="section" id="id4">
+<h2><span class="section-number">7.12.1.2. </span>总线拓扑<a class="headerlink" href="#id4" title="永久链接至标题">¶</a></h2>
+<p>USB 是 <code class="docutils literal notranslate"><span class="pre">星型</span></code> 拓扑总线，由 Hub 来进行多级扩展。最大的层级不能超过 7 层，在任何一条路径上不能超过 5 个非根 Hub。</p>
+<p><img alt="image15" src="../../../_images/usb_bus_topo.png" /></p>
+<p>USB 总线由 3 种角色组成：</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">Host</span></code>。星型总线的中心，配置所有 Hub 和 Device，调度总线上所有的数据收发。</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Hub</span></code>。提供了扩展端口，能连接更多的 Device。Hub 本身也是一种特殊的 Device。</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Device</span></code>。提供了实际的设备功能。</p></li>
+</ul>
+<p><img alt="image16" src="../../../_images/usb_bus_topo_star.png" /></p>
+<p>经过几种角色的组合以后，USB 总线形成了逻辑上的星型拓扑，Host 到任一 Device 都是点对点传输。</p>
+<div class="section" id="device">
+<span id="ref-internal-layer"></span><h3><span class="section-number">7.12.1.2.1. </span>Device 内部的逻辑关系<a class="headerlink" href="#device" title="永久链接至标题">¶</a></h3>
+<p>USB 将 <code class="docutils literal notranslate"><span class="pre">Device</span></code> 内部的资源进一步细分成了3个层级： <code class="docutils literal notranslate"><span class="pre">Configuration</span></code> 配置、 <code class="docutils literal notranslate"><span class="pre">Interface</span></code> 接口、 <code class="docutils literal notranslate"><span class="pre">Endpoint</span></code> 端点。</p>
+<p><img alt="image17" src="../../../_images/usb_device_struct.png" /></p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">Configuration</span></code> 配置</p></li>
+</ul>
+<p>每个 USB 设备都可以包含一个或者多个配置，不同的配置使设备表现出不同的功能组合，配置有多个接口组成。在 USB 协议中，接口由多个端点组成，代表一个基本的功能。<br />
+看下面的一个例子。一个 USB 播放器带有音频视频功能，还有旋钮和按钮。那么这个 <code class="docutils literal notranslate"><span class="pre">Device</span></code> 设备 可以提供 3 种 <code class="docutils literal notranslate"><span class="pre">Configuration</span></code> 配置：</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>配置1：音须(接口) + 旅钮(接口）
+配置2: 音频(接口) + 视频(接口) + 按钮(接口）
+配置3：视频(接口) + 旋钮(接口）
+</pre></div>
+</div>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">Interface</span></code> 接口 / <code class="docutils literal notranslate"><span class="pre">Function</span></code> 功能</p></li>
+</ul>
+<p>Interface 接口代表一个独立的基本的功能，所以有时也称之为 <code class="docutils literal notranslate"><span class="pre">Function</span></code> 功能。如果我们开发 <code class="docutils literal notranslate"><span class="pre">USB</span> <span class="pre">Client</span></code> 驱动，我们面向的对象就是 <code class="docutils literal notranslate"><span class="pre">USB</span> <span class="pre">Interface</span></code> ，上述实例中的音烦接口、视频接口、投钮接口、旋钮接口均需要一个独立的 <code class="docutils literal notranslate"><span class="pre">USB</span> <span class="pre">Client</span></code> 驱动程序。</p>
+<p><img alt="image18" src="../../../_images/usb_csw_func.png" /></p>
+<p>一个 <code class="docutils literal notranslate"><span class="pre">Interface</span></code> 接口中包含了完成这个基本功能的所需要的一个或者多个 <code class="docutils literal notranslate"><span class="pre">Endpoint</span></code> 端点。</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">Endpoint</span></code> 端点 (<code class="docutils literal notranslate"><span class="pre">Pipe</span></code> 管道)</p></li>
+</ul>
+<p>端点是 USB 设备中最基本的可寻址单位，它是位于 USB 设备或主机上的一个数据缓冲区，用来存放和发送 USB 的各种数据。</p>
+<p>设备的 <code class="docutils literal notranslate"><span class="pre">Endpoint</span> <span class="pre">0</span></code> 是一个特殊端点，在设备初始化时系统需要使用该端点读配置设备。其他编号的端点
+<code class="docutils literal notranslate"><span class="pre">USB</span> <span class="pre">Client</span></code> 驱动都可以使用。</p>
+<p>一个 <code class="docutils literal notranslate"><span class="pre">Host</span></code> 主机和一个设备 <code class="docutils literal notranslate"><span class="pre">Device</span></code> 的端点建立的连接称之为 <code class="docutils literal notranslate"><span class="pre">Pipe</span></code> 管道：</p>
+<p><img alt="image19" src="../../../_images/usb_endpoint.png" /></p>
+</div>
+<div class="section" id="compound-composite-device">
+<h3><span class="section-number">7.12.1.2.2. </span>Compound / Composite Device<a class="headerlink" href="#compound-composite-device" title="永久链接至标题">¶</a></h3>
+<p><img alt="image20" src="../../../_images/usb_compound.png" /></p>
+<p>在 USB 协议描述中，有两个非常相近的名字： <code class="docutils literal notranslate"><span class="pre">Compund</span> <span class="pre">Device</span></code> 和 <code class="docutils literal notranslate"><span class="pre">Composite</span> <span class="pre">Device</span></code> 。正确的理解的它们有助于我们理解清楚随后的一些概念。</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">Compund</span> <span class="pre">Device</span></code> 。指的是一个 <code class="docutils literal notranslate"><span class="pre">Hub</span></code> 设备中，还包含了其他的功能 <code class="docutils literal notranslate"><span class="pre">Device</span></code>。</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Composite</span> <span class="pre">Device</span></code> 。指的是一个 <code class="docutils literal notranslate"><span class="pre">Device</span></code> 当中，包含了多个 <code class="docutils literal notranslate"><span class="pre">Interface</span></code> ，能提供多个独立的功能。</p></li>
+</ul>
+</div>
+<div class="section" id="hub">
+<h3><span class="section-number">7.12.1.2.3. </span>Hub<a class="headerlink" href="#hub" title="永久链接至标题">¶</a></h3>
+<p><img alt="image21" src="../../../_images/usb_hub.png" /></p>
+<p>在 USB 的总线结构中，Hub 是一个重要的组成成员，它主要的作用是控制 Port 端口来连接更多的 USB Device 设备。</p>
+<p>它的核心点如下：</p>
+<ul class="simple">
+<li><p>USB Host 需要给总线上的设备分配不同的地址才不会冲突，USB 的星形拓扑连接设备都是通过 Hub 的端口连结到总线上的。</p></li>
+<li><p>总线初始化枚举设备时，USB 设备的地址都是默认地址 0，但是 Hub 的端口都是关闭的所以并不产生设备冲突，Host 逐个打开 Hub 的端口，逐个利用打开端口上设备的默认地址 0 来配置设备，给其分配新的地址，从 Endpoint 0 中读出设备的配置并设置。在运行过程中 USB 设备的热插拔也是和这类似的。</p></li>
+</ul>
+</div>
+<div class="section" id="configure-descriptor">
+<h3><span class="section-number">7.12.1.2.4. </span>Configure Descriptor<a class="headerlink" href="#configure-descriptor" title="永久链接至标题">¶</a></h3>
+<p>对于一个 USB 设备，在 <code class="docutils literal notranslate"><span class="pre">Device</span></code> 、 <code class="docutils literal notranslate"><span class="pre">Configuration</span></code>、 <code class="docutils literal notranslate"><span class="pre">Interface</span></code>、 <code class="docutils literal notranslate"><span class="pre">Endpoint</span></code> 每个层次上都有对应的描述信息。可以使用 Endpoint0 在设备初始化的时候读出和配置这些信息。</p>
+<p><img alt="image22" src="../../../_images/usb_device_config.png" /></p>
+<p>最重要的是设备在初始化时，通过这些信息来进行枚举配置的过程。一个设备枚举的过程分为如下 8 步：</p>
+<ol class="arabic simple">
+<li><p>获取设备描述符</p>
+<ul class="simple">
+<li><p>Host/Hub 通过数据线上拉电阻的阻值变化检测到新设备接入。Host 等待 100ms 以保证设备电源稳定。</p></li>
+<li><p>Host 向 Device 发 Bus Reset 使得设备进入 default 状态，从此之后，设备可以响应默认地址 0 。</p></li>
+<li><p>Host 请求 Device 发送 Device Descriptor 的前 64 个字节。</p></li>
+</ul>
+</li>
+<li><p>复位</p>
+<ul class="simple">
+<li><p>Host 在收到 Device Descritptor 的前 8 个字节后，再次向 Device 发出 Bus Reset。</p></li>
+</ul>
+</li>
+<li><p>设置地址</p>
+<ul class="simple">
+<li><p>Host 发送一个 Set Address 命令给 Deivce，从此 Device 有个通信地址，不再使用默认地址 0 进行通信。</p></li>
+</ul>
+</li>
+<li><p>再次获取设备描述符</p>
+<ul class="simple">
+<li><p>Host 请求获取完整的 Device Descritpor, 总计 18 字节。</p></li>
+</ul>
+</li>
+<li><p>获取配置描述符</p>
+<ul class="simple">
+<li><p>Host 请求获取 9 个字节的 Configuration Descriptor 以了解 Configuration escriptor的总大小。</p></li>
+<li><p>Host 请求 255 字节的 Configuration Descritpor。</p></li>
+</ul>
+</li>
+<li><p>获取接口，端点描述符</p></li>
+<li><p>获取字符串描述符</p></li>
+<li><p>选择设备配置</p></li>
+</ol>
+</div>
+</div>
+<div class="section" id="id5">
+<h2><span class="section-number">7.12.1.3. </span>总线调度<a class="headerlink" href="#id5" title="永久链接至标题">¶</a></h2>
+<p>USB 作为一个高速总线，它需要充分利用起其带宽，并且能承担其多种业务类型的数据包的传输。</p>
+<p>对数据传输来说，最重要的有几种因素 <code class="docutils literal notranslate"><span class="pre">带宽</span></code> 、 <code class="docutils literal notranslate"><span class="pre">时间延迟</span></code> 、 <code class="docutils literal notranslate"><span class="pre">完整性校验</span></code> 。根据这几种因素的组合，USB 把数据传输分成了 4 类：</p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 16%" />
+<col style="width: 16%" />
+<col style="width: 16%" />
+<col style="width: 52%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Type</p></th>
+<th class="head"><p>KeyPoint</p></th>
+<th class="head"><p>Sample</p></th>
+<th class="head"><p>Descript</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Control <br />
+Transfers <br />
+<br /> 控制传输</p></td>
+<td><p>完整性校验</p></td>
+<td><p>USB <br />
+配置命令</p></td>
+<td><p>突发的、非周期性的，主机软件发起的请求/响应通信 <br />
+通常用于命令/状态操作。<br />
+数据量小对带宽、时间延迟要求不高，但是要求数据 <br />
+须正确。</p></td>
+</tr>
+<tr class="row-odd"><td><p>Isochronous <br />
+Transfers <br />
+<br /> 等时传输</p></td>
+<td><p>带宽 、 <br />
+时间延迟</p></td>
+<td><p>摄像头</p></td>
+<td><p>等时传输:主机和设备之间定期、连续的通信，通常用 <br />
+于时间相关信息。这种传输类型还保留了数据中封装 <br />
+的时间概念。然而，这并不意味着这些数据的交付需求 <br />
+总是时间紧迫的。<br />
+数据量大需要大带宽、对时间延迟也很高，但是不要求 <br />
+数据必须正确。也正因为前两者的要求高，也很难做到 <br />
+数据校验和重传。</p></td>
+</tr>
+<tr class="row-even"><td><p>Interrupt <br />
+Transfers <br />
+<br /> 中断传输</p></td>
+<td><p>时间延迟 、<br />
+完整性校验</p></td>
+<td><p>键盘、<br />
+鼠标</p></td>
+<td><p>低频、有边界延迟通信。对时间延迟要求高，但数据量 <br />
+所以要求数据必须正确。</p></td>
+</tr>
+<tr class="row-odd"><td><p>Bulk <br />
+Transfers <br />
+<br /> 批量传输</p></td>
+<td><p>带宽 、  <br />
+时间延迟 、<br />
+完整性校验</p></td>
+<td><p>文件存储</p></td>
+<td><p>非周期性、大包突发通信，通常用于可以使用任何可用 <br />
+带宽的数据，也可以延迟到带宽可用。<br />
+数据量大需要大带宽，但对时间延迟也不高，要求数据 <br />
+必须正确。<br />
+也正因为对延迟要求不高，所以可以做数据校验和重传。</p></td>
+</tr>
+</tbody>
+</table>
+<p>USB使用以下方法来满足多种类型的数据在一条共享通道上传输：</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">时间延迟</span></code> 。从时间维度上把数据传输切成多个时间片，在每个时间片内绝大部分份额 (最多 80%) 优先传输对时间延迟有要求的数据，如 <code class="docutils literal notranslate"><span class="pre">Interrupt</span> <span class="pre">Transfers</span></code> 、 <code class="docutils literal notranslate"><span class="pre">Isochronous</span> <span class="pre">Transfers</span></code> 。在时间片剩下的额度内传输对时间延迟没要求的数据，如 <code class="docutils literal notranslate"><span class="pre">Control</span> <span class="pre">Transfers</span></code> 、 <code class="docutils literal notranslate"><span class="pre">Bulk</span> <span class="pre">Transfers</span></code> 。</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">完整性校验</span></code> 。对需要保证数据完整性的数据加上了 CRC 校验，接收端使用 ACK 来知会发送端正确接收，如果没有收到 ACK 发端会尝试重发 3 次。</p></li>
+</ul>
+<div class="section" id="frames-microframes">
+<h3><span class="section-number">7.12.1.3.1. </span>Frames / Microframes<a class="headerlink" href="#frames-microframes" title="永久链接至标题">¶</a></h3>
+<p><img alt="image24" src="../../../_images/usb_microframe.png" /></p>
+<p>如上图，USB从时间维度上把数据传输切成多个时间片：</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">Frames</span></code>。Low-speed 和 Full-speed 的时间切片大小为 <code class="docutils literal notranslate"><span class="pre">1ms</span></code> ，USB 控制器每 <code class="docutils literal notranslate"><span class="pre">1ms</span></code> 重新调度一下传输。</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Microframes</span></code>。High-speed 的时间切片大小为 <code class="docutils literal notranslate"><span class="pre">125us</span></code> ，USB 控制器每 <code class="docutils literal notranslate"><span class="pre">125us</span></code> 重新调度一下传输。</p></li>
+</ul>
+<p>这个时间切片，和操作系统上 <code class="docutils literal notranslate"><span class="pre">Schedule</span> <span class="pre">Tick</span></code> 的概念是一样的。</p>
+<p>在数据格式传输上又会进一步细分：</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">Transfer</span></code>。每个时间片的所有传输称之为一个 <code class="docutils literal notranslate"><span class="pre">Transfer</span></code>，或者为一个 <code class="docutils literal notranslate"><span class="pre">Frames</span></code> / <code class="docutils literal notranslate"><span class="pre">Microframes</span></code>。</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Transcation</span></code>。根据某次数据传输的目的，一个 <code class="docutils literal notranslate"><span class="pre">Transfer</span></code> 可以分成多个 <code class="docutils literal notranslate"><span class="pre">Transcation</span></code> 事务。</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Packet</span></code>。数据传输的最小单位，一个 <code class="docutils literal notranslate"><span class="pre">Transcation</span></code> 可能由多个 <code class="docutils literal notranslate"><span class="pre">Packet</span></code> 组成。</p></li>
+</ul>
+</div>
+<div class="section" id="bulk-transactions">
+<h3><span class="section-number">7.12.1.3.2. </span>Bulk Transactions<a class="headerlink" href="#bulk-transactions" title="永久链接至标题">¶</a></h3>
+<p><img alt="image25" src="../../../_images/usb_trans_bulk.png" /></p>
+<p>上图可以看到 <code class="docutils literal notranslate"><span class="pre">Bulk</span></code> 类型的 In/Out Endpint 在数据收发时的状态流程图：</p>
+<ul class="simple">
+<li><p>NAK。接收端数据未准备好。</p></li>
+<li><p>ACK。接收端接收到数据且数据校验正确。</p></li>
+<li><p>不回应。接收端接收到错误数据，发端会重发 3 次。</p></li>
+</ul>
+</div>
+<div class="section" id="control-transfers">
+<h3><span class="section-number">7.12.1.3.3. </span>Control Transfers<a class="headerlink" href="#control-transfers" title="永久链接至标题">¶</a></h3>
+<p><img alt="image26" src="../../../_images/usb_trans_ctrl.png" /></p>
+<p><code class="docutils literal notranslate"><span class="pre">Control</span></code> 类型 和 <code class="docutils literal notranslate"><span class="pre">Bulk</span></code> 类型的处理类似。</p>
+</div>
+<div class="section" id="interrupt-transactions">
+<h3><span class="section-number">7.12.1.3.4. </span>Interrupt Transactions<a class="headerlink" href="#interrupt-transactions" title="永久链接至标题">¶</a></h3>
+<p><img alt="image27" src="../../../_images/usb_trans_int.png" /></p>
+<p><code class="docutils literal notranslate"><span class="pre">Interrupt</span></code> 类型对 <code class="docutils literal notranslate"><span class="pre">完整性校验</span></code> 也是有要求，处理流程和前面一样。</p>
+</div>
+<div class="section" id="isochronous-transactions">
+<h3><span class="section-number">7.12.1.3.5. </span>Isochronous Transactions<a class="headerlink" href="#isochronous-transactions" title="永久链接至标题">¶</a></h3>
+<p><img alt="image28" src="../../../_images/usb_trans_iso.png" /></p>
+<p><code class="docutils literal notranslate"><span class="pre">Isochronous</span></code> 类型是唯一对 <code class="docutils literal notranslate"><span class="pre">完整性校验</span></code> 没有要求的，所以它的数据不需要
+ACK 回应。</p>
+</div>
+<div class="section" id="usb-pcie">
+<h3><span class="section-number">7.12.1.3.6. </span>USB 和 PCIE 调度的区别<a class="headerlink" href="#usb-pcie" title="永久链接至标题">¶</a></h3>
+<p>PCIE 总线也是一个非常成功和流行的总线，从底层来说它和 USB 总线是非常像的：</p>
+<ul class="simple">
+<li><p>它也是高速串行总线。</p></li>
+<li><p>它也是共享性的总线。都是把带宽逻辑切割成多份，分给不同的 Device 和驱动。</p></li>
+</ul>
+<p><img alt="image29" src="../../../_images/pcie_topo.png" /></p>
+<p>但是它又看起来和 USB 如此的不同，主要的差异就在总线的调度上面：</p>
+<ul class="simple">
+<li><p>PCIE 硬件使用了一个专门的仲裁器来做总线调度，所以在 Device 配置好以后，所有的 Mem/Io 空间被映射到一个统一地址空间当中，只要发起普通的读写操作就能访问。而 USB 的总线调度被暴露了出来，需要硬件软件共同配合才能完成。毫无疑问，PCIE 的硬件复杂度和成本会远远高于 USB。</p></li>
+<li><p>另外由于 PCIE 有独立的仲裁器来进行调度，所以 PCIE 支持多个设备同时操作总线。而 USB 的所有操作都需要 Host 来调度，所以只能由 Host 发起总线操作。从效率来说 USB 要低。</p></li>
+<li><p>还有一点 PCIE 硬件仲裁器对软件是透明的，所以软件读写总线是 <code class="docutils literal notranslate"><span class="pre">同步</span></code> 的。而软件操作 USB 总线是 <code class="docutils literal notranslate"><span class="pre">异步</span></code> 的，通过回调的操作来进行 USB 和 CPU 之间的状态对齐。</p></li>
+</ul>
+</div>
+</div>
+<div class="section" id="id6">
+<h2><span class="section-number">7.12.1.4. </span>传输格式<a class="headerlink" href="#id6" title="永久链接至标题">¶</a></h2>
+<p>上文说过一个传输时间片 Tranfer/Frame/MicroFrame，可以分割成多个 Transaction 事务，一个 Transaction 事务又可以细分成多个 Packet 包。</p>
+<p><img alt="image30" src="../../../_images/usb_frame_format.png" /></p>
+<div class="section" id="packet">
+<h3><span class="section-number">7.12.1.4.1. </span>Packet<a class="headerlink" href="#packet" title="永久链接至标题">¶</a></h3>
+<p>Packet 包是 USB 传输的最小单位，由五部分组成：</p>
+<ul class="simple">
+<li><p>同步字段（SYNC）</p></li>
+<li><p>包标识符字段（PID）</p></li>
+<li><p>数据字段</p></li>
+<li><p>循环冗余校验字段（CRC）</p></li>
+<li><p>包结尾字段（EOP）</p></li>
+</ul>
+<p><img alt="image31" src="../../../_images/usb_packet_format.png" /></p>
+<p>主要的数据包格式有四类，对应不同的 PID 类型：</p>
+<p><img alt="image32" src="../../../_images/usb_packet_pid.png" /></p>
+<div class="section" id="token-packet">
+<h4><span class="section-number">7.12.1.4.1.1. </span>Token Packet<a class="headerlink" href="#token-packet" title="永久链接至标题">¶</a></h4>
+<p><img alt="image33" src="../../../_images/usb_packet_token.PNG" /></p>
+<p>此格式适用于 IN、OUT、SETUP、PING。</p>
+</div>
+<div class="section" id="data-packet">
+<h4><span class="section-number">7.12.1.4.1.2. </span>Data Packet<a class="headerlink" href="#data-packet" title="永久链接至标题">¶</a></h4>
+<p><img alt="image34" src="../../../_images/usb_packet_data.PNG" /></p>
+<p>有四种类类型的数据包：DATA0, DATA1, DATA2,and MDATA，且由PID来区分。DATA0 和 DATA1 被定义为支持数据切换同步 (data toggle synchronization)。</p>
+</div>
+<div class="section" id="handshake-packet">
+<h4><span class="section-number">7.12.1.4.1.3. </span>Handshake Packet<a class="headerlink" href="#handshake-packet" title="永久链接至标题">¶</a></h4>
+<p><img alt="image35" src="../../../_images/usb_packet_handshake.PNG" /></p>
+<ul class="simple">
+<li><p>ACK: 对于 IN 事务，它将由 Host 发出；对于 OUT、SETUP 和 PING 事务，它将由 Device 发出。</p></li>
+<li><p>NAK: 在数据阶段，对于 IN 事务，它将由 Device 发出；在握手阶段，对于 OUT 和 PING 事务，它也将由Device 发出，Host 从不发送 NAK 包。</p></li>
+</ul>
+<p><a class="reference internal" href="1_introd_usb_enum.html#ref-transaction"><span class="std std-ref">Transaction</span></a></p>
+</div>
+</div>
+</div>
+<div class="section" id="id7">
+<h2><span class="section-number">7.12.1.5. </span>通讯模型<a class="headerlink" href="#id7" title="永久链接至标题">¶</a></h2>
+<p>USB 的主要作用就是建立起 Host 和 Device 之间的通讯。</p>
+<ul class="simple">
+<li><p>简要的通讯模型：</p></li>
+</ul>
+<p><img alt="image44" src="../../../_images/usb_flow_abstract.png" /></p>
+<ul class="simple">
+<li><p>详细的通讯模型：</p></li>
+</ul>
+<p><img alt="image45" src="../../../_images/usb_flow_detail.png" /></p>
+</div>
+<div class="section" id="id8">
+<h2><span class="section-number">7.12.1.6. </span>参考资料<a class="headerlink" href="#id8" title="永久链接至标题">¶</a></h2>
+<ol class="arabic simple">
+<li><p><a class="reference external" href="https://www.usb.org/sites/default/files/usb_20_20211008.zip">USB 2.0 Specification</a></p></li>
+<li><p><a class="reference external" href="http://www.usbzh.com/">USB中文网</a></p></li>
+<li><p><a class="reference external" href="https://blog.csdn.net/myarrow/article/details/8484113">USB协通讯议–深入理解</a></p></li>
+</ol>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+        <a href="1_introd_usb_enum.html" class="btn btn-neutral float-right" title="7.12.2. USB 设备枚举简介" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="index.html" class="btn btn-neutral float-left" title="7.12. USB 使用指南" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; 版权所有 2023 广州匠芯创科技有限公司.
+
+    </p>
+  </div> 
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

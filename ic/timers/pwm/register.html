@@ -269,12 +269,9 @@
 <li class="toctree-l5"><a class="reference internal" href="#x300-0x100-n-0x024-pwm-cmpb">11.4.3.12. 0X300+0X100*n+0x024 PWM_CMPB</a></li>
 <li class="toctree-l5"><a class="reference internal" href="#x300-0x100-n-0x028-pwm-aqctla">11.4.3.13. 0X300+0X100*n+0x028 PWM_AQCTLA</a></li>
 <li class="toctree-l5"><a class="reference internal" href="#x300-0x100-n-0x02c-pwm-aqctlb">11.4.3.14. 0X300+0X100*n+0x02C PWM_AQCTLB</a></li>
-<li class="toctree-l5"><a class="reference internal" href="#x300-0x100-n-0x038-pwm-dbctl">11.4.3.15. 0X300+0X100*n+0x038 PWM_DBCTL</a></li>
-<li class="toctree-l5"><a class="reference internal" href="#x300-0x100-n-0x03c-pwm-dbred">11.4.3.16. 0X300+0X100*n+0x03C PWM_DBRED</a></li>
-<li class="toctree-l5"><a class="reference internal" href="#x300-0x100-n-0x040-pwm-dbfed">11.4.3.17. 0X300+0X100*n+0x040 PWM_DBFED</a></li>
-<li class="toctree-l5"><a class="reference internal" href="#x300-0x100-n-0x044-pwm-etsel">11.4.3.18. 0X300+0X100*n+0x044 PWM_ETSEL</a></li>
-<li class="toctree-l5"><a class="reference internal" href="#x300-0x100-n-0x048-pwm-cnt-dis">11.4.3.19. 0X300+0X100*n+0x048 PWM_CNT_DIS</a></li>
-<li class="toctree-l5"><a class="reference internal" href="#xffc-pwm-version">11.4.3.20. 0xFFC PWM_VERSION</a></li>
+<li class="toctree-l5"><a class="reference internal" href="#x300-0x100-n-0x044-pwm-etsel">11.4.3.15. 0X300+0X100*n+0x044 PWM_ETSEL</a></li>
+<li class="toctree-l5"><a class="reference internal" href="#x300-0x100-n-0x048-pwm-cnt-dis">11.4.3.16. 0X300+0X100*n+0x048 PWM_CNT_DIS</a></li>
+<li class="toctree-l5"><a class="reference internal" href="#xffc-pwm-version">11.4.3.17. 0xFFC PWM_VERSION</a></li>
 </ul>
 </li>
 </ul>
@@ -443,23 +440,11 @@
 <td><p>0x300+0x100*n+0x2C</p></td>
 <td><p>PWM动作器控制B寄存器</p></td>
 </tr>
-<tr class="row-even"><td><p>PWM_DBCTL</p></td>
-<td><p>0x300+0x100*n+0x38</p></td>
-<td><p>PWM死区控制寄存器</p></td>
-</tr>
-<tr class="row-odd"><td><p>PWM_DBRED</p></td>
-<td><p>0x300+0x100*n+0x3C</p></td>
-<td><p>PWM死区上升沿延迟寄存器</p></td>
-</tr>
-<tr class="row-even"><td><p>PWM_DBFED</p></td>
-<td><p>0x300+0x100*n+0x40</p></td>
-<td><p>PWM死区下降沿延迟寄存器</p></td>
-</tr>
-<tr class="row-odd"><td><p>PWM_ETSEL</p></td>
+<tr class="row-even"><td><p>PWM_ETSEL</p></td>
 <td><p>0x300+0x100*n+0x44</p></td>
 <td><p>PWM事件触发选择寄存器</p></td>
 </tr>
-<tr class="row-even"><td><p>PWM_VERSION</p></td>
+<tr class="row-odd"><td><p>PWM_VERSION</p></td>
 <td><p>0xFFC</p></td>
 <td><p>PWM模块版本寄存器</p></td>
 </tr>
@@ -1536,185 +1521,8 @@
 </tbody>
 </table>
 </div>
-<div class="section" id="x300-0x100-n-0x038-pwm-dbctl">
-<h2><span class="section-number">11.4.3.15. </span>0X300+0X100*n+0x038 PWM_DBCTL<a class="headerlink" href="#x300-0x100-n-0x038-pwm-dbctl" title="永久链接至标题">¶</a></h2>
-<table class="docutils align-default">
-<colgroup>
-<col style="width: 8%" />
-<col style="width: 8%" />
-<col style="width: 13%" />
-<col style="width: 70%" />
-</colgroup>
-<thead>
-<tr class="row-odd"><th class="head" colspan="3"><p>默认值：0x00000000</p></th>
-<th class="head"><p>PWM死区控制寄存器（PWM_DBCTL）</p></th>
-</tr>
-<tr class="row-even"><th class="head"><p>位域</p></th>
-<th class="head"><p>类型</p></th>
-<th class="head"><p>默认值</p></th>
-<th class="head"><p>描述</p></th>
-</tr>
-</thead>
-<tbody>
-<tr class="row-odd"><td><p>31:6</p></td>
-<td><p>/</p></td>
-<td><p>0x0</p></td>
-<td><div class="line-block">
-<div class="line">/</div>
-</div>
-</td>
-</tr>
-<tr class="row-even"><td><p>5</p></td>
-<td><p>R/W</p></td>
-<td><p>0x0</p></td>
-<td><div class="line-block">
-<div class="line">INSEL[1]：Dead Band Input Select，死区输入选择</div>
-<div class="line">用于控制死区控制器开关S5，用来选择死区控制器输入信号。</div>
-<div class="line">0：PWMx_A作为下降沿延迟模块的输入信号</div>
-<div class="line">1：PWMx_B作为下降沿延迟模块的输入信号</div>
-</div>
-</td>
-</tr>
-<tr class="row-odd"><td><p>4</p></td>
-<td><p>R/W</p></td>
-<td><p>0x0</p></td>
-<td><div class="line-block">
-<div class="line">INSEL[0]：Dead Band Input Select，死区输入选择</div>
-<div class="line">用于控制死区控制器开关S4，用来选择死区控制器输入信号。</div>
-<div class="line">0：PWMx_A作为上升沿延迟模块的输入信号</div>
-<div class="line">1：PWMx_B作为上升沿延迟模块的输入信号</div>
-</div>
-</td>
-</tr>
-<tr class="row-even"><td><p>3</p></td>
-<td><p>R/W</p></td>
-<td><p>0x0</p></td>
-<td><div class="line-block">
-<div class="line">POLSEL[1]：Polarity Select，极性选择</div>
-<div class="line">用于控制死区控制器开关S3，用来控制下降沿输出的极性</div>
-<div class="line">0：下降沿输出极性为正</div>
-<div class="line">1：下降沿输出极性反向</div>
-</div>
-</td>
-</tr>
-<tr class="row-odd"><td><p>2</p></td>
-<td><p>R/W</p></td>
-<td><p>0x0</p></td>
-<td><div class="line-block">
-<div class="line">POLSEL[0]：Polarity Select，极性选择</div>
-<div class="line">用于控制死区控制器开关S2，用来控制上升沿输出的极性</div>
-<div class="line">0：上升沿输出极性为正</div>
-<div class="line">1：上升沿输出极性反向</div>
-</div>
-</td>
-</tr>
-<tr class="row-even"><td><p>1</p></td>
-<td><p>R/W</p></td>
-<td><p>0x0</p></td>
-<td><div class="line-block">
-<div class="line">OUTSEL[1]：Dead Band Output Select，死区输出选择</div>
-<div class="line">用于控制死区控制器开关S1，用来控制使能或旁路死区控制器</div>
-<div class="line">0：旁路死区控制器，直接输出PWMx_A信号</div>
-<div class="line">1：使能死区控制器，输出上升沿死区控制器信号</div>
-</div>
-</td>
-</tr>
-<tr class="row-odd"><td><p>0</p></td>
-<td><p>R/W</p></td>
-<td><p>0x0</p></td>
-<td><div class="line-block">
-<div class="line">OUTSEL[0]：Dead Band Output Select，死区输出选择</div>
-<div class="line">用于控制死区控制器开关S0，用来控制使能或旁路死区控制器</div>
-<div class="line">0：旁路死区控制器，直接输出PWMx_B信号</div>
-<div class="line">1：使能死区控制器，输出下降沿死区控制器信号</div>
-</div>
-</td>
-</tr>
-</tbody>
-</table>
-</div>
-<div class="section" id="x300-0x100-n-0x03c-pwm-dbred">
-<h2><span class="section-number">11.4.3.16. </span>0X300+0X100*n+0x03C PWM_DBRED<a class="headerlink" href="#x300-0x100-n-0x03c-pwm-dbred" title="永久链接至标题">¶</a></h2>
-<table class="docutils align-default">
-<colgroup>
-<col style="width: 8%" />
-<col style="width: 8%" />
-<col style="width: 13%" />
-<col style="width: 70%" />
-</colgroup>
-<thead>
-<tr class="row-odd"><th class="head" colspan="3"><p>默认值：0x00000000</p></th>
-<th class="head"><p>PWM死区上升沿延迟寄存器（PWM_DBRED）</p></th>
-</tr>
-<tr class="row-even"><th class="head"><p>位域</p></th>
-<th class="head"><p>类型</p></th>
-<th class="head"><p>默认值</p></th>
-<th class="head"><p>描述</p></th>
-</tr>
-</thead>
-<tbody>
-<tr class="row-odd"><td><p>31:10</p></td>
-<td><p>/</p></td>
-<td><p>0x0</p></td>
-<td><div class="line-block">
-<div class="line">/</div>
-</div>
-</td>
-</tr>
-<tr class="row-even"><td><p>9:0</p></td>
-<td><p>R/W</p></td>
-<td><p>0x0</p></td>
-<td><div class="line-block">
-<div class="line">RDEL：Rising Edge Delay，上升沿延迟量</div>
-<div class="line">此位用于死区控制上升沿延迟量，时钟基准为TBCLK。</div>
-</div>
-</td>
-</tr>
-</tbody>
-</table>
-</div>
-<div class="section" id="x300-0x100-n-0x040-pwm-dbfed">
-<h2><span class="section-number">11.4.3.17. </span>0X300+0X100*n+0x040 PWM_DBFED<a class="headerlink" href="#x300-0x100-n-0x040-pwm-dbfed" title="永久链接至标题">¶</a></h2>
-<table class="docutils align-default">
-<colgroup>
-<col style="width: 8%" />
-<col style="width: 8%" />
-<col style="width: 13%" />
-<col style="width: 70%" />
-</colgroup>
-<thead>
-<tr class="row-odd"><th class="head" colspan="3"><p>默认值：0x00000000</p></th>
-<th class="head"><p>PWM死区下降沿延迟寄存器（PWM_DBFED）</p></th>
-</tr>
-<tr class="row-even"><th class="head"><p>位域</p></th>
-<th class="head"><p>类型</p></th>
-<th class="head"><p>默认值</p></th>
-<th class="head"><p>描述</p></th>
-</tr>
-</thead>
-<tbody>
-<tr class="row-odd"><td><p>31:10</p></td>
-<td><p>/</p></td>
-<td><p>0x0</p></td>
-<td><div class="line-block">
-<div class="line">/</div>
-</div>
-</td>
-</tr>
-<tr class="row-even"><td><p>9:0</p></td>
-<td><p>R/W</p></td>
-<td><p>0x0</p></td>
-<td><div class="line-block">
-<div class="line">FDEL：Falling Edge Delay，下降沿延迟量</div>
-<div class="line">此位用于死区控制下降沿延迟量，时钟基准为TBCLK。</div>
-</div>
-</td>
-</tr>
-</tbody>
-</table>
-</div>
 <div class="section" id="x300-0x100-n-0x044-pwm-etsel">
-<h2><span class="section-number">11.4.3.18. </span>0X300+0X100*n+0x044 PWM_ETSEL<a class="headerlink" href="#x300-0x100-n-0x044-pwm-etsel" title="永久链接至标题">¶</a></h2>
+<h2><span class="section-number">11.4.3.15. </span>0X300+0X100*n+0x044 PWM_ETSEL<a class="headerlink" href="#x300-0x100-n-0x044-pwm-etsel" title="永久链接至标题">¶</a></h2>
 <table class="docutils align-default">
 <colgroup>
 <col style="width: 8%" />
@@ -1772,7 +1580,7 @@
 </table>
 </div>
 <div class="section" id="x300-0x100-n-0x048-pwm-cnt-dis">
-<h2><span class="section-number">11.4.3.19. </span>0X300+0X100*n+0x048 PWM_CNT_DIS<a class="headerlink" href="#x300-0x100-n-0x048-pwm-cnt-dis" title="永久链接至标题">¶</a></h2>
+<h2><span class="section-number">11.4.3.16. </span>0X300+0X100*n+0x048 PWM_CNT_DIS<a class="headerlink" href="#x300-0x100-n-0x048-pwm-cnt-dis" title="永久链接至标题">¶</a></h2>
 <table class="docutils align-default">
 <colgroup>
 <col style="width: 8%" />
@@ -1817,7 +1625,7 @@
 </table>
 </div>
 <div class="section" id="xffc-pwm-version">
-<h2><span class="section-number">11.4.3.20. </span>0xFFC PWM_VERSION<a class="headerlink" href="#xffc-pwm-version" title="永久链接至标题">¶</a></h2>
+<h2><span class="section-number">11.4.3.17. </span>0xFFC PWM_VERSION<a class="headerlink" href="#xffc-pwm-version" title="永久链接至标题">¶</a></h2>
 <table class="docutils align-default">
 <colgroup>
 <col style="width: 8%" />

@@ -257,7 +257,7 @@
 <li class="toctree-l6"><a class="reference internal" href="#ref-to-display-menuconfig">6.2.2.1.1. 使能显示模块驱动</a></li>
 <li class="toctree-l6"><a class="reference internal" href="#id2">6.2.2.1.2. 选择显示接口</a></li>
 <li class="toctree-l6"><a class="reference internal" href="#panel">6.2.2.1.3. panel配置</a></li>
-<li class="toctree-l6"><a class="reference internal" href="#ref-to-lite-backlight">6.2.2.1.4. 背光引脚</a></li>
+<li class="toctree-l6"><a class="reference internal" href="#ref-to-lite-backlight">6.2.2.1.4. 背光配置</a></li>
 <li class="toctree-l6"><a class="reference internal" href="#id4">6.2.2.1.5. 显示引擎配置</a></li>
 <li class="toctree-l6"><a class="reference internal" href="#id5">6.2.2.1.6. 显示接口配置</a></li>
 </ul>
@@ -287,6 +287,7 @@
 <li class="toctree-l2"><a class="reference internal" href="../../../../security/index.html">8. 安全</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../../../peripheral/index.html">9. 外设</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../../../app/index.html">10. 应用</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../bringup/index.html">11. BringUp</a></li>
 </ul>
 </li>
 </ul>
@@ -377,17 +378,18 @@
 <span id="id1"></span><h2><span class="section-number">6.2.2.1.1. </span>使能显示模块驱动<a class="headerlink" href="#ref-to-display-menuconfig" title="永久链接至标题">¶</a></h2>
 <p>在 Luban-Lite 根目录下执行 <code class="docutils literal notranslate"><span class="pre">scons</span> <span class="pre">--menuconfig</span></code>，进入 menuconfig 的功能配置界面，按如下选择：</p>
 <div class="highlight-kconfig notranslate"><div class="highlight"><pre><span></span>Board options  ---&gt;
-    Graphics Support  ---&gt;
-        Graphics support
-            [*] Display Support
+    [*] Using Display Engine <span class="p">(</span>DE)
+        Display Parameter  ---&gt;
 </pre></div>
 </div>
 </div>
 <div class="section" id="id2">
 <h2><span class="section-number">6.2.2.1.2. </span>选择显示接口<a class="headerlink" href="#id2" title="永久链接至标题">¶</a></h2>
 <p id="ref-to-display-interface-menuconfig">使能显示模块的驱动后，需要选择相应的显示接口。</p>
-<div class="highlight-kconfig notranslate"><div class="highlight"><pre><span></span>[*] Display Support
-    <span class="k">select</span> Display interface <span class="p">(</span>Display LVDS interface)  ---&gt;
+<div class="highlight-kconfig notranslate"><div class="highlight"><pre><span></span>Board options  ---&gt;
+    [*] Using Display Engine <span class="p">(</span>DE)
+        Display Parameter  ---&gt;
+            <span class="k">select</span> Display interface <span class="p">(</span>Display LVDS interface)  ---&gt;
 </pre></div>
 </div>
 <p>ArtInChip 平台支持多种显示接口标准，但在系统运行时只能生效一个。</p>
@@ -400,34 +402,61 @@
 <p class="admonition-title">注解</p>
 <p>只有使能了 panel 对应的显示接口后，panel 才能在 menuconfig 中可见。</p>
 </div>
-<div class="highlight-kconfig notranslate"><div class="highlight"><pre><span></span>[*] Display Support
-    Display Panels  ---&gt;
+<div class="highlight-kconfig notranslate"><div class="highlight"><pre><span></span>Board options  ---&gt;
+    [*] Using Display Engine <span class="p">(</span>DE)
+        Display Parameter  ---&gt;
+            Display Panels  ---&gt;
 </pre></div>
 </div>
 <p>如果选择了 ArtInChip simple panel，可以通过 menuconfig 来修改屏时序参数。</p>
-<div class="highlight-kconfig notranslate"><div class="highlight"><pre><span></span>[*] Display Support
-    Display Panels  ---&gt;
-        ArtInChip Panel Drivers <span class="p">(</span>ArtInChip simple panel)  ---&gt;
-        display timing of simple panel  ---&gt;
+<div class="highlight-kconfig notranslate"><div class="highlight"><pre><span></span>Display Panels  ---&gt;
+    ArtInChip Panel Drivers <span class="p">(</span>ArtInChip simple panel)  ---&gt;
+    display timing of simple panel  ---&gt;
 </pre></div>
 </div>
 </div>
 <div class="section" id="ref-to-lite-backlight">
-<span id="id3"></span><h2><span class="section-number">6.2.2.1.4. </span>背光引脚<a class="headerlink" href="#ref-to-lite-backlight" title="永久链接至标题">¶</a></h2>
-<p>显示模块的驱动使用 gpio 引脚进行背光控制，通过字符串的形式指定相应的 pin 引脚。</p>
+<span id="id3"></span><h2><span class="section-number">6.2.2.1.4. </span>背光配置<a class="headerlink" href="#ref-to-lite-backlight" title="永久链接至标题">¶</a></h2>
+<div class="section" id="gpio">
+<h3><span class="section-number">6.2.2.1.4.1. </span>GPIO<a class="headerlink" href="#gpio" title="永久链接至标题">¶</a></h3>
+<p>在 menuconfig 中，选择 GPIO 方式控制背光，以字符串的形式指定 gpio 引脚。</p>
 <p>enable-gpio 默认高电平有效。</p>
-<div class="highlight-kconfig notranslate"><div class="highlight"><pre><span></span>[*] Display Support
-    <span class="p">(</span>PE.19) panel backlight enable pin
-    [ ] panel backlight enable pin low active
+<div class="highlight-kconfig notranslate"><div class="highlight"><pre><span></span>Board options  ---&gt;
+    [*] Using Display Engine <span class="p">(</span>DE)
+        Display Parameter  ---&gt;
+            panel backlight control <span class="p">(</span>gpio)  ---&gt;
+        <span class="p">(</span>PE.19) panel backlight enable pin
+        [ ] panel backlight enable pin low active
 </pre></div>
+</div>
+</div>
+<div class="section" id="pwm">
+<h3><span class="section-number">6.2.2.1.4.2. </span>PWM<a class="headerlink" href="#pwm" title="永久链接至标题">¶</a></h3>
+<p>在 menuconfig 中，选择 PWM 方式控制背光，配置 pwm 的通道和默认占空比 [0, 100]</p>
+<p><strong>使能 pwm</strong></p>
+<div class="highlight-kconfig notranslate"><div class="highlight"><pre><span></span>Board options  ---&gt;
+    [*] Using PWM3
+</pre></div>
+</div>
+<p><strong>配置 pwm-backlight</strong></p>
+<div class="highlight-kconfig notranslate"><div class="highlight"><pre><span></span>Board options  ---&gt;
+    [*] Using Display Engine <span class="p">(</span>DE)
+        Display Parameter  ---&gt;
+            panel backlight control <span class="p">(</span>pwm)  ---&gt;
+        <span class="p">(</span><span class="mi">3</span><span class="p">)</span> pwm backlight channel
+        <span class="p">(</span><span class="mi">80</span><span class="p">)</span> <span class="k">default</span> brightness level
+</pre></div>
+</div>
 </div>
 </div>
 <div class="section" id="id4">
 <h2><span class="section-number">6.2.2.1.5. </span>显示引擎配置<a class="headerlink" href="#id4" title="永久链接至标题">¶</a></h2>
-<div class="highlight-kconfig notranslate"><div class="highlight"><pre><span></span>[*] Display Support
-    <span class="k">select</span> framebuffer format <span class="p">(</span>argb8888)  ---&gt;
-    [*] Support double framebuffer
-    [*] Enable Display Dither
+<div class="highlight-kconfig notranslate"><div class="highlight"><pre><span></span>Board options  ---&gt;
+    [*] Using Display Engine <span class="p">(</span>DE)
+        Display Parameter  ---&gt;
+            <span class="k">select</span> framebuffer format <span class="p">(</span>argb8888)  ---&gt;
+            [*] Support double framebuffer
+            [*] Enable Display Dither
 </pre></div>
 </div>
 <p>framebuffer 默认使用 32 位 ARGB8888 格式。</p>
@@ -439,9 +468,11 @@
 <div class="section" id="rgb">
 <h3><span class="section-number">6.2.2.1.6.1. </span>RGB 接口<a class="headerlink" href="#rgb" title="永久链接至标题">¶</a></h3>
 <p>选择 RGB 显示接口</p>
-<div class="highlight-kconfig notranslate"><div class="highlight"><pre><span></span>[*] Display Support
-        <span class="k">select</span> Display interface <span class="p">(</span>Display RGB interface)  ---&gt;
-    RGB interface options  ---&gt;
+<div class="highlight-kconfig notranslate"><div class="highlight"><pre><span></span>Board options  ---&gt;
+    [*] Using Display Engine <span class="p">(</span>DE)
+        Display Parameter  ---&gt;
+            <span class="k">select</span> Display interface <span class="p">(</span>Display RGB interface)  ---&gt;
+            RGB interface options  ---&gt;
 </pre></div>
 </div>
 <p>RGB 显示接口参数配置</p>
@@ -542,9 +573,11 @@
 <div class="section" id="lvds">
 <h3><span class="section-number">6.2.2.1.6.2. </span>LVDS 接口<a class="headerlink" href="#lvds" title="永久链接至标题">¶</a></h3>
 <p>选择 LVDS 显示接口</p>
-<div class="highlight-kconfig notranslate"><div class="highlight"><pre><span></span>[*] Display Support
-        <span class="k">select</span> Display interface <span class="p">(</span>Display LVDS interface)  ---&gt;
-    LVDS interface options  ---&gt;
+<div class="highlight-kconfig notranslate"><div class="highlight"><pre><span></span>Board options  ---&gt;
+    [*] Using Display Engine <span class="p">(</span>DE)
+        Display Parameter  ---&gt;
+            <span class="k">select</span> Display interface <span class="p">(</span>Display LVDS interface)  ---&gt;
+            LVDS interface options  ---&gt;
 </pre></div>
 </div>
 <p>LVDS 显示接口参数配置</p>
@@ -623,6 +656,10 @@
 <h3><span class="section-number">6.2.2.1.6.3. </span>MIPI-DSI 接口<a class="headerlink" href="#mipi-dsi" title="永久链接至标题">¶</a></h3>
 <p>因为每一款 mipi 屏幕的参数都不尽相同，推荐在 panel 驱动中使用 hardcode 的形式进行配置。</p>
 <p>ArtInChip 平台不支持 menuconfig 配置 mipi-dsi 参数。</p>
+</div>
+<div class="section" id="mipi-dbi">
+<h3><span class="section-number">6.2.2.1.6.4. </span>MIPI-DBI 接口<a class="headerlink" href="#mipi-dbi" title="永久链接至标题">¶</a></h3>
+<p>ArtInChip 平台不支持 menuconfig 配置 mipi-dbi 参数，推荐在 panel 驱动中使用 hardcode。</p>
 </div>
 </div>
 </div>

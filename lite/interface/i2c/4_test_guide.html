@@ -7,7 +7,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   
-  <title>7.5.4. 测试说明 &mdash; AIC文档中心 v1.0 文档</title>
+  <title>7.5.4. 测试指南 &mdash; AIC文档中心 v1.0 文档</title>
   
 
   
@@ -258,7 +258,21 @@
 <li class="toctree-l4"><a class="reference internal" href="1_introduction.html">7.5.1. 模块介绍</a></li>
 <li class="toctree-l4"><a class="reference internal" href="2_configure_guide.html">7.5.2. I2C配置</a></li>
 <li class="toctree-l4"><a class="reference internal" href="3_debug_guide.html">7.5.3. 调试指南</a></li>
-<li class="toctree-l4 current"><a class="current reference internal" href="#">7.5.4. 测试说明</a></li>
+<li class="toctree-l4 current"><a class="current reference internal" href="#">7.5.4. 测试指南</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="#id2">7.5.4.1. 测试环境</a><ul>
+<li class="toctree-l6"><a class="reference internal" href="#id3">7.5.4.1.1. 硬件</a></li>
+<li class="toctree-l6"><a class="reference internal" href="#id4">7.5.4.1.2. 软件</a></li>
+</ul>
+</li>
+<li class="toctree-l5"><a class="reference internal" href="#id5">7.5.4.2. 测试配置</a></li>
+<li class="toctree-l5"><a class="reference internal" href="#id6">7.5.4.3. 使能测试代码</a></li>
+<li class="toctree-l5"><a class="reference internal" href="#i2c">7.5.4.4. i2c测试</a><ul>
+<li class="toctree-l6"><a class="reference internal" href="#rtos">7.5.4.4.1. RTOS环境下读写测试</a></li>
+<li class="toctree-l6"><a class="reference internal" href="#id9">7.5.4.4.2. 裸机环境下读写测试</a></li>
+</ul>
+</li>
+</ul>
+</li>
 <li class="toctree-l4"><a class="reference internal" href="5_design_guide.html">7.5.5. 设计说明</a></li>
 <li class="toctree-l4"><a class="reference internal" href="6_faq.html">7.5.6. 常见问题</a></li>
 </ul>
@@ -269,11 +283,13 @@
 <li class="toctree-l3"><a class="reference internal" href="../spi/index.html">7.9. QSPI 使用指南</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../uart/index.html">7.10. UART 使用指南</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../mac/index.html">7.11. MAC 使用指南</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../usb/index.html">7.12. USB 使用指南</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="../../security/index.html">8. 安全</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../peripheral/index.html">9. 外设</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../app/index.html">10. 应用</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../bringup/index.html">11. BringUp</a></li>
 </ul>
 </li>
 </ul>
@@ -339,7 +355,7 @@
         
           <li><a href="index.html"><span class="section-number">7.5. </span>I2C 使用指南</a> &raquo;</li>
         
-      <li><span class="section-number">7.5.4. </span>测试说明</li>
+      <li><span class="section-number">7.5.4. </span>测试指南</li>
     
     
       <li class="wy-breadcrumbs-aside">
@@ -357,7 +373,76 @@
            <div itemprop="articleBody">
             
   <div class="section" id="id1">
-<h1><span class="section-number">7.5.4. </span>测试说明<a class="headerlink" href="#id1" title="永久链接至标题">¶</a></h1>
+<h1><span class="section-number">7.5.4. </span>测试指南<a class="headerlink" href="#id1" title="永久链接至标题">¶</a></h1>
+<div class="section" id="id2">
+<h2><span class="section-number">7.5.4.1. </span>测试环境<a class="headerlink" href="#id2" title="永久链接至标题">¶</a></h2>
+<div class="section" id="id3">
+<h3><span class="section-number">7.5.4.1.1. </span>硬件<a class="headerlink" href="#id3" title="永久链接至标题">¶</a></h3>
+<blockquote>
+<div><ul class="simple">
+<li><p>测试板：带有eeprom的测试板</p></li>
+<li><p>PC：用于和测试板交互</p></li>
+<li><p>串口线：连接测试板的调试串口</p></li>
+</ul>
+</div></blockquote>
+</div>
+<div class="section" id="id4">
+<h3><span class="section-number">7.5.4.1.2. </span>软件<a class="headerlink" href="#id4" title="永久链接至标题">¶</a></h3>
+<blockquote>
+<div><ul class="simple">
+<li><p>PC端串口终端软件</p></li>
+<li><p>i2c-tools、i2c测试代码</p></li>
+</ul>
+</div></blockquote>
+</div>
+</div>
+<div class="section" id="id5">
+<h2><span class="section-number">7.5.4.2. </span>测试配置<a class="headerlink" href="#id5" title="永久链接至标题">¶</a></h2>
+<p>将带有eeprom的测试板的i2c接口与eeprom连接，编译测试代码，利用i2c测试工具进行数据读写</p>
+</div>
+<div class="section" id="id6">
+<h2><span class="section-number">7.5.4.3. </span>使能测试代码<a class="headerlink" href="#id6" title="永久链接至标题">¶</a></h2>
+<div class="highlight-Kconfig notranslate"><div class="highlight"><pre><span></span>Drivers options ---&gt;
+    Drivers examples ---&gt;
+        [*] Enable i2c driver test comnand
+</pre></div>
+</div>
+</div>
+<div class="section" id="i2c">
+<h2><span class="section-number">7.5.4.4. </span>i2c测试<a class="headerlink" href="#i2c" title="永久链接至标题">¶</a></h2>
+<div class="section" id="rtos">
+<h3><span class="section-number">7.5.4.4.1. </span>RTOS环境下读写测试<a class="headerlink" href="#rtos" title="永久链接至标题">¶</a></h3>
+<div class="section" id="i2ceeprom">
+<h4><span class="section-number">7.5.4.4.1.1. </span>初始化i2c与eeprom的连接<a class="headerlink" href="#i2ceeprom" title="永久链接至标题">¶</a></h4>
+<p><strong class="command">at24cxx probe i2c0 0x50</strong> ：第三个参数为总线号，第四个参数为eeprom的地址（具体要看数据手册结合原理图确定）</p>
+</div>
+<div class="section" id="id7">
+<h4><span class="section-number">7.5.4.4.1.2. </span>读测试<a class="headerlink" href="#id7" title="永久链接至标题">¶</a></h4>
+<p><strong class="command">at24cxx read</strong></p>
+</div>
+<div class="section" id="id8">
+<h4><span class="section-number">7.5.4.4.1.3. </span>写测试<a class="headerlink" href="#id8" title="永久链接至标题">¶</a></h4>
+<p><strong class="command">at24cxx write 0x15</strong> ：第三个参数为要写的数据</p>
+<p>判断i2c总线与eeprom是否正常通信可以先进行读测试查看eeprom的初始参数在通过写命令将数据写入eeprom，最后再调用读命令查看数据读出来的数据是否与写入数据一致</p>
+</div>
+</div>
+<div class="section" id="id9">
+<h3><span class="section-number">7.5.4.4.2. </span>裸机环境下读写测试<a class="headerlink" href="#id9" title="永久链接至标题">¶</a></h3>
+<div class="section" id="id10">
+<h4><span class="section-number">7.5.4.4.2.1. </span>读测试<a class="headerlink" href="#id10" title="永久链接至标题">¶</a></h4>
+<p><strong class="command">i2c read 0 0x50 0x1234</strong> ：第三个参数是i2c的总线号，第四个参数是eeporm的地址，第五个参数是要读的寄存器地址（大容量eeprom数据地址为16bit，小容量的地址为8bit），目前开发板使用的是大容量的eeprom，所以数据地址是16bit</p>
+</div>
+<div class="section" id="id11">
+<h4><span class="section-number">7.5.4.4.2.2. </span>写测试<a class="headerlink" href="#id11" title="永久链接至标题">¶</a></h4>
+<p><strong class="command">i2c write 0 0x50 0x1234 0x15</strong> ：第六个参数是要写入数据</p>
+<p>测试方法和RTOS测试的方法一致</p>
+<div class="admonition note">
+<p class="admonition-title">注解</p>
+<p>目前的i2c测试工具仅支持单个字节数据的收发。</p>
+</div>
+</div>
+</div>
+</div>
 </div>
 
 

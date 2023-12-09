@@ -235,6 +235,8 @@
 <ul class="current">
 <li class="toctree-l1 current"><a class="reference internal" href="index.html">数据手册</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="overview.html">简介</a></li>
+<li class="toctree-l2"><a class="reference internal" href="overview.html#id2">功能特性</a></li>
+<li class="toctree-l2"><a class="reference internal" href="overview.html#id3">产品对比</a></li>
 <li class="toctree-l2 current"><a class="current reference internal" href="#">电气特性</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#id2">运行条件</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="#id3">最大极限值</a></li>
@@ -250,7 +252,7 @@
 <li class="toctree-l3"><a class="reference internal" href="#ldo">内置LDO电气特性</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="#ldo25">LDO25</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#ldo18">LDO18</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#ldo1x">LDO1X</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#ldo1x">LDO1x</a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="#id8">时钟</a><ul>
@@ -477,16 +479,13 @@
 </div>
 <div class="section" id="rtc">
 <h2>RTC 供电<a class="headerlink" href="#rtc" title="永久链接至标题">¶</a></h2>
-<ul>
-<li><p>RTC供电来源于VCC33_IO和VCOIN，内部电路自动检测VCC33_IO和VCOIN电压，并采用电压高的那一路供电。</p>
+<p>RTC供电来源于VCC33_IO和VCOIN，内部电路自动检测VCC33_IO和VCOIN电压，并采用电压高的那一路供电。</p>
 <blockquote>
 <div><ul class="simple">
-<li><p>开机下：VCC33_IO为3.3V，VCOIN接纽扣电池典型为3.0V，则采用VCC33_IO供电</p></li>
-<li><p>关机下：VCC33_IO未供电，VCOIN接纽扣电池典型为3.0V，则采用VCOIN供电，典型功耗为2uA</p></li>
+<li><p>开机下：VCC33_IO为3.3V，VCOIN接纽扣电池（电池典型为3.0V），则采用VCC33_IO供电</p></li>
+<li><p>关机下：VCC33_IO未供电，VCOIN接纽扣电池（电池典型为3.0V），则采用VCOIN供电，典型功耗为2uA</p></li>
 </ul>
 </div></blockquote>
-</li>
-</ul>
 </div>
 <div class="section" id="id5">
 <h2>上下电时序及复位<a class="headerlink" href="#id5" title="永久链接至标题">¶</a></h2>
@@ -496,8 +495,7 @@
 </div>
 <div class="section" id="id7">
 <h3>复位源<a class="headerlink" href="#id7" title="永久链接至标题">¶</a></h3>
-<ul>
-<li><p>芯片系统有7种复位源，以下任何一种复位条件成立，会对芯片产生复位：</p>
+<p>芯片系统有七种复位源，以下任何一种复位条件成立，会对芯片产生复位：</p>
 <blockquote>
 <div><ul class="simple">
 <li><p>SYS上电复位：在VCC33_IO上电后产生复位，上电10ms内系统自动放开此复位</p></li>
@@ -509,17 +507,13 @@
 <li><p>电压比较复位：通过软件使能后，在RTC_IO电压比参考电压高（可配置，或比参考电压低时）立即产生复位</p></li>
 </ul>
 </div></blockquote>
-</li>
-</ul>
 </div>
 </div>
 <div class="section" id="ldo">
 <h2>内置LDO电气特性<a class="headerlink" href="#ldo" title="永久链接至标题">¶</a></h2>
 <div class="section" id="ldo25">
 <h3>LDO25<a class="headerlink" href="#ldo25" title="永久链接至标题">¶</a></h3>
-<ul class="simple">
-<li><p>内置LDO25，电压可配置，用于系统模拟及 GPADC/eFuse供电，其电气特性描述如下：</p></li>
-</ul>
+<p>内置LDO25，电压可配置，用于系统模拟及 GPADC/eFuse供电，其电气特性描述如下：</p>
 <table class="colwidths-given docutils align-center" id="id14">
 <caption><span class="caption-number">表 5 </span><span class="caption-text">LDO25 电气特性</span><a class="headerlink" href="#id14" title="永久链接至表格">¶</a></caption>
 <colgroup>
@@ -566,9 +560,7 @@
 </div>
 <div class="section" id="ldo18">
 <h3>LDO18<a class="headerlink" href="#ldo18" title="永久链接至标题">¶</a></h3>
-<ul class="simple">
-<li><p>内置LDO18，电压可配置，可用于PSRAM IO和PSRAM颗粒供电，其电气特性描述如下：</p></li>
-</ul>
+<p>内置LDO18，电压可配置，可用于PSRAM IO和PSRAM颗粒供电，其电气特性描述如下：</p>
 <table class="colwidths-given docutils align-center" id="id15">
 <caption><span class="caption-number">表 6 </span><span class="caption-text">LDO18 电气特性</span><a class="headerlink" href="#id15" title="永久链接至表格">¶</a></caption>
 <colgroup>
@@ -614,12 +606,10 @@
 </table>
 </div>
 <div class="section" id="ldo1x">
-<h3>LDO1X<a class="headerlink" href="#ldo1x" title="永久链接至标题">¶</a></h3>
-<ul class="simple">
-<li><p>内置LDO1X，电压可配置，可用于 VDD11_SYS供电，其电气特性描述如下：</p></li>
-</ul>
+<h3>LDO1x<a class="headerlink" href="#ldo1x" title="永久链接至标题">¶</a></h3>
+<p>内置LDO1x，电压可配置，可用于 VDD11_SYS供电，其电气特性描述如下：</p>
 <table class="colwidths-given docutils align-center" id="id16">
-<caption><span class="caption-number">表 7 </span><span class="caption-text">LDO1X 电气特性</span><a class="headerlink" href="#id16" title="永久链接至表格">¶</a></caption>
+<caption><span class="caption-number">表 7 </span><span class="caption-text">LDO1x 电气特性</span><a class="headerlink" href="#id16" title="永久链接至表格">¶</a></caption>
 <colgroup>
 <col style="width: 10%" />
 <col style="width: 32%" />
@@ -887,25 +877,25 @@
 </ul>
 <div class="figure align-center" id="id19">
 <img alt="../_images/lcd_prgb_signal.png" src="../_images/lcd_prgb_signal.png" />
-<p class="caption"><span class="caption-number">图 2 </span><span class="caption-text">prgb时序</span><a class="headerlink" href="#id19" title="永久链接至图片">¶</a></p>
+<p class="caption"><span class="caption-number">图 1 </span><span class="caption-text">prgb时序</span><a class="headerlink" href="#id19" title="永久链接至图片">¶</a></p>
 </div>
 <ul class="simple">
 <li><p>LVDS支持Single Link</p></li>
 </ul>
 <div class="figure align-center" id="id20">
 <img alt="../_images/lvds_format.png" src="../_images/lvds_format.png" />
-<p class="caption"><span class="caption-number">图 3 </span><span class="caption-text">lvds时序</span><a class="headerlink" href="#id20" title="永久链接至图片">¶</a></p>
+<p class="caption"><span class="caption-number">图 2 </span><span class="caption-text">lvds时序</span><a class="headerlink" href="#id20" title="永久链接至图片">¶</a></p>
 </div>
 <ul class="simple">
 <li><p>MIPI-DSI支持Video模式（包括Burst模式、Sync Pulse模式和Sync Event模式）</p></li>
 </ul>
 <div class="figure align-center" id="id21">
 <img alt="../_images/dsi_burst.png" src="../_images/dsi_burst.png" />
-<p class="caption"><span class="caption-number">图 4 </span><span class="caption-text">Video burst模式</span><a class="headerlink" href="#id21" title="永久链接至图片">¶</a></p>
+<p class="caption"><span class="caption-number">图 3 </span><span class="caption-text">Video burst模式</span><a class="headerlink" href="#id21" title="永久链接至图片">¶</a></p>
 </div>
 <div class="figure align-center" id="id22">
 <img alt="../_images/dsi_cmd.png" src="../_images/dsi_cmd.png" />
-<p class="caption"><span class="caption-number">图 5 </span><span class="caption-text">command模式</span><a class="headerlink" href="#id22" title="永久链接至图片">¶</a></p>
+<p class="caption"><span class="caption-number">图 4 </span><span class="caption-text">command模式</span><a class="headerlink" href="#id22" title="永久链接至图片">¶</a></p>
 </div>
 </div>
 </div>

@@ -291,6 +291,7 @@
 <li class="toctree-l2"><a class="reference internal" href="../../security/index.html">8. 安全</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../peripheral/index.html">9. 外设</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../app/index.html">10. 应用</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../bringup/index.html">11. BringUp</a></li>
 </ul>
 </li>
 </ul>
@@ -409,7 +410,7 @@
 <h3><span class="section-number">6.3.6.2.3. </span>解决方法<a class="headerlink" href="#id8" title="永久链接至标题">¶</a></h3>
 <ol class="arabic simple">
 <li><p>如果DVP驱动中的调试信息打开了，每一帧数据处理都有输出log，会影响帧率，需要关掉。提升log级别即可。</p></li>
-<li><p>尝试增加dvp_test中的buffer数量，保证buf队列中有充裕的空闲buf。</p></li>
+<li><p>尝试增加test_dvp中的buffer数量，保证buf队列中有充裕的空闲buf。</p></li>
 </ol>
 </div>
 </div>

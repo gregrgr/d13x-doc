@@ -287,6 +287,7 @@
 <li class="toctree-l2"><a class="reference internal" href="../../../security/index.html">8. 安全</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../../peripheral/index.html">9. 外设</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../../app/index.html">10. 应用</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../bringup/index.html">11. BringUp</a></li>
 </ul>
 </li>
 </ul>
@@ -380,7 +381,7 @@
 </div>
 <div class="section" id="id2">
 <h1><span class="section-number">6.2.5.2.2. </span>软件框图<a class="headerlink" href="#id2" title="永久链接至标题">¶</a></h1>
-<p>在软件 SDK 中，显示引擎，显示接口与 LCD 的关系是 <cite>1 X 3 X N</cite>。 一个显示引擎需要对接 3 个显示接口，一个显示接口要适配多款 LCD，其数据链路是不确定的。</p>
+<p>在软件 SDK 中，显示引擎，显示接口与 LCD 的关系是 <cite>1 X N X N</cite>。 一个显示引擎需要对接多个显示接口，一个显示接口又要适配多款 LCD，其数据链路是不确定的。</p>
 <div class="figure align-center">
 <img alt="../../../../_images/sw_framework.png" src="../../../../_images/sw_framework.png" />
 </div>
@@ -397,6 +398,16 @@
 <span class="p">};</span>
 </pre></div>
 </div>
+<div class="admonition note">
+<p class="admonition-title">注解</p>
+<p>MIPI-DBI 是软件虚拟出来的 device，为 MIPI-DBI 协议提供支持。MIPI-DBI 协议包括 3 种类型：</p>
+<ul class="simple">
+<li><p>Type A: Motorola 6800</p></li>
+<li><p>Type B: Intel 8080</p></li>
+<li><p>Type C: SPI</p></li>
+</ul>
+<p>目前 Artinchip 平台仅支持 Type B 和 Type C</p>
+</div>
 <p>LCD panel 使用 <code class="docutils literal notranslate"><span class="pre">struct</span> <span class="pre">aic_panel</span></code> 来表示。严格来说，panel component 不算一个 driver，只是一些屏参数和回调函数的结合。</p>
 <div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="k">struct</span> <span class="nc">aic_panel</span> <span class="p">{</span>
     <span class="k">const</span> <span class="kt">char</span> <span class="o">*</span><span class="n">name</span><span class="p">;</span>
@@ -408,6 +419,7 @@
         <span class="k">struct</span> <span class="nc">panel_rgb</span>  <span class="o">*</span><span class="n">rgb</span><span class="p">;</span>
         <span class="k">struct</span> <span class="nc">panel_lvds</span> <span class="o">*</span><span class="n">lvds</span><span class="p">;</span>
         <span class="k">struct</span> <span class="nc">panel_dsi</span>  <span class="o">*</span><span class="n">dsi</span><span class="p">;</span>
+        <span class="k">struct</span> <span class="nc">panel_dbi</span>  <span class="o">*</span><span class="n">dbi</span><span class="p">;</span>
     <span class="p">};</span>
 
     <span class="kt">int</span> <span class="n">connector_type</span><span class="p">;</span>
@@ -443,6 +455,9 @@
 <span class="cp">#ifdef AIC_DISP_MIPI_DSI</span>
     <span class="o">&amp;</span><span class="n">artinchip_dsi_driver</span>
 <span class="cp">#endif</span>
+<span class="cp">#ifdef AIC_DISP_MIPI_DBI</span>
+    <span class="o">&amp;</span><span class="n">artinchip_dbi_driver</span>
+<span class="cp">#endif</span>
 <span class="p">};</span>
 </pre></div>
 </div>
@@ -470,9 +485,12 @@
 </div>
 <div class="section" id="backlight">
 <h2><span class="section-number">6.2.5.2.3.3. </span>backlight<a class="headerlink" href="#backlight" title="永久链接至标题">¶</a></h2>
-<p>当前仅支持 gpio 方式使能背光。</p>
-<p>在 menuconfig 中使用字符串的形式指定背光引脚，支持配置引脚的高低电平输出。</p>
-<p>详情可参考 <a class="reference internal" href="../02_config_guide/menuconfig/index.html#ref-to-lite-backlight"><span class="std std-ref">背光引脚配置</span></a> 章节。</p>
+<p>Luban-lite 提供两种方式控制背光：</p>
+<ul class="simple">
+<li><p>GPIO</p></li>
+<li><p>PWM</p></li>
+</ul>
+<p>在 menuconfig 中配置 backlight，详情参考 <a class="reference internal" href="../02_config_guide/menuconfig/index.html#ref-to-lite-backlight"><span class="std std-ref">背光配置</span></a> 章节。</p>
 </div>
 </div>
 

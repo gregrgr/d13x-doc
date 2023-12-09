@@ -281,6 +281,7 @@
 <li class="toctree-l2"><a class="reference internal" href="../../security/index.html">8. 安全</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../peripheral/index.html">9. 外设</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../app/index.html">10. 应用</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../bringup/index.html">11. BringUp</a></li>
 </ul>
 </li>
 </ul>
@@ -402,7 +403,7 @@
 <h2><span class="section-number">6.9.4.2. </span>运行测试用例<a class="headerlink" href="#id6" title="永久链接至标题">¶</a></h2>
 <ul class="simple">
 <li><p>配置编译任意一个lvgl demo(<a class="reference internal" href="2_configure.html#ref-to-lvgl-menuconfig"><span class="std std-ref">使能LVGL库和LVGL demo</span></a>)</p></li>
-<li><p>在luban-lite/application/os/helloworld/lvgl/lv_demo.c中会调用INIT_APP_EXPORT开机自动运行</p></li>
+<li><p>在luban-lite/packages/artinchip/lvgl-apps/lv_demo.c中会调用INIT_APP_EXPORT开机自动运行</p></li>
 </ul>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">INIT_APP_EXPORT</span><span class="p">(</span><span class="n">lvgl_thread_init</span><span class="p">);</span>
 </pre></div>

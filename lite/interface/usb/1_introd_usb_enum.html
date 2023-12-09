@@ -1,0 +1,1463 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="zh-CN" >
+<head>
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>7.12.2. USB 设备枚举简介 &mdash; AIC文档中心 v1.0 文档</title>
+  
+
+  
+  <link rel="stylesheet" href="../../../_static/css/theme_overrides.css" type="text/css" />
+  <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+
+  
+  
+    <link rel="shortcut icon" href="../../../_static/aic_logo.png"/>
+  
+
+  
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../../" src="../../../_static/documentation_options.js"></script>
+        <script src="../../../_static/jquery.js"></script>
+        <script src="../../../_static/underscore.js"></script>
+        <script src="../../../_static/doctools.js"></script>
+        <script src="../../../_static/translations.js"></script>
+    
+    <script type="text/javascript" src="../../../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="索引" href="../../../genindex.html" />
+    <link rel="search" title="搜索" href="../../../search.html" />
+    <link rel="next" title="7.12.3. 配置指南" href="2_config_guide.html" />
+    <link rel="prev" title="7.12.1. USB 简介" href="1_introd_usb.html" />
+    <script>
+        $(function () {
+/**
+            var $body = $(".rst-content");
+            $body.attr("oncontextmenu", "return false"); 
+            $body.attr("ondragstart", "return false");
+            $body.attr("onselectstart", "return false");
+            $body.attr("onbeforecopy", "return false");
+
+            if (document.selection) {
+                $body.attr("onselect", "document.selection.empty()");
+                $body.attr("oncopy", "document.selection.empty()");
+                $body.attr("onmouseup", "document.selection.empty()");
+            } else {
+                $body.attr("onselect", "document.getSelection().removeAllRanges()");
+                $body.attr("oncopy", "document.getSelection().removeAllRanges()");
+                $body.attr("onmouseup", "document.getSelection().removeAllRanges()");
+            }
+
+            $(".wy-menu-vertical .toctree-l4.current .current.toctree-l5 > ul").wrap("<div></div>");
+
+            $(document).keydown(function (e) {
+                var $div = $(".wy-menu-vertical .toctree-l4.current .current.toctree-l5 > div");
+                var scrollLeft = $div.scrollLeft();
+                var step = 50;
+                var code = e.keyCode;
+                switch (code) {
+                    case 37:
+                        $div.scrollLeft(scrollLeft - step);
+                        break;
+                    case 39:
+                        $div.scrollLeft(scrollLeft + step);
+                        break;
+                    case 65:
+                    case 67:
+                    case 83:
+                    case 86:
+                        var ctrlKey = navigator.platform.match("Mac") ? e.metaKey : e.ctrlKey;
+                        if (ctrlKey) {
+                            e.preventDefault();
+                            window.event.returnValue = false;
+                        }
+                        break;
+                    case 123:
+                        e.preventDefault();
+                        window.event.returnValue = false;
+                        break;
+                }
+	    });  **/
+
+            watermark({
+                watermark_id: ".wy-nav-content",
+                watermark_txt: "ArtInChip",
+                watermark_font: "微软雅黑",
+                watermark_fontsize: "100px",
+                watermark_width: 600,
+                watermark_height: 300,
+                watermark_alpha: 0.1,
+                watermark_rows: 0,
+                watermark_y: 100,
+                watermark_x_space: 0,
+                watermark_y_space: 100
+            });
+
+        });
+
+        function watermark(settings) {
+            var defaultSettings = {
+                watermark_id: "body",
+                watermark_txt: "text",
+                watermark_x: 20,
+                watermark_y: 20,
+                watermark_rows: 20,
+                watermark_cols: 20,
+                watermark_x_space: 100,
+                watermark_y_space: 50,
+                watermark_color: '#aaa',
+                watermark_alpha: 0.4,
+                watermark_fontsize: '15px',
+                watermark_font: 'Times New Roman',
+                watermark_width: 210,
+                watermark_height: 80,
+                watermark_angle: 20
+            };
+
+            for (key in settings) {
+                defaultSettings[key] = settings[key];
+            }
+
+            var oTemp = document.createDocumentFragment();
+
+            var $container = $(defaultSettings.watermark_id);
+
+            var page_width = $container.width();
+            var col_width = defaultSettings.watermark_width + defaultSettings.watermark_x_space;
+            defaultSettings.watermark_cols = page_width / col_width;
+
+            var page_height = $container.height();
+            var row_height = defaultSettings.watermark_height + defaultSettings.watermark_y_space;
+            defaultSettings.watermark_rows = page_height / row_height;
+
+            var x, y;
+            for (var i = 0; i < defaultSettings.watermark_rows; i++) {
+                y = defaultSettings.watermark_y + (defaultSettings.watermark_y_space + defaultSettings.watermark_height) * i;
+                for (var j = 0; j < defaultSettings.watermark_cols; j++) {
+                    x = defaultSettings.watermark_x + (defaultSettings.watermark_width + defaultSettings.watermark_x_space) * j;
+                    var mask_div = document.createElement('div');
+                    mask_div.id = 'mask_div' + i + j;
+                    mask_div.className = 'mask_div';
+                    mask_div.appendChild(document.createTextNode(defaultSettings.watermark_txt));
+
+                    mask_div.style.webkitTransform = "rotate(-" + defaultSettings.watermark_angle + "deg)";
+                    mask_div.style.MozTransform = "rotate(-" + defaultSettings.watermark_angle + "deg)";
+                    mask_div.style.msTransform = "rotate(-" + defaultSettings.watermark_angle + "deg)";
+                    mask_div.style.OTransform = "rotate(-" + defaultSettings.watermark_angle + "deg)";
+                    mask_div.style.transform = "rotate(-" + defaultSettings.watermark_angle + "deg)";
+                    mask_div.style.visibility = "";
+                    mask_div.style.position = "absolute";
+                    mask_div.style.left = x + 'px';
+                    mask_div.style.top = y + 'px';
+                    mask_div.style.overflow = "hidden";
+                    mask_div.style.zIndex = "9999";
+
+                    mask_div.style.pointerEvents = 'none';
+                    mask_div.style.opacity = defaultSettings.watermark_alpha;
+                    mask_div.style.fontSize = defaultSettings.watermark_fontsize;
+                    mask_div.style.fontFamily = defaultSettings.watermark_font;
+                    mask_div.style.color = defaultSettings.watermark_color;
+                    mask_div.style.textAlign = "center";
+                    mask_div.style.width = defaultSettings.watermark_width + 'px';
+                    mask_div.style.height = defaultSettings.watermark_height + 'px';
+                    mask_div.style.display = "block";
+                    oTemp.appendChild(mask_div);
+                };
+            };
+            $container.append(oTemp);
+        }
+    </script>
+
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../../index.html" class="icon icon-home"> AIC文档中心
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../product/index.html">产品简介</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../quick-start/index.html">快速入门</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../datasheet/index.html">数据手册</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../ic/index.html">芯片手册</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../hw/index.html">硬件指南</a></li>
+</ul>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="../../index.html">RTOS SDK</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../../env/index.html">1. 编译准备</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../sdk/index.html">2. 使用指南</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../boot/index.html">3. 启动引导</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../system/index.html">4. 系统</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../memory/index.html">5. 存储</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../media/index.html">6. 多媒体</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="../index.html">7. 接口</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="../can/index.html">7.1. CAN 使用指南</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../cir/index.html">7.2. CIR 使用指南</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../gpai/index.html">7.3. GPAI 使用指南</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../gpio/index.html">7.4. GPIO 使用指南</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../i2c/index.html">7.5. I2C 使用指南</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../psadc/index.html">7.6. PSADC 使用指南</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../pwm/index.html">7.7. PWM 使用指南</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../rtp/index.html">7.8. RTP 使用指南</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../spi/index.html">7.9. QSPI 使用指南</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../uart/index.html">7.10. UART 使用指南</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../mac/index.html">7.11. MAC 使用指南</a></li>
+<li class="toctree-l3 current"><a class="reference internal" href="index.html">7.12. USB 使用指南</a><ul class="current">
+<li class="toctree-l4"><a class="reference internal" href="1_introd_usb.html">7.12.1. USB 简介</a></li>
+<li class="toctree-l4 current"><a class="current reference internal" href="#">7.12.2. USB 设备枚举简介</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="#id1">7.12.2.1. 背景</a></li>
+<li class="toctree-l5"><a class="reference internal" href="#id2">7.12.2.2. USB 协议传输格式</a><ul>
+<li class="toctree-l6"><a class="reference internal" href="#packet">7.12.2.2.1. Packet</a></li>
+<li class="toctree-l6"><a class="reference internal" href="#transaction">7.12.2.2.2. Transaction</a></li>
+<li class="toctree-l6"><a class="reference internal" href="#control-transfers">7.12.2.2.3. Control Transfers</a></li>
+</ul>
+</li>
+<li class="toctree-l5"><a class="reference internal" href="#id3">7.12.2.3. USB 枚举通讯过程</a><ul>
+<li class="toctree-l6"><a class="reference internal" href="#id4">7.12.2.3.1. USB 设备枚举总体流程</a></li>
+<li class="toctree-l6"><a class="reference internal" href="#tranfser-0-control-read-get-device-descriptor">7.12.2.3.2. Tranfser 0 (Control Read) (Get Device Descriptor)</a></li>
+<li class="toctree-l6"><a class="reference internal" href="#reset-powered-default">7.12.2.3.3. Reset (<code class="docutils literal notranslate"><span class="pre">Powered</span></code> → <code class="docutils literal notranslate"><span class="pre">Default</span></code>)</a></li>
+<li class="toctree-l6"><a class="reference internal" href="#tranfser-1-control-no-data-set-device-address-default-address">7.12.2.3.4. Tranfser 1 (Control No Data) (Set Device Address) (<code class="docutils literal notranslate"><span class="pre">Default</span></code> → <code class="docutils literal notranslate"><span class="pre">Address</span></code>)</a></li>
+<li class="toctree-l6"><a class="reference internal" href="#tranfser-2-control-read-get-device-descriptor">7.12.2.3.5. Tranfser 2 (Control Read) (Get Device Descriptor)</a></li>
+<li class="toctree-l6"><a class="reference internal" href="#tranfser-3-control-read-get-config-descriptor">7.12.2.3.6. Tranfser 3 (Control Read) (Get Config Descriptor)</a></li>
+<li class="toctree-l6"><a class="reference internal" href="#tranfser-4-control-read-get-4-descriptors">7.12.2.3.7. Tranfser 4 (Control Read) (Get 4 Descriptors)</a></li>
+<li class="toctree-l6"><a class="reference internal" href="#tranfser-5-control-read-get-string-0-descriptor">7.12.2.3.8. Tranfser 5 (Control Read) (Get String 0 Descriptor)</a></li>
+<li class="toctree-l6"><a class="reference internal" href="#tranfser-6-control-read-get-string-2-descriptor">7.12.2.3.9. Tranfser 6 (Control Read) (Get String 2 Descriptor)</a></li>
+<li class="toctree-l6"><a class="reference internal" href="#tranfser-7-control-read-get-string-1-descriptor">7.12.2.3.10. Tranfser 7 (Control Read) (Get String 1 Descriptor)</a></li>
+<li class="toctree-l6"><a class="reference internal" href="#tranfser-8-control-no-data-set-configured-address-configured">7.12.2.3.11. Tranfser 8 (Control No Data) (Set Configured) (<code class="docutils literal notranslate"><span class="pre">Address</span></code> → <code class="docutils literal notranslate"><span class="pre">Configured</span></code>)</a></li>
+<li class="toctree-l6"><a class="reference internal" href="#tranfser-9">7.12.2.3.12. Tranfser 9</a></li>
+<li class="toctree-l6"><a class="reference internal" href="#tranfser-10">7.12.2.3.13. Tranfser 10</a></li>
+<li class="toctree-l6"><a class="reference internal" href="#tranfser-11">7.12.2.3.14. Tranfser 11</a></li>
+<li class="toctree-l6"><a class="reference internal" href="#tranfser-12">7.12.2.3.15. Tranfser 12</a></li>
+</ul>
+</li>
+<li class="toctree-l5"><a class="reference internal" href="#id5">7.12.2.4. 参考资料</a></li>
+</ul>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="2_config_guide.html">7.12.3. 配置指南</a></li>
+<li class="toctree-l4"><a class="reference internal" href="3_debug_guide.html">7.12.4. 调试指南</a></li>
+<li class="toctree-l4"><a class="reference internal" href="4_test_guide.html">7.12.5. 测试指南</a></li>
+<li class="toctree-l4"><a class="reference internal" href="5_design_guide.html">7.12.6. 设计说明</a></li>
+<li class="toctree-l4"><a class="reference internal" href="6_faq.html">7.12.7. 常见问题</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../security/index.html">8. 安全</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../peripheral/index.html">9. 外设</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../app/index.html">10. 应用</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../bringup/index.html">11. BringUp</a></li>
+</ul>
+</li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../baremetal/index.html">Baremetal</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../tools/index.html">工具指南</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../aboutus/index.html">关于我们</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../index.html">AIC文档中心</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+          <li><a href="../../index.html">RTOS SDK</a> &raquo;</li>
+        
+          <li><a href="../index.html"><span class="section-number">7. </span>接口</a> &raquo;</li>
+        
+          <li><a href="index.html"><span class="section-number">7.12. </span>USB 使用指南</a> &raquo;</li>
+        
+      <li><span class="section-number">7.12.2. </span>USB 设备枚举简介</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="usb">
+<h1><span class="section-number">7.12.2. </span>USB 设备枚举简介<a class="headerlink" href="#usb" title="永久链接至标题">¶</a></h1>
+<div class="admonition important">
+<p class="admonition-title">重要</p>
+<p>一个 USB 设备是否能正常使用，依赖于设备有没有被正确配置。USB 设备在插入端口时会触发枚举，在这个过程中 Host 读取设备的各种描述符，并且下发相应的配置。80% 的 USB 问题是发生在设备枚举过程当中的，所以 USB 开发人员必须对此有详细了解。</p>
+</div>
+<div class="section" id="id1">
+<h2><span class="section-number">7.12.2.1. </span>背景<a class="headerlink" href="#id1" title="永久链接至标题">¶</a></h2>
+<p>USB使用以下方法来满足多种类型的数据在一条共享通道上传输：</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">时间延迟</span></code> 。从时间维度上把数据传输切成多个时间片，在每个时间片内绝大部分份额 (最多 80%) 优先传输对时间延迟有要求的数据，如 <code class="docutils literal notranslate"><span class="pre">Interrupt</span> <span class="pre">Transfers</span></code> 、 <code class="docutils literal notranslate"><span class="pre">Isochronous</span> <span class="pre">Transfers</span></code> 。在时间片剩下的额度内传输对时间延迟没要求的数据，如 <code class="docutils literal notranslate"><span class="pre">Control</span> <span class="pre">Transfers</span></code> 、 <code class="docutils literal notranslate"><span class="pre">Bulk</span> <span class="pre">Transfers</span></code> 。</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">完整性校验</span></code> 。对需要保证数据完整性的数据加上了CRC 校验，接收端使用 ACK 来知会发送端正确接收，如果没有收到 ACK 发端会尝试重发 3 次。</p></li>
+</ul>
+<p><img alt="image0" src="../../../_images/usb_microframe.png" /></p>
+<p>如上图，USB从时间维度上把数据传输切成多个时间片：</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">Frames</span></code>。Low-speed 和 Full-speed 的时间切片大小为 1ms，USB 控制器每1ms重新调度一下传输。</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Microframes</span></code>。High-speed 的时间切片大小为 125us，USB 控制器每125us重新调度一下传输。</p></li>
+</ul>
+<p>这个时间切片，和操作系统上 Schedule Tick 的概念是一样的。</p>
+<p>在数据格式传输上又会进一步细分：</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">Transfer</span></code>。每个时间片的所有传输称之为一个 Transfer，或者为一个 Frames/Microframes。</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Transcation</span></code>。根据某次数据传输的目的，一个 Transfer 可以分成多个 Transcation 事务。</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Packet</span></code>。数据传输的最小单位，一个 Transcation 可能由多个 Packet 组成。</p></li>
+</ul>
+</div>
+<div class="section" id="id2">
+<h2><span class="section-number">7.12.2.2. </span>USB 协议传输格式<a class="headerlink" href="#id2" title="永久链接至标题">¶</a></h2>
+<p><img alt="image1" src="../../../_images/usb_frame_format1.png" /></p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">Transfer</span></code>/<code class="docutils literal notranslate"><span class="pre">Frame</span></code> (传输):
+从时间的维度看，USB通信是由一系列的 <code class="docutils literal notranslate"><span class="pre">Transfer</span></code> (传输)组成的。包括四种传输类型：</p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">Control</span> <span class="pre">Transfers</span></code> 控制传输</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Isochronous</span> <span class="pre">Transfers</span></code> 同步传输</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Interrupt</span> <span class="pre">Transfers</span></code> 中断传输</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Bulk</span> <span class="pre">Transfers</span></code> 批量传输</p></li>
+</ul>
+</li>
+</ul>
+<p><img alt="image2" src="../../../_images/usb_protocol_transfer.png" /></p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">Transaction</span></code> (事务):
+每一个 <code class="docutils literal notranslate"><span class="pre">Transfer</span></code> (传输)又可以分成不同的 Transaction，具体的 Transaction 类型为以下3种：</p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">IN/Read/Upstream</span> <span class="pre">Transaction</span></code> 输入 (Host) 事务</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">OUT/Write/Downstream</span> <span class="pre">Transaction</span></code> 输出 (Host) 事务</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Control</span> <span class="pre">Transaction</span></code> 控制事务</p></li>
+</ul>
+</li>
+</ul>
+<p><img alt="image3" src="../../../_images/usb_protocol_transaction.png" /></p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">Packet</span></code> 每一次 Transaction 又由不同的 Packets 所组成</p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">Token</span> <span class="pre">Packet</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Data</span> <span class="pre">Packet</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Handshake</span> <span class="pre">Packet</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Special</span> <span class="pre">Packet</span></code></p></li>
+</ul>
+</li>
+</ul>
+<p><img alt="image4" src="../../../_images/usb_protocol_packet.png" /></p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">Field</span></code> 每一个 Packet 又由不同的 Field 组成：</p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">Sync</span></code> 同步域</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">PID</span></code> 标识域</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">ADDR</span></code> 设备地址域</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">ENDP</span></code> 端点域</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">FRAM</span></code> 帧号域</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">DATA</span></code> 数据域</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">CRC</span></code> 校验域</p></li>
+</ul>
+</li>
+</ul>
+<div class="section" id="packet">
+<h3><span class="section-number">7.12.2.2.1. </span>Packet<a class="headerlink" href="#packet" title="永久链接至标题">¶</a></h3>
+<p><img alt="image5" src="../../../_images/usb_packet_format1.png" /></p>
+<p>通常一个Packet由5个部分组成。</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">PID</span></code> : Packet ID</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">ADDR</span></code> : Device Address</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">EP</span></code> : Endpoint Number</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Payload</span> <span class="pre">DATA</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">CRC</span></code> ： 5/16 bits CRC</p></li>
+</ul>
+<p>以下是四种 Packet 的具体格式。</p>
+<div class="section" id="token-packet">
+<h4><span class="section-number">7.12.2.2.1.1. </span>Token Packet<a class="headerlink" href="#token-packet" title="永久链接至标题">¶</a></h4>
+<p><img alt="image6" src="../../../_images/packet_token.png" /></p>
+<p>Token Packets 主要分四种：</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">IN</span></code>,</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">OUT</span></code>,</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">SETUP</span></code>,</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">SOF</span></code></p></li>
+</ul>
+</div>
+<div class="section" id="data-packet">
+<h4><span class="section-number">7.12.2.2.1.2. </span>Data Packet<a class="headerlink" href="#data-packet" title="永久链接至标题">¶</a></h4>
+<p><img alt="image7" src="../../../_images/packet_data.png" /></p>
+<p>Data Packets 主要由三部分组成：</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">Packet</span> <span class="pre">ID</span></code> (DATA1/DATA0, toggle), -</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Payload</span> <span class="pre">data</span></code>,</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">CRC16</span></code>  。</p></li>
+</ul>
+</div>
+<div class="section" id="handshake-packet">
+<h4><span class="section-number">7.12.2.2.1.3. </span>Handshake Packet<a class="headerlink" href="#handshake-packet" title="永久链接至标题">¶</a></h4>
+<p><img alt="image8" src="../../../_images/packet_handshake.png" /></p>
+<p>Handshake Packets主要有4种：</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">ACK</span></code> : 返回成功</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">NAK</span></code> : Device 忙，或者没有什么需要执行。</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">STALL</span></code> : Device 出错</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">NYET</span></code> : Host only, Not ready.</p></li>
+</ul>
+</div>
+<div class="section" id="special-packet">
+<h4><span class="section-number">7.12.2.2.1.4. </span>Special Packet<a class="headerlink" href="#special-packet" title="永久链接至标题">¶</a></h4>
+<p><img alt="image9" src="../../../_images/packet_special.png" /></p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">PRE</span></code> : 由 Host 向 Hub 发送，指示下一个 packet 是 low speed</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">SPLIT</span></code> : Host only, split transaction</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">ERR</span></code> : Host only, 由 Hub 向 Host 发送，指示在一次 split transaction 中出错</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">PING</span></code> : Host only, check status</p></li>
+</ul>
+</div>
+</div>
+<div class="section" id="transaction">
+<span id="ref-transaction"></span><h3><span class="section-number">7.12.2.2.2. </span>Transaction<a class="headerlink" href="#transaction" title="永久链接至标题">¶</a></h3>
+<p>USB Transactions主要由四种Packet组成： <code class="docutils literal notranslate"><span class="pre">Token</span> <span class="pre">Packet</span></code> 、 <code class="docutils literal notranslate"><span class="pre">Data</span> <span class="pre">Packet</span></code> 、  <code class="docutils literal notranslate"><span class="pre">Handshake</span> <span class="pre">Packet</span></code> 和 <code class="docutils literal notranslate"><span class="pre">Special</span> <span class="pre">Packet</span></code> 。但通常的一次 <code class="docutils literal notranslate"><span class="pre">Transaction</span></code> 由 3 个 Packets 组成： <code class="docutils literal notranslate"><span class="pre">Token</span></code> -&gt; <code class="docutils literal notranslate"><span class="pre">Data</span></code> -&gt; <code class="docutils literal notranslate"><span class="pre">Handshake</span></code>。</p>
+<p><img alt="image10" src="../../../_images/usb_transaction_format1.png" /></p>
+<div class="section" id="in-read-upstream-transaction">
+<h4><span class="section-number">7.12.2.2.2.1. </span>IN/Read/Upstream Transaction<a class="headerlink" href="#in-read-upstream-transaction" title="永久链接至标题">¶</a></h4>
+<p><img alt="image11" src="../../../_images/transaction_in1.png" /></p>
+<p>IN Transaction 主要用于 Device 向 Host 发送数据。</p>
+<ul class="simple">
+<li><p>Host 向 Deivce 发送一个 <code class="docutils literal notranslate"><span class="pre">IN</span> <span class="pre">Token</span> <span class="pre">Packet</span></code></p></li>
+<li><p>Device 如果忙，则回复 <code class="docutils literal notranslate"><span class="pre">NAK</span> <span class="pre">Packet</span></code>, Host 在收到 <code class="docutils literal notranslate"><span class="pre">NAK</span> <span class="pre">Pakcet</span></code> 之后则持续向 Device 发送 <code class="docutils literal notranslate"><span class="pre">IN</span> <span class="pre">Token</span> <span class="pre">Packet</span></code> 。</p></li>
+<li><p>当 Device 准备好时，回复 <code class="docutils literal notranslate"><span class="pre">Data</span> <span class="pre">Packet</span></code>, Host在收到 <code class="docutils literal notranslate"><span class="pre">Data</span> <span class="pre">packet</span></code> 之后回复一个 <code class="docutils literal notranslate"><span class="pre">ACK</span> <span class="pre">handshake</span></code> 。</p></li>
+</ul>
+</div>
+<div class="section" id="out-write-downstream-transaction">
+<h4><span class="section-number">7.12.2.2.2.2. </span>OUT/Write/Downstream Transaction<a class="headerlink" href="#out-write-downstream-transaction" title="永久链接至标题">¶</a></h4>
+<p><img alt="image12" src="../../../_images/transaction_out1.png" /></p>
+<p>OUT Transaction主要用于Host向Device发送数据。</p>
+<ul class="simple">
+<li><p>Host 向 Deivce 发送一个 <code class="docutils literal notranslate"><span class="pre">OUT</span> <span class="pre">Token</span> <span class="pre">Packet</span></code> 和一个 <code class="docutils literal notranslate"><span class="pre">DATA</span> <span class="pre">Packet</span></code> 。</p></li>
+<li><p>Device忙，则回 <code class="docutils literal notranslate"><span class="pre">NAK</span></code>, Host则会复发 <code class="docutils literal notranslate"><span class="pre">OUT</span></code> 和 <code class="docutils literal notranslate"><span class="pre">DATA</span></code></p></li>
+<li><p>Device在成功收到数据后，回 <code class="docutils literal notranslate"><span class="pre">ACK</span> <span class="pre">handshake</span> <span class="pre">packet</span></code> 。</p></li>
+</ul>
+</div>
+<div class="section" id="control-transaction">
+<h4><span class="section-number">7.12.2.2.2.3. </span>Control Transaction<a class="headerlink" href="#control-transaction" title="永久链接至标题">¶</a></h4>
+<p><code class="docutils literal notranslate"><span class="pre">Control</span> <span class="pre">Transaction</span></code> 最多由3个Stage组成： <code class="docutils literal notranslate"><span class="pre">Setup</span> <span class="pre">stage</span></code> 、 <code class="docutils literal notranslate"><span class="pre">Data</span> <span class="pre">stage</span></code> 、 <code class="docutils literal notranslate"><span class="pre">Status</span> <span class="pre">stage</span></code> 。其中 <code class="docutils literal notranslate"><span class="pre">Data</span> <span class="pre">stage</span></code> 不是必需的，有的 <code class="docutils literal notranslate"><span class="pre">control</span> <span class="pre">transaction</span></code> 没有 <code class="docutils literal notranslate"><span class="pre">data</span> <span class="pre">stage</span></code> 。</p>
+<div class="section" id="setup-stage-transaction">
+<h5><span class="section-number">7.12.2.2.2.3.1. </span>Setup Stage (<code class="docutils literal notranslate"><span class="pre">Transaction</span></code>)<a class="headerlink" href="#setup-stage-transaction" title="永久链接至标题">¶</a></h5>
+<p>Setup stage 中的 setup packet 只会出现在 control transaction 中，Device 必须回 ACK, 不能回 NAK。</p>
+<p><img alt="image13" src="../../../_images/transaction_ctl_setup.png" /></p>
+</div>
+<div class="section" id="data-stage-transaction">
+<h5><span class="section-number">7.12.2.2.2.3.2. </span>Data Stage (<code class="docutils literal notranslate"><span class="pre">Transaction</span></code>)<a class="headerlink" href="#data-stage-transaction" title="永久链接至标题">¶</a></h5>
+<p>Data Stage 可以有若干的 Data transaction。这个 stage 只有在 Host 和 Device 需要 data 传输时才会存在，通常 setup stage 的 payload 可以 cover , 这个时候就不需要 data stage。</p>
+<p><img alt="image14" src="../../../_images/transaction_ctl_data.png" /></p>
+</div>
+<div class="section" id="status-stage-transaction">
+<h5><span class="section-number">7.12.2.2.2.3.3. </span>Status Stage (<code class="docutils literal notranslate"><span class="pre">Transaction</span></code>)<a class="headerlink" href="#status-stage-transaction" title="永久链接至标题">¶</a></h5>
+<p>以下是 control read transaction 和 control write tranasaction 分别对应的 status stage。</p>
+<p><img alt="image15" src="../../../_images/transaction_ctl_status.png" /></p>
+</div>
+</div>
+</div>
+<div class="section" id="control-transfers">
+<h3><span class="section-number">7.12.2.2.3. </span>Control Transfers<a class="headerlink" href="#control-transfers" title="永久链接至标题">¶</a></h3>
+<div class="section" id="control-no-data-transfer">
+<h4><span class="section-number">7.12.2.2.3.1. </span>Control No Data (<code class="docutils literal notranslate"><span class="pre">Transfer</span></code>)<a class="headerlink" href="#control-no-data-transfer" title="永久链接至标题">¶</a></h4>
+<p><img alt="image16" src="../../../_images/transaction_ctl_nodata1.png" /></p>
+</div>
+<div class="section" id="control-read-transfer">
+<h4><span class="section-number">7.12.2.2.3.2. </span>Control Read (<code class="docutils literal notranslate"><span class="pre">Transfer</span></code>)<a class="headerlink" href="#control-read-transfer" title="永久链接至标题">¶</a></h4>
+<p><img alt="image17" src="../../../_images/transaction_ctl_readdata1.png" /></p>
+</div>
+<div class="section" id="control-write-transfer">
+<h4><span class="section-number">7.12.2.2.3.3. </span>Control Write (<code class="docutils literal notranslate"><span class="pre">Transfer</span></code>)<a class="headerlink" href="#control-write-transfer" title="永久链接至标题">¶</a></h4>
+<p><img alt="image18" src="../../../_images/transaction_ctl_writedata1.png" /></p>
+</div>
+</div>
+</div>
+<div class="section" id="id3">
+<h2><span class="section-number">7.12.2.3. </span>USB 枚举通讯过程<a class="headerlink" href="#id3" title="永久链接至标题">¶</a></h2>
+<p><img alt="image19" src="../../../_images/usb_device_state.png" /></p>
+<p>USB 设备在正常工作之前，第一件要做的事情就是枚举。枚举的作用就是让设备从上述状态图中的 <code class="docutils literal notranslate"><span class="pre">Powered</span></code> 逐步进入 <code class="docutils literal notranslate"><span class="pre">Configured</span></code> 模式。</p>
+<p><a class="reference internal" href="1_introd_usb.html#ref-internal-layer"><span class="std std-ref">Device 内部的逻辑关系</span></a></p>
+<p>USB 枚举的主要目的是读出设备的所有配置信息。</p>
+<div class="section" id="id4">
+<h3><span class="section-number">7.12.2.3.1. </span>USB 设备枚举总体流程<a class="headerlink" href="#id4" title="永久链接至标题">¶</a></h3>
+<p>是让 Host 认得这个USB设备，并且为该设备准备资源，建立好主机和设备之间的数据传递机制。一个设备枚举的过程分为如下8步：</p>
+<ol class="arabic simple">
+<li><p>获取设备描述符</p>
+<ul class="simple">
+<li><p>Host/Hub 通过数据线上拉电阻的阻值变化检测到新设备接入。Host 等待 100ms 以保证设备电源稳定。</p></li>
+<li><p>Host 向 device 发 Bus Reset 使得设备进入 default 状态，从此之后，设备可以响应默认地址 0。</p></li>
+<li><p>Host 请求 Device 发送 Device Descriptor 的前 64 个字节。</p></li>
+</ul>
+</li>
+<li><p>复位</p>
+<ul class="simple">
+<li><p>Host 在收到 Device Descritptor 的前 8 个字节后，再次向 Device 发出 Bus Reset。</p></li>
+</ul>
+</li>
+<li><p>设置地址</p>
+<ul class="simple">
+<li><p>Host 发送一个 Set Address 命令给 Deivce，从此 Device 有个通信地址，不再使用默认地址 0 进行通信。</p></li>
+</ul>
+</li>
+<li><p>再次获取设备描述符</p>
+<ul class="simple">
+<li><p>Host 请求获取完整的 Device Descritpor, 总计 18 字节。</p></li>
+</ul>
+</li>
+<li><p>获取配置描述符</p>
+<ul class="simple">
+<li><p>Host 请求获取 9 个字节的 Configuration Descriptor 以了解 Configuration Descriptor 的总大小。</p></li>
+<li><p>Host 请求 255 字节的 Configuration Descritpor。</p></li>
+</ul>
+</li>
+<li><p>获取接口，端点描述符</p></li>
+<li><p>获取字符串描述符</p></li>
+<li><p>选择设备配置</p></li>
+</ol>
+<p>下图是接入一个 USB 鼠标之后完整的枚举过程，后面详细逐步分析：</p>
+<p><img alt="image22" src="../../../_images/mouse_enum_profile.jpg" /></p>
+</div>
+<div class="section" id="tranfser-0-control-read-get-device-descriptor">
+<h3><span class="section-number">7.12.2.3.2. </span>Tranfser 0 (Control Read) (Get Device Descriptor)<a class="headerlink" href="#tranfser-0-control-read-get-device-descriptor" title="永久链接至标题">¶</a></h3>
+<p><code class="docutils literal notranslate"><span class="pre">Transfer</span> <span class="pre">0</span></code> 的作用是 <code class="docutils literal notranslate"><span class="pre">Get</span> <span class="pre">Device</span> <span class="pre">Descriptor</span></code> ，它是一个 <code class="docutils literal notranslate"><span class="pre">Control</span> <span class="pre">Read</span></code> 类型的 <code class="docutils literal notranslate"><span class="pre">Transfer</span></code> 。其中：</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">Transaction</span> <span class="pre">0</span></code> ： <code class="docutils literal notranslate"><span class="pre">Setup</span> <span class="pre">Stage</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Transaction</span> <span class="pre">1~3</span></code> ： <code class="docutils literal notranslate"><span class="pre">Data</span> <span class="pre">Stage</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Transaction</span> <span class="pre">4</span></code> ： <code class="docutils literal notranslate"><span class="pre">Status</span> <span class="pre">Stage</span></code></p></li>
+</ul>
+<p><img alt="image23" src="../../../_images/mouse_enum_transfer0.png" /></p>
+<div class="section" id="transaction-0-setup-stage">
+<h4><span class="section-number">7.12.2.3.2.1. </span>Transaction 0 (Setup Stage)<a class="headerlink" href="#transaction-0-setup-stage" title="永久链接至标题">¶</a></h4>
+<p><code class="docutils literal notranslate"><span class="pre">Transfer</span> <span class="pre">0</span></code> 的第一个事务 <code class="docutils literal notranslate"><span class="pre">Transaction</span> <span class="pre">0</span></code> 如上图。可以看出，这是一个 <code class="docutils literal notranslate"><span class="pre">Control</span></code> 事务，设备要执行的命令就是 <code class="docutils literal notranslate"><span class="pre">GET_DESCRIPTOR</span></code> 也就是获取描述符。其中分为三个包：</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">Packet</span> <span class="pre">134</span></code> 第一个为令牌包 <code class="docutils literal notranslate"><span class="pre">Setup</span> <span class="pre">Token</span></code> (主机传输给设备)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Packet</span> <span class="pre">135</span></code> 第二个为数据包 <code class="docutils literal notranslate"><span class="pre">Setup</span> <span class="pre">Data</span></code> (主机传输给设备)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Packet</span> <span class="pre">136</span></code> 第三个为握手包 <code class="docutils literal notranslate"><span class="pre">ACK</span></code> (设备传输给主机)</p></li>
+</ul>
+<div class="section" id="packet-135-setup-data">
+<h5><span class="section-number">7.12.2.3.2.1.1. </span>Packet 135 (Setup Data)<a class="headerlink" href="#packet-135-setup-data" title="永久链接至标题">¶</a></h5>
+<p>主要分析一下第二个包数据包中的DATA字段，包含的就是命令。Data中总共有 8 字节，每字节的含义如下 (USB协议报文是小端模式)：</p>
+<p><img alt="image24" src="../../../_images/setup_data_format.png" /></p>
+<p>在 Linux kernel 中，使用一个结构体来表示：</p>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="k">struct</span> <span class="nc">usb_ctrlrequest</span> <span class="p">{</span>
+    <span class="n">__u8</span> <span class="n">bRequestType</span><span class="p">;</span>
+    <span class="n">__u8</span> <span class="n">bRequest</span><span class="p">;</span>
+    <span class="n">__le16</span> <span class="n">wValue</span><span class="p">;</span>
+    <span class="n">__le16</span> <span class="n">wIndex</span><span class="p">;</span>
+    <span class="n">__le16</span> <span class="n">wLength</span><span class="p">;</span>
+<span class="p">}</span> <span class="n">__attribute__</span> <span class="p">((</span><span class="n">packed</span><span class="p">));</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>bmRequestType</p></li>
+</ul>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 14%" />
+<col style="width: 26%" />
+<col style="width: 10%" />
+<col style="width: 12%" />
+<col style="width: 38%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Offset</p></th>
+<th class="head"><p>Field</p></th>
+<th class="head"><p>Size</p></th>
+<th class="head"><p>Value</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>0</p></td>
+<td><p>bmRequestType</p></td>
+<td><p>1</p></td>
+<td><p>0x80</p></td>
+<td><p>表示
+期望的数据传输方向为
+设备传输给主机，这条
+命令的接收者为设备。</p></td>
+</tr>
+</tbody>
+</table>
+<ul class="simple">
+<li><p>bRequest</p></li>
+</ul>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 12%" />
+<col style="width: 17%" />
+<col style="width: 9%" />
+<col style="width: 11%" />
+<col style="width: 51%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Offset</p></th>
+<th class="head"><p>Field</p></th>
+<th class="head"><p>Size</p></th>
+<th class="head"><p>Value</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>1</p></td>
+<td><p>bmRequest</p></td>
+<td><p>1</p></td>
+<td><p>0x06</p></td>
+<td><p>代表了
+一个命令，根据 <code class="docutils literal notranslate"><span class="pre">Table</span> <span class="pre">9-4</span></code>
+可以得知代表的命令为获取描述符
+<code class="docutils literal notranslate"><span class="pre">GET_DESCRIPTOR</span></code></p></td>
+</tr>
+</tbody>
+</table>
+<p><img alt="image25" src="../../../_images/setup_data_brequest.png" /></p>
+<ul class="simple">
+<li><p>wValue</p></li>
+</ul>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 13%" />
+<col style="width: 14%" />
+<col style="width: 13%" />
+<col style="width: 13%" />
+<col style="width: 46%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Offset</p></th>
+<th class="head"><p>Field</p></th>
+<th class="head"><p>Size</p></th>
+<th class="head"><p>Value</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>2</p></td>
+<td><p>wValue</p></td>
+<td><p>2</p></td>
+<td><p>0x00 0x01</p></td>
+<td><p>根据 <code class="docutils literal notranslate"><span class="pre">Table</span> <span class="pre">9-3</span></code> 可以得知，此时代表的是：
+<code class="docutils literal notranslate"><span class="pre">Descriptor</span> <span class="pre">Type</span></code> +  <code class="docutils literal notranslate"><span class="pre">Descriptor</span> <span class="pre">Index</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p>2</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">Descriptor</span>
+<span class="pre">Index</span></code></p></td>
+<td><p>1</p></td>
+<td><p>0x00</p></td>
+<td><p>想要获取的描述符 index 为 0</p></td>
+</tr>
+<tr class="row-even"><td><p>3</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">Descriptor</span>
+<span class="pre">Type</span></code></p></td>
+<td><p>1</p></td>
+<td><p>0x01</p></td>
+<td><p>根据 <code class="docutils literal notranslate"><span class="pre">Table</span> <span class="pre">9-5</span></code> 可以得知，想要获取的描述
+符为``Device Descriptor``</p></td>
+</tr>
+</tbody>
+</table>
+<p><img alt="image26" src="../../../_images/standard_device_requests.png" /></p>
+<p><img alt="image27" src="../../../_images/setup_descriptor_types.png" /></p>
+<ul class="simple">
+<li><p>wIndex</p></li>
+</ul>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 12%" />
+<col style="width: 12%" />
+<col style="width: 9%" />
+<col style="width: 17%" />
+<col style="width: 49%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Offset</p></th>
+<th class="head"><p>Field</p></th>
+<th class="head"><p>Size</p></th>
+<th class="head"><p>Value</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>4</p></td>
+<td><p>wIndex</p></td>
+<td><p>2</p></td>
+<td><p>0x00 0x00</p></td>
+<td><p>根据 <code class="docutils literal notranslate"><span class="pre">Table</span> <span class="pre">9-3</span></code> 可以
+得知，此时代表的是： <code class="docutils literal notranslate"><span class="pre">Zero</span></code>
+or <code class="docutils literal notranslate"><span class="pre">Language</span> <span class="pre">ID</span></code></p></td>
+</tr>
+</tbody>
+</table>
+<ul class="simple">
+<li><p>wLength</p></li>
+</ul>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 13%" />
+<col style="width: 13%" />
+<col style="width: 13%" />
+<col style="width: 13%" />
+<col style="width: 47%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Offset</p></th>
+<th class="head"><p>Field</p></th>
+<th class="head"><p>Size</p></th>
+<th class="head"><p>Value</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>6</p></td>
+<td><p>wLength</p></td>
+<td><p>2</p></td>
+<td><p>0x40 0x00</p></td>
+<td><p>根据 <code class="docutils literal notranslate"><span class="pre">Table</span> <span class="pre">9-3</span></code> 可以得知，此时代表的是：
+<code class="docutils literal notranslate"><span class="pre">Description</span> <span class="pre">Length</span></code>
+即：请求 Device发送 <code class="docutils literal notranslate"><span class="pre">Device</span> <span class="pre">Descriptor</span></code> 的
+前64个字节</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="section" id="transaction-1-transaction-3-data-stage">
+<h4><span class="section-number">7.12.2.3.2.2. </span>Transaction 1 ~ Transaction 3 (Data Stage)<a class="headerlink" href="#transaction-1-transaction-3-data-stage" title="永久链接至标题">¶</a></h4>
+<p>可以看到 <code class="docutils literal notranslate"><span class="pre">Transaction</span> <span class="pre">1</span></code> ~ <code class="docutils literal notranslate"><span class="pre">Transaction</span> <span class="pre">3</span></code> 联合起来从 Device 传递回了 18 个字节的数据给 Host， <code class="docutils literal notranslate"><span class="pre">Transaction</span> <span class="pre">1</span></code> 和 <code class="docutils literal notranslate"><span class="pre">Transaction</span> <span class="pre">2</span></code> 分别传输了 8 个字节数据， <code class="docutils literal notranslate"><span class="pre">Transaction</span> <span class="pre">2</span></code> 传递了 2 个字节数据。</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="mi">12</span> <span class="mi">01</span> <span class="mi">00</span> <span class="mi">02</span> <span class="mi">00</span> <span class="mi">00</span> <span class="mi">00</span> <span class="mi">08</span>
+<span class="mi">6</span><span class="n">D</span> <span class="mi">04</span> <span class="mi">18</span> <span class="n">C0</span> <span class="mi">01</span> <span class="mi">43</span> <span class="mi">01</span> <span class="mi">02</span>
+<span class="mi">00</span> <span class="mi">01</span>
+</pre></div>
+</div>
+<p>这 18 个字节数据就是 <code class="docutils literal notranslate"><span class="pre">Transfer</span> <span class="pre">0</span></code> 指定要读取的 <code class="docutils literal notranslate"><span class="pre">Device</span> <span class="pre">Descriptor</span></code> ，其具体的格式如 <code class="docutils literal notranslate"><span class="pre">Table</span> <span class="pre">9-8</span></code> 所示：</p>
+<p><img alt="image28" src="../../../_images/standard_device_descriptor.png" /></p>
+<p>注意在这个阶段当中的几个全局 <code class="docutils literal notranslate"><span class="pre">Field</span></code> 的值：</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">ADDR</span></code> ：Device Address = 0</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">ENDP</span></code> ：EndPoint = 0</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">DATA0</span></code>/<code class="docutils literal notranslate"><span class="pre">DATA1</span></code> ：如果多次 Data Transaction 传输的是一段连续数据， <code class="docutils literal notranslate"><span class="pre">DATA0</span></code> <code class="docutils literal notranslate"><span class="pre">DATA1</span></code> 连续翻转。如果多次 Data Transaction 传输的数据是不相关的，则不会翻转。</p></li>
+</ul>
+<p>读回的具体 <code class="docutils literal notranslate"><span class="pre">Device</span> <span class="pre">Descriptor</span></code> 解析如下：</p>
+<p><img alt="image29" src="../../../_images/device_descriptor_analy.gif" /></p>
+</div>
+<div class="section" id="transaction-4-status-stage">
+<h4><span class="section-number">7.12.2.3.2.3. </span>Transaction 4 (Status Stage)<a class="headerlink" href="#transaction-4-status-stage" title="永久链接至标题">¶</a></h4>
+<p>状态阶段用于表示一次控制传输的结束。</p>
+<p>首先发送一个 OUT 包，注意令牌包主要是指明传输类型，这里就为 OUT 类型。然后发一个大小为 0 的 DATA 包，Device 回一个 ACK 握手包。本次传输结束。</p>
+</div>
+</div>
+<div class="section" id="reset-powered-default">
+<h3><span class="section-number">7.12.2.3.3. </span>Reset (<code class="docutils literal notranslate"><span class="pre">Powered</span></code> → <code class="docutils literal notranslate"><span class="pre">Default</span></code>)<a class="headerlink" href="#reset-powered-default" title="永久链接至标题">¶</a></h3>
+<p><img alt="image30" src="../../../_images/mouse_enum_reset.jpg" /></p>
+<p>Host 向 Device 发送了一个 Reset 信号，由上边的状态图可以看出，USB 由 <code class="docutils literal notranslate"><span class="pre">Powered</span></code> 模式进入了 <code class="docutils literal notranslate"><span class="pre">Default</span></code> 模式。</p>
+</div>
+<div class="section" id="tranfser-1-control-no-data-set-device-address-default-address">
+<h3><span class="section-number">7.12.2.3.4. </span>Tranfser 1 (Control No Data) (Set Device Address) (<code class="docutils literal notranslate"><span class="pre">Default</span></code> → <code class="docutils literal notranslate"><span class="pre">Address</span></code>)<a class="headerlink" href="#tranfser-1-control-no-data-set-device-address-default-address" title="永久链接至标题">¶</a></h3>
+<p><code class="docutils literal notranslate"><span class="pre">Tranfser</span> <span class="pre">1</span></code> 的主要作用是设置 <code class="docutils literal notranslate"><span class="pre">Device</span> <span class="pre">Address</span></code> ，USB由状态图中的 <code class="docutils literal notranslate"><span class="pre">Default</span></code> 模式进入了 <code class="docutils literal notranslate"><span class="pre">Address</span></code> 模式，是一个 <code class="docutils literal notranslate"><span class="pre">Control</span> <span class="pre">No</span> <span class="pre">Data</span></code> 类型的 <code class="docutils literal notranslate"><span class="pre">Transfer</span></code> 。其中：</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">Transaction</span> <span class="pre">5</span></code> ： <code class="docutils literal notranslate"><span class="pre">Setup</span> <span class="pre">Stage</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Transaction</span> <span class="pre">6</span></code> ： <code class="docutils literal notranslate"><span class="pre">Status</span> <span class="pre">Stage</span></code></p></li>
+</ul>
+<p><img alt="image31" src="../../../_images/mouse_enum_transfer1.png" /></p>
+<div class="section" id="transaction-5-setup-stage">
+<h4><span class="section-number">7.12.2.3.4.1. </span>Transaction 5 (Setup Stage)<a class="headerlink" href="#transaction-5-setup-stage" title="永久链接至标题">¶</a></h4>
+<p><code class="docutils literal notranslate"><span class="pre">Packet</span> <span class="pre">275</span></code> 是核心，其中的 <code class="docutils literal notranslate"><span class="pre">Setup</span> <span class="pre">Data</span></code> 具体解析如下：</p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 14%" />
+<col style="width: 16%" />
+<col style="width: 14%" />
+<col style="width: 14%" />
+<col style="width: 41%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Offset</p></th>
+<th class="head"><p>Field</p></th>
+<th class="head"><p>Size</p></th>
+<th class="head"><p>Value</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>0</p></td>
+<td><p>bmRequestType</p></td>
+<td><p>1</p></td>
+<td><p>0x00</p></td>
+<td><p>表示期望的
+数据传输方
+向为主机传
+输给设备。</p></td>
+</tr>
+<tr class="row-odd"><td><p>1</p></td>
+<td><p>bmRequest</p></td>
+<td><p>1</p></td>
+<td><p>0x05</p></td>
+<td><p>代表了一个命令，根据 <code class="docutils literal notranslate"><span class="pre">Table</span> <span class="pre">9-4</span></code>
+可以得知代表 <code class="docutils literal notranslate"><span class="pre">SET_ADDRESS</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p>2</p></td>
+<td><p>wValue</p></td>
+<td><p>2</p></td>
+<td><p>0x03 0x00</p></td>
+<td><p>根据 <code class="docutils literal notranslate"><span class="pre">Table</span> <span class="pre">9-3</span></code> 可以得知，此时
+代表的是： <code class="docutils literal notranslate"><span class="pre">Device</span> <span class="pre">Address</span></code>
+即 ： <code class="docutils literal notranslate"><span class="pre">Device</span> <span class="pre">Address</span></code> = 0x03</p></td>
+</tr>
+<tr class="row-odd"><td><p>4</p></td>
+<td><p>wIndex</p></td>
+<td><p>2</p></td>
+<td><p>0x00 0x00</p></td>
+<td><p>根据 <code class="docutils literal notranslate"><span class="pre">Table</span> <span class="pre">9-3</span></code> 可以得知，此时
+代表的是： <code class="docutils literal notranslate"><span class="pre">Zero</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p>6</p></td>
+<td><p>wLength</p></td>
+<td><p>2</p></td>
+<td><p>0x00 0x00</p></td>
+<td><p>根据 <code class="docutils literal notranslate"><span class="pre">Table</span> <span class="pre">9-3</span></code> 可以得知，此时
+代表的是： <code class="docutils literal notranslate"><span class="pre">Zero</span></code></p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="transaction-6-status-stage">
+<h4><span class="section-number">7.12.2.3.4.2. </span>Transaction 6 (Status Stage)<a class="headerlink" href="#transaction-6-status-stage" title="永久链接至标题">¶</a></h4>
+<p>状态阶段用于表示一次控制传输的结束。</p>
+</div>
+</div>
+<div class="section" id="tranfser-2-control-read-get-device-descriptor">
+<h3><span class="section-number">7.12.2.3.5. </span>Tranfser 2 (Control Read) (Get Device Descriptor)<a class="headerlink" href="#tranfser-2-control-read-get-device-descriptor" title="永久链接至标题">¶</a></h3>
+<p><code class="docutils literal notranslate"><span class="pre">Transfer</span> <span class="pre">2</span></code> 的作用是重新获取了一遍设备描述符 <code class="docutils literal notranslate"><span class="pre">Get</span> <span class="pre">Device</span> <span class="pre">Descriptor</span></code> ，不同之处不是用默认地址 0 获取的，而是用刚才配置的 Device Address 0x03 来获取的。它是一个 <code class="docutils literal notranslate"><span class="pre">Control</span> <span class="pre">Read</span></code> 类型的 <code class="docutils literal notranslate"><span class="pre">Transfer</span></code> 。其中：</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">Transaction</span> <span class="pre">7</span></code> ： <code class="docutils literal notranslate"><span class="pre">Setup</span> <span class="pre">Stage</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Transaction</span> <span class="pre">8~10</span></code> ： <code class="docutils literal notranslate"><span class="pre">Data</span> <span class="pre">Stage</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Transaction</span> <span class="pre">11</span></code> ： <code class="docutils literal notranslate"><span class="pre">Status</span> <span class="pre">Stage</span></code></p></li>
+</ul>
+<p><img alt="image32" src="../../../_images/mouse_enum_transfer2.png" /></p>
+<p><code class="docutils literal notranslate"><span class="pre">Transfer</span> <span class="pre">2</span></code> 和 <code class="docutils literal notranslate"><span class="pre">Transfer</span> <span class="pre">0</span></code> 的主要区别在于，一是有了明确的设置地址。另外：</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">Transfer</span> <span class="pre">0</span></code> 第一次获得设备描述符主要为了得到端点0可以发送的数据的大小，所以只要一个 <code class="docutils literal notranslate"><span class="pre">Transaction</span> <span class="pre">1</span></code> 的8个字节数据就可。</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Transfer</span> <span class="pre">2</span></code> 完成了整个设备描述符的读取工作。</p></li>
+</ul>
+</div>
+<div class="section" id="tranfser-3-control-read-get-config-descriptor">
+<h3><span class="section-number">7.12.2.3.6. </span>Tranfser 3 (Control Read) (Get Config Descriptor)<a class="headerlink" href="#tranfser-3-control-read-get-config-descriptor" title="永久链接至标题">¶</a></h3>
+<p><code class="docutils literal notranslate"><span class="pre">Transfer</span> <span class="pre">3</span></code> 的作用是获取配置描述符 <code class="docutils literal notranslate"><span class="pre">Get</span> <span class="pre">Configuration</span> <span class="pre">Descriptor</span></code> ，它是一个 <code class="docutils literal notranslate"><span class="pre">Control</span> <span class="pre">Read</span></code> 类型的 <code class="docutils literal notranslate"><span class="pre">Transfer</span></code> 。其中：</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">Transaction</span> <span class="pre">12</span></code> ： <code class="docutils literal notranslate"><span class="pre">Setup</span> <span class="pre">Stage</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Transaction</span> <span class="pre">13~14</span></code> ： <code class="docutils literal notranslate"><span class="pre">Data</span> <span class="pre">Stage</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Transaction</span> <span class="pre">15</span></code> ： <code class="docutils literal notranslate"><span class="pre">Status</span> <span class="pre">Stage</span></code></p></li>
+</ul>
+<p><img alt="image33" src="../../../_images/mouse_enum_transfer3.png" /></p>
+<div class="section" id="transaction-12-setup-stage">
+<h4><span class="section-number">7.12.2.3.6.1. </span>Transaction 12 (Setup Stage)<a class="headerlink" href="#transaction-12-setup-stage" title="永久链接至标题">¶</a></h4>
+<p><code class="docutils literal notranslate"><span class="pre">Packet</span> <span class="pre">275</span></code> 是核心，其中的 <code class="docutils literal notranslate"><span class="pre">Setup</span> <span class="pre">Data</span></code> 具体解析如下：</p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 13%" />
+<col style="width: 22%" />
+<col style="width: 13%" />
+<col style="width: 13%" />
+<col style="width: 38%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Offset</p></th>
+<th class="head"><p>Field</p></th>
+<th class="head"><p>Size</p></th>
+<th class="head"><p>Value</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>0</p></td>
+<td><p>bmRequestType</p></td>
+<td><p>1</p></td>
+<td><p>0x80</p></td>
+<td><p>表示期望的数据传输方向为设备传输给
+主机，这条命令的接收者为设备。</p></td>
+</tr>
+<tr class="row-odd"><td><p>1</p></td>
+<td><p>bmRequest</p></td>
+<td><p>1</p></td>
+<td><p>0x06</p></td>
+<td><p>代表了一个命令，根据 <code class="docutils literal notranslate"><span class="pre">Table</span> <span class="pre">9-4</span></code>
+可以得知代表的命令为获取描述符
+<code class="docutils literal notranslate"><span class="pre">GET_DESCRIPTOR</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p>2</p></td>
+<td><p>wValue</p></td>
+<td><p>2</p></td>
+<td><p>0x00 0x02</p></td>
+<td><p>根据 <code class="docutils literal notranslate"><span class="pre">Table</span> <span class="pre">9-3</span></code> 可以得知，此时
+代表的是： <code class="docutils literal notranslate"><span class="pre">Descriptor</span> <span class="pre">Type</span></code>
++ <code class="docutils literal notranslate"><span class="pre">Descriptor</span> <span class="pre">Index</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p>2</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">Descriptor</span> <span class="pre">Index</span></code></p></td>
+<td><p>1</p></td>
+<td><p>0x00</p></td>
+<td><p>想要获取的描述符 index 为 0</p></td>
+</tr>
+<tr class="row-even"><td><p>3</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">Descriptor</span> <span class="pre">Type</span></code></p></td>
+<td><p>1</p></td>
+<td><p>0x02</p></td>
+<td><p>根据 <code class="docutils literal notranslate"><span class="pre">Table</span> <span class="pre">9-5</span></code> 可以得知，想要
+获取的描述符为
+<code class="docutils literal notranslate"><span class="pre">Configuration</span> <span class="pre">Descriptor</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p>4</p></td>
+<td><p>wIndex</p></td>
+<td><p>2</p></td>
+<td><p>0x00 0x00</p></td>
+<td><p>根据 <code class="docutils literal notranslate"><span class="pre">Table</span> <span class="pre">9-3</span></code> 可以得知，此时
+代表的是： <code class="docutils literal notranslate"><span class="pre">Zero</span></code> or
+<code class="docutils literal notranslate"><span class="pre">Language</span> <span class="pre">ID</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p>6</p></td>
+<td><p>wLength</p></td>
+<td><p>2</p></td>
+<td><p>0x09 0x00</p></td>
+<td><p>根据 <code class="docutils literal notranslate"><span class="pre">Table</span> <span class="pre">9-3</span></code> 可以得知，此时
+代表的是：<code class="docutils literal notranslate"><span class="pre">Description</span> <span class="pre">Length</span></code>
+即：请求Device发送
+<code class="docutils literal notranslate"><span class="pre">Configuration</span> <span class="pre">Descriptor</span></code>
+的9个字节</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="transaction-13-14-data-stage">
+<h4><span class="section-number">7.12.2.3.6.2. </span>Transaction 13~14 (Data Stage)<a class="headerlink" href="#transaction-13-14-data-stage" title="永久链接至标题">¶</a></h4>
+<p>可以看到 <code class="docutils literal notranslate"><span class="pre">Transaction</span> <span class="pre">13~14</span></code> 联合起来从 Device 传递回了 9 个字节的数据给 Host， <code class="docutils literal notranslate"><span class="pre">Transaction</span> <span class="pre">13</span></code> 传输了 8 个字节数据， <code class="docutils literal notranslate"><span class="pre">Transaction</span> <span class="pre">14</span></code> 传递了 1 个字节数据。</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="mi">09</span> <span class="mi">02</span> <span class="mi">22</span> <span class="mi">00</span> <span class="mi">01</span> <span class="mi">01</span> <span class="mi">00</span> <span class="n">A0</span>
+<span class="mi">32</span>
+</pre></div>
+</div>
+<p>这 9 个字节数据就是 <code class="docutils literal notranslate"><span class="pre">Transfer</span> <span class="pre">12</span></code> 指定要读取的 <code class="docutils literal notranslate"><span class="pre">Configuration</span> <span class="pre">Descriptor</span></code> ，其具体的格式如 <code class="docutils literal notranslate"><span class="pre">Table</span> <span class="pre">9-10</span></code> 所示：</p>
+<p><img alt="image34" src="../../../_images/standard_configuration_descriptor.png" /></p>
+<p>读回的具体 <code class="docutils literal notranslate"><span class="pre">Configuration</span> <span class="pre">Descriptor</span></code> 解析如下：</p>
+<p><img alt="image35" src="../../../_images/config_descriptor_analy.gif" /></p>
+</div>
+<div class="section" id="transaction-15-status-stage">
+<h4><span class="section-number">7.12.2.3.6.3. </span>Transaction 15 (Status Stage)<a class="headerlink" href="#transaction-15-status-stage" title="永久链接至标题">¶</a></h4>
+<p>状态阶段用于表示一次控制传输的结束。</p>
+</div>
+</div>
+<div class="section" id="tranfser-4-control-read-get-4-descriptors">
+<h3><span class="section-number">7.12.2.3.7. </span>Tranfser 4 (Control Read) (Get 4 Descriptors)<a class="headerlink" href="#tranfser-4-control-read-get-4-descriptors" title="永久链接至标题">¶</a></h3>
+<p><code class="docutils literal notranslate"><span class="pre">Transfer</span> <span class="pre">4</span></code> 的作用是一次性获取了4个描述符 <code class="docutils literal notranslate"><span class="pre">Get</span> <span class="pre">4</span> <span class="pre">Descriptors</span></code> ，它是一个 <code class="docutils literal notranslate"><span class="pre">Control</span> <span class="pre">Read</span></code> 类型的 <code class="docutils literal notranslate"><span class="pre">Transfer</span></code> 。其中：</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">Transaction</span> <span class="pre">16</span></code> ： <code class="docutils literal notranslate"><span class="pre">Setup</span> <span class="pre">Stage</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Transaction</span> <span class="pre">17~21</span></code> ： <code class="docutils literal notranslate"><span class="pre">Data</span> <span class="pre">Stage</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Transaction</span> <span class="pre">22</span></code> ： <code class="docutils literal notranslate"><span class="pre">Status</span> <span class="pre">Stage</span></code></p></li>
+</ul>
+<p>从格式上看它使用的命令 <code class="docutils literal notranslate"><span class="pre">Setup</span> <span class="pre">Data</span></code> 和 <code class="docutils literal notranslate"><span class="pre">Transfer</span> <span class="pre">3</span></code> 一样，仅仅读取长度从 <code class="docutils literal notranslate"><span class="pre">0x09</span></code> 改成了 <code class="docutils literal notranslate"><span class="pre">0x22</span></code> ，就一次性读出了 4 个描述符。 <code class="docutils literal notranslate"><span class="pre">Transfer</span> <span class="pre">3</span></code> 的主要作用是读取 <code class="docutils literal notranslate"><span class="pre">Descriptors</span></code> 的总长度， <code class="docutils literal notranslate"><span class="pre">Transfer</span> <span class="pre">4</span></code> 根据这个长度读取了所有 <code class="docutils literal notranslate"><span class="pre">Descriptors</span></code> 。</p>
+<p><img alt="image36" src="../../../_images/mouse_enum_transfer4.png" /></p>
+<div class="section" id="configuration-descriptor">
+<h4><span class="section-number">7.12.2.3.7.1. </span>Configuration Descriptor<a class="headerlink" href="#configuration-descriptor" title="永久链接至标题">¶</a></h4>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="mi">09</span> <span class="mi">02</span> <span class="mi">22</span> <span class="mi">00</span> <span class="mi">01</span> <span class="mi">01</span> <span class="mi">00</span> <span class="n">A0</span>
+<span class="mi">32</span>
+</pre></div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">Transaction</span> <span class="pre">17~18</span></code> 提供了 9 字节的 <code class="docutils literal notranslate"><span class="pre">Configuration</span> <span class="pre">Descriptor</span></code> 数据，具体内容和解析如上一节一样。</p>
+</div>
+<div class="section" id="interface-descriptor">
+<h4><span class="section-number">7.12.2.3.7.2. </span>Interface Descriptor<a class="headerlink" href="#interface-descriptor" title="永久链接至标题">¶</a></h4>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>   <span class="mi">09</span> <span class="mi">04</span> <span class="mi">00</span> <span class="mi">00</span> <span class="mi">01</span> <span class="mi">03</span> <span class="mi">01</span>
+<span class="mi">02</span> <span class="mi">00</span>
+</pre></div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">Transaction</span> <span class="pre">18~19</span></code> 提供了 9 字节的 <code class="docutils literal notranslate"><span class="pre">Interface</span> <span class="pre">Descriptor</span></code> 数据，具体内容和解析如下：</p>
+<p><img alt="image37" src="../../../_images/interface_descriptor_analy.gif" /></p>
+<p><code class="docutils literal notranslate"><span class="pre">Interface</span> <span class="pre">Descriptor</span></code> 具体的格式如 Table 9-12 所示：</p>
+<p><img alt="image38" src="../../../_images/standard_interface_descriptor.png" /></p>
+</div>
+<div class="section" id="hid-descriptor">
+<h4><span class="section-number">7.12.2.3.7.3. </span>HID Descriptor<a class="headerlink" href="#hid-descriptor" title="永久链接至标题">¶</a></h4>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>      <span class="mi">09</span> <span class="mi">21</span> <span class="mi">11</span> <span class="mi">01</span> <span class="mi">00</span> <span class="mi">01</span>
+<span class="mi">22</span> <span class="mi">34</span> <span class="mi">00</span>
+</pre></div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">Transaction</span> <span class="pre">19~20</span></code> 提供了 9 字节的 <code class="docutils literal notranslate"><span class="pre">HID</span> <span class="pre">Descriptor</span></code> 数据，具体内容和解析如下：</p>
+<p><img alt="image39" src="../../../_images/hid_descriptor_analy.gif" /></p>
+<p><code class="docutils literal notranslate"><span class="pre">HID</span> <span class="pre">Descriptor</span></code> 具体的格式如下所示：</p>
+<p><img alt="image40" src="../../../_images/standard_hid_descriptor.png" /></p>
+</div>
+<div class="section" id="endpoint-descriptor">
+<h4><span class="section-number">7.12.2.3.7.4. </span>Endpoint Descriptor<a class="headerlink" href="#endpoint-descriptor" title="永久链接至标题">¶</a></h4>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>         <span class="mi">07</span> <span class="mi">05</span> <span class="mi">81</span> <span class="mi">03</span> <span class="mi">05</span>
+<span class="mi">00</span> <span class="mi">0</span><span class="n">A</span>
+</pre></div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">Transaction</span> <span class="pre">20~21</span></code> 提供了 7 字节的 <code class="docutils literal notranslate"><span class="pre">Endpoint</span> <span class="pre">Descriptor</span></code> 数据，具体内容和解析如下：</p>
+<p><img alt="image41" src="../../../_images/endpoint_descriptor_analy.gif" /></p>
+<p><code class="docutils literal notranslate"><span class="pre">Endpoint</span> <span class="pre">Descriptor</span></code> 具体的格式如 Table 9-13 所示：</p>
+<p><img alt="image42" src="../../../_images/standard_endpoint_requests.png" /></p>
+</div>
+</div>
+<div class="section" id="tranfser-5-control-read-get-string-0-descriptor">
+<h3><span class="section-number">7.12.2.3.8. </span>Tranfser 5 (Control Read) (Get String 0 Descriptor)<a class="headerlink" href="#tranfser-5-control-read-get-string-0-descriptor" title="永久链接至标题">¶</a></h3>
+<p><code class="docutils literal notranslate"><span class="pre">Transfer</span> <span class="pre">5</span></code> 的作用是获取了 index 0 的 <code class="docutils literal notranslate"><span class="pre">String</span> <span class="pre">Descriptor</span></code> ，它是一个 <code class="docutils literal notranslate"><span class="pre">Control</span> <span class="pre">Read</span></code> 类型的
+<code class="docutils literal notranslate"><span class="pre">Transfer</span></code> 。其中：</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">Transaction</span> <span class="pre">23</span></code> ： <code class="docutils literal notranslate"><span class="pre">Setup</span> <span class="pre">Stage</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Transaction</span> <span class="pre">24</span></code> ： <code class="docutils literal notranslate"><span class="pre">Data</span> <span class="pre">Stage</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Transaction</span> <span class="pre">25</span></code> ： <code class="docutils literal notranslate"><span class="pre">Status</span> <span class="pre">Stage</span></code></p></li>
+</ul>
+<p><img alt="image43" src="../../../_images/mouse_enum_transfer5.png" /></p>
+<div class="section" id="transaction-23-setup-stage">
+<h4><span class="section-number">7.12.2.3.8.1. </span>Transaction 23 (Setup Stage)<a class="headerlink" href="#transaction-23-setup-stage" title="永久链接至标题">¶</a></h4>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="mi">80</span> <span class="mi">06</span> <span class="mi">00</span> <span class="mi">03</span> <span class="mi">00</span> <span class="mi">00</span> <span class="n">FF</span> <span class="mi">00</span>
+</pre></div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">Packet</span> <span class="pre">366</span></code> 是核心，其中的 <code class="docutils literal notranslate"><span class="pre">Setup</span> <span class="pre">Data</span></code> 具体解析如下：</p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 13%" />
+<col style="width: 24%" />
+<col style="width: 13%" />
+<col style="width: 13%" />
+<col style="width: 38%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Offset</p></th>
+<th class="head"><p>Field</p></th>
+<th class="head"><p>Size</p></th>
+<th class="head"><p>Value</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>0</p></td>
+<td><p>bmRequestType</p></td>
+<td><p>1</p></td>
+<td><p>0x80</p></td>
+<td><p>表示期望的数据传输方向为设备传输给
+主机，这条命令的接收者为设备。</p></td>
+</tr>
+<tr class="row-odd"><td><p>1</p></td>
+<td><p>bmRequest</p></td>
+<td><p>1</p></td>
+<td><p>0x06</p></td>
+<td><p>代表了一个命令，根据 <code class="docutils literal notranslate"><span class="pre">Table</span> <span class="pre">9-4</span></code>
+可以得知代表的命令为获取描述符
+<code class="docutils literal notranslate"><span class="pre">GET_DESCRIPTOR</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p>2</p></td>
+<td><p>wValue</p></td>
+<td><p>2</p></td>
+<td><p>0x00 0x03</p></td>
+<td><p>根据 <code class="docutils literal notranslate"><span class="pre">Table</span> <span class="pre">9-3</span></code> 可以得知，此时
+代表的是： <code class="docutils literal notranslate"><span class="pre">Descriptor</span> <span class="pre">Type</span></code>
++ <code class="docutils literal notranslate"><span class="pre">Descriptor</span> <span class="pre">Index</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p>2</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">Descriptor</span> <span class="pre">Index</span></code></p></td>
+<td><p>1</p></td>
+<td><p>0x00</p></td>
+<td><p>想要获取的描述符 index 为 0</p></td>
+</tr>
+<tr class="row-even"><td><p>3</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">Descriptor</span> <span class="pre">Type</span></code></p></td>
+<td><p>1</p></td>
+<td><p>0x03</p></td>
+<td><p>根据 <code class="docutils literal notranslate"><span class="pre">Table</span> <span class="pre">9-5</span></code> 可以得知，想要获取
+的描述符为 <code class="docutils literal notranslate"><span class="pre">String</span> <span class="pre">Descriptor</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p>4</p></td>
+<td><p>wIndex</p></td>
+<td><p>2</p></td>
+<td><p>0x00 0x00</p></td>
+<td><p>根据 <code class="docutils literal notranslate"><span class="pre">Table</span> <span class="pre">9-3</span></code> 可以得知，此时
+代表的是： <code class="docutils literal notranslate"><span class="pre">Zero</span></code>
+or <code class="docutils literal notranslate"><span class="pre">Language</span> <span class="pre">ID</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p>6</p></td>
+<td><p>wLength</p></td>
+<td><p>2</p></td>
+<td><p>0xFF 0x00</p></td>
+<td><p>根据 <code class="docutils literal notranslate"><span class="pre">Table</span> <span class="pre">9-3</span></code> 可以得知，此时
+代表的是： <code class="docutils literal notranslate"><span class="pre">Description</span> <span class="pre">Length</span></code>
+即：请求 Device 发送
+<code class="docutils literal notranslate"><span class="pre">String</span> <span class="pre">Descriptor</span></code> 最大长度
+255个字节</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="transaction-24-data-stage">
+<h4><span class="section-number">7.12.2.3.8.2. </span>Transaction 24 (Data Stage)<a class="headerlink" href="#transaction-24-data-stage" title="永久链接至标题">¶</a></h4>
+<p>可以看到 <code class="docutils literal notranslate"><span class="pre">Transaction</span> <span class="pre">24</span></code> 联合起来从 Device 传递回了 4 个字节的数据给 Host。</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="mi">04</span> <span class="mi">03</span> <span class="mi">09</span> <span class="mi">04</span>
+</pre></div>
+</div>
+<p>index 0 <code class="docutils literal notranslate"><span class="pre">String</span> <span class="pre">Descriptor</span></code> ，表示的是 设备支持的语言。解析格式如下：</p>
+<p><img alt="image44" src="../../../_images/standard_string0_descriptor.png" /></p>
+<p>所以 <code class="docutils literal notranslate"><span class="pre">Transaction</span> <span class="pre">24</span></code> 读回的 <code class="docutils literal notranslate"><span class="pre">Language</span> <span class="pre">ID</span></code> 为 <code class="docutils literal notranslate"><span class="pre">0x0409</span></code> 即美国英语。</p>
+</div>
+</div>
+<div class="section" id="tranfser-6-control-read-get-string-2-descriptor">
+<h3><span class="section-number">7.12.2.3.9. </span>Tranfser 6 (Control Read) (Get String 2 Descriptor)<a class="headerlink" href="#tranfser-6-control-read-get-string-2-descriptor" title="永久链接至标题">¶</a></h3>
+<p><code class="docutils literal notranslate"><span class="pre">Transfer</span> <span class="pre">6</span></code> 的作用是获取了 index 2 的 <code class="docutils literal notranslate"><span class="pre">String</span> <span class="pre">Descriptor</span></code> ，它是一个 <code class="docutils literal notranslate"><span class="pre">Control</span> <span class="pre">Read</span></code> 类型的 <code class="docutils literal notranslate"><span class="pre">Transfer</span></code> 。其中：</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">Transaction</span> <span class="pre">26</span></code> ： <code class="docutils literal notranslate"><span class="pre">Setup</span> <span class="pre">Stage</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Transaction</span> <span class="pre">27~31</span></code> ： <code class="docutils literal notranslate"><span class="pre">Data</span> <span class="pre">Stage</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Transaction</span> <span class="pre">32</span></code> ： <code class="docutils literal notranslate"><span class="pre">Status</span> <span class="pre">Stage</span></code></p></li>
+</ul>
+<p><img alt="image45" src="../../../_images/mouse_enum_transfer6.png" /></p>
+<div class="section" id="transaction-26-setup-stage">
+<h4><span class="section-number">7.12.2.3.9.1. </span>Transaction 26 (Setup Stage)<a class="headerlink" href="#transaction-26-setup-stage" title="永久链接至标题">¶</a></h4>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="mi">80</span> <span class="mi">06</span> <span class="mi">02</span> <span class="mi">03</span> <span class="mi">09</span> <span class="mi">04</span> <span class="n">FF</span> <span class="mi">00</span>
+</pre></div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">Packet</span> <span class="pre">366</span></code> 是核心，其中的 <code class="docutils literal notranslate"><span class="pre">Setup</span> <span class="pre">Data</span></code> 具体解析如下：</p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 11%" />
+<col style="width: 21%" />
+<col style="width: 11%" />
+<col style="width: 11%" />
+<col style="width: 46%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Offset</p></th>
+<th class="head"><p>Field</p></th>
+<th class="head"><p>Size</p></th>
+<th class="head"><p>Value</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>0</p></td>
+<td><p>bmRequestType</p></td>
+<td><p>1</p></td>
+<td><p>0x80</p></td>
+<td><p>表示期望的数据传输方向为设备传输给主机，这条
+命令的接收者为设备。</p></td>
+</tr>
+<tr class="row-odd"><td><p>1</p></td>
+<td><p>bmRequest</p></td>
+<td><p>1</p></td>
+<td><p>0x06</p></td>
+<td><p>代表了一个命令，根据 <code class="docutils literal notranslate"><span class="pre">Table</span> <span class="pre">9-4</span></code> 可以得知代
+表的命令为获取描述符 <code class="docutils literal notranslate"><span class="pre">GET_DESCRIPTOR</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p>2</p></td>
+<td><p>wValue</p></td>
+<td><p>2</p></td>
+<td><p>0x02 0x03</p></td>
+<td><p>根据 <code class="docutils literal notranslate"><span class="pre">Table</span> <span class="pre">9-3</span></code> 可以得知，此时代表的是：
+<code class="docutils literal notranslate"><span class="pre">Descriptor</span> <span class="pre">Type</span></code> + <code class="docutils literal notranslate"><span class="pre">Descriptor</span> <span class="pre">Index</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p>2</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">Descriptor</span> <span class="pre">Index</span></code></p></td>
+<td><p>1</p></td>
+<td><p>0x02</p></td>
+<td><p>想要获取的描述符 index 为 2</p></td>
+</tr>
+<tr class="row-even"><td><p>3</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">Descriptor</span> <span class="pre">Type</span></code></p></td>
+<td><p>1</p></td>
+<td><p>0x03</p></td>
+<td><p>根据 <code class="docutils literal notranslate"><span class="pre">Table</span> <span class="pre">9-5</span></code> 可以得知，想要获取的描述符为
+<code class="docutils literal notranslate"><span class="pre">String</span> <span class="pre">Descriptor</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p>4</p></td>
+<td><p>wIndex</p></td>
+<td><p>2</p></td>
+<td><p>0x09 0x04</p></td>
+<td><p>根据 <code class="docutils literal notranslate"><span class="pre">Table</span> <span class="pre">9-3</span></code> 可以得知，此时代表的是：
+<code class="docutils literal notranslate"><span class="pre">Language</span> <span class="pre">ID</span></code> 即 0x0409 美国英语</p></td>
+</tr>
+<tr class="row-even"><td><p>6</p></td>
+<td><p>wLength</p></td>
+<td><p>2</p></td>
+<td><p>0xFF 0x00</p></td>
+<td><p>根据 <code class="docutils literal notranslate"><span class="pre">Table</span> <span class="pre">9-3</span></code> 可以得知，此时代表的是：
+<code class="docutils literal notranslate"><span class="pre">Description</span> <span class="pre">Length</span></code> 即：请求Device发送
+<code class="docutils literal notranslate"><span class="pre">String</span> <span class="pre">Descriptor</span></code> 最大长度255个字节</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="transaction-27-31-data-stage">
+<h4><span class="section-number">7.12.2.3.9.2. </span>Transaction 27~31 (Data Stage)<a class="headerlink" href="#transaction-27-31-data-stage" title="永久链接至标题">¶</a></h4>
+<p>可以看到 <code class="docutils literal notranslate"><span class="pre">Transaction</span> <span class="pre">27~31</span></code> 联合起来从 Device 传递回了 36 个字节的数据给 Host。</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="mi">24</span> <span class="mi">03</span> <span class="mi">55</span> <span class="mi">00</span> <span class="mi">53</span> <span class="mi">00</span> <span class="mi">42</span> <span class="mi">00</span>
+<span class="mi">20</span> <span class="mi">00</span> <span class="mi">4</span><span class="n">F</span> <span class="mi">00</span> <span class="mi">70</span> <span class="mi">00</span> <span class="mi">74</span> <span class="mi">00</span>
+<span class="mi">69</span> <span class="mi">00</span> <span class="mi">63</span> <span class="mi">00</span> <span class="mi">61</span> <span class="mi">00</span> <span class="mi">6</span><span class="n">C</span> <span class="mi">00</span>
+<span class="mi">20</span> <span class="mi">00</span> <span class="mi">4</span><span class="n">D</span> <span class="mi">00</span> <span class="mi">6</span><span class="n">F</span> <span class="mi">00</span> <span class="mi">75</span> <span class="mi">00</span>
+<span class="mi">73</span> <span class="mi">00</span> <span class="mi">65</span> <span class="mi">00</span>
+</pre></div>
+</div>
+<p>index 2 <code class="docutils literal notranslate"><span class="pre">String</span> <span class="pre">Descriptor</span></code> ，表示的是一个字符串。解析格式如下：</p>
+<p><img alt="image46" src="../../../_images/standard_string_descriptor.png" /></p>
+<p>即读回了一个 34 字节的 unicode 字符串  <code class="docutils literal notranslate"><span class="pre">55</span> <span class="pre">00</span> <span class="pre">53</span> <span class="pre">00</span> <span class="pre">42</span> <span class="pre">00</span> <span class="pre">20</span> <span class="pre">00</span> <span class="pre">4F</span> <span class="pre">00</span> <span class="pre">70</span> <span class="pre">00</span> <span class="pre">74</span> <span class="pre">00</span> <span class="pre">69</span> <span class="pre">00</span> <span class="pre">63</span> <span class="pre">00</span> <span class="pre">61</span> <span class="pre">00</span> <span class="pre">6C</span> <span class="pre">00</span> <span class="pre">20</span> <span class="pre">00</span> <span class="pre">4D</span> <span class="pre">00</span> <span class="pre">6F</span> <span class="pre">00</span> <span class="pre">75</span> <span class="pre">00</span> <span class="pre">73</span> <span class="pre">00</span> <span class="pre">65</span> <span class="pre">00</span></code>  转成 Ascii 码为  <code class="docutils literal notranslate"><span class="pre">USB</span> <span class="pre">Optical</span> <span class="pre">Mouse</span></code> 。</p>
+<p>在上几节读取 <code class="docutils literal notranslate"><span class="pre">Device</span> <span class="pre">Descriptor</span></code> 时， <code class="docutils literal notranslate"><span class="pre">iProduct</span></code> 字段的值为 0x2 即 <code class="docutils literal notranslate"><span class="pre">index</span> <span class="pre">2</span> <span class="pre">String</span> <span class="pre">Descriptor</span></code> ，所以 <code class="docutils literal notranslate"><span class="pre">iProduct</span></code> 就是 <code class="docutils literal notranslate"><span class="pre">USB</span> <span class="pre">Optical</span> <span class="pre">Mouse</span></code> 。</p>
+</div>
+</div>
+<div class="section" id="tranfser-7-control-read-get-string-1-descriptor">
+<h3><span class="section-number">7.12.2.3.10. </span>Tranfser 7 (Control Read) (Get String 1 Descriptor)<a class="headerlink" href="#tranfser-7-control-read-get-string-1-descriptor" title="永久链接至标题">¶</a></h3>
+<p><code class="docutils literal notranslate"><span class="pre">Transfer</span> <span class="pre">7</span></code> 的作用是获取了 index 1 的 <code class="docutils literal notranslate"><span class="pre">String</span> <span class="pre">Descriptor</span></code> ，它是一个 <code class="docutils literal notranslate"><span class="pre">Control</span> <span class="pre">Read</span></code> 类型的 <code class="docutils literal notranslate"><span class="pre">Transfer</span></code> 。其中：</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">Transaction</span> <span class="pre">33</span></code> ： <code class="docutils literal notranslate"><span class="pre">Setup</span> <span class="pre">Stage</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Transaction</span> <span class="pre">34~36</span></code> ： <code class="docutils literal notranslate"><span class="pre">Data</span> <span class="pre">Stage</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Transaction</span> <span class="pre">37</span></code> ： <code class="docutils literal notranslate"><span class="pre">Status</span> <span class="pre">Stage</span></code></p></li>
+</ul>
+<p><img alt="image47" src="../../../_images/mouse_enum_transfer7.png" /></p>
+<p>解析方式和上一节一样，最终读出了16字节的 unicode 字符串 <code class="docutils literal notranslate"><span class="pre">4C</span> <span class="pre">00</span> <span class="pre">6F</span> <span class="pre">00</span> <span class="pre">67</span> <span class="pre">00</span> <span class="pre">69</span> <span class="pre">00</span> <span class="pre">74</span> <span class="pre">00</span> <span class="pre">65</span> <span class="pre">00</span> <span class="pre">63</span> <span class="pre">00</span> <span class="pre">68</span> <span class="pre">00</span></code> 转成 Ascii 码为 <code class="docutils literal notranslate"><span class="pre">Logitech</span></code> 。</p>
+<p>即 <code class="docutils literal notranslate"><span class="pre">Device</span> <span class="pre">Descriptor</span></code> 中的 <code class="docutils literal notranslate"><span class="pre">iManufacturer</span></code> 字段为 <code class="docutils literal notranslate"><span class="pre">Logitech</span></code> 。</p>
+</div>
+<div class="section" id="tranfser-8-control-no-data-set-configured-address-configured">
+<h3><span class="section-number">7.12.2.3.11. </span>Tranfser 8 (Control No Data) (Set Configured) (<code class="docutils literal notranslate"><span class="pre">Address</span></code> → <code class="docutils literal notranslate"><span class="pre">Configured</span></code>)<a class="headerlink" href="#tranfser-8-control-no-data-set-configured-address-configured" title="永久链接至标题">¶</a></h3>
+<p><code class="docutils literal notranslate"><span class="pre">Tranfser</span> <span class="pre">8</span></code> 的主要作用是设置 <code class="docutils literal notranslate"><span class="pre">Configured</span></code> ，USB由状态图中的 <code class="docutils literal notranslate"><span class="pre">Address</span></code> 模式进入了 <code class="docutils literal notranslate"><span class="pre">Configured</span></code> 模式，是一个 <code class="docutils literal notranslate"><span class="pre">Control</span> <span class="pre">No</span> <span class="pre">Data</span></code> 类型的 <code class="docutils literal notranslate"><span class="pre">Transfer</span></code> 。其中：</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">Transaction</span> <span class="pre">38</span></code> ： <code class="docutils literal notranslate"><span class="pre">Setup</span> <span class="pre">Stage</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Transaction</span> <span class="pre">39</span></code> ： <code class="docutils literal notranslate"><span class="pre">Status</span> <span class="pre">Stage</span></code></p></li>
+</ul>
+<p><img alt="image48" src="../../../_images/mouse_enum_transfer8.png" /></p>
+<div class="section" id="transaction-38-setup-stage">
+<h4><span class="section-number">7.12.2.3.11.1. </span>Transaction 38 (Setup Stage)<a class="headerlink" href="#transaction-38-setup-stage" title="永久链接至标题">¶</a></h4>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="mi">00</span> <span class="mi">09</span> <span class="mi">01</span> <span class="mi">03</span> <span class="mi">00</span> <span class="mi">00</span> <span class="mi">00</span> <span class="mi">00</span>
+</pre></div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">Packet</span> <span class="pre">439</span></code> 是核心，其中的 <code class="docutils literal notranslate"><span class="pre">Setup</span> <span class="pre">Data</span></code> 具体解析如下：</p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 9%" />
+<col style="width: 16%" />
+<col style="width: 6%" />
+<col style="width: 12%" />
+<col style="width: 57%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Offset</p></th>
+<th class="head"><p>Field</p></th>
+<th class="head"><p>Size</p></th>
+<th class="head"><p>Value</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>0</p></td>
+<td><p>bmRequestType</p></td>
+<td><p>1</p></td>
+<td><p>0x00</p></td>
+<td><p>表示期望的数据传输方向为主机传输给设备</p></td>
+</tr>
+<tr class="row-odd"><td><p>1</p></td>
+<td><p>bmRequest</p></td>
+<td><p>1</p></td>
+<td><p>0x09</p></td>
+<td><p>代表了一个命令，根据 <code class="docutils literal notranslate"><span class="pre">Tab</span> <span class="pre">le</span> <span class="pre">9-4</span></code> 可以得知
+代表的命令为 <code class="docutils literal notranslate"><span class="pre">SET_CONFIGURATION</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p>2</p></td>
+<td><p>wValue</p></td>
+<td><p>2</p></td>
+<td><p>0x01 0x00</p></td>
+<td><p>根据 <code class="docutils literal notranslate"><span class="pre">Table</span> <span class="pre">9-3</span></code> 可以得知，此时代表的是：
+<code class="docutils literal notranslate"><span class="pre">Configuration</span> <span class="pre">Value</span></code> 即配置 0x01</p></td>
+</tr>
+<tr class="row-odd"><td><p>4</p></td>
+<td><p>wIndex</p></td>
+<td><p>2</p></td>
+<td><p>0x00 0x00</p></td>
+<td><p>根据 <code class="docutils literal notranslate"><span class="pre">Table</span> <span class="pre">9-3</span></code> 可以得知，此时 <code class="docutils literal notranslate"><span class="pre">Zero</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p>6</p></td>
+<td><p>wLength</p></td>
+<td><p>2</p></td>
+<td><p>0x00 0x00</p></td>
+<td><p>根据 <code class="docutils literal notranslate"><span class="pre">Table</span> <span class="pre">9-3</span></code> 可以得知，此时 <code class="docutils literal notranslate"><span class="pre">Zero</span></code></p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="section" id="tranfser-9">
+<h3><span class="section-number">7.12.2.3.12. </span>Tranfser 9<a class="headerlink" href="#tranfser-9" title="永久链接至标题">¶</a></h3>
+<p>好像也没干成什么事。</p>
+</div>
+<div class="section" id="tranfser-10">
+<h3><span class="section-number">7.12.2.3.13. </span>Tranfser 10<a class="headerlink" href="#tranfser-10" title="永久链接至标题">¶</a></h3>
+<p>获得HID描述符。</p>
+</div>
+<div class="section" id="tranfser-11">
+<h3><span class="section-number">7.12.2.3.14. </span>Tranfser 11<a class="headerlink" href="#tranfser-11" title="永久链接至标题">¶</a></h3>
+<p>是枚举成功后，两次host与device之间传输数据。这里只截了部分图。Host每个bInterval这么多时间就对device查询一下，看有没有数据要传，比如有没有键子被按下。每次都是，host向device发送一个IN令牌包，如果没有数据，device就回一个NAK。</p>
+<p><img alt="image49" src="../../../_images/mouse_enum_transfer11.png" /></p>
+</div>
+<div class="section" id="tranfser-12">
+<h3><span class="section-number">7.12.2.3.15. </span>Tranfser 12<a class="headerlink" href="#tranfser-12" title="永久链接至标题">¶</a></h3>
+<p><img alt="image50" src="../../../_images/mouse_enum_transfer12.png" /></p>
+</div>
+</div>
+<div class="section" id="id5">
+<h2><span class="section-number">7.12.2.4. </span>参考资料<a class="headerlink" href="#id5" title="永久链接至标题">¶</a></h2>
+<ol class="arabic simple">
+<li><p><a class="reference external" href="https://blog.csdn.net/huangkangying/article/details/103570707">USB系列(2)协议简介</a></p></li>
+<li><p><a class="reference external" href="https://blog.csdn.net/huangkangying/article/details/108652747">USB OTG 学习笔记</a></p></li>
+<li><p><a class="reference external" href="https://www.cnblogs.com/dchipnau/p/5255347.html">USB原理简单叙述</a></p></li>
+<li><p><a class="reference external" href="https://www.cnblogs.com/dchipnau/p/5255353.html">linux USB 编程</a></p></li>
+<li><p><a class="reference external" href="https://www.cnblogs.com/dchipnau/p/5255358.html">USB驱动分析</a></p></li>
+<li><p><a class="reference external" href="https://blog.csdn.net/weiaipan1314/article/details/112056754">USB 协议分析软件LeCroy USB Advisor</a></p></li>
+<li><p><a class="reference external" href="https://blog.csdn.net/huangkangying/article/details/104170350">USB系列(3) Windows USB枚举过程</a></p></li>
+<li><p><a class="reference external" href="https://blog.csdn.net/sun_x_t/article/details/7382068">usb鼠标枚举过程深度解析（上）</a></p></li>
+<li><p><a class="reference external" href="https://blog.csdn.net/sun_x_t/article/details/7382100">usb鼠标枚举过程深度解析（中）</a></p></li>
+<li><p><a class="reference external" href="https://blog.csdn.net/sun_x_t/article/details/7382119">usb鼠标枚举过程深度解析（下）</a></p></li>
+<li><p><a class="reference external" href="https://www.it610.com/article/4004983.htm">和菜鸟一起学linux总线驱动之初识USB鼠标抓包数据</a></p></li>
+<li><p><a class="reference external" href="https://www.usb.org/document-library/usb-20-specification">USB 2.0 Specification</a></p></li>
+<li><p><a class="reference external" href="https://blog.csdn.net/weixin_42876465/article/details/108701484">USB 之枚举过程概述</a></p></li>
+</ol>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+        <a href="2_config_guide.html" class="btn btn-neutral float-right" title="7.12.3. 配置指南" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="1_introd_usb.html" class="btn btn-neutral float-left" title="7.12.1. USB 简介" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; 版权所有 2023 广州匠芯创科技有限公司.
+
+    </p>
+  </div> 
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

@@ -265,8 +265,8 @@
 </ul>
 </li>
 <li class="toctree-l5"><a class="reference internal" href="#id3">5.4.2.3. 文件系统镜像制作和烧录</a><ul>
-<li class="toctree-l6"><a class="reference internal" href="#littlefs">5.4.2.3.1. Littlefs 镜像制作和烧录</a></li>
-<li class="toctree-l6"><a class="reference internal" href="#fatfs">5.4.2.3.2. FatFS 镜像制作和烧录</a></li>
+<li class="toctree-l6"><a class="reference internal" href="#fatfs">5.4.2.3.1. FatFS 镜像制作和烧录</a></li>
+<li class="toctree-l6"><a class="reference internal" href="#littlefs">5.4.2.3.2. Littlefs 镜像制作和烧录</a></li>
 </ul>
 </li>
 </ul>
@@ -284,6 +284,7 @@
 <li class="toctree-l2"><a class="reference internal" href="../../security/index.html">8. 安全</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../peripheral/index.html">9. 外设</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../app/index.html">10. 应用</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../bringup/index.html">11. BringUp</a></li>
 </ul>
 </li>
 </ul>
@@ -495,24 +496,24 @@ Rt-Thread options  ---&gt;
 </div>
 <div class="section" id="id3">
 <h2><span class="section-number">5.4.2.3. </span>文件系统镜像制作和烧录<a class="headerlink" href="#id3" title="永久链接至标题">¶</a></h2>
-<div class="section" id="littlefs">
-<h3><span class="section-number">5.4.2.3.1. </span>Littlefs 镜像制作和烧录<a class="headerlink" href="#littlefs" title="永久链接至标题">¶</a></h3>
+<div class="section" id="fatfs">
+<h3><span class="section-number">5.4.2.3.1. </span>FatFS 镜像制作和烧录<a class="headerlink" href="#fatfs" title="永久链接至标题">¶</a></h3>
 <div class="highlight-kconfig notranslate"><div class="highlight"><pre><span></span>Application options  ---&gt;
      [*] Using File System Image <span class="mi">0</span>  ---&gt;
         Select File System Type <span class="p">(</span>FATFS)  ---&gt;
-        <span class="p">(</span>application/os/helloworld/lvgl/base_demo/lvgl_src/) Data Directory
+        <span class="p">(</span>packages/artinchip/lvgl-apps/meter_demo/lvgl_src/) Data Directory
         <span class="p">(</span>rodata.fatfs) Image Name
          [*]   auto calcuate image size
     <span class="p">(</span><span class="mi">8</span><span class="p">)</span> size of cluster in fatfs image
 </pre></div>
 </div>
 </div>
-<div class="section" id="fatfs">
-<h3><span class="section-number">5.4.2.3.2. </span>FatFS 镜像制作和烧录<a class="headerlink" href="#fatfs" title="永久链接至标题">¶</a></h3>
+<div class="section" id="littlefs">
+<h3><span class="section-number">5.4.2.3.2. </span>Littlefs 镜像制作和烧录<a class="headerlink" href="#littlefs" title="永久链接至标题">¶</a></h3>
 <div class="highlight-kconfig notranslate"><div class="highlight"><pre><span></span>Application options  ---&gt;
      [*] Using File System Image <span class="mi">1</span>  ---&gt;
         Select File System Type <span class="p">(</span>LittleFS)  ---&gt;
-        <span class="p">(</span>application/os/helloworld/lvgl/base_demo/lvgl_src/) Data Directory
+        <span class="p">(</span>packages/artinchip/lvgl-apps/meter_demo/lvgl_src/) Data Directory
         <span class="p">(</span>data.lfs) Image Name
         <span class="p">(</span><span class="mi">4096</span><span class="p">)</span> Erase block size
         <span class="p">(</span><span class="mi">256</span><span class="p">)</span> Page size

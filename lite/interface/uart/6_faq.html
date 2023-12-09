@@ -286,11 +286,13 @@
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="../mac/index.html">7.11. MAC 使用指南</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../usb/index.html">7.12. USB 使用指南</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="../../security/index.html">8. 安全</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../peripheral/index.html">9. 外设</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../app/index.html">10. 应用</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../bringup/index.html">11. BringUp</a></li>
 </ul>
 </li>
 </ul>
@@ -379,7 +381,7 @@
 <h2><span class="section-number">7.10.6.1. </span>端口非tty设备<a class="headerlink" href="#tty" title="永久链接至标题">¶</a></h2>
 <div class="section" id="id2">
 <h3><span class="section-number">7.10.6.1.1. </span>现象<a class="headerlink" href="#id2" title="永久链接至标题">¶</a></h3>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">[</span><span class="n">aic</span><span class="o">@</span><span class="p">]</span> <span class="c1"># aic_uart -N /dev/ttyS1 /detv/ttySw2 1145200</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">[</span><span class="n">aic</span><span class="o">@</span><span class="p">]</span> <span class="c1"># test_uart -N /dev/ttyS1 /detv/ttySw2 1145200</span>
 <span class="p">[</span><span class="mi">2022</span><span class="o">-</span><span class="mi">01</span><span class="o">-</span><span class="mi">26</span> <span class="mi">16</span><span class="p">:</span><span class="mi">23</span><span class="p">:</span><span class="mi">43</span><span class="p">]</span>  <span class="n">Test</span> <span class="n">Mode</span><span class="p">:</span> <span class="mi">0</span><span class="p">:</span><span class="n">Normal</span> <span class="n">Test</span>
 <span class="p">[</span><span class="mi">2022</span><span class="o">-</span><span class="mi">01</span><span class="o">-</span><span class="mi">26</span> <span class="mi">16</span><span class="p">:</span><span class="mi">23</span><span class="p">:</span><span class="mi">43</span><span class="p">]</span>  <span class="n">Send</span> <span class="n">Device</span>     <span class="p">:</span> <span class="o">/</span><span class="n">dev</span><span class="o">/</span><span class="n">ttyS1</span>
 <span class="p">[</span><span class="mi">2022</span><span class="o">-</span><span class="mi">01</span><span class="o">-</span><span class="mi">26</span> <span class="mi">16</span><span class="p">:</span><span class="mi">23</span><span class="p">:</span><span class="mi">43</span><span class="p">]</span>  <span class="n">Receive</span> <span class="n">Device</span>  <span class="p">:</span> <span class="o">/</span><span class="n">dev</span><span class="o">/</span><span class="n">ttyS2</span>

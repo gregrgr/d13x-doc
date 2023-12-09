@@ -7,7 +7,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   
-  <title>4.7.4. 测试指南 &mdash; AIC文档中心 v1.0 文档</title>
+  <title>4.8.4. 测试指南 &mdash; AIC文档中心 v1.0 文档</title>
   
 
   
@@ -41,8 +41,8 @@
     
     <link rel="index" title="索引" href="../../../genindex.html" />
     <link rel="search" title="搜索" href="../../../search.html" />
-    <link rel="next" title="4.7.5. 设计说明" href="5_design_guide.html" />
-    <link rel="prev" title="4.7.3. 调试指南" href="3_debug_guide.html" />
+    <link rel="next" title="4.8.5. 设计说明" href="5_design_guide.html" />
+    <link rel="prev" title="4.8.3. 调试指南" href="3_debug_guide.html" />
     <script>
         $(function () {
 /**
@@ -247,29 +247,30 @@
 <li class="toctree-l2"><a class="reference internal" href="../../sdk/index.html">2. 使用指南</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../boot/index.html">3. 启动引导</a></li>
 <li class="toctree-l2 current"><a class="reference internal" href="../index.html">4. 系统</a><ul class="current">
-<li class="toctree-l3"><a class="reference internal" href="../cmu/index.html">4.1. CMU 使用指南</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../dma/index.html">4.2. DMA 使用指南</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../hrtimer/index.html">4.3. HRTimer 使用指南</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../mtop/index.html">4.4. MTOP 使用指南</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../rtc/index.html">4.5. RTC 使用指南</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../tsensor/index.html">4.6. TSensor 使用指南</a></li>
-<li class="toctree-l3 current"><a class="reference internal" href="index.html">4.7. Watchdog 使用指南</a><ul class="current">
-<li class="toctree-l4"><a class="reference internal" href="1_introduction.html">4.7.1. 模块介绍</a></li>
-<li class="toctree-l4"><a class="reference internal" href="2_config_guide.html">4.7.2. 参数配置</a></li>
-<li class="toctree-l4"><a class="reference internal" href="3_debug_guide.html">4.7.3. 调试指南</a></li>
-<li class="toctree-l4 current"><a class="current reference internal" href="#">4.7.4. 测试指南</a><ul>
-<li class="toctree-l5"><a class="reference internal" href="#id2">4.7.4.1. 测试环境</a><ul>
-<li class="toctree-l6"><a class="reference internal" href="#id3">4.7.4.1.1. 硬件</a></li>
-<li class="toctree-l6"><a class="reference internal" href="#id4">4.7.4.1.2. 软件</a></li>
-<li class="toctree-l6"><a class="reference internal" href="#id5">4.7.4.1.3. 软件配置</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../interrupt/index.html">4.1. Interrupt 使用指南</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../cmu/index.html">4.2. CMU 使用指南</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../dma/index.html">4.3. DMA 使用指南</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../hrtimer/index.html">4.4. HRTimer 使用指南</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../mtop/index.html">4.5. MTOP 使用指南</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../rtc/index.html">4.6. RTC 使用指南</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../tsensor/index.html">4.7. TSensor 使用指南</a></li>
+<li class="toctree-l3 current"><a class="reference internal" href="index.html">4.8. Watchdog 使用指南</a><ul class="current">
+<li class="toctree-l4"><a class="reference internal" href="1_introduction.html">4.8.1. 模块介绍</a></li>
+<li class="toctree-l4"><a class="reference internal" href="2_config_guide.html">4.8.2. 参数配置</a></li>
+<li class="toctree-l4"><a class="reference internal" href="3_debug_guide.html">4.8.3. 调试指南</a></li>
+<li class="toctree-l4 current"><a class="current reference internal" href="#">4.8.4. 测试指南</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="#id2">4.8.4.1. 测试环境</a><ul>
+<li class="toctree-l6"><a class="reference internal" href="#id3">4.8.4.1.1. 硬件</a></li>
+<li class="toctree-l6"><a class="reference internal" href="#id4">4.8.4.1.2. 软件</a></li>
+<li class="toctree-l6"><a class="reference internal" href="#id5">4.8.4.1.3. 软件配置</a></li>
 </ul>
 </li>
-<li class="toctree-l5"><a class="reference internal" href="#id6">4.7.4.2. 复位功能测试</a></li>
-<li class="toctree-l5"><a class="reference internal" href="#id7">4.7.4.3. 综合功能测试</a></li>
+<li class="toctree-l5"><a class="reference internal" href="#id6">4.8.4.2. 复位功能测试</a></li>
+<li class="toctree-l5"><a class="reference internal" href="#id7">4.8.4.3. 综合功能测试</a></li>
 </ul>
 </li>
-<li class="toctree-l4"><a class="reference internal" href="5_design_guide.html">4.7.5. 设计说明</a></li>
-<li class="toctree-l4"><a class="reference internal" href="6_faq.html">4.7.6. 常见问题</a></li>
+<li class="toctree-l4"><a class="reference internal" href="5_design_guide.html">4.8.5. 设计说明</a></li>
+<li class="toctree-l4"><a class="reference internal" href="6_faq.html">4.8.6. 常见问题</a></li>
 </ul>
 </li>
 </ul>
@@ -280,6 +281,7 @@
 <li class="toctree-l2"><a class="reference internal" href="../../security/index.html">8. 安全</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../peripheral/index.html">9. 外设</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../app/index.html">10. 应用</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../bringup/index.html">11. BringUp</a></li>
 </ul>
 </li>
 </ul>
@@ -343,9 +345,9 @@
         
           <li><a href="../index.html"><span class="section-number">4. </span>系统</a> &raquo;</li>
         
-          <li><a href="index.html"><span class="section-number">4.7. </span>Watchdog 使用指南</a> &raquo;</li>
+          <li><a href="index.html"><span class="section-number">4.8. </span>Watchdog 使用指南</a> &raquo;</li>
         
-      <li><span class="section-number">4.7.4. </span>测试指南</li>
+      <li><span class="section-number">4.8.4. </span>测试指南</li>
     
     
       <li class="wy-breadcrumbs-aside">
@@ -363,24 +365,24 @@
            <div itemprop="articleBody">
             
   <div class="section" id="id1">
-<h1><span class="section-number">4.7.4. </span>测试指南<a class="headerlink" href="#id1" title="永久链接至标题">¶</a></h1>
+<h1><span class="section-number">4.8.4. </span>测试指南<a class="headerlink" href="#id1" title="永久链接至标题">¶</a></h1>
 <div class="section" id="id2">
-<h2><span class="section-number">4.7.4.1. </span>测试环境<a class="headerlink" href="#id2" title="永久链接至标题">¶</a></h2>
+<h2><span class="section-number">4.8.4.1. </span>测试环境<a class="headerlink" href="#id2" title="永久链接至标题">¶</a></h2>
 <div class="section" id="id3">
-<h3><span class="section-number">4.7.4.1.1. </span>硬件<a class="headerlink" href="#id3" title="永久链接至标题">¶</a></h3>
+<h3><span class="section-number">4.8.4.1.1. </span>硬件<a class="headerlink" href="#id3" title="永久链接至标题">¶</a></h3>
 <ul class="simple">
 <li><p>开发板</p></li>
 </ul>
 </div>
 <div class="section" id="id4">
-<h3><span class="section-number">4.7.4.1.2. </span>软件<a class="headerlink" href="#id4" title="永久链接至标题">¶</a></h3>
+<h3><span class="section-number">4.8.4.1.2. </span>软件<a class="headerlink" href="#id4" title="永久链接至标题">¶</a></h3>
 <ul class="simple">
 <li><p>PC端的串口终端软件，用于PC和开发板进行串口通信</p></li>
 <li><p>Luban-Lite 中打开 Watchdog模块和test-wdt功能</p></li>
 </ul>
 </div>
 <div class="section" id="id5">
-<h3><span class="section-number">4.7.4.1.3. </span>软件配置<a class="headerlink" href="#id5" title="永久链接至标题">¶</a></h3>
+<h3><span class="section-number">4.8.4.1.3. </span>软件配置<a class="headerlink" href="#id5" title="永久链接至标题">¶</a></h3>
 <p>打开wdt的综合功能测试（test-wdt）开关如下：</p>
 <p>在Luban-Lite根目录下 <code class="docutils literal notranslate"><span class="pre">scons</span> <span class="pre">--</span> <span class="pre">menuconfig</span></code>，进入menuconfig的功能配置界面，按如下配置：</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Drivers</span> <span class="n">options</span> <span class="o">---&gt;</span>
@@ -391,7 +393,7 @@
 </div>
 </div>
 <div class="section" id="id6">
-<h2><span class="section-number">4.7.4.2. </span>复位功能测试<a class="headerlink" href="#id6" title="永久链接至标题">¶</a></h2>
+<h2><span class="section-number">4.8.4.2. </span>复位功能测试<a class="headerlink" href="#id6" title="永久链接至标题">¶</a></h2>
 <p>wdt驱动注册了一个 <code class="docutils literal notranslate"><span class="pre">reboot</span></code> 命令，可实现系统的复位，此命令可用来验证wdt的复位功能。
 使用方法：</p>
 <div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>aic /&gt; reboot
@@ -407,7 +409,7 @@ U-Boot SPL <span class="m">2021</span>.10-00008-g13511a4f-dirty <span class="o">
 </div>
 </div>
 <div class="section" id="id7">
-<h2><span class="section-number">4.7.4.3. </span>综合功能测试<a class="headerlink" href="#id7" title="永久链接至标题">¶</a></h2>
+<h2><span class="section-number">4.8.4.3. </span>综合功能测试<a class="headerlink" href="#id7" title="永久链接至标题">¶</a></h2>
 <p>wdt同样也注册了一个 <code class="docutils literal notranslate"><span class="pre">test_wdt</span></code> 命令，主要用于测试wdt的其他功能（如喂狗，预处理等）。</p>
 <p>wdt帮助信息：</p>
 <div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>aic /&gt; test_wdt -u
@@ -421,7 +423,7 @@ Usage: test_wdt <span class="o">[</span>-s timeout<span class="o">]</span> <span
         -u, --usage
 </pre></div>
 </div>
-<p>wdt_test的使用示例</p>
+<p>test_wdt的使用示例</p>
 <div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>aic /&gt; test_wdt -s <span class="m">3</span>    <span class="c1">#设置timeout为3,并开启看门狗，即3秒后重启</span>
 aic /&gt; test_wdt -p <span class="m">3</span>    <span class="c1">#设置pretimeout为3,并开启超时中断</span>
 aic /&gt; test_wdt -c <span class="m">3</span>    <span class="c1">#设置清除窗口为3，即计数到3秒之后才能“喂狗”</span>
@@ -438,8 +440,8 @@ aic /&gt; test_wdt -k      <span class="c1">#开启喂狗功能（空闲钩子�
           </div>
           <footer>
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
-        <a href="5_design_guide.html" class="btn btn-neutral float-right" title="4.7.5. 设计说明" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
-        <a href="3_debug_guide.html" class="btn btn-neutral float-left" title="4.7.3. 调试指南" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="5_design_guide.html" class="btn btn-neutral float-right" title="4.8.5. 设计说明" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="3_debug_guide.html" class="btn btn-neutral float-left" title="4.8.3. 调试指南" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
     </div>
 
   <hr/>

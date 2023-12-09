@@ -1,0 +1,734 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="zh-CN" >
+<head>
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>4.1.1. 设计说明 &mdash; AIC文档中心 v1.0 文档</title>
+  
+
+  
+  <link rel="stylesheet" href="../../../_static/css/theme_overrides.css" type="text/css" />
+  <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+
+  
+  
+    <link rel="shortcut icon" href="../../../_static/aic_logo.png"/>
+  
+
+  
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../../" src="../../../_static/documentation_options.js"></script>
+        <script src="../../../_static/jquery.js"></script>
+        <script src="../../../_static/underscore.js"></script>
+        <script src="../../../_static/doctools.js"></script>
+        <script src="../../../_static/translations.js"></script>
+    
+    <script type="text/javascript" src="../../../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="索引" href="../../../genindex.html" />
+    <link rel="search" title="搜索" href="../../../search.html" />
+    <link rel="next" title="4.2. CMU 使用指南" href="../cmu/index.html" />
+    <link rel="prev" title="4.1. Interrupt 使用指南" href="index.html" />
+    <script>
+        $(function () {
+/**
+            var $body = $(".rst-content");
+            $body.attr("oncontextmenu", "return false"); 
+            $body.attr("ondragstart", "return false");
+            $body.attr("onselectstart", "return false");
+            $body.attr("onbeforecopy", "return false");
+
+            if (document.selection) {
+                $body.attr("onselect", "document.selection.empty()");
+                $body.attr("oncopy", "document.selection.empty()");
+                $body.attr("onmouseup", "document.selection.empty()");
+            } else {
+                $body.attr("onselect", "document.getSelection().removeAllRanges()");
+                $body.attr("oncopy", "document.getSelection().removeAllRanges()");
+                $body.attr("onmouseup", "document.getSelection().removeAllRanges()");
+            }
+
+            $(".wy-menu-vertical .toctree-l4.current .current.toctree-l5 > ul").wrap("<div></div>");
+
+            $(document).keydown(function (e) {
+                var $div = $(".wy-menu-vertical .toctree-l4.current .current.toctree-l5 > div");
+                var scrollLeft = $div.scrollLeft();
+                var step = 50;
+                var code = e.keyCode;
+                switch (code) {
+                    case 37:
+                        $div.scrollLeft(scrollLeft - step);
+                        break;
+                    case 39:
+                        $div.scrollLeft(scrollLeft + step);
+                        break;
+                    case 65:
+                    case 67:
+                    case 83:
+                    case 86:
+                        var ctrlKey = navigator.platform.match("Mac") ? e.metaKey : e.ctrlKey;
+                        if (ctrlKey) {
+                            e.preventDefault();
+                            window.event.returnValue = false;
+                        }
+                        break;
+                    case 123:
+                        e.preventDefault();
+                        window.event.returnValue = false;
+                        break;
+                }
+	    });  **/
+
+            watermark({
+                watermark_id: ".wy-nav-content",
+                watermark_txt: "ArtInChip",
+                watermark_font: "微软雅黑",
+                watermark_fontsize: "100px",
+                watermark_width: 600,
+                watermark_height: 300,
+                watermark_alpha: 0.1,
+                watermark_rows: 0,
+                watermark_y: 100,
+                watermark_x_space: 0,
+                watermark_y_space: 100
+            });
+
+        });
+
+        function watermark(settings) {
+            var defaultSettings = {
+                watermark_id: "body",
+                watermark_txt: "text",
+                watermark_x: 20,
+                watermark_y: 20,
+                watermark_rows: 20,
+                watermark_cols: 20,
+                watermark_x_space: 100,
+                watermark_y_space: 50,
+                watermark_color: '#aaa',
+                watermark_alpha: 0.4,
+                watermark_fontsize: '15px',
+                watermark_font: 'Times New Roman',
+                watermark_width: 210,
+                watermark_height: 80,
+                watermark_angle: 20
+            };
+
+            for (key in settings) {
+                defaultSettings[key] = settings[key];
+            }
+
+            var oTemp = document.createDocumentFragment();
+
+            var $container = $(defaultSettings.watermark_id);
+
+            var page_width = $container.width();
+            var col_width = defaultSettings.watermark_width + defaultSettings.watermark_x_space;
+            defaultSettings.watermark_cols = page_width / col_width;
+
+            var page_height = $container.height();
+            var row_height = defaultSettings.watermark_height + defaultSettings.watermark_y_space;
+            defaultSettings.watermark_rows = page_height / row_height;
+
+            var x, y;
+            for (var i = 0; i < defaultSettings.watermark_rows; i++) {
+                y = defaultSettings.watermark_y + (defaultSettings.watermark_y_space + defaultSettings.watermark_height) * i;
+                for (var j = 0; j < defaultSettings.watermark_cols; j++) {
+                    x = defaultSettings.watermark_x + (defaultSettings.watermark_width + defaultSettings.watermark_x_space) * j;
+                    var mask_div = document.createElement('div');
+                    mask_div.id = 'mask_div' + i + j;
+                    mask_div.className = 'mask_div';
+                    mask_div.appendChild(document.createTextNode(defaultSettings.watermark_txt));
+
+                    mask_div.style.webkitTransform = "rotate(-" + defaultSettings.watermark_angle + "deg)";
+                    mask_div.style.MozTransform = "rotate(-" + defaultSettings.watermark_angle + "deg)";
+                    mask_div.style.msTransform = "rotate(-" + defaultSettings.watermark_angle + "deg)";
+                    mask_div.style.OTransform = "rotate(-" + defaultSettings.watermark_angle + "deg)";
+                    mask_div.style.transform = "rotate(-" + defaultSettings.watermark_angle + "deg)";
+                    mask_div.style.visibility = "";
+                    mask_div.style.position = "absolute";
+                    mask_div.style.left = x + 'px';
+                    mask_div.style.top = y + 'px';
+                    mask_div.style.overflow = "hidden";
+                    mask_div.style.zIndex = "9999";
+
+                    mask_div.style.pointerEvents = 'none';
+                    mask_div.style.opacity = defaultSettings.watermark_alpha;
+                    mask_div.style.fontSize = defaultSettings.watermark_fontsize;
+                    mask_div.style.fontFamily = defaultSettings.watermark_font;
+                    mask_div.style.color = defaultSettings.watermark_color;
+                    mask_div.style.textAlign = "center";
+                    mask_div.style.width = defaultSettings.watermark_width + 'px';
+                    mask_div.style.height = defaultSettings.watermark_height + 'px';
+                    mask_div.style.display = "block";
+                    oTemp.appendChild(mask_div);
+                };
+            };
+            $container.append(oTemp);
+        }
+    </script>
+
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../../index.html" class="icon icon-home"> AIC文档中心
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../product/index.html">产品简介</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../quick-start/index.html">快速入门</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../datasheet/index.html">数据手册</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../ic/index.html">芯片手册</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../hw/index.html">硬件指南</a></li>
+</ul>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="../../index.html">RTOS SDK</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../../env/index.html">1. 编译准备</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../sdk/index.html">2. 使用指南</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../boot/index.html">3. 启动引导</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="../index.html">4. 系统</a><ul class="current">
+<li class="toctree-l3 current"><a class="reference internal" href="index.html">4.1. Interrupt 使用指南</a><ul class="current">
+<li class="toctree-l4 current"><a class="current reference internal" href="#">4.1.1. 设计说明</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="#id2">4.1.1.1. 源码说明</a></li>
+<li class="toctree-l5"><a class="reference internal" href="#id3">4.1.1.2. 模块架构</a><ul>
+<li class="toctree-l6"><a class="reference internal" href="#id4">4.1.1.2.1. 普通中断</a></li>
+<li class="toctree-l6"><a class="reference internal" href="#gpio">4.1.1.2.2. GPIO 中断</a></li>
+</ul>
+</li>
+<li class="toctree-l5"><a class="reference internal" href="#id5">4.1.1.3. 数据结构设计</a><ul>
+<li class="toctree-l6"><a class="reference internal" href="#irq-handler-t-pin-irq-handler-t">4.1.1.3.1. irq_handler_t/pin_irq_handler_t</a></li>
+</ul>
+</li>
+<li class="toctree-l5"><a class="reference internal" href="#id6">4.1.1.4. 接口设计</a><ul>
+<li class="toctree-l6"><a class="reference internal" href="#aicos-irq-api">4.1.1.4.1. AICOS Irq API</a></li>
+<li class="toctree-l6"><a class="reference internal" href="#rtt-gpio-irq-api">4.1.1.4.2. RTT GPIO Irq API</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../cmu/index.html">4.2. CMU 使用指南</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../dma/index.html">4.3. DMA 使用指南</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../hrtimer/index.html">4.4. HRTimer 使用指南</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../mtop/index.html">4.5. MTOP 使用指南</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../rtc/index.html">4.6. RTC 使用指南</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../tsensor/index.html">4.7. TSensor 使用指南</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../watchdog/index.html">4.8. Watchdog 使用指南</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../memory/index.html">5. 存储</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../media/index.html">6. 多媒体</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../interface/index.html">7. 接口</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../security/index.html">8. 安全</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../peripheral/index.html">9. 外设</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../app/index.html">10. 应用</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../bringup/index.html">11. BringUp</a></li>
+</ul>
+</li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../baremetal/index.html">Baremetal</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../tools/index.html">工具指南</a></li>
+</ul>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../aboutus/index.html">关于我们</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../index.html">AIC文档中心</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+          <li><a href="../../index.html">RTOS SDK</a> &raquo;</li>
+        
+          <li><a href="../index.html"><span class="section-number">4. </span>系统</a> &raquo;</li>
+        
+          <li><a href="index.html"><span class="section-number">4.1. </span>Interrupt 使用指南</a> &raquo;</li>
+        
+      <li><span class="section-number">4.1.1. </span>设计说明</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="id1">
+<h1><span class="section-number">4.1.1. </span>设计说明<a class="headerlink" href="#id1" title="永久链接至标题">¶</a></h1>
+<div class="section" id="id2">
+<h2><span class="section-number">4.1.1.1. </span>源码说明<a class="headerlink" href="#id2" title="永久链接至标题">¶</a></h2>
+<p>Interrupt 相关 <code class="docutils literal notranslate"><span class="pre">.c</span></code> 和 <code class="docutils literal notranslate"><span class="pre">.h</span></code> 文件分别位于 <code class="docutils literal notranslate"><span class="pre">luban-lite\kernel\common\include\osal\aic_osal_platform_lbl.h</span></code> 和 <code class="docutils literal notranslate"><span class="pre">luban-lite\bsp\artinchip\sys\dxxx\</span></code> 目录。主要源文件说明如下：</p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 47%" />
+<col style="width: 53%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>文件</p></th>
+<th class="head"><p>说明</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>aic_osal_platform_lbl.h</p></td>
+<td><p>aicos 层中断 注册 &amp; 使能 函数</p></td>
+</tr>
+<tr class="row-odd"><td><p>aic_drv_irq.c</p></td>
+<td><p>drv 层 interrupt 的实现</p></td>
+</tr>
+<tr class="row-even"><td><p>aic_drv_gpio.c</p></td>
+<td><p>drv 层 gpio 中断的扩展</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="id3">
+<h2><span class="section-number">4.1.1.2. </span>模块架构<a class="headerlink" href="#id3" title="永久链接至标题">¶</a></h2>
+<div class="section" id="id4">
+<h3><span class="section-number">4.1.1.2.1. </span>普通中断<a class="headerlink" href="#id4" title="永久链接至标题">¶</a></h3>
+<p>对于普通中断来说实现的原理非常简单，核心就是两个数组 <code class="docutils literal notranslate"><span class="pre">g_irqvector[]</span></code> 和 <code class="docutils literal notranslate"><span class="pre">g_irqdata[]</span></code>，分别用来存储中断处理函数的函数指针和附加数据。对应具体操作如下：</p>
+<ul class="simple">
+<li><p>中断注册。用户调用 <code class="docutils literal notranslate"><span class="pre">aicos_request_irq()</span></code> 根据中断号把中断处理函数和附加数据存入到 <code class="docutils literal notranslate"><span class="pre">g_irqvector[]</span></code> 和 <code class="docutils literal notranslate"><span class="pre">g_irqdata[]</span></code> 数组。</p></li>
+<li><p>中断处理。中断发生后所有中断首先会跳入 <code class="docutils literal notranslate"><span class="pre">Default_IRQHandler()</span></code> 通用中断处理函数中，然后根据 <code class="docutils literal notranslate"><span class="pre">MCAUSE</span></code> 寄存器查询当前的中断号，根据中断号在 <code class="docutils literal notranslate"><span class="pre">g_irqvector[]</span></code> 和 <code class="docutils literal notranslate"><span class="pre">g_irqdata[]</span></code> 数组中查询具体的中断处理函数指针和附加数据，然后再跳转到具体 ISR 中执行。</p></li>
+</ul>
+<div class="figure align-center">
+<img alt="../../../_images/int_fw.png" src="../../../_images/int_fw.png" />
+</div>
+</div>
+<div class="section" id="gpio">
+<h3><span class="section-number">4.1.1.2.2. </span>GPIO 中断<a class="headerlink" href="#gpio" title="永久链接至标题">¶</a></h3>
+<p>GPIO 中断的实现稍有不同。因为 GPIO 一个 Group 只能共享一个中断（一个 Group 最多包含 32 个 Pin），但是用户要求对每个 Pin 单独的注册中断处理函数，所以需要对 GPIO Pin 二级中断进行特殊处理。既能实现功能又能让用户零感知。具体做法如下：</p>
+<ul class="simple">
+<li><p>扩大 <code class="docutils literal notranslate"><span class="pre">g_irqvector[]</span></code> 和 <code class="docutils literal notranslate"><span class="pre">g_irqdata[]</span></code> 数组。让每个 GPIO Pin 中断都拥有独立的存放位置，另外也可以做到对一级中断和二级中断格式一样。</p></li>
+<li><p>中断注册。目前在 rt-thread 下可以使用 <code class="docutils literal notranslate"><span class="pre">rt_pin_attach_irq()</span></code> 函数来注册 GPIO Pin 中断，使用 <code class="docutils literal notranslate"><span class="pre">rt_pin_irq_enable()</span></code> 函数来使能 GPIO Pin 中断。</p></li>
+<li><p>处断处理。GPIO Pin 发生中断以后，首先会跳转到一级中断处理函数 <code class="docutils literal notranslate"><span class="pre">drv_gpio_group_irqhandler()</span></code> 中执行，通过查询发生中断的 Group 和 Pin Offset，最终在 <code class="docutils literal notranslate"><span class="pre">g_irqvector[]</span></code> 和 <code class="docutils literal notranslate"><span class="pre">g_irqdata[]</span></code> 数组中查询到具体的中断处理函数指针和附加数据，然后再跳转到具体 ISR 中执行。</p></li>
+</ul>
+<div class="figure align-center">
+<img alt="../../../_images/gpio_int_ext.png" src="../../../_images/gpio_int_ext.png" />
+</div>
+<p>CMU 驱动的逻辑比较简单，目前只在 HAL 层提供了 Clock 和 Reset 的 API 接口。RTOS 驱动和 Baremetal 驱动都可以直接使用。</p>
+</div>
+</div>
+<div class="section" id="id5">
+<h2><span class="section-number">4.1.1.3. </span>数据结构设计<a class="headerlink" href="#id5" title="永久链接至标题">¶</a></h2>
+<p>Interrupt 模块关键结构体定义如下：</p>
+<div class="section" id="irq-handler-t-pin-irq-handler-t">
+<h3><span class="section-number">4.1.1.3.1. </span>irq_handler_t/pin_irq_handler_t<a class="headerlink" href="#irq-handler-t-pin-irq-handler-t" title="永久链接至标题">¶</a></h3>
+<div class="highlight-c notranslate"><div class="highlight"><pre><span></span><span class="k">enum</span> <span class="n">irqreturn</span>
+<span class="p">{</span>
+    <span class="n">IRQ_NONE</span>        <span class="o">=</span> <span class="p">(</span><span class="mi">0</span> <span class="o">&lt;&lt;</span> <span class="mi">0</span><span class="p">),</span>
+    <span class="n">IRQ_HANDLED</span>     <span class="o">=</span> <span class="p">(</span><span class="mi">1</span> <span class="o">&lt;&lt;</span> <span class="mi">0</span><span class="p">),</span>
+    <span class="n">IRQ_WAKE_THREAD</span> <span class="o">=</span> <span class="p">(</span><span class="mi">1</span> <span class="o">&lt;&lt;</span> <span class="mi">1</span><span class="p">),</span>
+<span class="p">};</span>
+<span class="k">typedef</span> <span class="k">enum</span> <span class="n">irqreturn</span> <span class="n">irqreturn_t</span><span class="p">;</span>
+<span class="k">typedef</span> <span class="nf">irqreturn_t</span> <span class="p">(</span><span class="o">*</span><span class="n">irq_handler_t</span><span class="p">)(</span><span class="kt">int</span><span class="p">,</span> <span class="kt">void</span> <span class="o">*</span><span class="p">);</span>
+<span class="k">typedef</span> <span class="nf">irqreturn_t</span> <span class="p">(</span><span class="o">*</span><span class="n">pin_irq_handler_t</span><span class="p">)(</span><span class="kt">void</span> <span class="o">*</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="id6">
+<h2><span class="section-number">4.1.1.4. </span>接口设计<a class="headerlink" href="#id6" title="永久链接至标题">¶</a></h2>
+<div class="section" id="aicos-irq-api">
+<h3><span class="section-number">4.1.1.4.1. </span>AICOS Irq API<a class="headerlink" href="#aicos-irq-api" title="永久链接至标题">¶</a></h3>
+<div class="section" id="aicos-request-irq">
+<h4><span class="section-number">4.1.1.4.1.1. </span>aicos_request_irq<a class="headerlink" href="#aicos-request-irq" title="永久链接至标题">¶</a></h4>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 12%" />
+<col style="width: 88%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>函数原型</p></th>
+<th class="head"><p>int aicos_request_irq (unsigned int irq, irq_handler_t handler, unsigned int flags, const char *name, void *data)</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>功能说明</p></td>
+<td><p>注册中断</p></td>
+</tr>
+<tr class="row-odd"><td><p>参数</p></td>
+<td><div class="line-block">
+<div class="line">irq    ：中断号</div>
+<div class="line">handler：中断处理函数</div>
+<div class="line">flags  ：中断标志</div>
+<div class="line">name   ：中断号名称</div>
+<div class="line">data   ：中断附加数据</div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td><p>返回值</p></td>
+<td><p>操作是否成功 (0=OK, other=Error)</p></td>
+</tr>
+<tr class="row-odd"><td><p>注意事项</p></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="aicos-irq-enable">
+<h4><span class="section-number">4.1.1.4.1.2. </span>aicos_irq_enable<a class="headerlink" href="#aicos-irq-enable" title="永久链接至标题">¶</a></h4>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 28%" />
+<col style="width: 72%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>函数原型</p></th>
+<th class="head"><p>void aicos_irq_enable(unsigned int irq)</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>功能说明</p></td>
+<td><p>使能中断</p></td>
+</tr>
+<tr class="row-odd"><td><p>参数</p></td>
+<td><p>irq：中断号</p></td>
+</tr>
+<tr class="row-even"><td><p>返回值</p></td>
+<td><p>无</p></td>
+</tr>
+<tr class="row-odd"><td><p>注意事项</p></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="aicos-irq-disable">
+<h4><span class="section-number">4.1.1.4.1.3. </span>aicos_irq_disable<a class="headerlink" href="#aicos-irq-disable" title="永久链接至标题">¶</a></h4>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 28%" />
+<col style="width: 72%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>函数原型</p></th>
+<th class="head"><p>void aicos_irq_disable(unsigned int irq)</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>功能说明</p></td>
+<td><p>关闭中断</p></td>
+</tr>
+<tr class="row-odd"><td><p>参数</p></td>
+<td><p>irq：中断号</p></td>
+</tr>
+<tr class="row-even"><td><p>返回值</p></td>
+<td><p>无</p></td>
+</tr>
+<tr class="row-odd"><td><p>注意事项</p></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="aicos-local-irq-enable">
+<h4><span class="section-number">4.1.1.4.1.4. </span>aicos_local_irq_enable<a class="headerlink" href="#aicos-local-irq-enable" title="永久链接至标题">¶</a></h4>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 31%" />
+<col style="width: 69%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>函数原型</p></th>
+<th class="head"><p>void aicos_local_irq_enable(void)</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>功能说明</p></td>
+<td><p>使能 CPU 全局中断中断</p></td>
+</tr>
+<tr class="row-odd"><td><p>参数</p></td>
+<td><p>无</p></td>
+</tr>
+<tr class="row-even"><td><p>返回值</p></td>
+<td><p>无</p></td>
+</tr>
+<tr class="row-odd"><td><p>注意事项</p></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="aicos-local-irq-disable">
+<h4><span class="section-number">4.1.1.4.1.5. </span>aicos_local_irq_disable<a class="headerlink" href="#aicos-local-irq-disable" title="永久链接至标题">¶</a></h4>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 31%" />
+<col style="width: 69%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>函数原型</p></th>
+<th class="head"><p>void aicos_local_irq_disable(void)</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>功能说明</p></td>
+<td><p>关闭 CPU 全局中断中断</p></td>
+</tr>
+<tr class="row-odd"><td><p>参数</p></td>
+<td><p>无</p></td>
+</tr>
+<tr class="row-even"><td><p>返回值</p></td>
+<td><p>无</p></td>
+</tr>
+<tr class="row-odd"><td><p>注意事项</p></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="section" id="rtt-gpio-irq-api">
+<h3><span class="section-number">4.1.1.4.2. </span>RTT GPIO Irq API<a class="headerlink" href="#rtt-gpio-irq-api" title="永久链接至标题">¶</a></h3>
+<div class="section" id="rt-pin-attach-irq">
+<h4><span class="section-number">4.1.1.4.2.1. </span>rt_pin_attach_irq<a class="headerlink" href="#rt-pin-attach-irq" title="永久链接至标题">¶</a></h4>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 13%" />
+<col style="width: 87%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>函数原型</p></th>
+<th class="head"><p>rt_err_t rt_pin_attach_irq (rt_int32_t pin, rt_uint32_t mode, void (*hdr)(void *args), void *args)</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>功能说明</p></td>
+<td><p>注册 gpio pin 中断</p></td>
+</tr>
+<tr class="row-odd"><td><p>参数</p></td>
+<td><div class="line-block">
+<div class="line">pin ：pin 管脚编号</div>
+<div class="line">mode：pin 中断模式，上升下降沿、高低电平</div>
+<div class="line">hdr ：pin 中断处理函数</div>
+<div class="line">args：pin 中断附加数据</div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td><p>返回值</p></td>
+<td><p>操作是否成功 (0=OK, other=Error)</p></td>
+</tr>
+<tr class="row-odd"><td><p>注意事项</p></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="rt-pin-detach-irq">
+<h4><span class="section-number">4.1.1.4.2.2. </span>rt_pin_detach_irq<a class="headerlink" href="#rt-pin-detach-irq" title="永久链接至标题">¶</a></h4>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 27%" />
+<col style="width: 73%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>函数原型</p></th>
+<th class="head"><p>rt_err_t rt_pin_detach_irq(rt_int32_t pin)</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>功能说明</p></td>
+<td><p>注销 gpio pin 中断</p></td>
+</tr>
+<tr class="row-odd"><td><p>参数</p></td>
+<td><p>pin：pin 管脚编号</p></td>
+</tr>
+<tr class="row-even"><td><p>返回值</p></td>
+<td><p>操作是否成功 (0=OK, other=Error)</p></td>
+</tr>
+<tr class="row-odd"><td><p>注意事项</p></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="rt-pin-irq-enable">
+<h4><span class="section-number">4.1.1.4.2.3. </span>rt_pin_irq_enable<a class="headerlink" href="#rt-pin-irq-enable" title="永久链接至标题">¶</a></h4>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 20%" />
+<col style="width: 80%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>函数原型</p></th>
+<th class="head"><p>rt_err_t rt_pin_irq_enable(rt_base_t pin, rt_uint32_t enabled)</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>功能说明</p></td>
+<td><p>使能/关闭 gpio pin 中断</p></td>
+</tr>
+<tr class="row-odd"><td><p>参数</p></td>
+<td><div class="line-block">
+<div class="line">pin    ：pin 管脚编号</div>
+<div class="line">enabled：使能/关闭</div>
+</div>
+</td>
+</tr>
+<tr class="row-even"><td><p>返回值</p></td>
+<td><p>操作是否成功 (0=OK, other=Error)</p></td>
+</tr>
+<tr class="row-odd"><td><p>注意事项</p></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+        <a href="../cmu/index.html" class="btn btn-neutral float-right" title="4.2. CMU 使用指南" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="index.html" class="btn btn-neutral float-left" title="4.1. Interrupt 使用指南" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; 版权所有 2023 广州匠芯创科技有限公司.
+
+    </p>
+  </div> 
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

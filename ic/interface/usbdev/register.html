@@ -654,7 +654,7 @@
 <col style="width: 8%" />
 <col style="width: 8%" />
 <col style="width: 13%" />
-<col style="width: 72%" />
+<col style="width: 71%" />
 </colgroup>
 <thead>
 <tr class="row-odd"><th class="head" colspan="3"><p>默认值：0x00001400</p></th>
@@ -678,7 +678,7 @@
 <td><div class="line-block">
 <div class="line">ULPI_CLK_SUS</div>
 <div class="line">ULPI Clock Suspend，此位决定Suspend状态下内部时钟的供电。</div>
-<div class="line">AIC1602采用内部PHY，这里无需配置，保持默认值即可。</div>
+<div class="line">由于采用内部PHY，这里无需配置，保持默认值即可。</div>
 <div class="line">0x0：在Suspend状态PHY停止向内部时钟模块供电</div>
 <div class="line">0x1：PHY不会停止向内部时钟模块供电</div>
 </div>
@@ -690,7 +690,7 @@
 <td><div class="line-block">
 <div class="line">ULPI_AUTO_RES</div>
 <div class="line">ULPI Auto Resume，配置ULPI PHY的寄存器的AutoResume功能。</div>
-<div class="line">AIC1602采用内部PHY，这里无需配置，保持默认值即可。</div>
+<div class="line">由于采用内部PHY，这里无需配置，保持默认值即可。</div>
 <div class="line">0x0：PHY不采用AutoResume功能</div>
 <div class="line">0x1：PHY采用AutoResume功能</div>
 </div>
@@ -707,7 +707,7 @@
 <td><div class="line-block">
 <div class="line">PHY_LP_CLK_SET</div>
 <div class="line">PHY Low-Power Clock Set，选择480MHz或48MHz的PHY模式，在FS和</div>
-<div class="line">LS模式下，PHY可以工作在48MHz，达到节省功耗的效果。AIC1602采用</div>
+<div class="line">LS模式下，PHY可以工作在48MHz，达到节省功耗的效果。由于采用</div>
 <div class="line">内部PHY，这里无需配置，保持默认值即可。</div>
 <div class="line">0x0：480MHz的内部PLL时钟</div>
 <div class="line">0x1：48MHz的外部时钟</div>
@@ -740,7 +740,7 @@
 <td><div class="line-block">
 <div class="line">SEL_ULPI _DDR</div>
 <div class="line">Select ULPI Interface Double Data Rate，选择ULPI IF的数据为</div>
-<div class="line">双沿触发。AIC1602采用内部PHY，这里无需配置，保持默认值即可。</div>
+<div class="line">双沿触发。由于采用内部PHY，这里无需配置，保持默认值即可。</div>
 <div class="line">0x0：单沿触发，8-bit数据总线</div>
 <div class="line">0x1：双沿触发，4-bit数据总线</div>
 </div>
@@ -751,7 +751,7 @@
 <td><p>0x0</p></td>
 <td><div class="line-block">
 <div class="line">SEL_PHY_IF</div>
-<div class="line">Select PHY Interface，选择PHY的接口类型。AIC1602采用内部PHY，</div>
+<div class="line">Select PHY Interface，选择PHY的接口类型。由于采用内部PHY，</div>
 <div class="line">这里无需配置，保持默认值即可。</div>
 <div class="line">0x0：UTMI+ Interface</div>
 <div class="line">0x1：ULPI Interface</div>
@@ -764,7 +764,7 @@
 <td><div class="line-block">
 <div class="line">PHY_IF_WIDTH</div>
 <div class="line">PHY Interface Width，UTMI+ PHY选择8-bit或16-bit接口，ULPI</div>
-<div class="line">必须选择8-bit接口，AIC1602采用内部PHY，这里无需配置，保持默认</div>
+<div class="line">必须选择8-bit接口，由于采用内部PHY，这里无需配置，保持默认</div>
 <div class="line">值即可。</div>
 <div class="line">0x0：8bits</div>
 <div class="line">0x1：16bits</div>
@@ -2895,24 +2895,17 @@
 <td><p>0x0</p></td>
 <td><div class="line-block">
 <div class="line">DATA_PID_STS</div>
-<div class="line">Endpoint Data PID Status，适用interrupt/bulk IN EPs。</div>
+<div class="line">Endpoint Data PID Status，当EP类型为interrupt/bulk EP。</div>
 <div class="line">0x0：DATA0</div>
 <div class="line">0x1：DATA1</div>
-</div>
-</td>
-</tr>
-<tr class="row-odd"><td><p>16</p></td>
-<td><p>R</p></td>
-<td><p>0x0</p></td>
-<td><div class="line-block">
 <div class="line">EO_FRNUM_STS</div>
-<div class="line">Even/Odd Frame Number Status，适用isochronous IN EPs。</div>
+<div class="line">Even/Odd Frame Number Status，当EP类型为isochronous EP。</div>
 <div class="line">0x0：偶数帧</div>
 <div class="line">0x1：奇数帧</div>
 </div>
 </td>
 </tr>
-<tr class="row-even"><td><p>15</p></td>
+<tr class="row-odd"><td><p>15</p></td>
 <td><p>R/WAC</p></td>
 <td><p>0x0</p></td>
 <td><div class="line-block">
@@ -2924,7 +2917,7 @@
 </div>
 </td>
 </tr>
-<tr class="row-odd"><td><p>14:11</p></td>
+<tr class="row-even"><td><p>14:11</p></td>
 <td><p>R/W</p></td>
 <td><p>0x0</p></td>
 <td><div class="line-block">
@@ -2940,7 +2933,7 @@
 </div>
 </td>
 </tr>
-<tr class="row-even"><td><p>10:0</p></td>
+<tr class="row-odd"><td><p>10:0</p></td>
 <td><p>R/W</p></td>
 <td><p>0x0</p></td>
 <td><div class="line-block">
@@ -3128,24 +3121,17 @@
 <td><p>0x0</p></td>
 <td><div class="line-block">
 <div class="line">DATA_PID_STS</div>
-<div class="line">Endpoint Data PID Status，适用interrupt/bulk IN EPs。</div>
+<div class="line">Endpoint Data PID Status，当EP类型为interrupt/bulk EP。</div>
 <div class="line">0x0：DATA0</div>
 <div class="line">0x1：DATA1</div>
-</div>
-</td>
-</tr>
-<tr class="row-odd"><td><p>16</p></td>
-<td><p>R</p></td>
-<td><p>0x0</p></td>
-<td><div class="line-block">
 <div class="line">EO_FRNUM_STS</div>
-<div class="line">Even/Odd Frame Number Status，适用isochronous IN EPs。</div>
+<div class="line">Even/Odd Frame Number Status，当EP类型为isochronous EP。</div>
 <div class="line">0x0：偶数帧</div>
 <div class="line">0x1：奇数帧</div>
 </div>
 </td>
 </tr>
-<tr class="row-even"><td><p>15</p></td>
+<tr class="row-odd"><td><p>15</p></td>
 <td><p>R/WAC</p></td>
 <td><p>0x0</p></td>
 <td><div class="line-block">
@@ -3157,7 +3143,7 @@
 </div>
 </td>
 </tr>
-<tr class="row-odd"><td><p>14:11</p></td>
+<tr class="row-even"><td><p>14:11</p></td>
 <td><p>R/W</p></td>
 <td><p>0x0</p></td>
 <td><div class="line-block">
@@ -3173,7 +3159,7 @@
 </div>
 </td>
 </tr>
-<tr class="row-even"><td><p>10:0</p></td>
+<tr class="row-odd"><td><p>10:0</p></td>
 <td><p>R/W</p></td>
 <td><p>0x0</p></td>
 <td><div class="line-block">
@@ -3361,24 +3347,17 @@
 <td><p>0x0</p></td>
 <td><div class="line-block">
 <div class="line">DATA_PID_STS</div>
-<div class="line">Endpoint Data PID Status，适用interrupt/bulk IN EPs。</div>
+<div class="line">Endpoint Data PID Status，当EP类型为interrupt/bulk EP。</div>
 <div class="line">0x0：DATA0</div>
 <div class="line">0x1：DATA1</div>
-</div>
-</td>
-</tr>
-<tr class="row-odd"><td><p>16</p></td>
-<td><p>R</p></td>
-<td><p>0x0</p></td>
-<td><div class="line-block">
 <div class="line">EO_FRNUM_STS</div>
-<div class="line">Even/Odd Frame Number Status，适用isochronous IN EPs。</div>
+<div class="line">Even/Odd Frame Number Status，当EP类型为isochronous EP。</div>
 <div class="line">0x0：偶数帧</div>
 <div class="line">0x1：奇数帧</div>
 </div>
 </td>
 </tr>
-<tr class="row-even"><td><p>15</p></td>
+<tr class="row-odd"><td><p>15</p></td>
 <td><p>R/WAC</p></td>
 <td><p>0x0</p></td>
 <td><div class="line-block">
@@ -3390,7 +3369,7 @@
 </div>
 </td>
 </tr>
-<tr class="row-odd"><td><p>14:11</p></td>
+<tr class="row-even"><td><p>14:11</p></td>
 <td><p>R/W</p></td>
 <td><p>0x0</p></td>
 <td><div class="line-block">
@@ -3406,7 +3385,7 @@
 </div>
 </td>
 </tr>
-<tr class="row-even"><td><p>10:0</p></td>
+<tr class="row-odd"><td><p>10:0</p></td>
 <td><p>R/W</p></td>
 <td><p>0x0</p></td>
 <td><div class="line-block">
@@ -3594,24 +3573,17 @@
 <td><p>0x0</p></td>
 <td><div class="line-block">
 <div class="line">DATA_PID_STS</div>
-<div class="line">Endpoint Data PID Status，适用interrupt/bulk IN EPs。</div>
+<div class="line">Endpoint Data PID Status，当EP类型为interrupt/bulk EP。</div>
 <div class="line">0x0：DATA0</div>
 <div class="line">0x1：DATA1</div>
-</div>
-</td>
-</tr>
-<tr class="row-odd"><td><p>16</p></td>
-<td><p>R</p></td>
-<td><p>0x0</p></td>
-<td><div class="line-block">
 <div class="line">EO_FRNUM_STS</div>
-<div class="line">Even/Odd Frame Number Status，适用isochronous IN EPs。</div>
+<div class="line">Even/Odd Frame Number Status，当EP类型为isochronous EP。</div>
 <div class="line">0x0：偶数帧</div>
 <div class="line">0x1：奇数帧</div>
 </div>
 </td>
 </tr>
-<tr class="row-even"><td><p>15</p></td>
+<tr class="row-odd"><td><p>15</p></td>
 <td><p>R/WAC</p></td>
 <td><p>0x0</p></td>
 <td><div class="line-block">
@@ -3623,7 +3595,7 @@
 </div>
 </td>
 </tr>
-<tr class="row-odd"><td><p>14:11</p></td>
+<tr class="row-even"><td><p>14:11</p></td>
 <td><p>R/W</p></td>
 <td><p>0x0</p></td>
 <td><div class="line-block">
@@ -3639,7 +3611,7 @@
 </div>
 </td>
 </tr>
-<tr class="row-even"><td><p>10:0</p></td>
+<tr class="row-odd"><td><p>10:0</p></td>
 <td><p>R/W</p></td>
 <td><p>0x0</p></td>
 <td><div class="line-block">
@@ -7252,10 +7224,10 @@
 <div class="line">Disconnect Threshold Adjustment</div>
 <div class="line">This bus adjusts the voltage level for the threshold used</div>
 <div class="line">to detect a disconnect event at the host.</div>
-<div class="line">0x7：+ 4.5%</div>
-<div class="line">0x6：+ 3%</div>
-<div class="line">0x5：+ 1.5%</div>
-<div class="line">0x4：Design default</div>
+<div class="line">0x7：+4.5%</div>
+<div class="line">0x6：+3%</div>
+<div class="line">0x5：+1.5%</div>
+<div class="line">0x4：Design default (575mV)</div>
 <div class="line">0x3：–1.5%</div>
 <div class="line">0x2：–3%</div>
 <div class="line">0x1：–4.5%</div>
@@ -7275,10 +7247,10 @@
 <div class="line">0x6：–15%</div>
 <div class="line">0x5：–10%</div>
 <div class="line">0x4：–5%</div>
-<div class="line">0x3：Design default</div>
-<div class="line">0x2：+ 5%</div>
-<div class="line">0x1：+ 10%</div>
-<div class="line">0x0: + 15%</div>
+<div class="line">0x3：Design default (125mV)</div>
+<div class="line">0x2：+5%</div>
+<div class="line">0x1：+10%</div>
+<div class="line">0x0：+15%</div>
 </div>
 </td>
 </tr>
@@ -7294,7 +7266,7 @@
 <div class="line">is defined as 1X pre-emphasis duration. This signal is valid</div>
 <div class="line">only if either TXPREEMPAMPTUNE0[1] or TXPREEMPAMPTUNE0[0] is</div>
 <div class="line">set to 1’b1.</div>
-<div class="line">0 (design default)：2X, long pre-emphasis current duration</div>
+<div class="line">0 (design default)：2X, long pre-emphasis current duration (580ps)</div>
 <div class="line">1：1X, short pre-emphasis current duration</div>
 </div>
 </td>
@@ -7306,10 +7278,10 @@
 <div class="line">Otgtune</div>
 <div class="line">VBUS Valid Threshold Adjustment</div>
 <div class="line">This bus adjusts the voltage level for the VBUS Valid threshold.</div>
-<div class="line">0x7：+ 9%</div>
-<div class="line">0x6：+ 6%</div>
-<div class="line">0x5：+ 3%</div>
-<div class="line">0x4：Design default</div>
+<div class="line">0x7：+9%</div>
+<div class="line">0x6：+6%</div>
+<div class="line">0x5：+3%</div>
+<div class="line">0x4：Design default (5V)</div>
 <div class="line">0x3：–3%</div>
 <div class="line">0x2：–6%</div>
 <div class="line">0x1：–9%</div>
@@ -7328,9 +7300,9 @@
 <div class="line">are based on nominal process, voltage, and temperature.</div>
 <div class="line">0xf：–5%</div>
 <div class="line">0x7：–2.5%</div>
-<div class="line">0x3：Design default</div>
-<div class="line">0x1：+ 2.5%</div>
-<div class="line">0x0：+ 5%</div>
+<div class="line">0x3：Design default (600ohm)</div>
+<div class="line">0x1：+2.5%</div>
+<div class="line">0x0：+5%</div>
 </div>
 </td>
 </tr>
@@ -7340,19 +7312,19 @@
 <td><div class="line-block">
 <div class="line">Txvreftune</div>
 <div class="line">This bus adjusts the high-speed DC level voltage.</div>
-<div class="line">0xf：+ 24%</div>
-<div class="line">0xe：+ 22%</div>
-<div class="line">0xd：+ 20%</div>
-<div class="line">0xc：+ 18%</div>
-<div class="line">0xb：+ 16%</div>
-<div class="line">0xa：+ 14%</div>
-<div class="line">0x9：+ 12%</div>
-<div class="line">0x8：+ 10%</div>
-<div class="line">0x7：+ 8%</div>
-<div class="line">0x6：+ 6%</div>
-<div class="line">0x5：+ 4%</div>
-<div class="line">0x4：+ 2%</div>
-<div class="line">0x3：Design default</div>
+<div class="line">0xf：+24%</div>
+<div class="line">0xe：+22%</div>
+<div class="line">0xd：+20%</div>
+<div class="line">0xc：+18%</div>
+<div class="line">0xb：+16%</div>
+<div class="line">0xa：+14%</div>
+<div class="line">0x9：+12%</div>
+<div class="line">0x8：+10%</div>
+<div class="line">0x7：+8%</div>
+<div class="line">0x6：+6%</div>
+<div class="line">0x5：+4%</div>
+<div class="line">0x4：+2%</div>
+<div class="line">0x3：Design default (400mV)</div>
 <div class="line">0x2：–2%</div>
 <div class="line">0x1：–4%</div>
 <div class="line">0x0：–6%</div>
@@ -7368,9 +7340,9 @@
 <div class="line">This bus adjusts the voltage at which the DP0 and DM0 signals</div>
 <div class="line">cross while transmitting in HS mode.</div>
 <div class="line">0x0：Reserved</div>
-<div class="line">0x1：–15 mV</div>
-<div class="line">0x2：+ 15 mV</div>
-<div class="line">0x3：Default setting</div>
+<div class="line">0x1：–15mV</div>
+<div class="line">0x2：+15mV</div>
+<div class="line">0x3：Default setting (1.25V)</div>
 </div>
 </td>
 </tr>
@@ -7381,8 +7353,8 @@
 <div class="line">Txrisetune</div>
 <div class="line">HS Transmitter Rise/Fall Time Adjustment</div>
 <div class="line">This bus adjusts the rise/fall times of the high-speed waveform.</div>
-<div class="line">0x0：+ 10%</div>
-<div class="line">0x1：Design default</div>
+<div class="line">0x0：+10%</div>
+<div class="line">0x1：Design default (200ps)</div>
 <div class="line">0x2：–20%</div>
 <div class="line">0x3：–40%</div>
 </div>
@@ -7402,7 +7374,7 @@
 <div class="line">impedance variation across process, voltage, and temperature</div>
 <div class="line">conditions that does not meet USB 2.0 specification limits.</div>
 <div class="line">0x0：Source impedance is increased by approximately 1.5 Ω.</div>
-<div class="line">0x1：Design default</div>
+<div class="line">0x1：Design default (45ohm)</div>
 <div class="line">0x2：Source impedance is decreased by approximately 2 Ω.</div>
 <div class="line">0x3：Source impedance is decreased by approximately 4 Ω.</div>
 </div>
@@ -7419,7 +7391,7 @@
 <div class="line">emphasis current is defined in terms of unit amounts.</div>
 <div class="line">One unit amount is approximately 600 μA and is defined as 1X</div>
 <div class="line">pre-emphasis current.</div>
-<div class="line">0x0 (design default): HS Transmitter pre-emphasis is disabled.</div>
+<div class="line">0x0 (design default): HS Transmitter pre-emphasis is disabled. (600uA)</div>
 <div class="line">0x1: HS Transmitter pre-emphasis circuit sources 1X pre-emphasis current.</div>
 <div class="line">0x2: HS Transmitter pre-emphasis circuit sources 2X pre-emphasis current.</div>
 <div class="line">0x3: HS Transmitter pre-emphasis circuit sources 3X pre-emphasis current.</div>

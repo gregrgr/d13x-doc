@@ -280,11 +280,13 @@
 </li>
 <li class="toctree-l3"><a class="reference internal" href="../uart/index.html">7.10. UART 使用指南</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../mac/index.html">7.11. MAC 使用指南</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../usb/index.html">7.12. USB 使用指南</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="../../security/index.html">8. 安全</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../peripheral/index.html">9. 外设</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../app/index.html">10. 应用</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../bringup/index.html">11. BringUp</a></li>
 </ul>
 </li>
 </ul>
@@ -525,34 +527,34 @@ SPI 总线是一种行业事实标准，并没有统一的标准化组织，不�
 </thead>
 <tbody>
 <tr class="row-even"><td><p>0</p></td>
-<td><p>CPHA=0, CPOL=0</p></td>
+<td><p>CPOL=0, CPHA=0</p></td>
 <td><div class="line-block">
 <div class="line">空闲时，SCK 处于低电平</div>
-<div class="line">数据采样在上升沿，数据发送在下降沿</div>
+<div class="line">数据采样在上升沿，下降沿保持</div>
 </div>
 </td>
 </tr>
 <tr class="row-odd"><td><p>1</p></td>
-<td><p>CPHA=0, CPOL=1</p></td>
+<td><p>CPOL=0, CPHA=1</p></td>
 <td><div class="line-block">
 <div class="line">空闲时，SCK 处于高电平</div>
-<div class="line">数据采样在下降沿，数据发送在上升沿</div>
+<div class="line">数据采样在下降沿，上升沿保持</div>
 </div>
 </td>
 </tr>
 <tr class="row-even"><td><p>2</p></td>
-<td><p>CPHA=1, CPOL=0</p></td>
+<td><p>CPOL=1, CPHA=0</p></td>
 <td><div class="line-block">
 <div class="line">空闲时，SCK 处于低电平</div>
-<div class="line">数据采样在下降沿，数据发送在上升沿</div>
+<div class="line">数据采样在下降沿，上升沿保持</div>
 </div>
 </td>
 </tr>
 <tr class="row-odd"><td><p>3</p></td>
-<td><p>CPHA=1, CPOL=1</p></td>
+<td><p>CPOL=1, CPHA=1</p></td>
 <td><div class="line-block">
 <div class="line">空闲时，SCK 处于高电平</div>
-<div class="line">数据采样在上升沿，数据发送在下降沿</div>
+<div class="line">数据采样在上升沿，下降沿保持</div>
 </div>
 </td>
 </tr>

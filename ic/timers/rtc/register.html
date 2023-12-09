@@ -1134,8 +1134,8 @@
 <td><p>R/W</p></td>
 <td><p>0x0</p></td>
 <td><div class="line-block">
-<div class="line">LDO12_XTAL32K_SW</div>
-<div class="line">LDO12到XTAL32K开关</div>
+<div class="line">LDO11_XTAL32K_SW</div>
+<div class="line">LDO11到XTAL32K开关</div>
 <div class="line">0: 关闭</div>
 <div class="line">1: 打开</div>
 </div>
@@ -1315,6 +1315,7 @@
 <div class="line">TCNT</div>
 <div class="line">时间计数值</div>
 <div class="line"><strong>以秒为单位计数，时间跨度136年</strong></div>
+<div class="line"><strong>该寄存器值需要在TCNT_EN置1约1ms时间进行同步，方可读取</strong></div>
 </div>
 </td>
 </tr>

@@ -7,7 +7,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   
-  <title>4.1. CMU 使用指南 &mdash; AIC文档中心 v1.0 文档</title>
+  <title>4.2. CMU 使用指南 &mdash; AIC文档中心 v1.0 文档</title>
   
 
   
@@ -41,8 +41,8 @@
     
     <link rel="index" title="索引" href="../../../genindex.html" />
     <link rel="search" title="搜索" href="../../../search.html" />
-    <link rel="next" title="4.1.1. 模块介绍" href="1_introduction.html" />
-    <link rel="prev" title="4. 系统" href="../index.html" />
+    <link rel="next" title="4.2.1. 模块介绍" href="1_introduction.html" />
+    <link rel="prev" title="4.1.1. 设计说明" href="../interrupt/5_design_guide.html" />
     <script>
         $(function () {
 /**
@@ -247,21 +247,22 @@
 <li class="toctree-l2"><a class="reference internal" href="../../sdk/index.html">2. 使用指南</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../boot/index.html">3. 启动引导</a></li>
 <li class="toctree-l2 current"><a class="reference internal" href="../index.html">4. 系统</a><ul class="current">
-<li class="toctree-l3 current"><a class="current reference internal" href="#">4.1. CMU 使用指南</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="1_introduction.html">4.1.1. 模块介绍</a></li>
-<li class="toctree-l4"><a class="reference internal" href="2_configure.html">4.1.2. CMU配置</a></li>
-<li class="toctree-l4"><a class="reference internal" href="3_debug_guide.html">4.1.3. 调试指南</a></li>
-<li class="toctree-l4"><a class="reference internal" href="4_test_guide.html">4.1.4. 测试指南</a></li>
-<li class="toctree-l4"><a class="reference internal" href="5_design_guide.html">4.1.5. 设计说明</a></li>
-<li class="toctree-l4"><a class="reference internal" href="6_faq.html">4.1.6. 常见问题</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../interrupt/index.html">4.1. Interrupt 使用指南</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">4.2. CMU 使用指南</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="1_introduction.html">4.2.1. 模块介绍</a></li>
+<li class="toctree-l4"><a class="reference internal" href="2_configure.html">4.2.2. CMU配置</a></li>
+<li class="toctree-l4"><a class="reference internal" href="3_debug_guide.html">4.2.3. 调试指南</a></li>
+<li class="toctree-l4"><a class="reference internal" href="4_test_guide.html">4.2.4. 测试指南</a></li>
+<li class="toctree-l4"><a class="reference internal" href="5_design_guide.html">4.2.5. 设计说明</a></li>
+<li class="toctree-l4"><a class="reference internal" href="6_faq.html">4.2.6. 常见问题</a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="../dma/index.html">4.2. DMA 使用指南</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../hrtimer/index.html">4.3. HRTimer 使用指南</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../mtop/index.html">4.4. MTOP 使用指南</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../rtc/index.html">4.5. RTC 使用指南</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../tsensor/index.html">4.6. TSensor 使用指南</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../watchdog/index.html">4.7. Watchdog 使用指南</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../dma/index.html">4.3. DMA 使用指南</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../hrtimer/index.html">4.4. HRTimer 使用指南</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../mtop/index.html">4.5. MTOP 使用指南</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../rtc/index.html">4.6. RTC 使用指南</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../tsensor/index.html">4.7. TSensor 使用指南</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../watchdog/index.html">4.8. Watchdog 使用指南</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="../../memory/index.html">5. 存储</a></li>
@@ -270,6 +271,7 @@
 <li class="toctree-l2"><a class="reference internal" href="../../security/index.html">8. 安全</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../peripheral/index.html">9. 外设</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../app/index.html">10. 应用</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../bringup/index.html">11. BringUp</a></li>
 </ul>
 </li>
 </ul>
@@ -333,7 +335,7 @@
         
           <li><a href="../index.html"><span class="section-number">4. </span>系统</a> &raquo;</li>
         
-      <li><span class="section-number">4.1. </span>CMU 使用指南</li>
+      <li><span class="section-number">4.2. </span>CMU 使用指南</li>
     
     
       <li class="wy-breadcrumbs-aside">
@@ -351,36 +353,36 @@
            <div itemprop="articleBody">
             
   <div class="section" id="cmu">
-<span id="ref-luban-lite-cmu"></span><h1><span class="section-number">4.1. </span>CMU 使用指南<a class="headerlink" href="#cmu" title="永久链接至标题">¶</a></h1>
+<span id="ref-luban-lite-cmu"></span><h1><span class="section-number">4.2. </span>CMU 使用指南<a class="headerlink" href="#cmu" title="永久链接至标题">¶</a></h1>
 <blockquote>
 <div><div class="toctree-wrapper compound">
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="1_introduction.html">4.1.1. 模块介绍</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="1_introduction.html#id2">4.1.1.1. 术语定义</a></li>
-<li class="toctree-l2"><a class="reference internal" href="1_introduction.html#id3">4.1.1.2. 模块简介</a></li>
+<li class="toctree-l1"><a class="reference internal" href="1_introduction.html">4.2.1. 模块介绍</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="1_introduction.html#id2">4.2.1.1. 术语定义</a></li>
+<li class="toctree-l2"><a class="reference internal" href="1_introduction.html#id3">4.2.1.2. 模块简介</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="2_configure.html">4.1.2. CMU配置</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="2_configure.html#id1">4.1.2.1. 驱动配置</a></li>
-<li class="toctree-l2"><a class="reference internal" href="2_configure.html#clock">4.1.2.2. 系统 Clock 配置</a></li>
-<li class="toctree-l2"><a class="reference internal" href="2_configure.html#id2">4.1.2.3. 模块 Clock 配置</a></li>
-<li class="toctree-l2"><a class="reference internal" href="2_configure.html#reset">4.1.2.4. 模块 Reset 配置</a></li>
+<li class="toctree-l1"><a class="reference internal" href="2_configure.html">4.2.2. CMU配置</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="2_configure.html#id1">4.2.2.1. 驱动配置</a></li>
+<li class="toctree-l2"><a class="reference internal" href="2_configure.html#clock">4.2.2.2. 系统 Clock 配置</a></li>
+<li class="toctree-l2"><a class="reference internal" href="2_configure.html#id2">4.2.2.3. 模块 Clock 配置</a></li>
+<li class="toctree-l2"><a class="reference internal" href="2_configure.html#reset">4.2.2.4. 模块 Reset 配置</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="3_debug_guide.html">4.1.3. 调试指南</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="3_debug_guide.html#id2">4.1.3.1. 调试方法</a></li>
+<li class="toctree-l1"><a class="reference internal" href="3_debug_guide.html">4.2.3. 调试指南</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="3_debug_guide.html#id2">4.2.3.1. 调试方法</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="4_test_guide.html">4.1.4. 测试指南</a></li>
-<li class="toctree-l1"><a class="reference internal" href="5_design_guide.html">4.1.5. 设计说明</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="5_design_guide.html#id2">4.1.5.1. 源码说明</a></li>
-<li class="toctree-l2"><a class="reference internal" href="5_design_guide.html#id3">4.1.5.2. 模块架构</a></li>
-<li class="toctree-l2"><a class="reference internal" href="5_design_guide.html#id5">4.1.5.3. 关键流程设计</a></li>
-<li class="toctree-l2"><a class="reference internal" href="5_design_guide.html#id9">4.1.5.4. 数据结构设计</a></li>
-<li class="toctree-l2"><a class="reference internal" href="5_design_guide.html#id10">4.1.5.5. 接口设计</a></li>
+<li class="toctree-l1"><a class="reference internal" href="4_test_guide.html">4.2.4. 测试指南</a></li>
+<li class="toctree-l1"><a class="reference internal" href="5_design_guide.html">4.2.5. 设计说明</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="5_design_guide.html#id2">4.2.5.1. 源码说明</a></li>
+<li class="toctree-l2"><a class="reference internal" href="5_design_guide.html#id3">4.2.5.2. 模块架构</a></li>
+<li class="toctree-l2"><a class="reference internal" href="5_design_guide.html#id5">4.2.5.3. 关键流程设计</a></li>
+<li class="toctree-l2"><a class="reference internal" href="5_design_guide.html#id9">4.2.5.4. 数据结构设计</a></li>
+<li class="toctree-l2"><a class="reference internal" href="5_design_guide.html#id10">4.2.5.5. 接口设计</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="6_faq.html">4.1.6. 常见问题</a></li>
+<li class="toctree-l1"><a class="reference internal" href="6_faq.html">4.2.6. 常见问题</a></li>
 </ul>
 </div>
 </div></blockquote>
@@ -392,8 +394,8 @@
           </div>
           <footer>
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
-        <a href="1_introduction.html" class="btn btn-neutral float-right" title="4.1.1. 模块介绍" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
-        <a href="../index.html" class="btn btn-neutral float-left" title="4. 系统" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="1_introduction.html" class="btn btn-neutral float-right" title="4.2.1. 模块介绍" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="../interrupt/5_design_guide.html" class="btn btn-neutral float-left" title="4.1.1. 设计说明" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
     </div>
 
   <hr/>

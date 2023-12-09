@@ -257,6 +257,7 @@
 <li class="toctree-l5"><a class="reference internal" href="#id2">11.3.3.1. 时间设置流程</a></li>
 <li class="toctree-l5"><a class="reference internal" href="#id3">11.3.3.2. 闹钟设置流程</a></li>
 <li class="toctree-l5"><a class="reference internal" href="#id4">11.3.3.3. 校准设置流程</a></li>
+<li class="toctree-l5"><a class="reference internal" href="#id5">11.3.3.4. 低功耗设置流程</a></li>
 </ul>
 </li>
 <li class="toctree-l4"><a class="reference internal" href="register.html">11.3.4. 寄存器描述</a></li>
@@ -378,6 +379,18 @@
 <div class="section" id="id4">
 <h2><span class="section-number">11.3.3.3. </span>校准设置流程<a class="headerlink" href="#id4" title="永久链接至标题">¶</a></h2>
 <p>建议直接设置校准值，注意每次设置后会导致设置后的1秒内会有1ms以内的偏差。</p>
+</div>
+<div class="section" id="id5">
+<h2><span class="section-number">11.3.3.4. </span>低功耗设置流程<a class="headerlink" href="#id5" title="永久链接至标题">¶</a></h2>
+<p>低功耗下，数字电路和晶振电路共用LDO11供电，工作电路最大不超过3uA。</p>
+<ol class="arabic simple">
+<li><p>解锁写操作</p></li>
+<li><p>设置LDO18输出为1.2V，电压降到最低档，平稳切换到LDO11给晶振供电</p></li>
+<li><p>设置LDO11输出为0.9V，电压降低到稳定工作最低电压，输出负载关闭，除去片内电阻功耗，LDO11低功耗模式使能</p></li>
+<li><p>设置LDO11到XTAL32K开关打开，LDO11电压同步给晶振供电</p></li>
+<li><p>设置LDO18旁路，关闭LDO18，功耗降到最低</p></li>
+<li><p>锁定写操作</p></li>
+</ol>
 </div>
 </div>
 

@@ -254,8 +254,8 @@
 <li class="toctree-l4 current"><a class="current reference internal" href="#">6.1.2. Audio配置</a><ul>
 <li class="toctree-l5"><a class="reference internal" href="#id1">6.1.2.1. 驱动配置</a></li>
 <li class="toctree-l5"><a class="reference internal" href="#id2">6.1.2.2. Audio参数配置</a><ul>
-<li class="toctree-l6"><a class="reference internal" href="#d21x">6.1.2.2.1. d21x的参数配置</a></li>
-<li class="toctree-l6"><a class="reference internal" href="#d13x">6.1.2.2.2. d13x的参数配置</a></li>
+<li class="toctree-l6"><a class="reference internal" href="#d21x">6.1.2.2.1. D21x的参数配置</a></li>
+<li class="toctree-l6"><a class="reference internal" href="#d13x">6.1.2.2.2. D13x的参数配置</a></li>
 <li class="toctree-l6"><a class="reference internal" href="#id3">6.1.2.2.3. 其他参数配置</a></li>
 </ul>
 </li>
@@ -282,6 +282,7 @@
 <li class="toctree-l2"><a class="reference internal" href="../../security/index.html">8. 安全</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../peripheral/index.html">9. 外设</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../app/index.html">10. 应用</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../bringup/index.html">11. BringUp</a></li>
 </ul>
 </li>
 </ul>
@@ -377,8 +378,8 @@
 <h2><span class="section-number">6.1.2.2. </span>Audio参数配置<a class="headerlink" href="#id2" title="永久链接至标题">¶</a></h2>
 <p>使能 <cite>Using audio</cite> 后，会出现audio参数的配置项，可以看到被分成了三部分：Playback、DMIC、AMIC。可根据板子实际情况进行配置。</p>
 <div class="section" id="d21x">
-<h3><span class="section-number">6.1.2.2.1. </span>d21x的参数配置<a class="headerlink" href="#d21x" title="永久链接至标题">¶</a></h3>
-<p>在d21x中需要播放功能，则需要选择 <code class="docutils literal notranslate"><span class="pre">Using</span> <span class="pre">Playback</span></code> ；使用DMIC录音，则需要选择 <code class="docutils literal notranslate"><span class="pre">Using</span> <span class="pre">DMIC</span></code> ；使用AMIC录音，则需要选择 <code class="docutils literal notranslate"><span class="pre">Using</span> <span class="pre">AMIC</span></code> ，如下图所示：</p>
+<h3><span class="section-number">6.1.2.2.1. </span>D21x的参数配置<a class="headerlink" href="#d21x" title="永久链接至标题">¶</a></h3>
+<p>在D21x中需要播放功能，则需要选择 <code class="docutils literal notranslate"><span class="pre">Using</span> <span class="pre">Playback</span></code> ；使用DMIC录音，则需要选择 <code class="docutils literal notranslate"><span class="pre">Using</span> <span class="pre">DMIC</span></code> ；使用AMIC录音，则需要选择 <code class="docutils literal notranslate"><span class="pre">Using</span> <span class="pre">AMIC</span></code> ，如下图所示：</p>
 <div class="highlight-Kconfig notranslate"><div class="highlight"><pre><span></span>Audio parameter ---&gt;
     [*] Using Playback
     <span class="p">(</span>PA.7) PA enable pin
@@ -390,8 +391,8 @@
 </div>
 </div>
 <div class="section" id="d13x">
-<h3><span class="section-number">6.1.2.2.2. </span>d13x的参数配置<a class="headerlink" href="#d13x" title="永久链接至标题">¶</a></h3>
-<p>在d13x中由于没有AMIC录音，因此没有 <code class="docutils literal notranslate"><span class="pre">Using</span> <span class="pre">AMIC</span></code> 这个选项，如下图所示：</p>
+<h3><span class="section-number">6.1.2.2.2. </span>D13x的参数配置<a class="headerlink" href="#d13x" title="永久链接至标题">¶</a></h3>
+<p>在D13x中由于没有AMIC录音，因此没有 <code class="docutils literal notranslate"><span class="pre">Using</span> <span class="pre">AMIC</span></code> 这个选项，如下图所示：</p>
 <div class="highlight-Kconfig notranslate"><div class="highlight"><pre><span></span>Audio parameter ---&gt;
     [*] Using Playback
     <span class="p">(</span>PA.7) PA enable pin

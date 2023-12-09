@@ -284,6 +284,7 @@
 <li class="toctree-l2"><a class="reference internal" href="../../../security/index.html">8. 安全</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../../peripheral/index.html">9. 外设</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../../../app/index.html">10. 应用</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../../bringup/index.html">11. BringUp</a></li>
 </ul>
 </li>
 </ul>
@@ -405,14 +406,18 @@
 </tr>
 <tr class="row-odd"><td><p>MIPI-DSI</p></td>
 <td><p>Mipi Display Serial Interface</p></td>
-<td><p>Mipi组织定义的一个显示接口标准</p></td>
+<td><p>MIPI组织定义的一个显示接口标准</p></td>
+</tr>
+<tr class="row-even"><td><p>MIPI-DBI</p></td>
+<td><p>Mipi Display Bus Interface</p></td>
+<td><p>MIPI组织定义的一个显示接口标准</p></td>
 </tr>
 </tbody>
 </table>
 </div>
 <div class="section" id="id3">
 <h2><span class="section-number">6.2.1.2. </span>系统简介<a class="headerlink" href="#id3" title="永久链接至标题">¶</a></h2>
-<p>显示模块包含了显示引擎（DE）,显示接口（DI）。其中显示接口支持 RGB/LVDS/DSI/DBI 等接口标准。</p>
+<p>显示模块包含了显示引擎（DE）,显示接口（DI）。其中显示接口支持 RGB/LVDS/MIPI-DSI/MIPI-DBI 等接口标准。</p>
 <p>显示模块的主要功能是将内存中的数据转换成显示接口需要的信号，并且支持多图层的叠加输出。从硬件角度看，显示模块的框架如下所示：</p>
 <div class="figure align-center" id="id7">
 <img alt="../../../../_images/display_system.png" src="../../../../_images/display_system.png" />
@@ -464,6 +469,13 @@ NV12/NV21/NV16/NV61/YUYV/YVYU/UYVY/VYUY/YUV400</p>
 <li><p>Video 模式支持 Non-burst 和 Burst 两种方式</p></li>
 <li><p>可配置为 1/2/3/4 对数据通道，每通道最大支持 1Gbps 速率</p></li>
 <li><p>支持 RGB888，RGB666，RGB666 packed，RGB565</p></li>
+</ul>
+<p><strong>MIPI-DBI接口</strong></p>
+<ul class="simple">
+<li><p>支持 B 类接口，Intel 8080 总线</p></li>
+<li><p>支持 C 类接口，SPI 总线</p></li>
+<li><p>I8080 支持 24/18/16/9/8bit 模式，最高 960x540&#64;60fps</p></li>
+<li><p>SPI 支持 3/4-wire 以及 4-sda 模式，最高 480x320&#64;60fps</p></li>
 </ul>
 </div>
 </div>
